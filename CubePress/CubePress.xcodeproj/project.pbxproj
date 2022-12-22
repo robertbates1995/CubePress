@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E139F2953D5D60048628D /* CubePressApp.swift */; };
+		7A2E13A22953D5D60048628D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13A12953D5D60048628D /* ContentView.swift */; };
+		7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A32953D5D70048628D /* Assets.xcassets */; };
+		7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A62953D5D70048628D /* Preview Assets.xcassets */; };
+		7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13B02953D5D70048628D /* CubePressTests.swift */; };
+		7A2E13BB2953D5D70048628D /* CubePressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BA2953D5D70048628D /* CubePressUITests.swift */; };
+		7A2E13BD2953D5D70048628D /* CubePressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A2E13AD2953D5D70048628D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A2E13942953D5D50048628D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A2E139B2953D5D50048628D;
+			remoteInfo = CubePress;
+		};
+		7A2E13B72953D5D70048628D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A2E13942953D5D50048628D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A2E139B2953D5D50048628D;
+			remoteInfo = CubePress;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7A2E139C2953D5D50048628D /* CubePress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubePress.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A2E139F2953D5D60048628D /* CubePressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressApp.swift; sourceTree = "<group>"; };
+		7A2E13A12953D5D60048628D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7A2E13A32953D5D70048628D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A2E13A62953D5D70048628D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7A2E13AC2953D5D70048628D /* CubePressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A2E13B02953D5D70048628D /* CubePressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressTests.swift; sourceTree = "<group>"; };
+		7A2E13B62953D5D70048628D /* CubePressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A2E13BA2953D5D70048628D /* CubePressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITests.swift; sourceTree = "<group>"; };
+		7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A2E13992953D5D50048628D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2E13A92953D5D70048628D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2E13B32953D5D70048628D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A2E13932953D5D50048628D = {
+			isa = PBXGroup;
+			children = (
+				7A2E139E2953D5D50048628D /* CubePress */,
+				7A2E13AF2953D5D70048628D /* CubePressTests */,
+				7A2E13B92953D5D70048628D /* CubePressUITests */,
+				7A2E139D2953D5D50048628D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A2E139D2953D5D50048628D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E139C2953D5D50048628D /* CubePress.app */,
+				7A2E13AC2953D5D70048628D /* CubePressTests.xctest */,
+				7A2E13B62953D5D70048628D /* CubePressUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A2E139E2953D5D50048628D /* CubePress */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E139F2953D5D60048628D /* CubePressApp.swift */,
+				7A2E13A12953D5D60048628D /* ContentView.swift */,
+				7A2E13A32953D5D70048628D /* Assets.xcassets */,
+				7A2E13A52953D5D70048628D /* Preview Content */,
+			);
+			path = CubePress;
+			sourceTree = "<group>";
+		};
+		7A2E13A52953D5D70048628D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E13A62953D5D70048628D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7A2E13AF2953D5D70048628D /* CubePressTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E13B02953D5D70048628D /* CubePressTests.swift */,
+			);
+			path = CubePressTests;
+			sourceTree = "<group>";
+		};
+		7A2E13B92953D5D70048628D /* CubePressUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E13BA2953D5D70048628D /* CubePressUITests.swift */,
+				7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */,
+			);
+			path = CubePressUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A2E139B2953D5D50048628D /* CubePress */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A2E13C02953D5D70048628D /* Build configuration list for PBXNativeTarget "CubePress" */;
+			buildPhases = (
+				7A2E13982953D5D50048628D /* Sources */,
+				7A2E13992953D5D50048628D /* Frameworks */,
+				7A2E139A2953D5D50048628D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CubePress;
+			productName = CubePress;
+			productReference = 7A2E139C2953D5D50048628D /* CubePress.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A2E13AB2953D5D70048628D /* CubePressTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A2E13C32953D5D70048628D /* Build configuration list for PBXNativeTarget "CubePressTests" */;
+			buildPhases = (
+				7A2E13A82953D5D70048628D /* Sources */,
+				7A2E13A92953D5D70048628D /* Frameworks */,
+				7A2E13AA2953D5D70048628D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A2E13AE2953D5D70048628D /* PBXTargetDependency */,
+			);
+			name = CubePressTests;
+			productName = CubePressTests;
+			productReference = 7A2E13AC2953D5D70048628D /* CubePressTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A2E13B52953D5D70048628D /* CubePressUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A2E13C62953D5D70048628D /* Build configuration list for PBXNativeTarget "CubePressUITests" */;
+			buildPhases = (
+				7A2E13B22953D5D70048628D /* Sources */,
+				7A2E13B32953D5D70048628D /* Frameworks */,
+				7A2E13B42953D5D70048628D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A2E13B82953D5D70048628D /* PBXTargetDependency */,
+			);
+			name = CubePressUITests;
+			productName = CubePressUITests;
+			productReference = 7A2E13B62953D5D70048628D /* CubePressUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A2E13942953D5D50048628D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					7A2E139B2953D5D50048628D = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					7A2E13AB2953D5D70048628D = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 7A2E139B2953D5D50048628D;
+					};
+					7A2E13B52953D5D70048628D = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = 7A2E139B2953D5D50048628D;
+					};
+				};
+			};
+			buildConfigurationList = 7A2E13972953D5D50048628D /* Build configuration list for PBXProject "CubePress" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A2E13932953D5D50048628D;
+			productRefGroup = 7A2E139D2953D5D50048628D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A2E139B2953D5D50048628D /* CubePress */,
+				7A2E13AB2953D5D70048628D /* CubePressTests */,
+				7A2E13B52953D5D70048628D /* CubePressUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A2E139A2953D5D50048628D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */,
+				7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2E13AA2953D5D70048628D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2E13B42953D5D70048628D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A2E13982953D5D50048628D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A2E13A22953D5D60048628D /* ContentView.swift in Sources */,
+				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2E13A82953D5D70048628D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A2E13B22953D5D70048628D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A2E13BB2953D5D70048628D /* CubePressUITests.swift in Sources */,
+				7A2E13BD2953D5D70048628D /* CubePressUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A2E13AE2953D5D70048628D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A2E139B2953D5D50048628D /* CubePress */;
+			targetProxy = 7A2E13AD2953D5D70048628D /* PBXContainerItemProxy */;
+		};
+		7A2E13B82953D5D70048628D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A2E139B2953D5D50048628D /* CubePress */;
+			targetProxy = 7A2E13B72953D5D70048628D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7A2E13BE2953D5D70048628D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7A2E13BF2953D5D70048628D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A2E13C12953D5D70048628D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CubePress/Preview Content\"";
+				DEVELOPMENT_TEAM = 2DDP9BK6TP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Robert-Bates.CubePress";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A2E13C22953D5D70048628D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CubePress/Preview Content\"";
+				DEVELOPMENT_TEAM = 2DDP9BK6TP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Robert-Bates.CubePress";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A2E13C42953D5D70048628D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DDP9BK6TP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Robert-Bates.CubePressTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CubePress.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CubePress";
+			};
+			name = Debug;
+		};
+		7A2E13C52953D5D70048628D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DDP9BK6TP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Robert-Bates.CubePressTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CubePress.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CubePress";
+			};
+			name = Release;
+		};
+		7A2E13C72953D5D70048628D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DDP9BK6TP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Robert-Bates.CubePressUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CubePress;
+			};
+			name = Debug;
+		};
+		7A2E13C82953D5D70048628D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2DDP9BK6TP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Robert-Bates.CubePressUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CubePress;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A2E13972953D5D50048628D /* Build configuration list for PBXProject "CubePress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2E13BE2953D5D70048628D /* Debug */,
+				7A2E13BF2953D5D70048628D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A2E13C02953D5D70048628D /* Build configuration list for PBXNativeTarget "CubePress" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2E13C12953D5D70048628D /* Debug */,
+				7A2E13C22953D5D70048628D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A2E13C32953D5D70048628D /* Build configuration list for PBXNativeTarget "CubePressTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2E13C42953D5D70048628D /* Debug */,
+				7A2E13C52953D5D70048628D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A2E13C62953D5D70048628D /* Build configuration list for PBXNativeTarget "CubePressUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A2E13C72953D5D70048628D /* Debug */,
+				7A2E13C82953D5D70048628D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A2E13942953D5D50048628D /* Project object */;
+}
