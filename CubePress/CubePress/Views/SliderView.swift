@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct SliderView: View {
-    @State private var sliderValue = 0.0
+    @State var sliderValue:Double = 0
     
     var body: some View {
-        VStack {
-            Slider(value: $sliderValue)
-        }
+        Slider(value: $sliderValue, in: 1.0...100) 
     }
 }
 
 struct Slider_Previews: PreviewProvider {
     static var previews: some View {
-        SliderView()
+        List{
+            SliderView()
+        }
     }
 }

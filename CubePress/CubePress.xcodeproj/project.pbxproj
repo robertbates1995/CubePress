@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E139F2953D5D60048628D /* CubePressApp.swift */; };
-		7A2E13A22953D5D60048628D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13A12953D5D60048628D /* ContentView.swift */; };
 		7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A32953D5D70048628D /* Assets.xcassets */; };
 		7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A62953D5D70048628D /* Preview Assets.xcassets */; };
 		7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13B02953D5D70048628D /* CubePressTests.swift */; };
@@ -38,7 +37,6 @@
 /* Begin PBXFileReference section */
 		7A2E139C2953D5D50048628D /* CubePress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubePress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E139F2953D5D60048628D /* CubePressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressApp.swift; sourceTree = "<group>"; };
-		7A2E13A12953D5D60048628D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7A2E13A32953D5D70048628D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A2E13A62953D5D70048628D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A2E13AC2953D5D70048628D /* CubePressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,9 +96,8 @@
 		7A2E139E2953D5D50048628D /* CubePress */ = {
 			isa = PBXGroup;
 			children = (
-				7A2E13C92953D6DC0048628D /* Views */,
 				7A2E139F2953D5D60048628D /* CubePressApp.swift */,
-				7A2E13A12953D5D60048628D /* ContentView.swift */,
+				7A2E13C92953D6DC0048628D /* Views */,
 				7A2E13A32953D5D70048628D /* Assets.xcassets */,
 				7A2E13A52953D5D70048628D /* Preview Content */,
 			);
@@ -271,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A2E13A22953D5D60048628D /* ContentView.swift in Sources */,
 				7A2E13CB2953D7070048628D /* SlidersView.swift in Sources */,
 				7A2E13CD2953D9330048628D /* SliderView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
