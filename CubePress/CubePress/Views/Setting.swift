@@ -1,0 +1,36 @@
+//
+//  Slider.swift
+//  CubePress
+//
+//  Created by Robert Bates on 12/21/22.
+//
+
+import SwiftUI
+
+struct Setting: View {
+    @State var sliderValue:Double = 0
+    let title:String
+    let buttonLabel:String
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text(title)
+                Spacer()
+                Text("Value: \(sliderValue)")
+            }
+            Slider(value: $sliderValue, in: 1.0...100)
+            Button(action: { }) {
+                Text("\(buttonLabel)")
+            }
+        }
+    }
+}
+
+struct Slider_Previews: PreviewProvider {
+    static var previews: some View {
+        List{
+            Setting(title: "Test Title", buttonLabel: "Test Button")
+        }
+    }
+}

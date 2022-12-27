@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct SlidersView: View  {
+struct SettingsGroup: View  {
     
     var body: some View {
         List {
-            SliderView()
-            SliderView()
+            
         }
     }
 }
 
 struct SlidersView_Previews: PreviewProvider {
     static var previews: some View {
-        SlidersView()
+        SettingsGroup()
     }
 }
