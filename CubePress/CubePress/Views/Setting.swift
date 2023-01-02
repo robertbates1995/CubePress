@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct Setting: View {
+struct Setting: View, Identifiable {
     @State var sliderValue:Double = 0
     let title:String
     let buttonLabel:String
+    var id = UUID()
     
     var body: some View {
         VStack {
