@@ -12,7 +12,7 @@ struct SettingsGroup: View  {
     
     var body: some View {
         List(settings) { setting in
-            
+            Setting(title: setting.title, buttonLabel: setting.buttonLabel)
         }
     }
 }
