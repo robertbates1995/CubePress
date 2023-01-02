@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct Setting: View, Identifiable {
-    @State var sliderValue:Double = 0
-    let title:String
-    let buttonLabel:String
+    @State var sliderValue: Double = 0
+    let title: String
+    let buttonLabel: String
+    let showButton: Bool
     var id = UUID()
+    
     
     var body: some View {
         VStack {
@@ -21,8 +23,10 @@ struct Setting: View, Identifiable {
                 Text("Value: \(sliderValue)")
             }
             Slider(value: $sliderValue, in: 1.0...100)
-            Button(action: { }) {
-                Text("\(buttonLabel)")
+            if showButton == true {
+                Button(action: { }) {
+                    Text("\(buttonLabel)")
+                }
             }
         }
     }
@@ -31,7 +35,7 @@ struct Setting: View, Identifiable {
 struct Slider_Previews: PreviewProvider {
     static var previews: some View {
         List{
-            Setting(title: "Test Title", buttonLabel: "Test Button")
+            Setting(title: "Test Title", buttonLabel: "Test Button", showButton: true)
         }
     }
 }
