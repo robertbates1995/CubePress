@@ -14,7 +14,9 @@
 		7A2E13BB2953D5D70048628D /* CubePressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BA2953D5D70048628D /* CubePressUITests.swift */; };
 		7A2E13BD2953D5D70048628D /* CubePressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */; };
 		7A2E13CB2953D7070048628D /* SettingsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CA2953D7070048628D /* SettingsGroup.swift */; };
-		7A2E13CD2953D9330048628D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CC2953D9330048628D /* Setting.swift */; };
+		7A2E13CD2953D9330048628D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CC2953D9330048628D /* SettingView.swift */; };
+		7A2E13CF296395E40048628D /* SettingsMenus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CE296395E40048628D /* SettingsMenus.swift */; };
+		7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D0296607010048628D /* SettingModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +47,9 @@
 		7A2E13BA2953D5D70048628D /* CubePressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITests.swift; sourceTree = "<group>"; };
 		7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7A2E13CA2953D7070048628D /* SettingsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroup.swift; sourceTree = "<group>"; };
-		7A2E13CC2953D9330048628D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		7A2E13CC2953D9330048628D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		7A2E13CE296395E40048628D /* SettingsMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenus.swift; sourceTree = "<group>"; };
+		7A2E13D0296607010048628D /* SettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2E13B02953D5D70048628D /* CubePressTests.swift */,
+				7A2E13D0296607010048628D /* SettingModelTests.swift */,
 			);
 			path = CubePressTests;
 			sourceTree = "<group>";
@@ -133,7 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				7A2E13CA2953D7070048628D /* SettingsGroup.swift */,
-				7A2E13CC2953D9330048628D /* Setting.swift */,
+				7A2E13CC2953D9330048628D /* SettingView.swift */,
+				7A2E13CE296395E40048628D /* SettingsMenus.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,8 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A2E13CB2953D7070048628D /* SettingsGroup.swift in Sources */,
-				7A2E13CD2953D9330048628D /* Setting.swift in Sources */,
+				7A2E13CD2953D9330048628D /* SettingView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
+				7A2E13CF296395E40048628D /* SettingsMenus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */,
 				7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

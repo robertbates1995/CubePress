@@ -7,24 +7,29 @@
 
 import SwiftUI
 
-class SettingModel: ObservableObject, Identifiable {
+class SettingViewModel: ObservableObject, Identifiable {
     @Published var sliderValue: Double = 0
     let title: String
     let buttonLabel: String
-    let showButton: Bool
-    var id = UUID()
+    var showButton: Bool {action != nil}
+    var action: (() -> Void)?
+    let id: UUID
     
-    init(sliderValue: Double, title: String, buttonLabel: String, showButton: Bool, id: UUID = UUID()) {
+    init(sliderValue: Double, title: String, buttonLabel: String, action: (() -> Void)? = nil, id: UUID = UUID()) {
         self.sliderValue = sliderValue
         self.title = title
         self.buttonLabel = buttonLabel
-        self.showButton = showButton
+        self.action = action
         self.id = id
+    }
+    
+    func buttonPressed() {
+        action?()
     }
 }
 
 struct SettingView: View {
-    @ObservedObject var model: SettingModel
+    @ObservedObject var model: SettingViewModel
     
     var body: some View {
         VStack {
@@ -35,7 +40,7 @@ struct SettingView: View {
             }
             Slider(value: $model.sliderValue, in: 1.0...100)
             if model.showButton == true {
-                Button(action: { }) {
+                Button(action: {model.buttonPressed()}) {
                     Text("\(model.buttonLabel)")
                 }
             }
@@ -46,7 +51,7 @@ struct SettingView: View {
 struct Slider_Previews: PreviewProvider {
     static var previews: some View {
         List{
-            SettingView(model: .init(sliderValue: 10, title: "Test Title", buttonLabel: "Test Button", showButton: true))
+            SettingView(model: .init(sliderValue: 10, title: "Test Title", buttonLabel: "Test Button", action: {}))
         }
     }
 }
