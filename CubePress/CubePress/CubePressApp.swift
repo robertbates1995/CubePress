@@ -17,7 +17,7 @@ struct CubePressApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SettingsGroup(model: SettingsGroupModel(settings: CubePressApp.listOfSettings))
+            SettingsGroupView(model: SettingsGroupModel(settings: CubePressApp.listOfSettings, title: "SettingsGroup"))
         }
     }
 }
