@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-class SettingViewModel: ObservableObject, Identifiable {
-    @Published var sliderValue: Double = 0
-    let title: String
-    let buttonLabel: String
-    var showButton: Bool {action != nil}
-    var action: (() -> Void)?
-    let id: UUID
-    
-    init(sliderValue: Double, title: String, buttonLabel: String, action: (() -> Void)? = nil, id: UUID = UUID()) {
-        self.sliderValue = sliderValue
-        self.title = title
-        self.buttonLabel = buttonLabel
-        self.action = action
-        self.id = id
-    }
-    
-    func buttonPressed() {
-        action?()
-    }
-}
-
 struct SettingView: View {
     @ObservedObject var model: SettingViewModel
     

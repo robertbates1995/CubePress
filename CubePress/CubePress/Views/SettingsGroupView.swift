@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-//small view model for use by SettingsGroupView
-class SettingsGroupModel: ObservableObject, Identifiable {
-    @Published var settings: [SettingViewModel]
-    var title: String
-    let id: UUID
-    
-    init(settings: [SettingViewModel], title: String, id: UUID = UUID()) {
-        self.settings = settings
-        self.title = title
-        self.id = id
-    }
-}
-
-
 struct SettingsGroupView: View  {
     @ObservedObject var model: SettingsGroupModel
     

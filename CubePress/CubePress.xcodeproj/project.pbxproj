@@ -17,6 +17,7 @@
 		7A2E13CD2953D9330048628D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CC2953D9330048628D /* SettingView.swift */; };
 		7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D0296607010048628D /* SettingModelTests.swift */; };
 		7A2E13D4296C9DF20048628D /* SettingsGroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */; };
+		7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D6296E073E0048628D /* SettingsViewModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		7A2E13CC2953D9330048628D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7A2E13D0296607010048628D /* SettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModelTests.swift; sourceTree = "<group>"; };
 		7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupNavigationView.swift; sourceTree = "<group>"; };
+		7A2E13D6296E073E0048628D /* SettingsViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2E139F2953D5D60048628D /* CubePressApp.swift */,
+				7A2E13D5296E071C0048628D /* ViewModels */,
 				7A2E13C92953D6DC0048628D /* Views */,
 				7A2E13A32953D5D70048628D /* Assets.xcassets */,
 				7A2E13A52953D5D70048628D /* Preview Content */,
@@ -142,6 +145,14 @@
 				7A2E13CC2953D9330048628D /* SettingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7A2E13D5296E071C0048628D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E13D6296E073E0048628D /* SettingsViewModels.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */,
 				7A2E13CB2953D7070048628D /* SettingsGroupView.swift in Sources */,
 				7A2E13CD2953D9330048628D /* SettingView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,

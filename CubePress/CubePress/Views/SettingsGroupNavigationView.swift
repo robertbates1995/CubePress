@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-class SettingsGroupNavigationModel: ObservableObject, Identifiable {
-    @Published var settingsGroups: [SettingsGroupModel]
-    let id: UUID
-    
-    init(settingsGroups: [SettingsGroupModel], id: UUID = UUID()) {
-        self.settingsGroups = settingsGroups
-        self.id = id
-    }
-}
 
 struct SettingsGroupNavigationView: View {
     @ObservedObject var model: SettingsGroupNavigationModel
