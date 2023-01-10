@@ -18,8 +18,17 @@ struct SettingsGroupNavigationView: View {
                     SettingsGroupView(model: SettingsGroupModel(settings: group.settingsList, title: group.title, subTitle: group.subTitle))
                 } label: {
                     VStack {
-                        Text(group.title)
-                        Text(group.subTitle)
+                        HStack {
+                            Text(group.title)
+                                .font(.headline)
+                            Spacer()
+                        }
+                        HStack {
+                            Text(group.subTitle)
+                                .font(.subheadline)
+                                .italic()
+                            Spacer()
+                        }
                     }
                 }
             }

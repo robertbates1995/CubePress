@@ -57,15 +57,25 @@ extension SettingsGroupModel {
     ]
     
     static var topCoverSettings = [
-        SettingModel(sliderValue: 10, title: "test 1", buttonLabel: "button test 1"),
-        SettingModel(sliderValue: 20, title: "test 2", buttonLabel: "button test 2"),
-        SettingModel(sliderValue: 30, title: "test 3", buttonLabel: "button test 3")
+        SettingModel(sliderValue: 10, title: "PWM flip", buttonLabel: "FLIP (toggle)"),
+        SettingModel(sliderValue: 20, title: "PWM open", buttonLabel: "OPEN"),
+        SettingModel(sliderValue: 30, title: "PWM Close", buttonLabel: "CLOSE"),
+        SettingModel(sliderValue: 30, title: "PWM release from close", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: flip > close (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: close > flip (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: flip > open (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: open > close (ms)", buttonLabel: "")
     ]
     
     static var cubeHolderSettings = [
-        SettingModel(sliderValue: 10, title: "test 1", buttonLabel: "button test 1"),
-        SettingModel(sliderValue: 20, title: "test 2", buttonLabel: "button test 2"),
-        SettingModel(sliderValue: 30, title: "test 3", buttonLabel: "button test 3")
+        SettingModel(sliderValue: 10, title: "PWM CCW", buttonLabel: "CCW"),
+        SettingModel(sliderValue: 20, title: "PWM home", buttonLabel: "HOME"),
+        SettingModel(sliderValue: 30, title: "PWM CW", buttonLabel: "CW"),
+        SettingModel(sliderValue: 30, title: "PWM release CW/CCW", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "PWM release at home", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: spin (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: rotate (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: release (ms)", buttonLabel: "")
     ]
     
     static var webcamSettings = [
