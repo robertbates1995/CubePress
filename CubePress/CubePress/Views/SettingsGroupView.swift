@@ -12,7 +12,7 @@ struct SettingsGroupView: View  {
     
     var body: some View {
         NavigationView{
-            List(model.settings) { setting in
+            List(model.settingsList) { setting in
                 SettingView(model: setting)
             }
             .navigationTitle(model.title)
@@ -22,6 +22,6 @@ struct SettingsGroupView: View  {
 
 struct SlidersView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsGroupView(model: SettingsGroupModel(settings: CubePressApp.listOfSettings, title: "Test Group Title"))
+        SettingsGroupView(model: SettingsGroupNavigationModel.testSettingsGroups[0])
     }
 }

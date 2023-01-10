@@ -12,7 +12,7 @@ final class SettingModelTests: XCTestCase {
 
     func testButtonPressed() throws {
         var pressed = false
-        let sut = SettingViewModel(sliderValue: 10, title: "Test Title", buttonLabel: "Test Button", action: {pressed = true})
+        let sut = SettingModel(sliderValue: 10, title: "Test Title", buttonLabel: "Test Button", action: {pressed = true})
         XCTAssertFalse(pressed)
         sut.buttonPressed()
         XCTAssertTrue(pressed)
