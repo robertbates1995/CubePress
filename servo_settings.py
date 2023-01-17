@@ -71,7 +71,7 @@ def servo_settings():
     #initalize servos
     arm = arm_servo(1560000,1230000,750000)
     #initalize arm servo
-    table = table_servo(2060000,1230000,750000)
+    table = table_servo(1750000,750000,500000)
     #initalize table servo
     #TODO: table_servo = table_servo()
     
