@@ -1,6 +1,6 @@
 from machine import Pin, PWM, Timer
 from utime import sleep_ms
-import sys, select, network, socket
+import sys, select, network, socket, secrets
 
 
 class arm_servo:
@@ -84,8 +84,8 @@ class table_servo:
     
 ############################################# MAIN PROGRAM ####################################################
 
-ssid = 'House McQuain'
-password = 'Deadrocks!2021'
+ssid = secrets.ssid
+password = secrets.password
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
