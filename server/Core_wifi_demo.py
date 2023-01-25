@@ -6,7 +6,7 @@ import network
 import socket
 from machine import Pin
 
-led = Pin(15, Pin.OUT)
+led = Pin("LED", Pin.OUT)
 ledState = 'LED State Unknown'
 
 button = Pin(16, Pin.IN, Pin.PULL_UP)
@@ -68,7 +68,7 @@ while True:
         print( 'led on = ' + str(led_on))
         print( 'led off = ' + str(led_off))
         
-        if led_on == 8:
+        if led_on > -1:
             print("led on")
             led.value(1)
         if led_off == 8:
