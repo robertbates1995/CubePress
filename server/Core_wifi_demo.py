@@ -1,7 +1,7 @@
 # Simple HTTP Server Example
 # Control an LED and read a Button using a web browser
 
-import time
+import time, secrets
 import network
 import socket
 from machine import Pin
@@ -11,8 +11,8 @@ ledState = 'LED State Unknown'
 
 button = Pin(16, Pin.IN, Pin.PULL_UP)
 
-ssid = 'House McQuain'
-password = 'Deadrocks!2021'
+ssid = secrets.ssid
+password = secrets.password
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)

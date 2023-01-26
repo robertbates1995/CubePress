@@ -125,26 +125,45 @@ s = socket.socket()
 s.bind(addr)
 s.listen(1)
 print('listening on', addr)
-    
-#initalize servos
-arm = arm_servo(1360000,1230000,750000)
-#initalize arm servo
-table = table_servo(3000000,1550000,750000)
-#initalize table servo
-table.test()
-arm.test()
-    
+
 # Listen for connections, serve client
-         
-cl, addr = s.accept()
-print('client connected from', addr)
-request = cl.recv(1024)
-print("request:")
-print(request)
-request = str(request)
-led_on = request.find('led=on')
-led_off = request.find('led=off')
-#main_func()
-
-
-
+while True:
+    try:       
+        cl, addr = s.accept()
+        print('client connected from', addr)
+        request = cl.recv(1024)
+        print("request:")
+        print(request)
+        request = str(request)
+        led_on = request.find('led=on')
+        led_off = request.find('led=off')
+        
+        print( 'led on = ' + str(led_on))
+        print( 'led off = ' + str(led_off))
+        
+        if led_on > -1:
+            print("led on")
+            led.value(1)
+        if led_off == 8:
+            print("led off")
+            led.value(0)
+        
+        ledState = "LED is OFF" if led.value() == 0 else "LED is ON" # a compact if-else statement
+        
+        if button.value() == 1: # button not pressed
+            print("button NOT pressed")
+            buttonState = "Button is NOT pressed"
+        else:
+            print("button pressed")
+            buttonState = "Button is pressed"
+        
+        # Create and send response
+        stateis = ledState + " and " + buttonState
+        response = html % stateis
+        cl.send('HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n')
+        cl.send(response)
+        cl.close()
+        
+    except OSError as e:
+        cl.close()
+        print('connection closed')
