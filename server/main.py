@@ -1,6 +1,6 @@
-from machine import Pin, PWM, Timer
+from machine import Pin, PWM
 from utime import sleep_ms
-import sys, select, network, socket, secrets
+import sys, select, network, socket, secrets, time
 
 
 class arm_servo:
@@ -84,6 +84,11 @@ class table_servo:
     
 ############################################# MAIN PROGRAM ####################################################
 
+led = Pin("LED", Pin.OUT)
+ledState = 'LED State Unknown'
+
+button = Pin(16, Pin.IN, Pin.PULL_UP)
+
 ssid = secrets.ssid
 password = secrets.password
 
@@ -126,6 +131,12 @@ s.bind(addr)
 s.listen(1)
 print('listening on', addr)
 
+#initalize servos
+arm = arm_servo(1360000,1230000,750000)
+#initalize arm servo
+table = table_servo(3000000,1550000,750000)
+#initalize table servo
+
 # Listen for connections, serve client
 while True:
     try:       
@@ -137,9 +148,13 @@ while True:
         request = str(request)
         led_on = request.find('led=on')
         led_off = request.find('led=off')
+        arm_on = request.find('arm=on')
+        arm_off = request.find('arm=off')
         
         print( 'led on = ' + str(led_on))
         print( 'led off = ' + str(led_off))
+        print( 'arm on = ' + str(arm_on))
+        print( 'arm off = ' + str(arm_off))
         
         if led_on > -1:
             print("led on")
@@ -147,8 +162,14 @@ while True:
         if led_off == 8:
             print("led off")
             led.value(0)
+        if arm_on > -1:
+            print("Arm on")
+            arm.test()
+        else:
+            print("Arm off")
         
         ledState = "LED is OFF" if led.value() == 0 else "LED is ON" # a compact if-else statement
+        #armState = "Arm is OFF" if arm.value() == 0 else "Arm is ON"
         
         if button.value() == 1: # button not pressed
             print("button NOT pressed")
