@@ -3,8 +3,16 @@ CubePress is a swift applictaion that allows for users to remotely interface wit
 
 The CUBOTino is a fascinating robot that solves Rubix cubes, and CubePress is an application that makes CUBOTino far more portable! With CubePress, users can take photos of their cubes using the camera on their iPhone, rather than needing to use a pc and a web cam like before.
 
-### Technologies Involved
-
-### Challenges
+### Features
+- Wireless interaction
+- Settings menu for callibration
+- Cube state map
+- Solution creation
+- Pictures interpreted via Machine Learning
+ 
 ## Getting Started
+1. Create a [CUBOTino](https://github.com/AndreaFavero71/CUBOTino_base_version)
+2. Install all server files to the CUBOTino
+3. Install client app onto your iPhone
+
 ## Goals
