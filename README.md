@@ -16,3 +16,6 @@ The CUBOTino is a fascinating robot that solves Rubix cubes, and CubePress is an
 3. Install client app onto your iPhone
 
 ## Goals
+- Create a portable version of the CUBOTino
+- allow users to use their smartphones to interface with CUBOTino
+- use local networks to link smartphones with CUBOTino via wifi
