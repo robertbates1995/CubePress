@@ -33,16 +33,16 @@ while max_wait > 0:
     if wlan.status() < 0 or wlan.status() >= 3:
         break
     max_wait -= 1
-    #print('waiting for connection...')
+    print('waiting for connection...')
     time.sleep(1)
     
 # Handle connection error
 if wlan.status() != 3:
     raise RuntimeError('network connection failed')
 else:
-    #print('Connected')
+    print('Connected')
     status = wlan.ifconfig()
-    #print( 'ip = ' + status[0] )
+    print( 'ip = ' + status[0] )
     
 # Open socket
 addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
@@ -55,13 +55,14 @@ print('listening on', addr)
 while True:
     try:       
         cl, addr = s.accept()
-        #print('client connected from', addr)
+        print('client connected from', addr)
         request = cl.recv(1024)
         #print("request:")
         #print(request)
         request = str(request)
             
-        servo_to_move, move, url = request.split('==')
+        move = request.split('==')[1]
+        print("MOVE IS THIS:     " + str(move))
         if 'bot' in move:
             arm.move(move)
         elif 'mid' in move:
