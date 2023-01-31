@@ -6,7 +6,6 @@ class arm_servo:
     bot = int
     mid = int
     top = int
-    pin = int
     servo: PWM()
     
     def test(self):
@@ -19,6 +18,10 @@ class arm_servo:
         self.move_mid()
         print("middle = " + str(self.mid))
         sleep_ms(1200)
+    
+    def move(self, move):
+        if move == 'top':
+            self.move_top()
     
     def move_bot(self):
         self.servo.duty_ns(self.bot)
