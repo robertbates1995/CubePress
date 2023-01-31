@@ -5,8 +5,8 @@ import sys, select, network, socket, secrets, time, servos
 ############################################# MAIN PROGRAM ####################################################
 
 #initalize servos
-arm = servos.arm_servo(1360000,1230000,750000, 15)
-table = servos.table_servo(3000000,1550000,750000, 16)
+arm = servos.arm_servo(1600000,1230000,750000, 15)
+table = servos.table_servo(3000000,1550000,600000, 16)
 
 #set secret values
 ssid = secrets.ssid
@@ -49,7 +49,7 @@ addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
 s = socket.socket()
 s.bind(addr)
 s.listen(1)
-#print('listening on', addr)
+print('listening on', addr)
 
 # Listen for connections, serve client
 while True:
@@ -62,16 +62,20 @@ while True:
         request = str(request)
             
         servo_to_move, move, url = request.split('==')
-        if 'arm' in servo_to_move:
-            print("arm move = " + move)
+        if 'bot' in move:
             arm.move(move)
-        elif 'table' in servo_to_move:
-            print(move)
-            table.test()
+        elif 'mid' in move:
+            arm.move(move)
+        elif 'top' in move:
+            arm.move(move)
+        elif 'left' in move:
+            table.move(move)
+        elif 'center' in move:
+            table.move(move)
+        elif 'right' in move:
+            table.move(move)
         else:
             print("No Valid Instruction")
-        
-        #armState = "Arm is OFF" if arm.value() == 0 else "Arm is ON"
         
         # Create and send response
         response = html
