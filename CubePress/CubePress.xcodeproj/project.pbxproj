@@ -18,6 +18,7 @@
 		7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D0296607010048628D /* SettingModelTests.swift */; };
 		7A2E13D4296C9DF20048628D /* SettingsGroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */; };
 		7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D6296E073E0048628D /* SettingsViewModels.swift */; };
+		7A2E13DB298B03800048628D /* NetworkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13DA298B03800048628D /* NetworkButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		7A2E13D0296607010048628D /* SettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModelTests.swift; sourceTree = "<group>"; };
 		7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupNavigationView.swift; sourceTree = "<group>"; };
 		7A2E13D6296E073E0048628D /* SettingsViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModels.swift; sourceTree = "<group>"; };
+		7A2E13DA298B03800048628D /* NetworkButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */,
 				7A2E13CA2953D7070048628D /* SettingsGroupView.swift */,
 				7A2E13CC2953D9330048628D /* SettingView.swift */,
+				7A2E13DA298B03800048628D /* NetworkButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			files = (
 				7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */,
 				7A2E13CB2953D7070048628D /* SettingsGroupView.swift in Sources */,
+				7A2E13DB298B03800048628D /* NetworkButtonView.swift in Sources */,
 				7A2E13CD2953D9330048628D /* SettingView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7A2E13D4296C9DF20048628D /* SettingsGroupNavigationView.swift in Sources */,
