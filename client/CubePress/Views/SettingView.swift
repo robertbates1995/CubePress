@@ -18,11 +18,7 @@ struct SettingView: View {
                 Text("Value: \(model.sliderValue)")
             }
             Slider(value: $model.sliderValue, in: 1.0...100)
-            if model.showButton == true {
-                Button(action: {model.buttonPressed()}) {
-                    Text("\(model.buttonLabel)")
-                }
-            }
+            NetworkButtonView()
         }
     }
 }

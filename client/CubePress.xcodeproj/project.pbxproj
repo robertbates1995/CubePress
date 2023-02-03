@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2474E2298D7BBF00CF1DFA /* NetworkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2474E1298D7BBE00CF1DFA /* NetworkButtonView.swift */; };
 		7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E139F2953D5D60048628D /* CubePressApp.swift */; };
 		7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A32953D5D70048628D /* Assets.xcassets */; };
 		7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A62953D5D70048628D /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A2474E1298D7BBE00CF1DFA /* NetworkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkButtonView.swift; sourceTree = "<group>"; };
 		7A2E139C2953D5D50048628D /* CubePress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubePress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E139F2953D5D60048628D /* CubePressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressApp.swift; sourceTree = "<group>"; };
 		7A2E13A32953D5D70048628D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		7A2E13C92953D6DC0048628D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7A2474E1298D7BBE00CF1DFA /* NetworkButtonView.swift */,
 				7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */,
 				7A2E13CA2953D7070048628D /* SettingsGroupView.swift */,
 				7A2E13CC2953D9330048628D /* SettingView.swift */,
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */,
+				7A2474E2298D7BBF00CF1DFA /* NetworkButtonView.swift in Sources */,
 				7A2E13CB2953D7070048628D /* SettingsGroupView.swift in Sources */,
 				7A2E13CD2953D9330048628D /* SettingView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
