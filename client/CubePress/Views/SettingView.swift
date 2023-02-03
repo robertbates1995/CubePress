@@ -15,9 +15,9 @@ struct SettingView: View {
             HStack {
                 Text(model.title)
                 Spacer()
-                Text("Value: \(model.value)")
+                Text("Value: \(model.sliderValue)")
             }
-            Slider(value: $model.value, in: 1.0...100)
+            Slider(value: $model.sliderValue, in: 1.0...100)
             if model.showButton == true {
                 Button(action: {model.buttonPressed()}) {
                     Text("\(model.buttonLabel)")
@@ -30,7 +30,7 @@ struct SettingView: View {
 struct Slider_Previews: PreviewProvider {
     static var previews: some View {
         List{
-            SettingView(model: .init(maxSliderValue: 100, minSliderValue: 0, title: "Test Title", buttonLabel: "Test Button", action: {}))
+            SettingView(model: .init(sliderValue: 10, title: "Test Title", buttonLabel: "Test Button", action: {}))
         }
     }
 }

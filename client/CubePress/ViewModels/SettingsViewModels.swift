@@ -20,11 +20,10 @@ class SettingsGroupNavigationModel: ObservableObject, Identifiable {
 
 extension SettingsGroupNavigationModel {
     static var settingsGroups = [
-        //SettingsGroupModel(settings: SettingsGroupModel.armSettings, title: "Arm Settings", subTitle: "servo settings"),
-        SettingsGroupModel(settings: SettingsGroupModel.servosSettings, title: "Servos", subTitle: "Pulse width range"),
-        SettingsGroupModel(settings: SettingsGroupModel.topCoverSettings, title: "Top cover", subTitle: "servo settings"),
-        SettingsGroupModel(settings: SettingsGroupModel.cubeHolderSettings, title: "Cube holder", subTitle: "servo settings"),
-        SettingsGroupModel(settings: SettingsGroupModel.webcamSettings, title: "Webcam", subTitle: ""),
+            SettingsGroupModel(settings: SettingsGroupModel.servosSettings, title: "Servos", subTitle: "Pulse width range"),
+            SettingsGroupModel(settings: SettingsGroupModel.topCoverSettings, title: "Top cover", subTitle: "servo settings"),
+            SettingsGroupModel(settings: SettingsGroupModel.cubeHolderSettings, title: "Cube holder", subTitle: "servo settings"),
+            SettingsGroupModel(settings: SettingsGroupModel.webcamSettings, title: "Webcam", subTitle: ""),
     ]
     
     static var testSettingsGroups = [
@@ -51,64 +50,59 @@ class SettingsGroupModel: ObservableObject, Identifiable {
 }
 
 extension SettingsGroupModel {
-    
     static var servosSettings = [
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "Top Servo", buttonLabel: "Top Servo"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "Bottom Servo", buttonLabel: "Bottom Servo"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "", buttonLabel: "Confirm Changes")
+        SettingModel(sliderValue: 10, title: "Top Servo", buttonLabel: "Top Servo"),
+        SettingModel(sliderValue: 20, title: "Bottom Servo", buttonLabel: "Bottom Servo"),
+        SettingModel(sliderValue: 30, title: "", buttonLabel: "Confirm Changes")
     ]
     
     static var topCoverSettings = [
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM flip", buttonLabel: "FLIP (toggle)"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM open", buttonLabel: "OPEN"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM Close", buttonLabel: "CLOSE"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM release from close", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: flip > close (ms)", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: close > flip (ms)", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: flip > open (ms)", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: open > close (ms)", buttonLabel: "")
+        SettingModel(sliderValue: 10, title: "PWM flip", buttonLabel: "FLIP (toggle)"),
+        SettingModel(sliderValue: 20, title: "PWM open", buttonLabel: "OPEN"),
+        SettingModel(sliderValue: 30, title: "PWM Close", buttonLabel: "CLOSE"),
+        SettingModel(sliderValue: 30, title: "PWM release from close", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: flip > close (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: close > flip (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: flip > open (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: open > close (ms)", buttonLabel: "")
     ]
     
     static var cubeHolderSettings = [
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM CCW", buttonLabel: "CCW"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM home", buttonLabel: "HOME"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM CW", buttonLabel: "CW"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM release CW/CCW", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "PWM release at home", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: spin (ms)", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: rotate (ms)", buttonLabel: ""),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "TIME: release (ms)", buttonLabel: "")
+        SettingModel(sliderValue: 10, title: "PWM CCW", buttonLabel: "CCW"),
+        SettingModel(sliderValue: 20, title: "PWM home", buttonLabel: "HOME"),
+        SettingModel(sliderValue: 30, title: "PWM CW", buttonLabel: "CW"),
+        SettingModel(sliderValue: 30, title: "PWM release CW/CCW", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "PWM release at home", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: spin (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: rotate (ms)", buttonLabel: ""),
+        SettingModel(sliderValue: 30, title: "TIME: release (ms)", buttonLabel: "")
     ]
     
     static var webcamSettings = [
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test 1", buttonLabel: "button test 1"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test 2", buttonLabel: "button test 2"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test 3", buttonLabel: "button test 3")
+        SettingModel(sliderValue: 10, title: "test 1", buttonLabel: "button test 1"),
+        SettingModel(sliderValue: 20, title: "test 2", buttonLabel: "button test 2"),
+        SettingModel(sliderValue: 30, title: "test 3", buttonLabel: "button test 3")
     ]
     
     static var testSettings = [
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test 1", buttonLabel: "button test 1"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test 2", buttonLabel: "button test 2"),
-        SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test 3", buttonLabel: "button test 3")
+        SettingModel(sliderValue: 10, title: "test 1", buttonLabel: "button test 1"),
+        SettingModel(sliderValue: 20, title: "test 2", buttonLabel: "button test 2"),
+        SettingModel(sliderValue: 30, title: "test 3", buttonLabel: "button test 3")
     ]
 }
 
 
 //small view model for use by SettingView
 class SettingModel: ObservableObject, Identifiable {
-    @Published var maxValue: Double
-    @Published var minValue: Double
-    @Published var value: Double
+    @Published var sliderValue: Double = 0
     let title: String
     let buttonLabel: String
     var showButton: Bool {action != nil}
     var action: (() -> Void)?
     let id: UUID
     
-    init(maxSliderValue: Double, minSliderValue: Double, title: String, buttonLabel: String, action: (() -> Void)? = nil, id: UUID = UUID()) {
-        self.maxValue = maxSliderValue
-        self.minValue = minSliderValue
-        self.value = (maxSliderValue - minSliderValue)/2
+    init(sliderValue: Double, title: String, buttonLabel: String, action: (() -> Void)? = nil, id: UUID = UUID()) {
+        self.sliderValue = sliderValue
         self.title = title
         self.buttonLabel = buttonLabel
         self.action = action
@@ -118,8 +112,4 @@ class SettingModel: ObservableObject, Identifiable {
     func buttonPressed() {
         action?()
     }
-}
-
-extension SettingModel {
-    static var testSetting = SettingModel(maxSliderValue: 100, minSliderValue: 0, title: "test setting title", buttonLabel: "test button title")
 }

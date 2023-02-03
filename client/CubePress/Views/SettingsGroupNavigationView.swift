@@ -7,32 +7,30 @@
 
 import SwiftUI
 
+
 struct SettingsGroupNavigationView: View {
     @ObservedObject var model: SettingsGroupNavigationModel
     
     var body: some View {
         NavigationView {
-            VStack{
-                List(model.settingsGroups) { group in
-                    NavigationLink {
-                        SettingsGroupView(model: SettingsGroupModel(settings: group.settingsList, title: group.title, subTitle: group.subTitle))
-                    } label: {
-                        VStack {
-                            HStack {
-                                Text(group.title)
-                                    .font(.headline)
-                                Spacer()
-                            }
-                            HStack {
-                                Text(group.subTitle)
-                                    .font(.subheadline)
-                                    .italic()
-                                Spacer()
-                            }
+            List(model.settingsGroups) { group in
+                NavigationLink {
+                    SettingsGroupView(model: SettingsGroupModel(settings: group.settingsList, title: group.title, subTitle: group.subTitle))
+                } label: {
+                    VStack {
+                        HStack {
+                            Text(group.title)
+                                .font(.headline)
+                            Spacer()
+                        }
+                        HStack {
+                            Text(group.subTitle)
+                                .font(.subheadline)
+                                .italic()
+                            Spacer()
                         }
                     }
                 }
-                NetworkButtonView()
             }
         }
     }
