@@ -12,7 +12,8 @@ struct CubePressApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SettingsGroupNavigationView(model: SettingsGroupNavigationModel(settingsGroups: SettingsGroupNavigationModel.settingsGroups))
+            //SettingsGroupNavigationView(model: SettingsGroupNavigationModel(settingsGroups: SettingsGroupNavigationModel.settingsGroups))
+            ControllerView()
         }
     }
 }
