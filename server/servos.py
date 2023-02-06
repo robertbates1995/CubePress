@@ -1,6 +1,15 @@
 from machine import Pin, PWM
 from utime import sleep_ms
 
+ 
+                
+def process_settings(request):
+    full_set = request.split('_+_')[1]
+    print(full_set)
+    #segment = 
+
+def set_servos(arm, table, settings):
+
 class arm_servo:
     # arm servo, connected to Pin 15
     bot = int
@@ -20,7 +29,7 @@ class arm_servo:
         sleep_ms(1200)
     
     def move(self, move):
-        if move == 'top':
+        if 'top' in move:
             self.move_top()
     
     def move_bot(self):
@@ -46,7 +55,7 @@ class arm_servo:
 class table_servo:
     # arm servo, connected to Pin 16
     left = int
-    mid = int
+    center = int
     right = int
     servo: PWM()
     
@@ -58,25 +67,25 @@ class table_servo:
         print("right = " + str(self.right))
         sleep_ms(1200)
         self.move_mid()
-        print("middle = " + str(self.mid))
+        print("middle = " + str(self.center))
         sleep_ms(1200)
     
     def move_left(self):
         self.servo.duty_ns(self.left)
         sleep_ms(50)
         
-    def move_mid(self):
-        self.servo.duty_ns(self.mid)
+    def move_center(self):
+        self.servo.duty_ns(self.center)
         sleep_ms(50)
         
     def move_right(self):
         self.servo.duty_ns(self.right)
         sleep_ms(50)
         
-    def __init__(self, left, mid, right, pin):
+    def __init__(self, left, center, right, pin):
         self.servo = PWM(Pin(pin))
         self.servo.freq(50)
         sleep_ms(50)
         self.left = left
-        self.mid = mid
+        self.center = center
         self.right = right

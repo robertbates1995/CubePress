@@ -8,6 +8,9 @@ import sys, select, network, socket, secrets, time, servos
 arm = servos.arm_servo(1600000,1230000,750000, 15)
 table = servos.table_servo(3000000,1550000,600000, 16)
 
+#initalize servo dictionary
+
+
 #set secret values
 ssid = secrets.ssid
 password = secrets.password
@@ -60,21 +63,26 @@ while True:
         #print("request:")
         #print(request)
         request = str(request)
-            
-        move = request.split('==')[1]
-        print("MOVE IS THIS:     " + str(move))
-        if 'bot' in move:
-            arm.move(move)
-        elif 'mid' in move:
-            arm.move(move)
-        elif 'top' in move:
-            arm.move(move)
-        elif 'left' in move:
-            table.move(move)
-        elif 'center' in move:
-            table.move(move)
-        elif 'right' in move:
-            table.move(move)
+        print("-----request----- : " + str(request))
+        
+        if 'settings' in request:
+            if 'settings==' in request:
+                settings = process_settings(request) #Convert from string to settings dictionary
+                set_servos(arm, table, settings) #Set servos here
+            #else:
+            #return servo settings here
+        elif 'bot' in request:
+            arm.move_bot()
+        elif 'mid' in request:
+            arm.move_mid()
+        elif 'top' in request:
+            arm.move_top()
+        elif 'left' in request:
+            table.move_left()
+        elif 'center' in request:
+            table.move_center()
+        elif 'right' in request:
+            table.move_right()
         else:
             print("No Valid Instruction")
         
