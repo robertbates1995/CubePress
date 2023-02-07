@@ -8,7 +8,7 @@ def process_settings(request):
     print(full_set)
     #segment = 
 
-def set_servos(arm, table, settings):
+#def set_servos(arm, table, settings):
 
 class arm_servo:
     # arm servo, connected to Pin 15

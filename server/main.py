@@ -1,12 +1,37 @@
 from machine import Pin, PWM
 from utime import sleep_ms
-import sys, select, network, socket, secrets, time, servos
+import network, socket, secrets, time, servos, json
 
 ############################################# MAIN PROGRAM ####################################################
 
 #initalize servos
 arm = servos.arm_servo(1600000,1230000,750000, 15)
 table = servos.table_servo(3000000,1550000,600000, 16)
+
+#JSON workspace
+file_name = 'settings.json'
+
+testDict = {
+   "bot":1600000,
+   "mid":1230000,
+   "top":750000,
+   "left":3000000,
+   "center":1550000,
+   "right":600000,
+}
+
+print("parsing JSON")
+
+f = open(file_name,'w')
+json.dump(testDict, f)
+f.close()
+
+f = open(file_name,'r')
+settings_string=f.read()
+f.close()
+print('Got settings:', settings_string)
+settings_dict = json.loads(settings_string)
+print(settings_dict)
 
 #initalize servo dictionary
 
