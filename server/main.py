@@ -4,21 +4,18 @@ import network, socket, secrets, time, servos, json
 
 ############################################# MAIN PROGRAM ####################################################
 
-#initalize servos
-arm = servos.arm_servo(1600000,1230000,750000, 15)
-table = servos.table_servo(3000000,1550000,600000, 16)
-
 #JSON workspace
 file_name = 'settings.json'
 
-testDict = {
-   "bot":1600000,
-   "mid":1230000,
-   "top":750000,
-   "left":3000000,
-   "center":1550000,
-   "right":600000,
-}
+#initalize servos
+f = open(file_name,'r')
+settings_string = f.read()
+f.close()
+test_dict = json.loads(settings_string)
+print(test_dict)
+
+arm = servos.arm_servo(test_dict['bot'],test_dict['mid'],test_dict['top'], 15)
+table = servos.table_servo(test_dict['left'],test_dict['center'],test_dict['right'], 16)
 
 print("parsing JSON")
 
@@ -114,7 +111,7 @@ while True:
         # Create and send response
         response = html
         cl.send('HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n')
-        cl.send(response)
+        cl.send()
         cl.close()
         
     except OSError as e:
