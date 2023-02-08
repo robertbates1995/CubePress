@@ -4,7 +4,7 @@ import network, socket, secrets, time, servos, json
 
 ############################################# MAIN PROGRAM ####################################################
 
-def settingsDictionary(file_name):
+def create_settings_dictionary(file_name):
     #initalize servos
     f = open(file_name,'r')
     print("Reading JSON")
@@ -14,16 +14,18 @@ def settingsDictionary(file_name):
     print('Data: ', dictionary)
     return dictionary
 
+def update_settings_dictionary(file_name, settings_dictionary):
+    f = open(file_name,'w')
+    print("Dumping to JSON")
+    json.dump(settings_dictionary, f)
+    f.close()
 
 file_name = 'settings.json' #JSON workspace
-settings_dictionary = settingsDictionary(file_name) #dictionary based on JSON workspace
+settings_dictionary = create_settings_dictionary(file_name) #dictionary based on JSON workspace
 arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
 table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
 
-f = open(file_name,'w')
-print("Dumping to JSON")
-json.dump(settings_dictionary, f)
-f.close()
+
 
 f = open(file_name,'r')
 settings_string = f.read()
