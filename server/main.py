@@ -4,34 +4,32 @@ import network, socket, secrets, time, servos, json
 
 ############################################# MAIN PROGRAM ####################################################
 
-#JSON workspace
-file_name = 'settings.json'
+def settingsDictionary(file_name):
+    #initalize servos
+    f = open(file_name,'r')
+    print("Reading JSON")
+    settings_string = f.read()
+    f.close()
+    dictionary = json.loads(settings_string)
+    print('Data: ', dictionary)
+    return dictionary
 
-#initalize servos
+
+file_name = 'settings.json' #JSON workspace
+settings_dictionary = settingsDictionary(file_name) #dictionary based on JSON workspace
+arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
+table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
+
+f = open(file_name,'w')
+print("Dumping to JSON")
+json.dump(settings_dictionary, f)
+f.close()
+
 f = open(file_name,'r')
 settings_string = f.read()
 f.close()
-test_dict = json.loads(settings_string)
-print(test_dict)
-
-arm = servos.arm_servo(test_dict['bot'],test_dict['mid'],test_dict['top'], 15)
-table = servos.table_servo(test_dict['left'],test_dict['center'],test_dict['right'], 16)
-
-print("parsing JSON")
-
-f = open(file_name,'w')
-json.dump(testDict, f)
-f.close()
-
-f = open(file_name,'r')
-settings_string=f.read()
-f.close()
 print('Got settings:', settings_string)
 settings_dict = json.loads(settings_string)
-print(settings_dict)
-
-#initalize servo dictionary
-
 
 #set secret values
 ssid = secrets.ssid
