@@ -3,7 +3,6 @@
 //  CubePress
 //
 //  Created by Robert Bates on 2/1/23.
-//
 
 import SwiftUI
 import Foundation
