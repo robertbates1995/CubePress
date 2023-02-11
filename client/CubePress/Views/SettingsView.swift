@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     var setting: Moves
-    
+
     var body: some View {
         List {
             ForEach(Moves.allCases) { setting in
@@ -29,6 +29,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(setting: Moves.top)
+        SettingsView(setting: Moves.center)
     }
 }
