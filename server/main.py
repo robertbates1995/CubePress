@@ -33,7 +33,7 @@ def handle_settings(request):
         return read_settings_file()
     else:
         settings_dictionary[parts[2]] = parts[3]
-        update_settings_dictionary()
+        update_settings_dictionary() 
         return read_settings_file()
         
     
