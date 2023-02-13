@@ -18,14 +18,27 @@ def create_settings_dictionary():
     dictionary = json.loads(settings_string)
     print('Data: ', dictionary)
     return dictionary
+settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
 
-def update_settings_dictionary(settings_dictionary):
+def update_settings_dictionary():
     f = open(file_name,'w')
     print("Dumping to JSON")
     json.dump(settings_dictionary, f)
     f.close()
 
-settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
+def handle_settings(request):
+    parts = request.split("/")
+    length = len(parts)
+    if length == 1:
+        return read_settings_file()
+    else:
+        settings_dictionary[parts[2]] = parts[3]
+        update_settings_dictionary()
+        return read_settings_file()
+        
+    
+
+
 arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
 table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
 
@@ -94,7 +107,7 @@ while True:
         
         if "settings" in request:
             print("settings")
-            response = read_settings_file()  
+            response = handle_settings(request)
         #else:
         #return servo settings here
         elif 'bot' in request:
