@@ -94,7 +94,7 @@ while True:
         
         if "settings" in request:
             print("settings")
-            response = read_settings_file() 
+            response = read_settings_file()  
         #else:
         #return servo settings here
         elif 'bot' in request:
@@ -110,7 +110,7 @@ while True:
         elif 'right' in request:
             table.move_right()
         else:
-            print("No Valid Instruction")
+            print("No Instruction")
         
         # Create and send response
         
