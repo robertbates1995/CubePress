@@ -7,24 +7,46 @@
 
 import SwiftUI
 
-struct SettingsView: View {
-    var setting: Moves
+class SettingsModel: ObservableObject {
+    @Published var errorMessage: String?
+    
+    func sendSetting(setting: Moves) {
+        Task { @MainActor in
+            errorMessage = nil
+        }
+        guard let url = URL(string: "http://10.0.0.34/settings") else { return }
+        Task{
+            do{
+                let data = try await URLSession.shared.data(from: url)
+                let str = String(decoding: data.0, as: UTF8.self)
+                print(str)
+                let json = try JSONSerialization.jsonObject(with: data.0, options: []) as? [String: Any]
+            } catch {
+                Task { @MainActor in
+                    self.errorMessage = error.localizedDescription
+                }
+            }
 
+        }
+    }
+}
+
+struct SettingsView: View {
+    @ObservedObject var model: SettingsModel
+    
     var body: some View {
         List {
+            if let error = model.errorMessage {
+                Text(error)
+            }
             ForEach(Moves.allCases) { setting in
                 Button("set \(setting.rawValue) value") {
-                    Task {
-                        await sendSetting()
-                    }
+                        model.sendSetting(setting: setting)
                 }
             }
         }
     }
-    func sendSetting() async {
-        guard let url = URL(string: "http://10.0.0.34/setting=\(setting.rawValue)") else { return }
-        let _ = try? await URLSession.shared.data(from: url)
-    }
+    
 }
 
 class JsonParser {
@@ -51,6 +73,6 @@ class JsonParser {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(setting: Moves.center)
+        SettingsView(model: .init())
     }
 }
