@@ -29,7 +29,8 @@ def update_settings_dictionary():
 def handle_settings(request):
     parts = request.split("/")
     length = len(parts)
-    if length == 1:
+    print(parts)
+    if length == 2:
         return read_settings_file()
     else:
         settings_dictionary[parts[2]] = parts[3]
