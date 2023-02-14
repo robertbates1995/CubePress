@@ -3,28 +3,44 @@ from utime import sleep_ms
 import network, socket, secrets, time, servos, json
 
 ############################################# MAIN PROGRAM ####################################################
+file_name = 'settings.json' #JSON workspace
 
-def create_settings_dictionary(file_name):
-    #initalize servos
+def read_settings_file():
     f = open(file_name,'r')
     print("Reading JSON")
     settings_string = f.read()
     f.close()
+    return settings_string
+    
+def create_settings_dictionary():
+    #initalize servos
+    settings_string = read_settings_file()
     dictionary = json.loads(settings_string)
     print('Data: ', dictionary)
     return dictionary
+settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
 
-def update_settings_dictionary(file_name, settings_dictionary):
+def update_settings_dictionary():
     f = open(file_name,'w')
     print("Dumping to JSON")
     json.dump(settings_dictionary, f)
     f.close()
 
-file_name = 'settings.json' #JSON workspace
-settings_dictionary = create_settings_dictionary(file_name) #dictionary based on JSON workspace
+def handle_settings(request):
+    parts = request.split("/")
+    length = len(parts)
+    if length == 1:
+        return read_settings_file()
+    else:
+        settings_dictionary[parts[2]] = parts[3]
+        update_settings_dictionary() 
+        return read_settings_file()
+        
+    
+
+
 arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
 table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
-
 
 
 f = open(file_name,'r')
@@ -78,21 +94,22 @@ print('listening on', addr)
 
 # Listen for connections, serve client
 while True:
-    try:       
+    try:
+        response = html
         cl, addr = s.accept()
         print('client connected from', addr)
         request = cl.recv(1024)
         #print("request:")
         #print(request)
         request = str(request)
-        print("-----request----- : " + str(request))
+        request = request.split(" ")[1]
+        print(request)
         
-        if 'settings' in request:
-            if 'settings==' in request:
-                settings = process_settings(request) #Convert from string to settings dictionary
-                set_servos(arm, table, settings) #Set servos here
-            #else:
-            #return servo settings here
+        if "settings" in request:
+            print("settings")
+            response = handle_settings(request)
+        #else:
+        #return servo settings here
         elif 'bot' in request:
             arm.move_bot()
         elif 'mid' in request:
@@ -106,12 +123,12 @@ while True:
         elif 'right' in request:
             table.move_right()
         else:
-            print("No Valid Instruction")
+            print("No Instruction")
         
         # Create and send response
-        response = html
-        cl.send('HTTP/1.0 200 OK\r\nContent-type: text/html\r\n\r\n')
-        cl.send()
+        
+        cl.send('HTTP/1.0 200 OK\r\nContent-type: text/json\r\n\r\n')
+        cl.send(response)
         cl.close()
         
     except OSError as e:

@@ -3,8 +3,8 @@ from utime import sleep_ms
 
  
                 
-def process_settings(request):
-    full_set = request.split('_+_')[1]
+def process_setting(request, arm, table):
+    full_set = request.split('setting=')[1]
     print(full_set)
     #segment = 
 
