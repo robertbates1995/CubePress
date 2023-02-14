@@ -27,6 +27,28 @@ struct SettingsView: View {
     }
 }
 
+class JsonParser {
+    static func parseJson(jsonData: Data) -> [String: Any]? {
+        do {
+            let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
+            return json
+        } catch {
+            let errorMessage = "Error while parsing JSON: \(error)"
+            print(errorMessage)
+            showErrorMessage(errorMessage)
+            return nil
+        }
+    }
+    
+    static func showErrorMessage(_ message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+}
+
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(setting: Moves.center)
