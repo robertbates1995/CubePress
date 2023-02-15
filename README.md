@@ -28,4 +28,8 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
 
 ## Architecture
 
-## Acknowledgements
+## Acknowledgments
+
+- [Todd Bates](https://github.com/toddwbates) - Mentor, editor, and over-all great guy
+- [Andrea Favero](https://github.com/AndreaFavero71) - Designer of the CUBOTino
+
