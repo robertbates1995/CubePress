@@ -32,4 +32,5 @@ final class CubePressTests: XCTestCase {
         XCTAssertNil(sut.errorMessage)
         XCTAssertEqual(sut.settings, expected)
     }
+    
 }

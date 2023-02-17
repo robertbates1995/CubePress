@@ -29,6 +29,9 @@ struct SettingsView: View {
                 //model.processData()
             }
         }
+        .task {
+            model.getSetting()
+        }
     }
 }
 

@@ -17,6 +17,9 @@ enum Moves: String, CaseIterable, Identifiable, Codable {
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var settings = [Moves:String]()
+    var callServer: (URL) async throws -> (Data,URLResponse) = {
+        try await URLSession.shared.data(from: $0)
+    }
     
     func binding(for move: Moves) -> Binding<String> {
         Binding(
@@ -45,13 +48,32 @@ class SettingsModel: ObservableObject {
     }
     
     func sendSetting(setting: Moves) {
+        guard let value = settings[setting] else {return}
+        Task { @MainActor in
+            errorMessage = nil
+        }
+        guard let url = URL(string: "http://10.0.0.34/settings/\(setting.rawValue)/\(value)") else { return }
+        Task{
+            do{
+                let (data, _ ) = try await callServer(url)
+                await processData(data)
+            } catch {
+                Task { @MainActor in
+                    self.errorMessage = error.localizedDescription
+                }
+            }
+
+        }
+    }
+    
+    func getSetting() {
         Task { @MainActor in
             errorMessage = nil
         }
         guard let url = URL(string: "http://10.0.0.34/settings") else { return }
         Task{
             do{
-                let (data, _ ) = try await URLSession.shared.data(from: url)
+                let (data, _ ) = try await callServer(url)
                 await processData(data)
             } catch {
                 Task { @MainActor in
