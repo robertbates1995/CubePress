@@ -26,6 +26,18 @@ class SettingsModel: ObservableObject {
         )
     }
     
+    @MainActor
+    fileprivate func processData(_ data: Data) {
+        do{
+            let str = String(decoding: data, as: UTF8.self)
+            print(str)
+            let decoder = JSONDecoder()
+            let json = try decoder.decode(Moves.self.RawValue, from: data)
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+    
     func sendSetting(setting: Moves) {
         Task { @MainActor in
             errorMessage = nil
@@ -34,9 +46,7 @@ class SettingsModel: ObservableObject {
         Task{
             do{
                 let (data, _ ) = try await URLSession.shared.data(from: url)
-                let str = String(decoding: data, as: UTF8.self)
-                print(str)
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                await processData(data)
             } catch {
                 Task { @MainActor in
                     self.errorMessage = error.localizedDescription
@@ -55,15 +65,18 @@ struct SettingsView: View {
             if let error = model.errorMessage {
                 Text(error)
             }
-            ForEach(Moves.allCases) { setting in
+            ForEach(Moves.allCases) { move in
                 HStack{
-                    Button("set \(setting.rawValue)") {
-                            model.sendSetting(setting: setting)
+                    Button("set \(move.rawValue)") {
+                            model.sendSetting(setting: move)
                     }
                     Spacer()
-                    TextField("set \(setting.rawValue)", text: model.binding(setting: setting))
+                    TextField(move.rawValue, text: model.binding(setting: move))
                         .frame(width: 200, alignment: .trailing)
                 }
+            }
+            Button("Get Settings") {
+                model.processData()
             }
         }
     }
