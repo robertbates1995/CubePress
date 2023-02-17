@@ -7,8 +7,24 @@
 
 import SwiftUI
 
+enum Moves: String, CaseIterable, Identifiable {
+    var id: String {rawValue}
+    
+    case top, mid, bot, left, center, right
+}
+
 class SettingsModel: ObservableObject {
+    
     @Published var errorMessage: String?
+    @Published var value = [Moves:String]()
+    
+    func binding(setting: Moves) -> Binding<String> {
+        Binding(
+            get: {self.value[setting] ?? ""},
+            set: {newValue in
+                self.value[setting] = newValue}
+        )
+    }
     
     func sendSetting(setting: Moves) {
         Task { @MainActor in
@@ -17,10 +33,10 @@ class SettingsModel: ObservableObject {
         guard let url = URL(string: "http://10.0.0.34/settings") else { return }
         Task{
             do{
-                let data = try await URLSession.shared.data(from: url)
-                let str = String(decoding: data.0, as: UTF8.self)
+                let (data, _ ) = try await URLSession.shared.data(from: url)
+                let str = String(decoding: data, as: UTF8.self)
                 print(str)
-                let json = try JSONSerialization.jsonObject(with: data.0, options: []) as? [String: Any]
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             } catch {
                 Task { @MainActor in
                     self.errorMessage = error.localizedDescription
@@ -40,36 +56,18 @@ struct SettingsView: View {
                 Text(error)
             }
             ForEach(Moves.allCases) { setting in
-                Button("set \(setting.rawValue) value") {
-                        model.sendSetting(setting: setting)
+                HStack{
+                    Button("set \(setting.rawValue)") {
+                            model.sendSetting(setting: setting)
+                    }
+                    Spacer()
+                    TextField("set \(setting.rawValue)", text: model.binding(setting: setting))
+                        .frame(width: 200, alignment: .trailing)
                 }
             }
         }
     }
-    
 }
-
-class JsonParser {
-    static func parseJson(jsonData: Data) -> [String: Any]? {
-        do {
-            let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
-            return json
-        } catch {
-            let errorMessage = "Error while parsing JSON: \(error)"
-            print(errorMessage)
-            showErrorMessage(errorMessage)
-            return nil
-        }
-    }
-    
-    static func showErrorMessage(_ message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-    }
-}
-
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

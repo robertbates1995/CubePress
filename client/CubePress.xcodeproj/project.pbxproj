@@ -7,19 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A2474E2298D7BBF00CF1DFA /* NetworkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2474E1298D7BBE00CF1DFA /* NetworkButtonView.swift */; };
 		7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E139F2953D5D60048628D /* CubePressApp.swift */; };
 		7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A32953D5D70048628D /* Assets.xcassets */; };
 		7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A62953D5D70048628D /* Preview Assets.xcassets */; };
 		7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13B02953D5D70048628D /* CubePressTests.swift */; };
 		7A2E13BB2953D5D70048628D /* CubePressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BA2953D5D70048628D /* CubePressUITests.swift */; };
 		7A2E13BD2953D5D70048628D /* CubePressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */; };
-		7A2E13CB2953D7070048628D /* SettingsGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CA2953D7070048628D /* SettingsGroupView.swift */; };
-		7A2E13CD2953D9330048628D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13CC2953D9330048628D /* SettingView.swift */; };
 		7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D0296607010048628D /* SettingModelTests.swift */; };
-		7A2E13D4296C9DF20048628D /* SettingsGroupNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */; };
-		7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D6296E073E0048628D /* SettingsViewModels.swift */; };
-		7AF19223298DB06700711273 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19222298DB06700711273 /* ControllerView.swift */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +35,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A2474E1298D7BBE00CF1DFA /* NetworkButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkButtonView.swift; sourceTree = "<group>"; };
 		7A2E139C2953D5D50048628D /* CubePress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubePress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E139F2953D5D60048628D /* CubePressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressApp.swift; sourceTree = "<group>"; };
 		7A2E13A32953D5D70048628D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,12 +44,7 @@
 		7A2E13B62953D5D70048628D /* CubePressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E13BA2953D5D70048628D /* CubePressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITests.swift; sourceTree = "<group>"; };
 		7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7A2E13CA2953D7070048628D /* SettingsGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupView.swift; sourceTree = "<group>"; };
-		7A2E13CC2953D9330048628D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		7A2E13D0296607010048628D /* SettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModelTests.swift; sourceTree = "<group>"; };
-		7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGroupNavigationView.swift; sourceTree = "<group>"; };
-		7A2E13D6296E073E0048628D /* SettingsViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModels.swift; sourceTree = "<group>"; };
-		7AF19222298DB06700711273 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,11 +134,6 @@
 		7A2E13C92953D6DC0048628D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7A2474E1298D7BBE00CF1DFA /* NetworkButtonView.swift */,
-				7A2E13D2296C98830048628D /* SettingsGroupNavigationView.swift */,
-				7A2E13CA2953D7070048628D /* SettingsGroupView.swift */,
-				7A2E13CC2953D9330048628D /* SettingView.swift */,
-				7AF19222298DB06700711273 /* ControllerView.swift */,
 				7AF19224298DC89600711273 /* SettingsView.swift */,
 			);
 			path = Views;
@@ -159,7 +142,6 @@
 		7A2E13D5296E071C0048628D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7A2E13D6296E073E0048628D /* SettingsViewModels.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -294,14 +276,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AF19223298DB06700711273 /* ControllerView.swift in Sources */,
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
-				7A2E13D7296E073E0048628D /* SettingsViewModels.swift in Sources */,
-				7A2474E2298D7BBF00CF1DFA /* NetworkButtonView.swift in Sources */,
-				7A2E13CB2953D7070048628D /* SettingsGroupView.swift in Sources */,
-				7A2E13CD2953D9330048628D /* SettingView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
-				7A2E13D4296C9DF20048628D /* SettingsGroupNavigationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
