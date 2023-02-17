@@ -7,30 +7,29 @@
 
 import XCTest
 @testable import CubePress
-
+@MainActor
 final class CubePressTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    let sut = SettingsModel()
+    let incoming = "{\"center\": 1550000, \"right\": 47, \"bot\": 1600000, \"left\": 3000000, \"top\": 750000, \"mid\": 1230000}"
+    let expected = [Moves.center: "1550000", .right: "47", .bot: "1600000", .left: "3000000", .top: "750000", .mid: "1230000"]
+    
+    func testBinding() throws {
+        let binding = sut.binding(for: .top)
+        XCTAssertEqual(sut.settings, [:])
+        XCTAssertEqual(binding.wrappedValue, "")
+        binding.wrappedValue = "42"
+        XCTAssertEqual(sut.settings, [.top: "42"])
+        XCTAssertEqual(binding.wrappedValue, "42")
+        let centerBinding = sut.binding(for: .center)
+        centerBinding.wrappedValue = "47"
+        XCTAssertEqual(sut.settings, [.center: "47", .top: "42"])
+        XCTAssertEqual(centerBinding.wrappedValue, "47")
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testConversion() throws {
+        let data = try XCTUnwrap(incoming.data(using:.utf8))
+        sut.processData(data)
+        XCTAssertNil(sut.errorMessage)
+        XCTAssertEqual(sut.settings, expected)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

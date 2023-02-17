@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Moves: String, CaseIterable, Identifiable {
+enum Moves: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
     
     case top, mid, bot, left, center, right
@@ -16,23 +16,29 @@ enum Moves: String, CaseIterable, Identifiable {
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
-    @Published var value = [Moves:String]()
+    @Published var settings = [Moves:String]()
     
-    func binding(setting: Moves) -> Binding<String> {
+    func binding(for move: Moves) -> Binding<String> {
         Binding(
-            get: {self.value[setting] ?? ""},
+            get: {self.settings[move] ?? ""},
             set: {newValue in
-                self.value[setting] = newValue}
+                self.settings[move] = newValue}
         )
     }
     
     @MainActor
-    fileprivate func processData(_ data: Data) {
+    func processData(_ data: Data) {
         do{
             let str = String(decoding: data, as: UTF8.self)
             print(str)
             let decoder = JSONDecoder()
-            let json = try decoder.decode(Moves.self.RawValue, from: data)
+            let json = try decoder.decode([String:Int].self, from: data)
+            for key in json.keys {
+                if let move = Moves(rawValue: key), let value = json[key] {
+                    settings[move] = value.formatted(.number.grouping(.never))
+                }
+            }
+            //TODO copy JSON to model.value
         } catch {
             errorMessage = error.localizedDescription
         }

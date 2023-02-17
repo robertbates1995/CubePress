@@ -21,7 +21,7 @@ struct SettingsView: View {
                             model.sendSetting(setting: move)
                     }
                     Spacer()
-                    TextField(move.rawValue, text: model.binding(setting: move))
+                    TextField(move.rawValue, text: model.binding(for: move))
                         .frame(width: 200, alignment: .trailing)
                 }
             }

@@ -13,7 +13,6 @@
 		7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13B02953D5D70048628D /* CubePressTests.swift */; };
 		7A2E13BB2953D5D70048628D /* CubePressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BA2953D5D70048628D /* CubePressUITests.swift */; };
 		7A2E13BD2953D5D70048628D /* CubePressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */; };
-		7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13D0296607010048628D /* SettingModelTests.swift */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -45,7 +44,6 @@
 		7A2E13B62953D5D70048628D /* CubePressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E13BA2953D5D70048628D /* CubePressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITests.swift; sourceTree = "<group>"; };
 		7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7A2E13D0296607010048628D /* SettingModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModelTests.swift; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				7A2E13B02953D5D70048628D /* CubePressTests.swift */,
-				7A2E13D0296607010048628D /* SettingModelTests.swift */,
 			);
 			path = CubePressTests;
 			sourceTree = "<group>";
@@ -289,7 +286,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A2E13D1296607010048628D /* SettingModelTests.swift in Sources */,
 				7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
