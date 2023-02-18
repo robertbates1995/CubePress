@@ -57,6 +57,23 @@ class SettingsModel: ObservableObject {
             do{
                 let (data, _ ) = try await callServer(url)
                 await processData(data)
+                moveSetting(setting: setting)
+            } catch {
+                Task { @MainActor in
+                    self.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
+    
+    func moveSetting(setting: Moves) {
+        Task { @MainActor in
+            errorMessage = nil
+        }
+        guard let url = URL(string: "http://10.0.0.34/\(setting.rawValue)") else { return }
+        Task{
+            do{
+                let _ = try await callServer(url)
             } catch {
                 Task { @MainActor in
                     self.errorMessage = error.localizedDescription

@@ -17,7 +17,7 @@ struct SettingsView: View {
             }
             ForEach(Moves.allCases) { move in
                 HStack{
-                    Button("set \(move.rawValue)") {
+                    Button("Move \(move.rawValue)") {
                             model.sendSetting(setting: move)
                     }
                     Spacer()
