@@ -18,6 +18,7 @@ def create_settings_dictionary():
     dictionary = json.loads(settings_string)
     print('Data: ', dictionary)
     return dictionary
+
 settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
 
 def update_settings_dictionary():
@@ -33,7 +34,7 @@ def handle_settings(request):
     if length == 2:
         return read_settings_file()
     else:
-        settings_dictionary[parts[2]] = parts[3]
+        settings_dictionary[parts[2]] = int(parts[3])
         update_settings_dictionary() 
         return read_settings_file()
         
@@ -59,15 +60,6 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect(ssid, password)
 
-#webpage html
-html = """<!DOCTYPE html>
-<html>
-<head> <title>Pico W</title> </head>
-<body> <h1>Bob's Pico W HTTP Server</h1>
-<p>Hello, World!</p>
-</body>
-</html>
-"""
 
 # Wait for connect or fail
 max_wait = 10
@@ -96,15 +88,12 @@ print('listening on', addr)
 # Listen for connections, serve client
 while True:
     try:
-        response = html
         cl, addr = s.accept()
         print('client connected from', addr)
         request = cl.recv(1024)
-        #print("request:")
-        #print(request)
         request = str(request)
         request = request.split(" ")[1]
-        print(request)
+        
         
         if "settings" in request:
             print("settings")
