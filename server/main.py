@@ -20,11 +20,15 @@ def create_settings_dictionary():
     return dictionary
 
 settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
+arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15) #initalizing arm servo
+table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16) #initalizing table servo
 
 def update_settings_dictionary():
     f = open(file_name,'w')
     print("Dumping to JSON")
     json.dump(settings_dictionary, f)
+    arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
+    table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
     f.close()
 
 def handle_settings(request):
@@ -37,13 +41,7 @@ def handle_settings(request):
         settings_dictionary[parts[2]] = int(parts[3])
         update_settings_dictionary() 
         return read_settings_file()
-        
     
-
-
-arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
-table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
-
 
 f = open(file_name,'r')
 settings_string = f.read()
