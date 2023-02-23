@@ -10,7 +10,7 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
 ## Features
 - Wireless interaction between iphone and CUBOTino via local wifi connection
 - New simplified settings menu for callibrating the CUBOTino directly from the phone
-- real-time in-app 3D Cube visualizer
+- Use of Apple's Vison framework to detect squares
 - Solution sequence creation
 - Pictures interpreted via Machine Learning
 - Updated model with phone holder
