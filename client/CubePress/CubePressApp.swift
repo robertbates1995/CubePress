@@ -12,7 +12,8 @@ struct CubePressApp: App {
     
     var body: some Scene {
         WindowGroup {
-            SettingsView(model: .init())
+            //SettingsView(model: .init())
+            CameraView()
         }
     }
 }

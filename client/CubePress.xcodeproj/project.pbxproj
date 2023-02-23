@@ -16,6 +16,8 @@
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsViewModel.swift */; };
 		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
+		7AF1922D29A7F58300711273 /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922C29A7F58300711273 /* FrameHandler.swift */; };
+		7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922E29A7F5AC00711273 /* FrameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		7AF1922829A6D93000711273 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		7AF1922C29A7F58300711273 /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
+		7AF1922E29A7F5AC00711273 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		7AF1923029A7F68F00711273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +103,7 @@
 		7A2E139E2953D5D50048628D /* CubePress */ = {
 			isa = PBXGroup;
 			children = (
+				7AF1923029A7F68F00711273 /* Info.plist */,
 				7A2E139F2953D5D60048628D /* CubePressApp.swift */,
 				7A2E13D5296E071C0048628D /* ViewModels */,
 				7A2E13C92953D6DC0048628D /* Views */,
@@ -137,6 +143,7 @@
 			children = (
 				7AF19224298DC89600711273 /* SettingsView.swift */,
 				7AF1922829A6D93000711273 /* CameraView.swift */,
+				7AF1922E29A7F5AC00711273 /* FrameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF1922629A00BDE00711273 /* SettingsViewModel.swift */,
+				7AF1922C29A7F58300711273 /* FrameHandler.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -279,10 +287,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */,
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
+				7AF1922D29A7F58300711273 /* FrameHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +454,8 @@
 				DEVELOPMENT_TEAM = 2DDP9BK6TP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CubePress/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,6 +485,8 @@
 				DEVELOPMENT_TEAM = 2DDP9BK6TP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CubePress/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
