@@ -89,7 +89,7 @@ class SettingsModel: ObservableObject {
         }
         guard let url = URL(string: "http://10.0.0.34/settings") else { return }
         Task{
-            do{
+            do {
                 let (data, _ ) = try await callServer(url)
                 await processData(data)
             } catch {
