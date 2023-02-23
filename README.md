@@ -18,7 +18,7 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
 ## Getting Started
 1. Create a [CUBOTino](https://github.com/AndreaFavero71/CUBOTino_base_version)
 2. Create a phone holder for the CUBOTino (TODO)
-3. Install all server files to the CUBOTino
+3. Install all server files to the CUBOTino by going to CubePress/server and installing main.py, server.py, and info.py
 4. Install client app onto your iPhone
 
 ## Elements of the CUBOTino
