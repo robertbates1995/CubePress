@@ -3,6 +3,9 @@
 
 CubePress is a project designed to enhance the portability of the CUBOTino, a small, 3d printable, robot that solves Rubik's cubes in under 90 seconds. This project features a Swift application that enables iPhone users to interface with their CUBOTino via remote network, as well as a modification to the CUBOTino's print files that allows users to mount their smartphones. CubePress is intended for use in conjunction with the [CUBOTino project](https://github.com/AndreaFavero71/CUBOTino_base_version), and enables users to create a portable version of the CUBOTino and take photos of their cubes using the camera on a Swift-compatible device of their choosing.
 
+![CubePress (1)](https://user-images.githubusercontent.com/37717366/221045638-ca781143-430e-44f1-9b9e-7ffccd36e70e.png)
+![CubePress](https://user-images.githubusercontent.com/37717366/221045640-e28e048d-53f5-4477-950c-64617b0b5213.png)
+
 The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solving robot that can be built using the files available in [this repository](https://github.com/AndreaFavero71/CUBOTino_base_version). A PDF file and video tutorial are also provided to guide users through the building process and demonstrate how to present the cube to the camera. CubePress uses a Raspberry Pi Pico instead of an ESP32 board for its WiFi capabilities, allowing the majority of the project's processes to occur on the user's device rather than on the CUBOTino itself. This approach enables the use of a cheaper board for the CUBOTino.
 
 ## Features
