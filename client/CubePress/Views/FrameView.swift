@@ -7,8 +7,19 @@ struct FrameView: View {
     var body: some View {
         if let image = image {
             Image(image, scale: 1.0, orientation: .up, label: label)
+                .overlay {
+                    MyShape(boundingBoxes: [
+                        CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 50))
+                    ])
+                }
         } else {
             Color.blue
+                .overlay {
+                    MyShape(boundingBoxes: [CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 50))
+                                   ])
+                    .stroke(lineWidth: 5)
+                    .foregroundColor(.red)
+                }
         }
     }
 }
