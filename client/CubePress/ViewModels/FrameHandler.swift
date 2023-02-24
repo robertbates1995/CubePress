@@ -5,11 +5,13 @@ import UIKit
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
+    @Published var rects: [VNRectangleObservation]?
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     private let context = CIContext()
-
+    
+   
     
     override init() {
         super.init()
@@ -62,48 +64,29 @@ extension FrameHandler: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let cgImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        
         let rectangleDetectionRequest = VNDetectRectanglesRequest(completionHandler: { (request, error) in
             guard let observations = request.results as? [VNRectangleObservation] else {
                 return
             }
             
             // Process the observations
-            do {
-                try imageRequestHandler.perform([rectangleDetectionRequest])
-            } catch let error {
-                print("Error: \(error)")
-            }
-            
-            // All UI updates should be/ must be performed on the main queue.
             DispatchQueue.main.async { [unowned self] in
+                self.rects = observations
                 self.frame = cgImage
-                
-                // Create a layer for the image view
-                let imageLayer = CALayer()
-                let uiImage = UIImage(cgImage: cgImage)
-                imageLayer.frame = CGRect(x: 0, y: 0, width: uiImage.size.width, height: uiImage.size.height)
-                // Loop through the rectangle observations
-                for observation in observations {
-                    // Create a shape layer for the rectangle
-                    let shapeLayer = CAShapeLayer()
-                    shapeLayer.strokeColor = UIColor.red.cgColor
-                    shapeLayer.fillColor = UIColor.clear.cgColor
-                    shapeLayer.lineWidth = 2
-                    
-                    // Create a path for the rectangle
-                    let path = UIBezierPath(rect: observation.boundingBox)
-                    shapeLayer.path = path.cgPath
-                    
-                    // Add the shape layer to the image layer
-                    imageLayer.addSublayer(shapeLayer)
-                }
-                
-                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200)) // create a new UIImageView
-                imageView.image = uiImage
-                // Add the image layer to the image view
-                imageView.layer.addSublayer(imageLayer)
             }
+
+            // All UI updates should be/ must be performed on the main queue.
+            
         })
+        
+        rectangleDetectionRequest.maximumObservations = 10
+        
+        do {
+            try imageRequestHandler.perform([rectangleDetectionRequest])
+        } catch let error {
+            print("Error: \(error)")
+        }
     }
     
     private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
