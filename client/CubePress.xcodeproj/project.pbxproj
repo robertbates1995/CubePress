@@ -19,7 +19,7 @@
 		7AF1922D29A7F58300711273 /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922C29A7F58300711273 /* FrameHandler.swift */; };
 		7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922E29A7F5AC00711273 /* FrameView.swift */; };
 		7AF1923329A9548900711273 /* RectangleParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1923229A9548900711273 /* RectangleParameters.swift */; };
-		7AF1923529A9671800711273 /* MyShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1923429A9671800711273 /* MyShape.swift */; };
+		7AF1923529A9671800711273 /* VNRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1923429A9671800711273 /* VNRectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 		7AF1922E29A7F5AC00711273 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		7AF1923029A7F68F00711273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AF1923229A9548900711273 /* RectangleParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleParameters.swift; sourceTree = "<group>"; };
-		7AF1923429A9671800711273 /* MyShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShape.swift; sourceTree = "<group>"; };
+		7AF1923429A9671800711273 /* VNRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VNRectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF1923229A9548900711273 /* RectangleParameters.swift */,
-				7AF1923429A9671800711273 /* MyShape.swift */,
+				7AF1923429A9671800711273 /* VNRectangle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameHandler.swift in Sources */,
 				7AF1923329A9548900711273 /* RectangleParameters.swift in Sources */,
-				7AF1923529A9671800711273 /* MyShape.swift in Sources */,
+				7AF1923529A9671800711273 /* VNRectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

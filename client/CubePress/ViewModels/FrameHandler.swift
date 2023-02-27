@@ -5,7 +5,7 @@ import UIKit
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
-    @Published var rects: [VNRectangleObservation]?
+    @Published var rects: [VNRectangleObservation] = []
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
@@ -79,8 +79,9 @@ extension FrameHandler: AVCaptureVideoDataOutputSampleBufferDelegate {
             // All UI updates should be/ must be performed on the main queue.
             
         })
-        
+        //detection paramiters set here
         rectangleDetectionRequest.maximumObservations = 10
+        rectangleDetectionRequest.minimumSize = 0.1
         
         do {
             try imageRequestHandler.perform([rectangleDetectionRequest])
