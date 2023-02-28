@@ -33,4 +33,36 @@ final class CubePressTests: XCTestCase {
         XCTAssertEqual(sut.settings, expected)
     }
     
+    struct ColorFinder {
+        func calcColor(image: CGImage, detected: CGRect) -> UIColor {
+            guard let filter = CIFilter(name: "CIAreaAverage",
+                                        parameters: [kCIInputImageKey: image, kCIInputExtentKey: detected]) else { return .black }
+            guard let outputImage = filter.outputImage else { return .black }
+            
+            // A bitmap consisting of (r, g, b, a) value
+            var bitmap = [UInt8](repeating: 0, count: 4)
+            let context = CIContext(options: [.workingColorSpace: kCFNull!])
+            
+            // Render our output image into a 1 by 1 image supplying it our bitmap to update the values of (i.e the rgba of the 1 by 1 image will fill out bitmap array
+            context.render(outputImage,
+                           toBitmap: &bitmap,
+                           rowBytes: 4,
+                           bounds: CGRect(x: 0, y: 0, width: 1, height: 1),
+                           format: .RGBA8,
+                           colorSpace: nil)
+            
+            // Convert our bitmap images of r, g, b, a to a UIColor
+            return UIColor(red: CGFloat(bitmap[0]) / 255,
+                           green: CGFloat(bitmap[1]) / 255,
+                           blue: CGFloat(bitmap[2]) / 255,
+                           alpha: CGFloat(bitmap[3]) / 255)
+        }
+    }
+    
+    func testCalcColor() throws {
+        let image = UIImage(named: "redSample", in: Bundle(for: CubePressTests.self), with: nil)!.cgImage!
+        let detected = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        let sut = ColorFinder()
+        XCTAssertEqual(sut.calcColor(image: image, detected: detected), .red)
+    }
 }

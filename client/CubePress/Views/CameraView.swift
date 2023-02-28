@@ -4,10 +4,10 @@ import SwiftUI
 
 
 struct CameraView: View {
-    @StateObject private var model = FrameHandler()
+    @StateObject private var model = FrameModel()
     
     var body: some View {
-        FrameView(image: model.frame, boundingBoxes: model.rects.map(\.boundingBox))
+        FrameView(image: model.picture, boundingBoxes: model.rects.map(\.boundingBox))
             .ignoresSafeArea()
     }
 }
