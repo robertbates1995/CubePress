@@ -1,3 +1,5 @@
 server/secrets.py
 *.xcuserstate
 *.xcuserstate
+client/CubePress.xcodeproj/project.xcworkspace/xcuserdata/robertbates.xcuserdatad/UserInterfaceState.xcuserstate
+client/CubePressTests/.DS_Store
