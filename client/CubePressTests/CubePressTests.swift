@@ -98,21 +98,19 @@ final class CubePressTests: XCTestCase {
             }
             
             hue = hue * 255
-            //print("Hue is: \(hue)")
-            print("Saturation is: \(saturation)")
             
             //switch statement that rounds to the nearest valid color
             if saturation < 0.35 {
                 return .white
             } else if (248 < hue || hue <= 14) {
                 return .red
-            } else if (14 < hue && hue <= 35) {
+            } else if (hue <= 35) {
                 return .orange
-            } else if (35 < hue && hue <= 90) {
+            } else if (hue <= 90) {
                 return .yellow
-            } else if (90 < hue && hue <= 150) {
+            } else if (hue <= 150) {
                 return .green
-            } else if (150 < hue && hue <= 248) {
+            } else if (hue <= 248) {
                 return .blue
             }
             return nil
