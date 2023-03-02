@@ -110,10 +110,9 @@ final class CubePressTests: XCTestCase {
                 return .yellow
             } else if (hue <= 150) {
                 return .green
-            } else if (hue <= 248) {
+            } else {
                 return .blue
             }
-            return nil
         }
     }
     
