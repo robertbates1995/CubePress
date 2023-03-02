@@ -8,26 +8,6 @@
 import XCTest
 @testable import CubePress
 
-enum CubeColor: CaseIterable, Equatable {
-    case red, blue, green, yellow, white, orange
-    var uiColor: UIColor {
-        switch self {
-        case .red:
-            return .red
-        case .blue:
-            return .blue
-        case .green:
-            return .green
-        case .yellow:
-            return .yellow
-        case .white:
-            return .white
-        case .orange:
-            return .orange
-        }
-    }
-}
-
 @MainActor
 final class CubePressTests: XCTestCase {
     let sut = SettingsModel()
