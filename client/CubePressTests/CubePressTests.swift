@@ -93,9 +93,9 @@ final class CubePressTests: XCTestCase {
                               alpha: CGFloat(bitmap[3]) / 255)
             
             // Test values
-            var red: CGFloat = 0.53
-            var blue: CGFloat = 0.11
-            var green: CGFloat = 0.37
+            let red: CGFloat = CGFloat(bitmap[0]) / 255
+            let blue: CGFloat = CGFloat(bitmap[2]) / 255
+            let green: CGFloat = CGFloat(bitmap[1]) / 255
             
             var hue: CGFloat = 0
             var saturation: CGFloat = 0
@@ -117,28 +117,45 @@ final class CubePressTests: XCTestCase {
                 brightness = maxRGB
             }
             
+            hue = hue * 255
+            //print("Hue is: \(hue)")
+            print("Saturation is: \(saturation)")
+
             //switch statement that rounds to the nearest valid color
-            if saturation > 25 {
+            if saturation < 0.35 {
                 return .white
-            } else if (248 < hue || hue <= 20) {
+            } else if (248 < hue || hue <= 14) {
                 return .red
-            } else if (20 < hue && hue <= 50) {
+            } else if (14 < hue && hue <= 35) {
                 return .orange
-            } else if (50 < hue && hue <= 90) {
+            } else if (35 < hue && hue <= 90) {
                 return .yellow
-            } else if (90 < hue && hue <= 180) {
+            } else if (90 < hue && hue <= 150) {
                 return .green
-            } else if (180 < hue && hue <= 248) {
+            } else if (150 < hue && hue <= 248) {
                 return .blue
             }
             return .black
         }
     }
     
-    func testCalcColor() throws {
-        let image = UIImage(named: "redSample", in: Bundle(for: CubePressTests.self), with: nil)!.cgImage!
+    func testCalcColor(picture: String, color: UIColor) throws {
+        let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!.cgImage!
         let detected = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.6)
         let sut = ColorFinder()
-        XCTAssertEqual(sut.calcColor(image: image, detected: detected), .red)
+        XCTAssertEqual(sut.calcColor(image: image, detected: detected), color)
+    }
+    
+    func testAllColors() {
+        do {
+            try testCalcColor(picture: "orangeSample", color: .orange)
+            try testCalcColor(picture: "blueSample", color: .blue)
+            try testCalcColor(picture: "greenSample", color: .green)
+            try testCalcColor(picture: "yellowSample", color: .yellow)
+            try testCalcColor(picture: "redSample", color: .red)
+            try testCalcColor(picture: "whiteSample", color: .white)
+        } catch {
+            print("color calculation error")
+        }
     }
 }
