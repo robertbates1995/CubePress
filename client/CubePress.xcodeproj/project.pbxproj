@@ -26,6 +26,7 @@
 		7AF1924329B01A6900711273 /* greenSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924129B01A6900711273 /* greenSample.png */; };
 		7AF1924629B01ADC00711273 /* orangeSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924429B01ADC00711273 /* orangeSample.png */; };
 		7AF1924729B01ADC00711273 /* whiteSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924529B01ADC00711273 /* whiteSample.png */; };
+		7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924829B15F1E00711273 /* ColorFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		7AF1924129B01A6900711273 /* greenSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenSample.png; sourceTree = "<group>"; };
 		7AF1924429B01ADC00711273 /* orangeSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeSample.png; sourceTree = "<group>"; };
 		7AF1924529B01ADC00711273 /* whiteSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteSample.png; sourceTree = "<group>"; };
+		7AF1924829B15F1E00711273 /* ColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFinder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 		7AF1923129A9543900711273 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7AF1924829B15F1E00711273 /* ColorFinder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */,
+				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,
 				7AF1923529A9671800711273 /* VNRectangle.swift in Sources */,
