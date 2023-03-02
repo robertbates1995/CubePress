@@ -66,12 +66,6 @@ final class CubePressTests: XCTestCase {
                            format: .RGBA8,
                            colorSpace: nil)
             
-            // Convert our bitmap images of r, g, b, a to a UIColor
-            let sut = UIColor(red: CGFloat(bitmap[0]) / 255,
-                              green: CGFloat(bitmap[1]) / 255,
-                              blue: CGFloat(bitmap[2]) / 255,
-                              alpha: CGFloat(bitmap[3]) / 255)
-            
             // Test values
             let red: CGFloat = CGFloat(bitmap[0]) / 255
             let blue: CGFloat = CGFloat(bitmap[2]) / 255
@@ -79,7 +73,7 @@ final class CubePressTests: XCTestCase {
             
             var hue: CGFloat = 0
             var saturation: CGFloat = 0
-            var brightness: CGFloat = 0
+            
             
             let minRGB: CGFloat = min(red, min(green,blue))
             let maxRGB: CGFloat = max(red, max(green,blue))
@@ -88,13 +82,13 @@ final class CubePressTests: XCTestCase {
             if (minRGB==maxRGB) {
                 hue = 0
                 saturation = 0
-                brightness = minRGB
+                
             } else {
                 let d: CGFloat = (red==minRGB) ? green-blue : ((blue==minRGB) ? red-green : blue-red)
                 let h: CGFloat = (red==minRGB) ? 3 : ((blue==minRGB) ? 1 : 5)
                 hue = (h - d/(maxRGB - minRGB)) / 6.0
                 saturation = (maxRGB - minRGB)/maxRGB
-                brightness = maxRGB
+                
             }
             
             hue = hue * 255
