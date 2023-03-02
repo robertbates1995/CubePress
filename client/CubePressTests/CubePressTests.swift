@@ -35,7 +35,7 @@ final class CubePressTests: XCTestCase {
     }
     
     struct ColorFinder {
-        func calcColor(image: CGImage, detected macOS: CGRect) -> UIColor {
+        func calcColor(image: CGImage, detected macOS: CGRect) -> UIColor? {
             
             let image = CIImage(cgImage: image)
             
@@ -100,7 +100,7 @@ final class CubePressTests: XCTestCase {
             hue = hue * 255
             //print("Hue is: \(hue)")
             print("Saturation is: \(saturation)")
-
+            
             //switch statement that rounds to the nearest valid color
             if saturation < 0.35 {
                 return .white
@@ -115,11 +115,11 @@ final class CubePressTests: XCTestCase {
             } else if (150 < hue && hue <= 248) {
                 return .blue
             }
-            return .black
+            return nil
         }
     }
     
-    func testCalcColor(picture: String, color: UIColor) throws {
+    func testCalcColor(picture: String, color: UIColor) {
         let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!.cgImage!
         let detected = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.6)
         let sut = ColorFinder()
@@ -127,15 +127,11 @@ final class CubePressTests: XCTestCase {
     }
     
     func testAllColors() {
-        do {
-            try testCalcColor(picture: "orangeSample", color: .orange)
-            try testCalcColor(picture: "blueSample", color: .blue)
-            try testCalcColor(picture: "greenSample", color: .green)
-            try testCalcColor(picture: "yellowSample", color: .yellow)
-            try testCalcColor(picture: "redSample", color: .red)
-            try testCalcColor(picture: "whiteSample", color: .white)
-        } catch {
-            print("color calculation error")
-        }
+        testCalcColor(picture: "orangeSample", color: .orange)
+        testCalcColor(picture: "blueSample", color: .blue)
+        testCalcColor(picture: "greenSample", color: .green)
+        testCalcColor(picture: "yellowSample", color: .yellow)
+        testCalcColor(picture: "redSample", color: .red)
+        testCalcColor(picture: "whiteSample", color: .white)
     }
 }
