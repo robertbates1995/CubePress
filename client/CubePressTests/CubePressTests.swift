@@ -50,4 +50,6 @@ final class CubePressTests: XCTestCase {
         testCalcColor(picture: "whiteSample", color: .white)
     }
     
+    
+    
 }
