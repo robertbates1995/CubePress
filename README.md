@@ -20,6 +20,10 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
 2. Create a phone holder for the CUBOTino (TODO)
 3. Install all server files to the CUBOTino by going to CubePress/server and installing main.py, server.py, and info.py
 4. Install client app onto your iPhone
+5. Using cubepress, adjust the CUBOTino's settings
+6. Mount your phone in the holder
+7. Select "scan cube" and allow the app to use CUBOTino to scan all the sides of the cube
+8. Once scanned, select "Solve" to instruct CUBOTino to solve the cube
 
 ## Elements of the CUBOTino
 
