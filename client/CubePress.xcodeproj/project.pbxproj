@@ -27,6 +27,8 @@
 		7AF1924629B01ADC00711273 /* orangeSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924429B01ADC00711273 /* orangeSample.png */; };
 		7AF1924729B01ADC00711273 /* whiteSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924529B01ADC00711273 /* whiteSample.png */; };
 		7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924829B15F1E00711273 /* ColorFinder.swift */; };
+		7AF1924B29B68A5300711273 /* ColorTuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924A29B68A5300711273 /* ColorTuningView.swift */; };
+		7AF1924D29B68C5400711273 /* rubik.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923829AE84F500711273 /* rubik.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,7 @@
 		7AF1924429B01ADC00711273 /* orangeSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeSample.png; sourceTree = "<group>"; };
 		7AF1924529B01ADC00711273 /* whiteSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteSample.png; sourceTree = "<group>"; };
 		7AF1924829B15F1E00711273 /* ColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFinder.swift; sourceTree = "<group>"; };
+		7AF1924A29B68A5300711273 /* ColorTuningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTuningView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,7 @@
 				7A2E13D5296E071C0048628D /* ViewModels */,
 				7A2E13C92953D6DC0048628D /* Views */,
 				7AF1923029A7F68F00711273 /* Info.plist */,
+				7AF1923829AE84F500711273 /* rubik.png */,
 				7A2E13A32953D5D70048628D /* Assets.xcassets */,
 				7A2E13A52953D5D70048628D /* Preview Content */,
 			);
@@ -149,7 +153,6 @@
 				7AF1924129B01A6900711273 /* greenSample.png */,
 				7AF1923E29B01A2500711273 /* yellowSample.png */,
 				7AF1923A29AE86E600711273 /* redSample.png */,
-				7AF1923829AE84F500711273 /* rubik.png */,
 				7A2E13B02953D5D70048628D /* CubePressTests.swift */,
 			);
 			path = CubePressTests;
@@ -171,6 +174,7 @@
 				7AF19224298DC89600711273 /* SettingsView.swift */,
 				7AF1922829A6D93000711273 /* CameraView.swift */,
 				7AF1922E29A7F5AC00711273 /* FrameView.swift */,
+				7AF1924A29B68A5300711273 /* ColorTuningView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF1924D29B68C5400711273 /* rubik.png in Resources */,
 				7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */,
 				7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */,
 			);
@@ -333,6 +338,7 @@
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */,
+				7AF1924B29B68A5300711273 /* ColorTuningView.swift in Sources */,
 				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,
