@@ -11,7 +11,6 @@ struct FrameView: View {
             Image(image, scale: 1.0, orientation: .up, label: label)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .edgesIgnoringSafeArea(.all)
                 .overlay {
                     ForEach(boundingBoxes, id: \.self.id) { box in
                         VNRectangle(boundingBoxes: [box])

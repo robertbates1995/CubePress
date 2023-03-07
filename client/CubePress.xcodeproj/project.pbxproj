@@ -29,6 +29,7 @@
 		7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924829B15F1E00711273 /* ColorFinder.swift */; };
 		7AF1924B29B68A5300711273 /* ColorTuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924A29B68A5300711273 /* ColorTuningView.swift */; };
 		7AF1924D29B68C5400711273 /* rubik.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923829AE84F500711273 /* rubik.png */; };
+		7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924E29B7AB8B00711273 /* VideoCapture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		7AF1924529B01ADC00711273 /* whiteSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteSample.png; sourceTree = "<group>"; };
 		7AF1924829B15F1E00711273 /* ColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFinder.swift; sourceTree = "<group>"; };
 		7AF1924A29B68A5300711273 /* ColorTuningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTuningView.swift; sourceTree = "<group>"; };
+		7AF1924E29B7AB8B00711273 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				7AF1924829B15F1E00711273 /* ColorFinder.swift */,
+				7AF1924E29B7AB8B00711273 /* VideoCapture.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */,
 				7AF1924B29B68A5300711273 /* ColorTuningView.swift in Sources */,
 				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
+				7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,
 				7AF1923529A9671800711273 /* VNRectangle.swift in Sources */,
