@@ -33,6 +33,6 @@ struct FrameView_Previews: PreviewProvider {
     let image = UIImage(named: "rubik")?.cgImage
     
     static var previews: some View {
-        FrameView(model: FrameModel(pictureString: "rubik"))
+        FrameView(model: FrameModel(pictureString: "fourColors"))
     }
 }

@@ -30,6 +30,8 @@
 		7AF1924B29B68A5300711273 /* ColorTuningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924A29B68A5300711273 /* ColorTuningView.swift */; };
 		7AF1924D29B68C5400711273 /* rubik.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923829AE84F500711273 /* rubik.png */; };
 		7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924E29B7AB8B00711273 /* VideoCapture.swift */; };
+		7AF1925129B7CEDA00711273 /* fourColors.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1925029B7CEDA00711273 /* fourColors.png */; };
+		7AF1925229B7CF0E00711273 /* fourColors.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1925029B7CEDA00711273 /* fourColors.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,7 @@
 		7AF1924829B15F1E00711273 /* ColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFinder.swift; sourceTree = "<group>"; };
 		7AF1924A29B68A5300711273 /* ColorTuningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTuningView.swift; sourceTree = "<group>"; };
 		7AF1924E29B7AB8B00711273 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		7AF1925029B7CEDA00711273 /* fourColors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fourColors.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,7 @@
 				7A2E13C92953D6DC0048628D /* Views */,
 				7AF1923029A7F68F00711273 /* Info.plist */,
 				7AF1923829AE84F500711273 /* rubik.png */,
+				7AF1925029B7CEDA00711273 /* fourColors.png */,
 				7A2E13A32953D5D70048628D /* Assets.xcassets */,
 				7A2E13A52953D5D70048628D /* Preview Content */,
 			);
@@ -306,6 +310,7 @@
 				7AF1924D29B68C5400711273 /* rubik.png in Resources */,
 				7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */,
 				7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */,
+				7AF1925229B7CF0E00711273 /* fourColors.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +325,7 @@
 				7AF1923F29B01A2500711273 /* yellowSample.png in Resources */,
 				7AF1924729B01ADC00711273 /* whiteSample.png in Resources */,
 				7AF1924229B01A6900711273 /* blueSample.png in Resources */,
+				7AF1925129B7CEDA00711273 /* fourColors.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
