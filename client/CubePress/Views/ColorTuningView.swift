@@ -11,6 +11,7 @@ struct ColorTuningView: View {
     let image = UIImage(named: "rubik")!
     
     var body: some View {
+        //FrameView(image: image, boundingBoxes: <#T##[CGRect]#>)
         Image(uiImage: image)
             .resizable()
             .aspectRatio(contentMode: .fit)

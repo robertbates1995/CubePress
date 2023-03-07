@@ -29,7 +29,9 @@ extension CGRect: Identifiable {
 }
 
 struct FrameView_Previews: PreviewProvider {
+    let image = UIImage(named: "rubik")?.cgImage
+    
     static var previews: some View {
-        FrameView(boundingBoxes: [CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 50))])
+        FrameView(image: UIImage(named: "rubik")?.cgImage!, boundingBoxes: [CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 50, height: 50))])
     }
 }
