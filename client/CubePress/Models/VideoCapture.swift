@@ -14,6 +14,7 @@ class VideoCapture: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
     let captureSession = AVCaptureSession()
     let sessionQueue = DispatchQueue(label: "sessionQueue")
     let context = CIContext()
+    let model = FrameModel()
     
     override init() {
         super.init()
@@ -58,5 +59,18 @@ class VideoCapture: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
         captureSession.addOutput(videoOutput)
         
         videoOutput.connection(with: .video)?.videoOrientation = .portrait
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let cgImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
+        model.process(cgImage: cgImage)
+    }
+    
+    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
+        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
+        
+        return cgImage
     }
 }

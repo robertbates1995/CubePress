@@ -7,13 +7,8 @@ class FrameModel: NSObject, ObservableObject {
     @Published var picture: CGImage?
     @Published var rects: [VNRectangleObservation] = []
     @Published var colors: [UIColor] = []
-    var capture = VideoCapture()
-}
-
-
-extension FrameModel: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let cgImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
+    
+    func process(cgImage: CGImage) {
         let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
         
         let rectangleDetectionRequest = VNDetectRectanglesRequest(completionHandler: { (request, error) in
@@ -26,7 +21,7 @@ extension FrameModel: AVCaptureVideoDataOutputSampleBufferDelegate {
                 self.rects = observations
                 self.picture = cgImage
             }
-
+            
             // All UI updates should be/ must be performed on the main queue.
             
         })
@@ -41,22 +36,11 @@ extension FrameModel: AVCaptureVideoDataOutputSampleBufferDelegate {
             print("Error: \(error)")
         }
     }
-    
-    func calcColors() {
-        guard let picture else {return}
-        colors = rects.map({mapColor(image: picture, boundingBox: $0)})
+}
+
+extension FrameModel {
+    convenience init(pictureString: String) {
+        self.init()
+        self.picture = UIImage(named: pictureString)?.cgImage
     }
-    
-    func mapColor(image: CGImage, boundingBox: VNRectangleObservation) -> UIColor {
-        .red
-    }
-    
-    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
-        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        guard let cgImage = capture.context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
-        
-        return cgImage
-    }
-    
 }
