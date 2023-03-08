@@ -14,9 +14,9 @@ struct ColorFinder {
         let image = CIImage(cgImage: image)
         
         let iosRect = CGRect(x: macOS.minX *  image.extent.width,
-                             y: (1 - macOS.origin.y) *  image.extent.height,
+                             y: macOS.origin.y *  image.extent.height,
                              width: macOS.width *  image.extent.width,
-                             height: -macOS.height *  image.extent.height)
+                             height: macOS.height *  image.extent.height)
             .standardized
         
         let detected = CIVector(x: iosRect.minX,

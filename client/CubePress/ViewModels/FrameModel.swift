@@ -17,10 +17,10 @@ class FrameModel: NSObject, ObservableObject {
             }
             
             // Process the observations
-            DispatchQueue.main.async { [unowned self] in
-                self.rects = observations
-                self.picture = cgImage
-            }
+            self.rects = observations.filter({ obeservation in
+                obeservation.boundingBox.width < 0.5
+            })
+            self.picture = cgImage
             
             // All UI updates should be/ must be performed on the main queue.
             
@@ -28,7 +28,7 @@ class FrameModel: NSObject, ObservableObject {
         //detection paramiters set here
         rectangleDetectionRequest.maximumObservations = 10
         rectangleDetectionRequest.minimumSize = 0.05
-        rectangleDetectionRequest.minimumConfidence = 0.5
+        rectangleDetectionRequest.minimumConfidence = 0.25
         
         do {
             try imageRequestHandler.perform([rectangleDetectionRequest])
@@ -41,6 +41,6 @@ class FrameModel: NSObject, ObservableObject {
 extension FrameModel {
     convenience init(pictureString: String) {
         self.init()
-        self.picture = UIImage(named: pictureString)?.cgImage
+        self.process(cgImage: (UIImage(named: pictureString)?.cgImage)!)
     }
 }
