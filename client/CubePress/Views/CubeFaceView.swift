@@ -7,25 +7,37 @@
 
 import SwiftUI
 
+struct CubeFaceModel {
+    let pictureString: String
+    let frameModel: FrameModel
+    var colors: [UIColor] = [.green, .red, .blue]
+    
+    init(pictureString: String) {
+        self.pictureString = pictureString
+        self.frameModel = FrameModel(pictureString: pictureString)
+        //self.colors = frameModel.colors
+    }
+}
+
 struct CubeFaceView: View {
-    let row: [Color] = [Color(.red), Color(.blue), Color(.green)]
+    var model: CubeFaceModel
     
     var body: some View {
         Grid {
             GridRow{
-                row[0]
-                row[1]
-                row[2]
+                Color(model.colors[0])
+                Color(model.colors[1])
+                Color(model.colors[2])
             }
             GridRow{
-                Color(.red)
-                Color(.blue)
-                Color(.green)
+                Color(model.colors[0])
+                Color(model.colors[1])
+                Color(model.colors[2])
             }
             GridRow{
-                Color(.red)
-                Color(.blue)
-                Color(.green)
+                Color(model.colors[0])
+                Color(model.colors[1])
+                Color(model.colors[2])
             }
         }
         .aspectRatio(contentMode: .fit)
@@ -34,6 +46,6 @@ struct CubeFaceView: View {
 
 struct CubeFaceView_Previews: PreviewProvider {
     static var previews: some View {
-        CubeFaceView()
+        CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
     }
 }
