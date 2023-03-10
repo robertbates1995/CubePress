@@ -11,10 +11,10 @@ struct FrameView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .overlay {
-                    ForEach(model.rects.map(\.boundingBox), id: \.self.id) { box in
-                        VNRectangle(boundingBoxes: [box])
+                    ForEach(model.coloredRects, id: \.self.id) { foo in
+                        VNRectangle(boundingBoxes: [foo.rect.boundingBox])
                             .stroke(lineWidth: 3)
-                            .foregroundColor(Color(finder.calcColor(image: image, detected: box) ?? .black))
+                            .foregroundColor(Color(foo.color))
                     }
                 }
         } else {
@@ -26,6 +26,12 @@ struct FrameView: View {
 extension CGRect: Identifiable {
     public var id: String {
         "\(minY)\(minX)\(maxY)\(maxX)"
+    }
+}
+
+extension ColoredRect: Identifiable {
+    public var id: String {
+        "\(rect)\(color)"
     }
 }
 

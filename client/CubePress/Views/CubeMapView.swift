@@ -8,41 +8,41 @@
 import SwiftUI
 
 struct CubeMapModel {
-    var top: CubeFaceView
-    var front: CubeFaceView
-    var left: CubeFaceView
-    var right: CubeFaceView
-    var bottom: CubeFaceView
-    var back: CubeFaceView
+    var top =  CubeFaceModel()
+    var front =  CubeFaceModel()
+    var left =  CubeFaceModel()
+    var right =  CubeFaceModel()
+    var bottom =  CubeFaceModel()
+    var back =  CubeFaceModel()
 }
 
 struct CubeMapView: View {
-    //let model: CubeMapModel
+    let model: CubeMapModel
     
     var body: some View {
         Grid{
             GridRow{
                 Color.white
                 //top
-                CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
+                CubeFaceView(model: model.top)
                 Color.white
             }
             GridRow{
-                CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
-                CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
-                CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
+                CubeFaceView(model: model.left)
+                CubeFaceView(model: model.front)
+                CubeFaceView(model: model.right)
                 //front 3 sides
             }
             GridRow{
                 Color.white
                 //bottom
-                CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
+                CubeFaceView(model: model.bottom)
                 Color.white
             }
             GridRow{
                 Color.white
                 //back
-                CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
+                CubeFaceView(model: model.back)
                 Color.white
             }
         }
@@ -52,6 +52,6 @@ struct CubeMapView: View {
 
 struct CubeMapView_Previews: PreviewProvider {
     static var previews: some View {
-        CubeMapView()
+        CubeMapView(model: .init())
     }
 }

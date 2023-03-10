@@ -3,10 +3,14 @@ import CoreImage
 import Vision
 import UIKit
 
+struct ColoredRect {
+    var rect: VNRectangleObservation
+    let color: UIColor
+}
+
 class FrameModel: NSObject, ObservableObject {
     @Published var picture: CGImage?
-    @Published var rects: [VNRectangleObservation] = []
-    @Published var colors: [UIColor] = []
+    @Published var coloredRects: [ColoredRect] = []
     
     func process(cgImage: CGImage) {
         let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
@@ -15,11 +19,13 @@ class FrameModel: NSObject, ObservableObject {
             guard let observations = request.results as? [VNRectangleObservation] else {
                 return
             }
-            
+            let finder = ColorFinder()
             // Process the observations
-            self.rects = observations.filter({ obeservation in
+            self.coloredRects = observations.filter({ obeservation in
                 obeservation.boundingBox.width < 0.5
-            })
+            }) .map {
+                .init(rect: $0, color: finder.calcColor(image: cgImage, detected: $0.boundingBox) ?? .black)
+            }
             self.picture = cgImage
             
             // All UI updates should be/ must be performed on the main queue.

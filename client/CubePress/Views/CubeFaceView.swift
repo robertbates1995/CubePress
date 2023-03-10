@@ -8,15 +8,7 @@
 import SwiftUI
 
 struct CubeFaceModel {
-    let pictureString: String
-    let frameModel: FrameModel
     var colors: [UIColor] = [.green, .red, .blue]
-    
-    init(pictureString: String) {
-        self.pictureString = pictureString
-        self.frameModel = FrameModel(pictureString: pictureString)
-        //self.colors = frameModel.colors
-    }
 }
 
 struct CubeFaceView: View {
@@ -46,6 +38,6 @@ struct CubeFaceView: View {
 
 struct CubeFaceView_Previews: PreviewProvider {
     static var previews: some View {
-        CubeFaceView(model: CubeFaceModel(pictureString: "rubik"))
+        CubeFaceView(model: .init())
     }
 }
