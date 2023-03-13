@@ -33,8 +33,8 @@ class FrameModel: NSObject, ObservableObject {
         })
         //detection paramiters set here
         rectangleDetectionRequest.maximumObservations = 10
-        rectangleDetectionRequest.minimumSize = 0.05
-        rectangleDetectionRequest.minimumConfidence = 0.25
+        rectangleDetectionRequest.minimumSize = 0.25
+        rectangleDetectionRequest.minimumConfidence = 0.5
         
         do {
             try imageRequestHandler.perform([rectangleDetectionRequest])
