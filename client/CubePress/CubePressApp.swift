@@ -10,11 +10,9 @@ import SwiftUI
 @main
 struct CubePressApp: App {
     
-    
     var body: some Scene {
         WindowGroup {
-            //SettingsView(model: .init())
-            CameraView()
+            MainView()
         }
     }
 }

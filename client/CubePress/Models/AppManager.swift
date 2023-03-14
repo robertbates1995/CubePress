@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AppManager {
+struct AppManager {
     var colorFinder: ColorFinder
     var videoCapture: VideoCapture
     var settingsModel: SettingsModel
