@@ -7,42 +7,36 @@
 
 import SwiftUI
 
-struct CubeMapModel {
-    var top =  CubeFaceModel()
-    var front =  CubeFaceModel()
-    var left =  CubeFaceModel()
-    var right =  CubeFaceModel()
-    var bottom =  CubeFaceModel()
-    var back =  CubeFaceModel()
-}
+
+//abstract into cubemapmodel file
 
 struct CubeMapView: View {
-    let model: CubeMapModel
+    let model = CubeMapModel()
     
     var body: some View {
         Grid{
             GridRow{
                 Color.white
                 //top
-                CubeFaceView(model: model.top)
+                CubeFaceView(model: model.red)
                 Color.white
             }
             GridRow{
-                CubeFaceView(model: model.left)
-                CubeFaceView(model: model.front)
-                CubeFaceView(model: model.right)
+                CubeFaceView(model: model.yellow)
+                CubeFaceView(model: model.blue)
+                CubeFaceView(model: model.white)
                 //front 3 sides
             }
             GridRow{
                 Color.white
                 //bottom
-                CubeFaceView(model: model.bottom)
+                CubeFaceView(model: model.orange)
                 Color.white
             }
             GridRow{
                 Color.white
                 //back
-                CubeFaceView(model: model.back)
+                CubeFaceView(model: model.green)
                 Color.white
             }
         }
@@ -52,6 +46,6 @@ struct CubeMapView: View {
 
 struct CubeMapView_Previews: PreviewProvider {
     static var previews: some View {
-        CubeMapView(model: .init())
+        CubeMapView()
     }
 }

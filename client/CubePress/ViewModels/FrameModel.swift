@@ -11,6 +11,7 @@ struct ColoredRect {
 class FrameModel: NSObject, ObservableObject {
     @Published var picture: CGImage?
     @Published var coloredRects: [ColoredRect] = []
+    @Published var cubeFace: CubeFaceModel?
     
     func process(cgImage: CGImage) {
         let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
@@ -34,7 +35,7 @@ class FrameModel: NSObject, ObservableObject {
         //detection paramiters set here
         rectangleDetectionRequest.maximumObservations = 10
         rectangleDetectionRequest.minimumSize = 0.25
-        rectangleDetectionRequest.minimumConfidence = 0.5
+        rectangleDetectionRequest.minimumConfidence = 0.25
         
         do {
             try imageRequestHandler.perform([rectangleDetectionRequest])

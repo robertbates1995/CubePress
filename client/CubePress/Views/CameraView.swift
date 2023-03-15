@@ -20,6 +20,12 @@ struct CameraView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                 .padding()
             }
+            .onAppear() {
+                //model.startCamera
+            }
+            .onDisappear() {
+                //model.stopCamera
+            }
     }
 }
 

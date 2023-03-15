@@ -17,6 +17,7 @@
 		7A430F6729BA4BFB00E6A684 /* CubeFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */; };
 		7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6829BFD58B00E6A684 /* AppManager.swift */; };
 		7A430F6B29BFDBEB00E6A684 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6A29BFDBEB00E6A684 /* MainView.swift */; };
+		7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6C29C2681900E6A684 /* CubeMapModel.swift */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsViewModel.swift */; };
 		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
@@ -68,6 +69,7 @@
 		7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFaceView.swift; sourceTree = "<group>"; };
 		7A430F6829BFD58B00E6A684 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		7A430F6A29BFDBEB00E6A684 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7A430F6C29C2681900E6A684 /* CubeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapModel.swift; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		7AF1922829A6D93000711273 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				7AF1924829B15F1E00711273 /* ColorFinder.swift */,
 				7AF1924E29B7AB8B00711273 /* VideoCapture.swift */,
 				7A430F6829BFD58B00E6A684 /* AppManager.swift */,
+				7A430F6C29C2681900E6A684 /* CubeMapModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */,
 				7A430F6429BA4BC200E6A684 /* CubeMapView.swift in Sources */,
 				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
+				7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */,
 				7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,

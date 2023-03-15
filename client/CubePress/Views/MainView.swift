@@ -7,16 +7,11 @@
 
 import SwiftUI
 
-struct MainViewModel {
-    
-}
-
 struct MainView: View {
-    let model = MainViewModel()
     
     var body: some View {
         TabView {
-            CubeMapView(model: CubeMapModel())
+            CubeMapView()
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
