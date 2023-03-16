@@ -4,7 +4,7 @@ import Vision
 import UIKit
 
 struct ColoredRect {
-    var rect: VNRectangleObservation
+    var rect: CGRect
     let color: UIColor
 }
 
@@ -14,34 +14,23 @@ class FrameModel: NSObject, ObservableObject {
     @Published var cubeFace: CubeFaceModel?
     
     func process(cgImage: CGImage) {
-        let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-        
-        let rectangleDetectionRequest = VNDetectRectanglesRequest(completionHandler: { (request, error) in
-            guard let observations = request.results as? [VNRectangleObservation] else {
-                return
-            }
-            let finder = ColorFinder()
-            // Process the observations
-            self.coloredRects = observations.filter({ obeservation in
-                obeservation.boundingBox.width < 0.5
-            }) .map {
-                .init(rect: $0, color: finder.calcColor(image: cgImage, detected: $0.boundingBox) ?? .black)
-            }
-            self.picture = cgImage
-            
-            // All UI updates should be/ must be performed on the main queue.
-            
-        })
-        //detection paramiters set here
-        rectangleDetectionRequest.maximumObservations = 10
-        rectangleDetectionRequest.minimumSize = 0.25
-        rectangleDetectionRequest.minimumConfidence = 0.25
-        
-        do {
-            try imageRequestHandler.perform([rectangleDetectionRequest])
-        } catch let error {
-            print("Error: \(error)")
+        let ratio = Double(cgImage.width)/Double(cgImage.height)
+        let width = 0.25
+        let height = width * ratio
+        let boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
+                             CGRect(x: 0.375, y: 0.25, width: width, height: height),
+                             CGRect(x: 0.625, y: 0.25, width: width, height: height),
+                             CGRect(x: 0.125, y: 0.25 + height, width: width, height: height),
+                             CGRect(x: 0.375, y: 0.25 + height, width: width, height: height),
+                             CGRect(x: 0.625, y: 0.25 + height, width: width, height: height),
+                             CGRect(x: 0.125, y: 0.25 + 2 * height, width: width, height: height),
+                             CGRect(x: 0.375, y: 0.25 + 2 * height, width: width, height: height),
+                             CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
+        let finder = ColorFinder()
+        coloredRects = boundingBoxes.map {
+            .init(rect: $0, color: finder.calcColor(image: cgImage, detected: $0) ?? .black)
         }
+        self.picture = cgImage
     }
 }
 

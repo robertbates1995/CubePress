@@ -12,7 +12,7 @@ struct FrameView: View {
                 .aspectRatio(contentMode: .fit)
                 .overlay {
                     ForEach(model.coloredRects, id: \.self.id) { foo in
-                        VNRectangle(boundingBoxes: [foo.rect.boundingBox])
+                        VNRectangle(boundingBoxes: [foo.rect])
                             .stroke(lineWidth: 3)
                             .foregroundColor(Color(foo.color))
                     }
@@ -38,5 +38,6 @@ extension ColoredRect: Identifiable {
 struct FrameView_Previews: PreviewProvider {
     static var previews: some View {
         FrameView(model: FrameModel(pictureString: "rubik"))
+        FrameView(model: FrameModel(pictureString: "fourColors"))
     }
 }
