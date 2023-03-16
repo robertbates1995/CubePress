@@ -1,17 +1,16 @@
 
 import SwiftUI
 
-
-
 struct CameraView: View {
-    private var model = VideoCapture()
+    let model: VideoCapture
+    let onSolvedTapped: () -> ()
     
     var body: some View {
         FrameView(model: model.model)
             .ignoresSafeArea()
             .overlay (alignment: .bottom){
-                Button("Take Picture") {
-                    
+                Button("Solve") {
+                    onSolvedTapped()
                 }
                 .padding()
                 .background(.gray)
@@ -31,6 +30,6 @@ struct CameraView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraView()
+        CameraView(model: VideoCapture(), onSolvedTapped: {})
     }
 }

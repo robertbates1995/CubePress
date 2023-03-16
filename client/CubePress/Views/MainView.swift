@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
+    let model = AppManager()
     
     var body: some View {
         TabView {
-            CubeMapView()
+            CubeMapView(model: model.cubeMapModel)
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
-            SettingsView(model: SettingsModel())
+            SettingsView(model: model.settingsModel)
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-            CameraView()
+            CameraView(model: model.videoCapture, onSolvedTapped: {model.onSolvedTapped()})
                 .tabItem {
                     Label("Camera", systemImage: "camera")
                 }

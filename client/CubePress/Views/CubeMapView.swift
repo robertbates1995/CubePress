@@ -11,7 +11,7 @@ import SwiftUI
 //abstract into cubemapmodel file
 
 struct CubeMapView: View {
-    let model = CubeMapModel()
+    let model: CubeMapModel
     
     var body: some View {
         Grid{
@@ -46,6 +46,6 @@ struct CubeMapView: View {
 
 struct CubeMapView_Previews: PreviewProvider {
     static var previews: some View {
-        CubeMapView()
+        CubeMapView(model: CubeMapModel())
     }
 }
