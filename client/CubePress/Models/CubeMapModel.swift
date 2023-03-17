@@ -6,15 +6,38 @@
 //
 
 import Foundation
+import UIKit
 
 //needs to look at a published property, cubeFace, in frame model.  will hand this model the property that it needs
 //needs to be made observable
 
-struct CubeMapModel {
-        var orange =  CubeFaceModel()
-        var white =  CubeFaceModel()
-        var green =  CubeFaceModel()
-        var yellow =  CubeFaceModel()
-        var blue =  CubeFaceModel()
-        var red =  CubeFaceModel()
+class CubeMapModel {
+        var orange =  CubeFace()
+        var white =  CubeFace()
+        var green =  CubeFace()
+        var yellow =  CubeFace()
+        var blue =  CubeFace()
+        var red =  CubeFace()
+    
+    func add(face: CubeFace) {
+        //add face based on center color
+        switch face.midCenter {
+            
+        default:
+            break
+        }
+    }
+}
+
+struct CubeFace {
+    //a data structure that represents one face of the rubix cube
+    var topLeft = UIColor.black
+    var topCenter = UIColor.black
+    var topRight = UIColor.black
+    var midLeft = UIColor.black
+    var midCenter = UIColor.black
+    var midRight = UIColor.black
+    var bottomLeft = UIColor.black
+    var bottomCenter = UIColor.black
+    var bottomRight = UIColor.black
 }

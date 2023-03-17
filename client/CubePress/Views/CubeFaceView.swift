@@ -7,29 +7,27 @@
 
 import SwiftUI
 
-struct CubeFaceModel {
-    var colors: [UIColor] = [.green, .red, .blue]
-}
+
 
 struct CubeFaceView: View {
-    var model: CubeFaceModel
+    var model: CubeFace
     
     var body: some View {
         Grid {
             GridRow{
-                Color(model.colors[0])
-                Color(model.colors[1])
-                Color(model.colors[2])
+                Color(model.topLeft)
+                Color(model.topCenter)
+                Color(model.topRight)
             }
             GridRow{
-                Color(model.colors[0])
-                Color(model.colors[1])
-                Color(model.colors[2])
+                Color(model.midLeft)
+                Color(model.midCenter)
+                Color(model.midRight)
             }
             GridRow{
-                Color(model.colors[0])
-                Color(model.colors[1])
-                Color(model.colors[2])
+                Color(model.bottomLeft)
+                Color(model.bottomCenter)
+                Color(model.bottomRight)
             }
         }
         .aspectRatio(contentMode: .fit)

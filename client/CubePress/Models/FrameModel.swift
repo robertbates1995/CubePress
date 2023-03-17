@@ -8,10 +8,10 @@ struct ColoredRect {
     let color: UIColor
 }
 
-class FrameModel: NSObject, ObservableObject {
+class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
     @Published var picture: CGImage?
     @Published var coloredRects: [ColoredRect] = []
-    @Published var cubeFace: CubeFaceModel?
+    @Published var cubeFace = CubeFace()
     
     func process(cgImage: CGImage) {
         let ratio = Double(cgImage.width)/Double(cgImage.height)

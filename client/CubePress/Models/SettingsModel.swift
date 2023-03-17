@@ -83,6 +83,8 @@ class SettingsModel: ObservableObject {
         }
     }
     
+    
+    
     func getSetting() {
         Task { @MainActor in
             errorMessage = nil
@@ -99,5 +101,12 @@ class SettingsModel: ObservableObject {
             }
 
         }
+    }
+}
+
+extension SettingsModel: CubeMovable {
+    //this is where the delay will happen
+    func move(to: Moves) async throws {
+        try await Task.sleep(nanoseconds: 2_000_000_000)
     }
 }

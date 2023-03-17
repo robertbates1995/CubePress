@@ -7,7 +7,6 @@ struct CameraView: View {
     
     var body: some View {
         FrameView(model: model.model)
-            .ignoresSafeArea()
             .overlay (alignment: .bottom){
                 Button("Solve") {
                     onSolvedTapped()

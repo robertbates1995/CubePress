@@ -7,15 +7,13 @@
 
 import Foundation
 
-struct AppManager {
-    var colorFinder: ColorFinder
+class AppManager {
     var videoCapture: VideoCapture
     var settingsModel: SettingsModel
     var frameModel: FrameModel
     var cubeMapModel: CubeMapModel //needs to be made observable
     
     init() {
-        self.colorFinder = ColorFinder()
         self.videoCapture = VideoCapture()
         self.settingsModel = SettingsModel()
         self.frameModel = FrameModel()
@@ -23,7 +21,8 @@ struct AppManager {
     }
     
     func onSolvedTapped() {
-        
+        let solver = Solver(getter: frameModel, cubeMover: settingsModel)
+        //cubeMapModel = scanCube()
         //control the robot to map the cube and create a solution from here
     }
 }
