@@ -22,7 +22,18 @@ class CubeMapModel {
     func add(face: CubeFace) {
         //add face based on center color
         switch face.midCenter {
-            
+        case .orange:
+            orange = face
+        case .white:
+            white = face
+        case .green:
+            green = face
+        case .yellow:
+            yellow = face
+        case .blue:
+            blue = face
+        case .red:
+            red = face
         default:
             break
         }

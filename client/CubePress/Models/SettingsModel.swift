@@ -79,7 +79,6 @@ class SettingsModel: ObservableObject {
                     self.errorMessage = error.localizedDescription
                 }
             }
-
         }
     }
     
@@ -107,6 +106,8 @@ class SettingsModel: ObservableObject {
 extension SettingsModel: CubeMovable {
     //this is where the delay will happen
     func move(to: Moves) async throws {
+        //call robot here
+        self.moveSetting(setting: to)
         try await Task.sleep(nanoseconds: 2_000_000_000)
     }
 }
