@@ -13,8 +13,31 @@
 		7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13B02953D5D70048628D /* CubePressTests.swift */; };
 		7A2E13BB2953D5D70048628D /* CubePressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BA2953D5D70048628D /* CubePressUITests.swift */; };
 		7A2E13BD2953D5D70048628D /* CubePressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */; };
+		7A430F6429BA4BC200E6A684 /* CubeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6329BA4BC200E6A684 /* CubeMapView.swift */; };
+		7A430F6729BA4BFB00E6A684 /* CubeFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */; };
+		7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6829BFD58B00E6A684 /* AppManager.swift */; };
+		7A430F6B29BFDBEB00E6A684 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6A29BFDBEB00E6A684 /* MainView.swift */; };
+		7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6C29C2681900E6A684 /* CubeMapModel.swift */; };
+		7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6E29C4CEB700E6A684 /* Solver.swift */; };
+		7A430F7129C4D48000E6A684 /* SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F7029C4D48000E6A684 /* SolverTests.swift */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
-		7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsViewModel.swift */; };
+		7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsModel.swift */; };
+		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
+		7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922C29A7F58300711273 /* FrameModel.swift */; };
+		7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922E29A7F5AC00711273 /* FrameView.swift */; };
+		7AF1923529A9671800711273 /* VNRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1923429A9671800711273 /* VNRectangle.swift */; };
+		7AF1923929AE84F500711273 /* rubik.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923829AE84F500711273 /* rubik.png */; };
+		7AF1923B29AE86E600711273 /* redSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923A29AE86E600711273 /* redSample.png */; };
+		7AF1923F29B01A2500711273 /* yellowSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923E29B01A2500711273 /* yellowSample.png */; };
+		7AF1924229B01A6900711273 /* blueSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924029B01A6900711273 /* blueSample.png */; };
+		7AF1924329B01A6900711273 /* greenSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924129B01A6900711273 /* greenSample.png */; };
+		7AF1924629B01ADC00711273 /* orangeSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924429B01ADC00711273 /* orangeSample.png */; };
+		7AF1924729B01ADC00711273 /* whiteSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1924529B01ADC00711273 /* whiteSample.png */; };
+		7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924829B15F1E00711273 /* ColorFinder.swift */; };
+		7AF1924D29B68C5400711273 /* rubik.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1923829AE84F500711273 /* rubik.png */; };
+		7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1924E29B7AB8B00711273 /* VideoCapture.swift */; };
+		7AF1925129B7CEDA00711273 /* fourColors.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1925029B7CEDA00711273 /* fourColors.png */; };
+		7AF1925229B7CF0E00711273 /* fourColors.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AF1925029B7CEDA00711273 /* fourColors.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +67,30 @@
 		7A2E13B62953D5D70048628D /* CubePressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E13BA2953D5D70048628D /* CubePressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITests.swift; sourceTree = "<group>"; };
 		7A2E13BC2953D5D70048628D /* CubePressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7A430F6329BA4BC200E6A684 /* CubeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapView.swift; sourceTree = "<group>"; };
+		7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFaceView.swift; sourceTree = "<group>"; };
+		7A430F6829BFD58B00E6A684 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		7A430F6A29BFDBEB00E6A684 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7A430F6C29C2681900E6A684 /* CubeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapModel.swift; sourceTree = "<group>"; };
+		7A430F6E29C4CEB700E6A684 /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
+		7A430F7029C4D48000E6A684 /* SolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverTests.swift; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		7AF1922629A00BDE00711273 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		7AF1922629A00BDE00711273 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		7AF1922829A6D93000711273 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		7AF1922C29A7F58300711273 /* FrameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameModel.swift; sourceTree = "<group>"; };
+		7AF1922E29A7F5AC00711273 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		7AF1923029A7F68F00711273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AF1923429A9671800711273 /* VNRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VNRectangle.swift; sourceTree = "<group>"; };
+		7AF1923829AE84F500711273 /* rubik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rubik.png; sourceTree = "<group>"; };
+		7AF1923A29AE86E600711273 /* redSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redSample.png; sourceTree = "<group>"; };
+		7AF1923E29B01A2500711273 /* yellowSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yellowSample.png; sourceTree = "<group>"; };
+		7AF1924029B01A6900711273 /* blueSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueSample.png; sourceTree = "<group>"; };
+		7AF1924129B01A6900711273 /* greenSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenSample.png; sourceTree = "<group>"; };
+		7AF1924429B01ADC00711273 /* orangeSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeSample.png; sourceTree = "<group>"; };
+		7AF1924529B01ADC00711273 /* whiteSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteSample.png; sourceTree = "<group>"; };
+		7AF1924829B15F1E00711273 /* ColorFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorFinder.swift; sourceTree = "<group>"; };
+		7AF1924E29B7AB8B00711273 /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		7AF1925029B7CEDA00711273 /* fourColors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fourColors.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				7A2E139F2953D5D60048628D /* CubePressApp.swift */,
-				7A2E13D5296E071C0048628D /* ViewModels */,
+				7AF1923129A9543900711273 /* Models */,
 				7A2E13C92953D6DC0048628D /* Views */,
+				7AF1923029A7F68F00711273 /* Info.plist */,
+				7AF1923829AE84F500711273 /* rubik.png */,
+				7AF1925029B7CEDA00711273 /* fourColors.png */,
 				7A2E13A32953D5D70048628D /* Assets.xcassets */,
 				7A2E13A52953D5D70048628D /* Preview Content */,
 			);
@@ -116,7 +164,14 @@
 		7A2E13AF2953D5D70048628D /* CubePressTests */ = {
 			isa = PBXGroup;
 			children = (
+				7AF1924429B01ADC00711273 /* orangeSample.png */,
+				7AF1924529B01ADC00711273 /* whiteSample.png */,
+				7AF1924029B01A6900711273 /* blueSample.png */,
+				7AF1924129B01A6900711273 /* greenSample.png */,
+				7AF1923E29B01A2500711273 /* yellowSample.png */,
+				7AF1923A29AE86E600711273 /* redSample.png */,
 				7A2E13B02953D5D70048628D /* CubePressTests.swift */,
+				7A430F7029C4D48000E6A684 /* SolverTests.swift */,
 			);
 			path = CubePressTests;
 			sourceTree = "<group>";
@@ -133,17 +188,29 @@
 		7A2E13C92953D6DC0048628D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7AF1923429A9671800711273 /* VNRectangle.swift */,
 				7AF19224298DC89600711273 /* SettingsView.swift */,
+				7AF1922829A6D93000711273 /* CameraView.swift */,
+				7AF1922E29A7F5AC00711273 /* FrameView.swift */,
+				7A430F6329BA4BC200E6A684 /* CubeMapView.swift */,
+				7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */,
+				7A430F6A29BFDBEB00E6A684 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7A2E13D5296E071C0048628D /* ViewModels */ = {
+		7AF1923129A9543900711273 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7AF1922629A00BDE00711273 /* SettingsViewModel.swift */,
+				7A430F6829BFD58B00E6A684 /* AppManager.swift */,
+				7AF1924E29B7AB8B00711273 /* VideoCapture.swift */,
+				7AF1922C29A7F58300711273 /* FrameModel.swift */,
+				7A430F6C29C2681900E6A684 /* CubeMapModel.swift */,
+				7AF1922629A00BDE00711273 /* SettingsModel.swift */,
+				7AF1924829B15F1E00711273 /* ColorFinder.swift */,
+				7A430F6E29C4CEB700E6A684 /* Solver.swift */,
 			);
-			path = ViewModels;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +317,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF1924D29B68C5400711273 /* rubik.png in Resources */,
 				7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */,
 				7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */,
+				7AF1925229B7CF0E00711273 /* fourColors.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +328,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF1923929AE84F500711273 /* rubik.png in Resources */,
+				7AF1923B29AE86E600711273 /* redSample.png in Resources */,
+				7AF1924329B01A6900711273 /* greenSample.png in Resources */,
+				7AF1924629B01ADC00711273 /* orangeSample.png in Resources */,
+				7AF1923F29B01A2500711273 /* yellowSample.png in Resources */,
+				7AF1924729B01ADC00711273 /* whiteSample.png in Resources */,
+				7AF1924229B01A6900711273 /* blueSample.png in Resources */,
+				7AF1925129B7CEDA00711273 /* fourColors.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,9 +353,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */,
+				7A430F6729BA4BFB00E6A684 /* CubeFaceView.swift in Sources */,
+				7A430F6B29BFDBEB00E6A684 /* MainView.swift in Sources */,
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
+				7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
-				7AF1922729A00BDE00711273 /* SettingsViewModel.swift in Sources */,
+				7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */,
+				7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */,
+				7A430F6429BA4BC200E6A684 /* CubeMapView.swift in Sources */,
+				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
+				7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */,
+				7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */,
+				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
+				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,
+				7AF1923529A9671800711273 /* VNRectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A430F7129C4D48000E6A684 /* SolverTests.swift in Sources */,
 				7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +530,8 @@
 				DEVELOPMENT_TEAM = 2DDP9BK6TP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CubePress/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -469,6 +561,8 @@
 				DEVELOPMENT_TEAM = 2DDP9BK6TP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CubePress/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

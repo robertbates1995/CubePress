@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import CubePress
+
 @MainActor
 final class CubePressTests: XCTestCase {
     let sut = SettingsModel()
@@ -32,5 +33,23 @@ final class CubePressTests: XCTestCase {
         XCTAssertNil(sut.errorMessage)
         XCTAssertEqual(sut.settings, expected)
     }
+    
+    func testCalcColor(picture: String, color: UIColor) {
+        let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!.cgImage!
+        let detected = CGRect(x: 0.2, y: 0.2, width: 0.6, height: 0.6)
+        let sut = ColorFinder()
+        XCTAssertEqual(sut.calcColor(image: image, detected: detected), color)
+    }
+    
+    func testAllColors() {
+        testCalcColor(picture: "orangeSample", color: .orange)
+        testCalcColor(picture: "blueSample", color: .blue)
+        testCalcColor(picture: "greenSample", color: .green)
+        testCalcColor(picture: "yellowSample", color: .yellow)
+        testCalcColor(picture: "redSample", color: .red)
+        testCalcColor(picture: "whiteSample", color: .white)
+    }
+    
+    
     
 }
