@@ -9,10 +9,7 @@ import Foundation
 import UIKit
 
 struct ColorFinder {
-    func calcColor(image: CGImage, detected macOS: CGRect) -> UIColor? {
-        
-        let image = CIImage(cgImage: image)
-        
+    func calcColor(image: CIImage, detected macOS: CGRect) -> UIColor? {
         let iosRect = CGRect(x: macOS.minX *  image.extent.width,
                              y: macOS.origin.y *  image.extent.height,
                              width: macOS.width *  image.extent.width,

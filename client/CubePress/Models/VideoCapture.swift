@@ -64,15 +64,13 @@ class VideoCapture: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let cgImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         DispatchQueue.main.async { [weak self] in
-            self?.model.process(cgImage: cgImage)
+            self?.model.process(ciImage: cgImage)
         }
     }
     
-    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CGImage? {
+    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CIImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
-        
-        return cgImage
+        return ciImage
     }
 }

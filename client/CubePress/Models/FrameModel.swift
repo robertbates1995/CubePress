@@ -13,8 +13,8 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
     @Published var coloredRects: [ColoredRect] = []
     @Published var cubeFace = CubeFace()
     
-    func process(cgImage: CGImage) {
-        let ratio = Double(cgImage.width)/Double(cgImage.height)
+    func process(ciImage: CIImage) {
+        let ratio = Double(ciImage.extent.width)/Double(ciImage.extent.height)
         let width = 0.25
         let height = width * ratio
         let boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
@@ -28,15 +28,16 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
                              CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
         let finder = ColorFinder()
         coloredRects = boundingBoxes.map {
-            .init(rect: $0, color: finder.calcColor(image: cgImage, detected: $0) ?? .black)
+            .init(rect: $0, color: finder.calcColor(image: ciImage, detected: $0) ?? .black)
         }
-        self.picture = cgImage
+        let context = CIContext()
+        self.picture = context.createCGImage(ciImage, from: ciImage.extent)
     }
 }
 
 extension FrameModel {
     convenience init(pictureString: String) {
         self.init()
-        self.process(cgImage: (UIImage(named: pictureString)?.cgImage)!)
+        self.process(ciImage: (UIImage(named: pictureString)?.ciImage)!)
     }
 }
