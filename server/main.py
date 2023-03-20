@@ -7,7 +7,6 @@ file_name = 'settings.json' #JSON workspace
 
 def read_settings_file():
     f = open(file_name,'r')
-    print("Reading JSON")
     settings_string = f.read()
     f.close()
     return settings_string
@@ -16,7 +15,7 @@ def create_settings_dictionary():
     #initalize servos
     settings_string = read_settings_file()
     dictionary = json.loads(settings_string)
-    print('Data: ', dictionary)
+    print('Data:', dictionary)
     return dictionary
 
 settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
@@ -34,8 +33,9 @@ def update_settings_dictionary():
 def handle_settings(request):
     parts = request.split("/")
     length = len(parts)
-    print(parts)
+    print("request parts: ", parts)
     if length == 2:
+        print("returning settings file: ", read_settings_file())
         return read_settings_file()
     else:
         settings_dictionary[parts[2]] = int(parts[3])
