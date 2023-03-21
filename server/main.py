@@ -17,11 +17,13 @@ def create_settings_dictionary():
     return dictionary
 
 def update_settings_dictionary():
+    global arm
+    global table
     f = open(file_name,'w')
     print("Dumping to JSON")
     json.dump(settings_dictionary, f)
-    arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15)
-    table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16)
+    arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15) #initalizing arm servo
+    table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16) #initalizing table servo
     f.close()
 
 def handle_settings(request):
@@ -37,10 +39,6 @@ def handle_settings(request):
 
 
 file_name = 'settings.json' #JSON workspace
-f = open(file_name,'r')
-settings_string = f.read()
-f.close()
-print('Got settings:', settings_string)
 settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
 arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15) #initalizing arm servo
 table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16) #initalizing table servo
@@ -89,8 +87,6 @@ while True:
         if "settings" in request:
             print("settings")
             response = handle_settings(request)
-        #else:
-        #return servo settings here
         elif 'bot' in request:
             arm.move_bot()
         elif 'mid' in request:
@@ -98,7 +94,6 @@ while True:
         elif 'top' in request:
             arm.move_top()
         elif 'left' in request:
-            table.left = request[4]
             print("current left value: ", table.left)
             table.move_left()
         elif 'center' in request:
