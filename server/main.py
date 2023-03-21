@@ -54,7 +54,6 @@ wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect(ssid, password)
 
-
 # Wait for connect or fail
 max_wait = 10
 while max_wait > 0:
@@ -99,6 +98,7 @@ while True:
         elif 'top' in request:
             arm.move_top()
         elif 'left' in request:
+            table.left = request[4]
             print("current left value: ", table.left)
             table.move_left()
         elif 'center' in request:
