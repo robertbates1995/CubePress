@@ -26,7 +26,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
                              CGRect(x: 0.125, y: 0.25 + 2 * height, width: width, height: height),
                              CGRect(x: 0.375, y: 0.25 + 2 * height, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
-        boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.01, dy: 0.01)})
+        boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
         let finder = ColorFinder()
         coloredRects = boundingBoxes.map {
             .init(rect: $0, color: finder.calcColor(image: ciImage, detected: $0) ?? .black)
@@ -39,6 +39,6 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
 extension FrameModel {
     convenience init(pictureString: String) {
         self.init()
-        self.process(ciImage: (UIImage(named: pictureString)?.ciImage)!)
+        self.process(ciImage: (CIImage(image: UIImage(named: pictureString)!)!))
     }
 }
