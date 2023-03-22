@@ -17,7 +17,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         let ratio = Double(ciImage.extent.width)/Double(ciImage.extent.height)
         let width = 0.25
         let height = width * ratio
-        let boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
+        var boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
                              CGRect(x: 0.375, y: 0.25, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25, width: width, height: height),
                              CGRect(x: 0.125, y: 0.25 + height, width: width, height: height),
@@ -26,6 +26,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
                              CGRect(x: 0.125, y: 0.25 + 2 * height, width: width, height: height),
                              CGRect(x: 0.375, y: 0.25 + 2 * height, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
+        boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.01, dy: 0.01)})
         let finder = ColorFinder()
         coloredRects = boundingBoxes.map {
             .init(rect: $0, color: finder.calcColor(image: ciImage, detected: $0) ?? .black)
