@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct MainView: View {
     let model = AppManager()
     

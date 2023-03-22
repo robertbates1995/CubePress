@@ -11,13 +11,14 @@ import UIKit
 //needs to look at a published property, cubeFace, in frame model.  will hand this model the property that it needs
 //needs to be made observable
 
-class CubeMapModel {
-        var orange =  CubeFace()
-        var white =  CubeFace()
-        var green =  CubeFace()
-        var yellow =  CubeFace()
-        var blue =  CubeFace()
-        var red =  CubeFace()
+@MainActor
+class CubeMapModel: ObservableObject {
+    @Published var orange =  CubeFace()
+    @Published var white =  CubeFace()
+    @Published var green =  CubeFace()
+    @Published var yellow =  CubeFace()
+    @Published var blue =  CubeFace()
+    @Published var red =  CubeFace()
     
     func add(face: CubeFace) {
         //add face based on center color

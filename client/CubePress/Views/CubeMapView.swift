@@ -11,7 +11,7 @@ import SwiftUI
 //abstract into cubemapmodel file
 
 struct CubeMapView: View {
-    let model: CubeMapModel
+    @ObservedObject var model: CubeMapModel
     
     var body: some View {
         Grid{

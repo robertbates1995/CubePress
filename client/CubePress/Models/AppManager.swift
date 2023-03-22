@@ -7,23 +7,24 @@
 
 import Foundation
 
+@MainActor
 class AppManager {
     var videoCapture: VideoCapture
     var settingsModel: SettingsModel
-    var frameModel: FrameModel
     var cubeMapModel: CubeMapModel //needs to be made observable
     var solver: Solver
     
     init() {
         self.videoCapture = VideoCapture()
         self.settingsModel = SettingsModel()
-        self.frameModel = FrameModel()
         self.cubeMapModel = CubeMapModel()
-        self.solver = Solver(getter: frameModel, cubeMover: settingsModel)
+        self.solver = Solver(getter: videoCapture.model, cubeMover: settingsModel, cubeMap: cubeMapModel)
     }
     
     func onSolvedTapped() {
-        solver.solveCube()
+        Task{
+            try await solver.solveCube()
+        }
         //cubeMapModel = scanCube()
         //control the robot to map the cube and create a solution from here
     }

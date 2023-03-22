@@ -29,16 +29,12 @@ class Mover: CubeMovable {
 
 final class SolverTests: XCTestCase {
     func testSolver() async throws {
-        let getter = Getter(cubeFaces: [CubeFace(), CubeFace(), CubeFace()])
+        let getter = Getter(cubeFaces: [CubeFace(), CubeFace(), CubeFace(), CubeFace(), CubeFace(), CubeFace()])
         let mover = Mover()
-        let sut = Solver(getter: getter, cubeMover: mover)
-        let result = try await sut.scanCube()
+        let sut = await Solver(getter: getter, cubeMover: mover, cubeMap: CubeMapModel())
+        try await sut.scanCube()
         //testing that the proper moves were performed
-        XCTAssertEqual(mover.movesLoged, [.center, .mid, .right]) //empty array is supposed to be the expected array
+        XCTAssertEqual(mover.movesLoged, [CubePress.Moves.center, CubePress.Moves.mid, CubePress.Moves.right, CubePress.Moves.left, CubePress.Moves.center, CubePress.Moves.top, CubePress.Moves.mid, CubePress.Moves.top, CubePress.Moves.mid, CubePress.Moves.top, CubePress.Moves.mid]) //empty array is supposed to be the expected array
         //test that colors are accurate
-        
-        //test all faces have been scanned in
-        
-        print(result.green)
-    }
+        }
 }
