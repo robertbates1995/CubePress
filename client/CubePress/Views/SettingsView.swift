@@ -12,6 +12,10 @@ struct SettingsView: View {
     
     var body: some View {
         List {
+            HStack {
+                Text("connected on i.p address:")
+                TextField("", text: $model.ipAddress)
+            }
             if let error = model.errorMessage {
                 Text(error)
             }
