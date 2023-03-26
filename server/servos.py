@@ -17,17 +17,6 @@ class arm_servo:
     top = int
     servo: PWM()
     
-    def test(self):
-        self.move_top()
-        print("top = " + str(self.top))
-        sleep_ms(1200)
-        self.move_bot()
-        print("bottom = " + str(self.bot))
-        sleep_ms(1200)
-        self.move_mid()
-        print("middle = " + str(self.mid))
-        sleep_ms(1200)
-    
     def move(self, move):
         if 'top' in move:
             self.move_top()
@@ -55,27 +44,26 @@ class arm_servo:
 class table_servo:
     # arm servo, connected to Pin 16
     left = int
+    leftOfCenter = int
     center = int
+    rightOfCenter = int
     right = int
     servo: PWM()
-    
-    def test(self):
-        self.move_left()
-        print("left = " + str(self.left))
-        sleep_ms(1200)
-        self.move_right()
-        print("right = " + str(self.right))
-        sleep_ms(1200)
-        self.move_mid()
-        print("middle = " + str(self.center))
-        sleep_ms(1200)
     
     def move_left(self):
         self.servo.duty_ns(self.left)
         sleep_ms(50)
         
+    def move_left_of_center(self):
+        self.servo.duty_ns(self.leftOfCenter)
+        sleep_ms(50)
+        
     def move_center(self):
         self.servo.duty_ns(self.center)
+        sleep_ms(50)
+        
+    def move_right_of_center(self):
+        self.servo.duty_ns(self.rightOfCenter)
         sleep_ms(50)
         
     def move_right(self):
