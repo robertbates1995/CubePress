@@ -40,8 +40,14 @@ def handle_settings(request):
 
 file_name = 'settings.json' #JSON workspace
 settings_dictionary = create_settings_dictionary() #dictionary based on JSON workspace
-arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15) #initalizing arm servo
-table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16) #initalizing table servo
+arm = servos.arm_servo(settings_dictionary['bot'],
+                       settings_dictionary['mid'],
+                       settings_dictionary['top'], 15) #initalizing arm servo
+table = servos.table_servo(settings_dictionary['left'],
+                           settings_dictionary['leftOfCenter'],
+                           settings_dictionary['center'],
+                           settings_dictionary['rightOfCenter'],
+                           settings_dictionary['right'], 16) #initalizing table servo
 
 #set secret values
 ssid = secrets.ssid

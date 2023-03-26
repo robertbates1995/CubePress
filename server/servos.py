@@ -70,10 +70,12 @@ class table_servo:
         self.servo.duty_ns(self.right)
         sleep_ms(50)
         
-    def __init__(self, left, center, right, pin):
+    def __init__(self, left, leftOfCenter, center, rightOfCenter, right, pin):
         self.servo = PWM(Pin(pin))
         self.servo.freq(50)
         sleep_ms(50)
         self.left = left
+        self.leftOfCenter = leftOfCenter
         self.center = center
+        self.rightOfCenter = rightOfCenter
         self.right = right
