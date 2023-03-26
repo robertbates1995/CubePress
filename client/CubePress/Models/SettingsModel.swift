@@ -11,7 +11,7 @@ import SwiftUI
 enum Moves: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
     
-    case top, mid, bot, left, center, right
+    case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
 }
 
 class SettingsModel: ObservableObject {
