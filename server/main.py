@@ -23,7 +23,11 @@ def update_settings_dictionary():
     print("Dumping to JSON")
     json.dump(settings_dictionary, f)
     arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15) #initalizing arm servo
-    table = servos.table_servo(settings_dictionary['left'],settings_dictionary['center'],settings_dictionary['right'], 16) #initalizing table servo
+    table = servos.table_servo(settings_dictionary['left'],
+                           settings_dictionary['leftOfCenter'],
+                           settings_dictionary['center'],
+                           settings_dictionary['rightOfCenter'],
+                           settings_dictionary['right'], 16) #initalizing table servo
     f.close()
 
 def handle_settings(request):
@@ -99,8 +103,11 @@ while True:
             arm.move_mid()
         elif 'top' in request:
             arm.move_top()
+        elif 'leftOfCenter' in request:
+            table.move_left_of_center()
+        elif 'rightOfCenter' in request:
+            table.move_right_of_center()
         elif 'left' in request:
-            print("current left value: ", table.left)
             table.move_left()
         elif 'center' in request:
             table.move_center()
