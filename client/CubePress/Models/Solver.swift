@@ -12,7 +12,7 @@ protocol CubeMovable: AnyObject {
 }
 
 protocol CubeFaceGetter {
-    var cubeFace: CubeFace{ get }
+    var cubeFace: Facelet{ get }
 }
 
 class Solver {
@@ -35,7 +35,7 @@ class Solver {
         //set robot to starting posistion
         try await cubeMover.move(to: .center)
         try await cubeMover.move(to: .mid)
-        //move and scan
+        //Scan
         await cubeMap.add(face: getter.cubeFace)
         try await scanFace(cubeMap, move: .right)
         try await scanFace(cubeMap, move: .left)
@@ -46,18 +46,11 @@ class Solver {
         try await scanFace(cubeMap, move: .mid)
         try await cubeMover.move(to: .top)
         try await scanFace(cubeMap, move: .mid)
-        //create map
-        //take picture of side
-        //log pic
-        //add to map
-        //rotate
-        //...
     }
     
     func solveCube() async throws {
         //DONT TAP THE BUTTON TWICE
-        //guard task == nil else {return}
-        //guard task?.isCancelled == true else {return}
         try await scanCube()
+        //TODO: solveCube()
     }
 }

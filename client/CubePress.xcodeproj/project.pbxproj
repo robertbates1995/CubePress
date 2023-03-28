@@ -18,6 +18,7 @@
 		7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6C29C2681900E6A684 /* CubeMapModel.swift */; };
 		7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6E29C4CEB700E6A684 /* Solver.swift */; };
 		7A430F7129C4D48000E6A684 /* SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F7029C4D48000E6A684 /* SolverTests.swift */; };
+		7A5515B429D36BFC00F47C9C /* KociembaSolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5515B329D36BFC00F47C9C /* KociembaSolver */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsModel.swift */; };
 		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
@@ -94,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A5515B429D36BFC00F47C9C /* KociembaSolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +217,9 @@
 			dependencies = (
 			);
 			name = CubePress;
+			packageProductDependencies = (
+				7A5515B329D36BFC00F47C9C /* KociembaSolver */,
+			);
 			productName = CubePress;
 			productReference = 7A2E139C2953D5D50048628D /* CubePress.app */;
 			productType = "com.apple.product-type.application";
@@ -287,6 +292,9 @@
 				Base,
 			);
 			mainGroup = 7A2E13932953D5D50048628D;
+			packageReferences = (
+				7A5515B229D36BFC00F47C9C /* XCRemoteSwiftPackageReference "KociembaSolver" */,
+			);
 			productRefGroup = 7A2E139D2953D5D50048628D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -681,6 +689,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7A5515B229D36BFC00F47C9C /* XCRemoteSwiftPackageReference "KociembaSolver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/robertbates1995/KociembaSolver.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A5515B329D36BFC00F47C9C /* KociembaSolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A5515B229D36BFC00F47C9C /* XCRemoteSwiftPackageReference "KociembaSolver" */;
+			productName = KociembaSolver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7A2E13942953D5D50048628D /* Project object */;
 }

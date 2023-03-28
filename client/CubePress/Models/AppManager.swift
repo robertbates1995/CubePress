@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KociembaSolver
 
 @MainActor
 class AppManager {

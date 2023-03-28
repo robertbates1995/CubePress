@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "kociembasolver",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/robertbates1995/KociembaSolver.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8d1e37ed1ba59784142c989143b4b2f3fc01cd34"
+      }
+    }
+  ],
+  "version" : 2
+}

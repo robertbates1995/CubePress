@@ -13,35 +13,35 @@ import UIKit
 
 @MainActor
 class CubeMapModel: ObservableObject {
-    @Published var orange =  CubeFace()
-    @Published var white =  CubeFace()
-    @Published var green =  CubeFace()
-    @Published var yellow =  CubeFace()
-    @Published var blue =  CubeFace()
-    @Published var red =  CubeFace()
+    @Published var U =  Facelet()
+    @Published var L =  Facelet()
+    @Published var F =  Facelet()
+    @Published var R =  Facelet()
+    @Published var B =  Facelet()
+    @Published var D =  Facelet()
     
-    func add(face: CubeFace) {
+    func add(face: Facelet) {
         //add face based on center color
         switch face.midCenter {
         case .orange:
-            orange = face
+            F = face
         case .white:
-            white = face
+            U = face
         case .green:
-            green = face
-        case .yellow:
-            yellow = face
+            R = face
         case .blue:
-            blue = face
+            L = face
         case .red:
-            red = face
+            B = face
+        case .yellow:
+            D = face
         default:
             break
         }
     }
 }
 
-struct CubeFace {
+struct Facelet {
     //a data structure that represents one face of the rubix cube
     var topLeft = UIColor.black
     var topCenter = UIColor.black

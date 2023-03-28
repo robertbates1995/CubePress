@@ -9,12 +9,12 @@ import XCTest
 @testable import CubePress
 
 class Getter: CubeFaceGetter {
-    var cubeFace: CubePress.CubeFace {
+    var cubeFace: CubePress.Facelet {
         faces.popLast()!
     }
-    var faces: [CubeFace]
+    var faces: [Facelet]
     
-    init(cubeFaces: [CubeFace]) {
+    init(cubeFaces: [Facelet]) {
         self.faces = cubeFaces
     }
 }
@@ -29,7 +29,7 @@ class Mover: CubeMovable {
 
 final class SolverTests: XCTestCase {
     func testSolver() async throws {
-        let getter = Getter(cubeFaces: [CubeFace(), CubeFace(), CubeFace(), CubeFace(), CubeFace(), CubeFace()])
+        let getter = Getter(cubeFaces: [Facelet(), Facelet(), Facelet(), Facelet(), Facelet(), Facelet()])
         let mover = Mover()
         let sut = await Solver(getter: getter, cubeMover: mover, cubeMap: CubeMapModel())
         try await sut.scanCube()
