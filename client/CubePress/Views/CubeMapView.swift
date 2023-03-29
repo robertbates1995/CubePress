@@ -18,25 +18,25 @@ struct CubeMapView: View {
             GridRow{
                 Color.white
                 //top
-                CubeFaceView(model: model.red)
+                CubeFaceView(model: model.B)
                 Color.white
             }
             GridRow{
-                CubeFaceView(model: model.yellow)
-                CubeFaceView(model: model.blue)
-                CubeFaceView(model: model.white)
+                CubeFaceView(model: model.D)
+                CubeFaceView(model: model.L)
+                CubeFaceView(model: model.U)
                 //front 3 sides
             }
             GridRow{
                 Color.white
                 //bottom
-                CubeFaceView(model: model.orange)
+                CubeFaceView(model: model.F)
                 Color.white
             }
             GridRow{
                 Color.white
                 //back
-                CubeFaceView(model: model.green)
+                CubeFaceView(model: model.R)
                 Color.white
             }
         }
