@@ -27,7 +27,7 @@ def update_settings_dictionary():
                            settings_dictionary['leftOfCenter'],
                            settings_dictionary['center'],
                            settings_dictionary['rightOfCenter'],
-                           settings_dictionary['right'], 16) #initalizing table servo
+                           settings_dictionary['right'], 14) #initalizing table servo
     f.close()
 
 def handle_settings(request):
@@ -51,7 +51,7 @@ table = servos.table_servo(settings_dictionary['left'],
                            settings_dictionary['leftOfCenter'],
                            settings_dictionary['center'],
                            settings_dictionary['rightOfCenter'],
-                           settings_dictionary['right'], 16) #initalizing table servo
+                           settings_dictionary['right'], 14) #initalizing table servo
 
 #set secret values
 ssid = secrets.ssid
