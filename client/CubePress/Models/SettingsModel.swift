@@ -16,7 +16,7 @@ enum Moves: String, CaseIterable, Identifiable, Codable {
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
-    @Published var ipAddress: String = "10.0.0.34"
+    @Published var ipAddress: String = "10.0.0.50"
     @Published var settings = [Moves:String]()
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
@@ -71,7 +71,7 @@ class SettingsModel: ObservableObject {
         Task { @MainActor in
             errorMessage = nil
         }
-        guard let url = URL(string: "http://10.0.0.34/\(setting.rawValue)") else { return }
+        guard let url = URL(string: "http://\(ipAddress)/\(setting.rawValue)") else { return }
         Task{
             do{
                 let _ = try await callServer(url)
@@ -89,7 +89,7 @@ class SettingsModel: ObservableObject {
         Task { @MainActor in
             errorMessage = nil
         }
-        guard let url = URL(string: "http://10.0.0.34/settings") else { return }
+        guard let url = URL(string: "http://\(ipAddress)/settings") else { return }
         Task{
             do {
                 let (data, _ ) = try await callServer(url)
