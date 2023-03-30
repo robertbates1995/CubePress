@@ -29,7 +29,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
         let finder = ColorFinder()
         coloredRects = boundingBoxes.map {
-            .init(rect: $0, color: finder.calcColor(image: ciImage, detected: $0) ?? .black)
+            .init(rect: $0, color: finder.calcColor(image: ciImage.cropped(to: $0)) ?? .black)
         }
         let context = CIContext()
         self.picture = context.createCGImage(ciImage, from: ciImage.extent)

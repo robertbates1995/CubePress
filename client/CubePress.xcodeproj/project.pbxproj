@@ -19,6 +19,8 @@
 		7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6E29C4CEB700E6A684 /* Solver.swift */; };
 		7A430F7129C4D48000E6A684 /* SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F7029C4D48000E6A684 /* SolverTests.swift */; };
 		7A5515B429D36BFC00F47C9C /* KociembaSolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5515B329D36BFC00F47C9C /* KociembaSolver */; };
+		7A5515B629D5FB4800F47C9C /* ColorClasifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A5515B529D5FB4800F47C9C /* ColorClasifier.mlmodel */; };
+		7A5515B929D62D8500F47C9C /* KociembaSolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5515B829D62D8500F47C9C /* KociembaSolver */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsModel.swift */; };
 		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
@@ -71,6 +73,7 @@
 		7A430F6C29C2681900E6A684 /* CubeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapModel.swift; sourceTree = "<group>"; };
 		7A430F6E29C4CEB700E6A684 /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		7A430F7029C4D48000E6A684 /* SolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverTests.swift; sourceTree = "<group>"; };
+		7A5515B529D5FB4800F47C9C /* ColorClasifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorClasifier.mlmodel; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		7AF1922829A6D93000711273 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A5515B929D62D8500F47C9C /* KociembaSolver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +126,7 @@
 				7A2E139E2953D5D50048628D /* CubePress */,
 				7A2E13AF2953D5D70048628D /* CubePressTests */,
 				7A2E139D2953D5D50048628D /* Products */,
+				7A5515B729D62D8500F47C9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,9 +192,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7A5515B729D62D8500F47C9C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7AF1923129A9543900711273 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7A5515B529D5FB4800F47C9C /* ColorClasifier.mlmodel */,
 				7A430F6829BFD58B00E6A684 /* AppManager.swift */,
 				7AF1924E29B7AB8B00711273 /* VideoCapture.swift */,
 				7AF1922C29A7F58300711273 /* FrameModel.swift */,
@@ -238,6 +251,9 @@
 				7A2E13AE2953D5D70048628D /* PBXTargetDependency */,
 			);
 			name = CubePressTests;
+			packageProductDependencies = (
+				7A5515B829D62D8500F47C9C /* KociembaSolver */,
+			);
 			productName = CubePressTests;
 			productReference = 7A2E13AC2953D5D70048628D /* CubePressTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -350,6 +366,7 @@
 				7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */,
 				7A430F6729BA4BFB00E6A684 /* CubeFaceView.swift in Sources */,
 				7A430F6B29BFDBEB00E6A684 /* MainView.swift in Sources */,
+				7A5515B629D5FB4800F47C9C /* ColorClasifier.mlmodel in Sources */,
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
 				7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
@@ -524,7 +541,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CubePress/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"\"This app uses the camera to take photos and videos for use within the app.\"\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -555,7 +572,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CubePress/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"\"This app uses the camera to take photos and videos for use within the app.\"\"";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -703,6 +720,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		7A5515B329D36BFC00F47C9C /* KociembaSolver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7A5515B229D36BFC00F47C9C /* XCRemoteSwiftPackageReference "KociembaSolver" */;
+			productName = KociembaSolver;
+		};
+		7A5515B829D62D8500F47C9C /* KociembaSolver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7A5515B229D36BFC00F47C9C /* XCRemoteSwiftPackageReference "KociembaSolver" */;
 			productName = KociembaSolver;
