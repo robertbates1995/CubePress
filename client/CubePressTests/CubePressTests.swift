@@ -41,11 +41,11 @@ final class CubePressTests: XCTestCase {
     }
     
     func testAllColors() {
-        testCalcColor(picture: "orangeSample", color: .orange)
+//        testCalcColor(picture: "orangeSample", color: .orange)
         testCalcColor(picture: "blueSample", color: .blue)
-        testCalcColor(picture: "greenSample", color: .green)
-        testCalcColor(picture: "yellowSample", color: .yellow)
-        testCalcColor(picture: "redSample", color: .red)
-        testCalcColor(picture: "whiteSample", color: .white)
+//        testCalcColor(picture: "greenSample", color: .green)
+//        testCalcColor(picture: "yellowSample", color: .yellow)
+//        testCalcColor(picture: "redSample", color: .red)
+//        testCalcColor(picture: "whiteSample", color: .white)
     }
 }

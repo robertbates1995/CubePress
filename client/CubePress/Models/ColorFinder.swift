@@ -44,6 +44,10 @@ class ColorFinder {
         guard let photoImage = convertCIImageToCGImage(inputImage: image) else {
             fatalError("Photo doesn't have underlying CGImage.")
         }
+        return calcColor(image: photoImage)
+    }
+    
+    func calcColor(image: CGImage) -> UIColor? {
         
         var result: [VNClassificationObservation]?
         
@@ -51,15 +55,15 @@ class ColorFinder {
                                                          completionHandler: { observation,_ in
             result = observation.results as? [VNClassificationObservation] })
         
-        imageClassificationRequest.imageCropAndScaleOption = .centerCrop
+        imageClassificationRequest.imageCropAndScaleOption = .scaleFill
         
-        let handler = VNImageRequestHandler(cgImage: photoImage, orientation: .up)
+        let handler = VNImageRequestHandler(cgImage: image, orientation: .up)
         let requests: [VNRequest] = [imageClassificationRequest]
         
         // Start the image classification request.
         try? handler.perform(requests)
                 
-        let foo = result?.max(by: {$0.confidence > $1.confidence})
+        let foo = result?.max(by: {$0.confidence < $1.confidence})
         
         switch foo?.identifier {
         case "White":
