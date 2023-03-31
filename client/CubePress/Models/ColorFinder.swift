@@ -32,23 +32,6 @@ class ColorFinder {
     
     func calcColor(image: CIImage) -> UIColor? {
         
-        //move this func!
-        func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {
-            let context = CIContext(options: nil)
-            if let cgImage = context.createCGImage(inputImage, from: inputImage.extent) {
-                return cgImage
-            }
-            return nil
-        }
-        
-        guard let photoImage = convertCIImageToCGImage(inputImage: image) else {
-            fatalError("Photo doesn't have underlying CGImage.")
-        }
-        return calcColor(image: photoImage)
-    }
-    
-    func calcColor(image: CGImage) -> UIColor? {
-        
         var result: [VNClassificationObservation]?
         
         let imageClassificationRequest = VNCoreMLRequest(model: Self.colorClassifier!,
@@ -57,7 +40,7 @@ class ColorFinder {
         
         imageClassificationRequest.imageCropAndScaleOption = .scaleFill
         
-        let handler = VNImageRequestHandler(cgImage: image, orientation: .up)
+        let handler = VNImageRequestHandler(ciImage: image)
         let requests: [VNRequest] = [imageClassificationRequest]
         
         // Start the image classification request.
