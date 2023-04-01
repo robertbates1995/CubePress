@@ -9,12 +9,36 @@ struct ColoredRect {
 }
 
 class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
-    @Published var picture: CGImage?
-    @Published var coloredRects: [ColoredRect] = []
-    @Published var cubeFace = Facelet()
+    @MainActor @Published var picture: CGImage?
+    @MainActor @Published var cubeFace = Facelet()
+    @MainActor @Published var coloredRects: [ColoredRect] = []
+    @MainActor private var ciImage: CIImage?
+    
+    func beginBackgroundProcessing() {
+        //task that wraps other tasks
+        Task {
+            //background while loop
+            while !Task.isCancelled {
+                await processInBackground()
+            }
+        }
+    }
     
     func process(ciImage: CIImage) {
-        let ratio = Double(ciImage.extent.width)/Double(ciImage.extent.height)
+        Task { @MainActor in
+            let context = CIContext()
+            self.picture = context.createCGImage(ciImage, from: ciImage.extent)
+            self.ciImage = ciImage
+        }
+    }
+    
+    func processInBackground() async {
+        let image = await Task{ @MainActor in
+            self.ciImage
+        }.value
+        guard let image else { return }
+        
+        let ratio = Double(image.extent.width)/Double(image.extent.height)
         let width = 0.25
         let height = width * ratio
         var boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
@@ -28,21 +52,22 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
                              CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
         boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
         let finder = ColorFinder()
-        coloredRects = boundingBoxes.map {
-            .init(rect: $0, color: finder.calcColor(image: ciImage.cropped(to: VNImageRectForNormalizedRect($0, Int(ciImage.extent.width), Int(ciImage.extent.height)))) ?? .black)
+        let coloredRects: [ColoredRect] = boundingBoxes.map {
+            .init(rect: $0, color: finder.calcColor(image: image.cropped(to: VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height)))) ?? .black)
         }
 
-        let context = CIContext()
-        self.picture = context.createCGImage(ciImage, from: ciImage.extent)
-        cubeFace.topLeft = coloredRects[0].color
-        cubeFace.topCenter = coloredRects[1].color
-        cubeFace.topRight = coloredRects[2].color
-        cubeFace.midLeft = coloredRects[3].color
-        cubeFace.midCenter = coloredRects[4].color
-        cubeFace.midRight = coloredRects[5].color
-        cubeFace.bottomLeft = coloredRects[6].color
-        cubeFace.bottomCenter = coloredRects[7].color
-        cubeFace.bottomRight = coloredRects[8].color
+        Task{ @MainActor in
+            self.coloredRects = coloredRects
+            cubeFace.topLeft = coloredRects[0].color
+            cubeFace.topCenter = coloredRects[1].color
+            cubeFace.topRight = coloredRects[2].color
+            cubeFace.midLeft = coloredRects[3].color
+            cubeFace.midCenter = coloredRects[4].color
+            cubeFace.midRight = coloredRects[5].color
+            cubeFace.bottomLeft = coloredRects[6].color
+            cubeFace.bottomCenter = coloredRects[7].color
+            cubeFace.bottomRight = coloredRects[8].color
+        }
     }
 }
 
