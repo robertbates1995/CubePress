@@ -14,10 +14,24 @@ enum Moves: String, CaseIterable, Identifiable, Codable {
     case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
 }
 
+enum MacroMoves: String, CaseIterable, Identifiable, Codable {
+    var id: String {rawValue}
+    
+    case U, D, R, L, F, B
+}
+
+let MacroMovesStrings: [MacroMoves: String] = [MacroMoves.U: "LTMTMBXCMLTMCTMLTMC",
+                  MacroMoves.D: "LBXCMLTMCTMRTMC",
+                  MacroMoves.R: "LTMBXCMRTMCTMTMTM",
+                  MacroMoves.L: "LTMTMTMBXCMLTMCTM",
+                  MacroMoves.F: "TMLBXCTMRTMC",
+                  MacroMoves.B: "TMTMTMLBXCTMRTMC"]
+
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
-    @Published var ipAddress: String = "10.0.0.50"
+    @Published var ipAddress: String = "10.0.0.51"
     @Published var settings = [Moves:String]()
+    @Published var macroSettings = [MacroMoves:String]()
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
     }
@@ -83,7 +97,29 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    
+    func macroMoveSetting(setting: MacroMoves) {
+        Task { @MainActor in
+            errorMessage = nil
+        }
+        MacroMovesStrings[setting]?.forEach {foo in
+            guard let url = URL(string: "http://\(ipAddress)/\(foo)") else { return }
+            Task{
+                do{
+                    let _ = try await callServer(url)
+                } catch {
+                    Task { @MainActor in
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+                try await Task.sleep(nanoseconds: 2_000_000_000_0)
+            }
+            print(url)
+        }
+        //loop through each letter in the MacroSetting string
+            //set url for individual move
+            //send url inside Task and do catch block
+            //wait a small time to allow the robot to catch up
+    }
     
     func getSetting() {
         Task { @MainActor in
@@ -99,7 +135,6 @@ class SettingsModel: ObservableObject {
                     self.errorMessage = error.localizedDescription
                 }
             }
-
         }
     }
 }

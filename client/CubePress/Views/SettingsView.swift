@@ -29,9 +29,16 @@ struct SettingsView: View {
                         .frame(width: 200, alignment: .trailing)
                 }
             }
-            Button("Get Settings") {
-                //model.processData()
+            ForEach(MacroMoves.allCases) { move in
+                HStack{
+                    Button("Move \(move.rawValue)") {
+                            model.macroMoveSetting(setting: move)
+                    }
+                }
             }
+//            Button("Get Settings") {
+//                model.processData()
+//            }
         }
         .task {
             model.getSetting()
