@@ -20,9 +20,9 @@ class Getter: CubeFaceGetter {
 }
 
 class Mover: CubeMovable {
-    var movesLoged:[Moves] = []
+    var movesLoged:[Move] = []
     
-    func move(to move: CubePress.Moves) async {
+    func move(to move: CubePress.Move) async {
         movesLoged.append(move)
     }
 }
@@ -34,7 +34,7 @@ final class SolverTests: XCTestCase {
         let sut = await Solver(getter: getter, cubeMover: mover, cubeMap: CubeMapModel())
         try await sut.scanCube()
         //testing that the proper moves were performed
-        XCTAssertEqual(mover.movesLoged, [CubePress.Moves.center, CubePress.Moves.mid, CubePress.Moves.right, CubePress.Moves.left, CubePress.Moves.center, CubePress.Moves.top, CubePress.Moves.mid, CubePress.Moves.top, CubePress.Moves.mid, CubePress.Moves.top, CubePress.Moves.mid]) //empty array is supposed to be the expected array
+        XCTAssertEqual(mover.movesLoged, [CubePress.Move.center, CubePress.Move.mid, CubePress.Move.right, CubePress.Move.left, CubePress.Move.center, CubePress.Move.top, CubePress.Move.mid, CubePress.Move.top, CubePress.Move.mid, CubePress.Move.top, CubePress.Move.mid]) //empty array is supposed to be the expected array
         //test that colors are accurate
         }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CubeMovable: AnyObject {
-    func move(to: Moves) async throws
+    func move(to: Move) async throws
 }
 
 protocol CubeFaceGetter {
@@ -26,7 +26,7 @@ class Solver {
         self.cubeMap = cubeMap
     }
     
-    fileprivate func scanFace(_ cubeMap: CubeMapModel, move: Moves) async throws {
+    fileprivate func scanFace(_ cubeMap: CubeMapModel, move: Move) async throws {
         try await cubeMover.move(to: move)
         await cubeMap.add(face: getter.cubeFace)
     }

@@ -8,35 +8,35 @@
 import Foundation
 import SwiftUI
 
-enum Moves: String, CaseIterable, Identifiable, Codable {
+enum Move: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
     
     case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
 }
 
-enum MacroMoves: String, CaseIterable, Identifiable, Codable {
+enum MacroMove: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
     
     case U, D, R, L, F, B
 }
 
-let MacroMovesStrings: [MacroMoves: String] = [MacroMoves.U: "LTMTMBXCMLTMCTMLTMC",
-                  MacroMoves.D: "LBXCMLTMCTMRTMC",
-                  MacroMoves.R: "LTMBXCMRTMCTMTMTM",
-                  MacroMoves.L: "LTMTMTMBXCMLTMCTM",
-                  MacroMoves.F: "TMLBXCTMRTMC",
-                  MacroMoves.B: "TMTMTMLBXCTMRTMC"]
+let MacroMovesStrings: [MacroMove: String] = [MacroMove.U: "LTMTMBXCMLTMCTMLTMC",
+                  MacroMove.D: "LBXCMLTMCTMRTMC",
+                  MacroMove.R: "LTMBXCMRTMCTMTMTM",
+                  MacroMove.L: "LTMTMTMBXCMLTMCTM",
+                  MacroMove.F: "TMLBXCTMRTMC",
+                  MacroMove.B: "TMTMTMLBXCTMRTMC"]
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var ipAddress: String = "10.0.0.51"
-    @Published var settings = [Moves:String]()
-    @Published var macroSettings = [MacroMoves:String]()
+    @Published var settings = [Move:String]()
+    @Published var macroSettings = [MacroMove:String]()
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
     }
     
-    func binding(for move: Moves) -> Binding<String> {
+    func binding(for move: Move) -> Binding<String> {
         Binding(
             get: {self.settings[move] ?? ""},
             set: {newValue in
@@ -52,7 +52,7 @@ class SettingsModel: ObservableObject {
             let decoder = JSONDecoder()
             let json = try decoder.decode([String:Int].self, from: data)
             for key in json.keys {
-                if let move = Moves(rawValue: key), let value = json[key] {
+                if let move = Move(rawValue: key), let value = json[key] {
                     settings[move] = value.formatted(.number.grouping(.never))
                 }
             }
@@ -62,7 +62,7 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func sendSetting(setting: Moves) {
+    func sendSetting(setting: Move) {
         guard let value = settings[setting] else {return}
         Task { @MainActor in
             errorMessage = nil
@@ -81,7 +81,7 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func moveSetting(setting: Moves) {
+    func moveSetting(setting: Move) {
         Task { @MainActor in
             errorMessage = nil
         }
@@ -97,13 +97,13 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func macroMoveSetting(setting: MacroMoves) {
+    func macroMoveSetting(setting: MacroMove) {
         Task { @MainActor in
             errorMessage = nil
         }
-        MacroMovesStrings[setting]?.forEach {foo in
-            guard let url = URL(string: "http://\(ipAddress)/\(foo)") else { return }
-            Task{
+        MacroMovesStrings[setting]?.forEach { step in
+            guard let url = URL(string: "http://\(ipAddress)/\(step)") else { return }
+            Task {
                 do{
                     let _ = try await callServer(url)
                 } catch {
@@ -111,7 +111,6 @@ class SettingsModel: ObservableObject {
                         self.errorMessage = error.localizedDescription
                     }
                 }
-                try await Task.sleep(nanoseconds: 2_000_000_000_0)
             }
             print(url)
         }
@@ -140,10 +139,33 @@ class SettingsModel: ObservableObject {
 }
 
 extension SettingsModel: CubeMovable {
+    
     //this is where the delay will happen
-    func move(to: Moves) async throws {
+    func move(to: Move) async throws {
         //call robot here
         self.moveSetting(setting: to)
         try await Task.sleep(nanoseconds: 2_000_000_000)
+    }
+    
+    func macroMove(to: MacroMove) async throws {
+        //call robot here
+        //self.macroMoveSetting(setting: to)
+        Task { @MainActor in
+            errorMessage = nil
+        }
+        MacroMovesStrings[to]?.forEach { step in
+            guard let url = URL(string: "http://\(ipAddress)/\(step)") else { return }
+            Task {
+                do {
+                    let _ = try await callServer(url)
+                } catch {
+                    Task { @MainActor in
+                        self.errorMessage = error.localizedDescription
+                    }
+                }
+            }
+            print(url)
+            try await Task.sleep(nanoseconds: 2_000_000_000)
+        }
     }
 }

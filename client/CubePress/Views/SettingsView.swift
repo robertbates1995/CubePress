@@ -19,7 +19,7 @@ struct SettingsView: View {
             if let error = model.errorMessage {
                 Text(error)
             }
-            ForEach(Moves.allCases) { move in
+            ForEach(Move.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
                             model.sendSetting(setting: move)
@@ -29,16 +29,13 @@ struct SettingsView: View {
                         .frame(width: 200, alignment: .trailing)
                 }
             }
-            ForEach(MacroMoves.allCases) { move in
+            ForEach(MacroMove.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
                             model.macroMoveSetting(setting: move)
                     }
                 }
             }
-//            Button("Get Settings") {
-//                model.processData()
-//            }
         }
         .task {
             model.getSetting()
