@@ -32,7 +32,7 @@ struct SettingsView: View {
             ForEach(MacroMove.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
-                            model.macroMoveSetting(setting: move)
+                        model.macroMove(to: move)
                     }
                 }
             }

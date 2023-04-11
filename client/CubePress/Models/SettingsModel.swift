@@ -24,12 +24,12 @@ let MacroMovesStrings: [MacroMove: String] = [MacroMove.U: "LTMTMBXCMLTMCTMLTMC"
                   MacroMove.D: "LBXCMLTMCTMRTMC",
                   MacroMove.R: "LTMBXCMRTMCTMTMTM",
                   MacroMove.L: "LTMTMTMBXCMLTMCTM",
-                  MacroMove.F: "TMLBXCTMRTMC",
+                  MacroMove.F: "TMLBXCTMRTMCTMTM",
                   MacroMove.B: "TMTMTMLBXCTMRTMC"]
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
-    @Published var ipAddress: String = "10.0.0.51"
+    @Published var ipAddress: String = "10.0.0.50"
     @Published var settings = [Move:String]()
     @Published var macroSettings = [MacroMove:String]()
     var callServer: (URL) async throws -> (Data,URLResponse) = {
@@ -147,25 +147,38 @@ extension SettingsModel: CubeMovable {
         try await Task.sleep(nanoseconds: 2_000_000_000)
     }
     
-    func macroMove(to: MacroMove) async throws {
+    
+    func macroMove(to: MacroMove) {
+        Task {
+            try await macroMoveCycle(to: to) //change this setting later
+        }
+    }
+    
+    func macroMoveCycle(to: MacroMove) async throws {
         //call robot here
         //self.macroMoveSetting(setting: to)
-        Task { @MainActor in
-            errorMessage = nil
-        }
-        MacroMovesStrings[to]?.forEach { step in
-            guard let url = URL(string: "http://\(ipAddress)/\(step)") else { return }
-            Task {
-                do {
-                    let _ = try await callServer(url)
-                } catch {
-                    Task { @MainActor in
-                        self.errorMessage = error.localizedDescription
-                    }
-                }
+        for foo in MacroMovesStrings[to]! {
+            switch (foo) {
+            case "T":
+                self.moveSetting(setting: Move.top)
+            case "M":
+                self.moveSetting(setting: Move.mid)
+            case "B":
+                self.moveSetting(setting: Move.bot)
+            case "L":
+                self.moveSetting(setting: Move.left)
+            case "Z":
+                self.moveSetting(setting: Move.leftOfCenter)
+            case "C":
+                self.moveSetting(setting: Move.center)
+            case "X":
+                self.moveSetting(setting: Move.rightOfCenter)
+            case "R":
+                self.moveSetting(setting: Move.right)
+            default:
+                return
             }
-            print(url)
-            try await Task.sleep(nanoseconds: 2_000_000_000)
+            try await Task.sleep(nanoseconds: 1_500_000_000)
         }
     }
 }

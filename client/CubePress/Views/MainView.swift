@@ -21,7 +21,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-            CameraView(model: model.videoCapture, onSolvedTapped: {model.onSolvedTapped()})
+            CameraView(model: model.videoCapture, onSolveTapped: {model.onSolvedTapped()})
                 .tabItem {
                     Label("Camera", systemImage: "camera")
                 }
