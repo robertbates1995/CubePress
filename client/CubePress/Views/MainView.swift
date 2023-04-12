@@ -17,13 +17,17 @@ struct MainView: View {
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }
-            SettingsView(model: model.settingsModel)
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
             CameraView(model: model.videoCapture, onSolveTapped: {model.onSolvedTapped()})
                 .tabItem {
                     Label("Camera", systemImage: "camera")
+                }
+            ControllerView(model: model.settingsModel)
+                .tabItem {
+                    Label("Controller", systemImage: "map")
+                }
+            SettingsView(model: model.settingsModel)
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
                 }
         }
     }
