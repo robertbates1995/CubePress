@@ -41,9 +41,9 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         let ratio = Double(image.extent.width)/Double(image.extent.height)
         let width = 0.25
         let height = width * ratio
-        var boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
-                             CGRect(x: 0.375, y: 0.25, width: width, height: height),
-                             CGRect(x: 0.625, y: 0.25, width: width, height: height),
+        var boundingBoxes = [CGRect(x: 0.125, y: 0.25 + height * 0.5, width: width, height: height * 0.5),
+                             CGRect(x: 0.375, y: 0.25 + height * 0.5, width: width, height: height * 0.5),
+                             CGRect(x: 0.625, y: 0.25 + height * 0.5, width: width, height: height * 0.5),
                              CGRect(x: 0.125, y: 0.25 + height, width: width, height: height),
                              CGRect(x: 0.375, y: 0.25 + height, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25 + height, width: width, height: height),
@@ -55,7 +55,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         let coloredRects: [ColoredRect] = boundingBoxes.map {
             .init(rect: $0, color: finder.calcColor(image: image.cropped(to: VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height)))) ?? .black)
         }
-
+        
         Task{ @MainActor in
             self.coloredRects = coloredRects
             cubeFace.topLeft = coloredRects[0].color
