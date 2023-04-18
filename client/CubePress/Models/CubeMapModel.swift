@@ -20,6 +20,7 @@ class CubeMapModel: ObservableObject {
     @Published var B =  Facelet()
     @Published var D =  Facelet()
     
+    //add function needs to add based on orientation of cube, not color of center square
     func add(face: Facelet) {
         //add face based on center color
         switch face.midCenter {

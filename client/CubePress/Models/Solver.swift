@@ -36,16 +36,36 @@ class Solver {
         try await cubeMover.move(to: .center)
         try await cubeMover.move(to: .mid)
         //Scan
-        await cubeMap.add(face: getter.cubeFace)
-        try await scanFace(cubeMap, move: .right)
-        try await scanFace(cubeMap, move: .left)
+        await MainActor.run(body: {
+            cubeMap.F = getter.cubeFace
+        })
+        try await cubeMover.move(to: .right)
+        await MainActor.run(body: {
+            cubeMap.R = getter.cubeFace
+        })
+        try await cubeMover.move(to: .left)
+        await MainActor.run(body: {
+            cubeMap.L = getter.cubeFace
+        })
         try await cubeMover.move(to: .center)
         try await cubeMover.move(to: .top)
-        try await scanFace(cubeMap, move: .mid)
+        try await cubeMover.move(to: .mid)
+        await MainActor.run(body: {
+            //TODO: this face is being scanned in upside-down
+            cubeMap.U = getter.cubeFace
+        })
         try await cubeMover.move(to: .top)
-        try await scanFace(cubeMap, move: .mid)
+        try await cubeMover.move(to: .mid)
+        await MainActor.run(body: {
+            //TODO: this face is being scanned in upside-down
+            cubeMap.B = getter.cubeFace
+        })
         try await cubeMover.move(to: .top)
-        try await scanFace(cubeMap, move: .mid)
+        try await cubeMover.move(to: .mid)
+        await MainActor.run(body: {
+            //TODO: this face is being scanned in upside-down
+            cubeMap.D = getter.cubeFace
+        })
     }
     
     func solveCube() async throws {
