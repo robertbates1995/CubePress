@@ -31,6 +31,7 @@ class Solver {
         await cubeMap.add(face: getter.cubeFace)
     }
     
+    //TODO: Cube faces are being scanned in upside-down
     func scanCube() async throws {
         //set robot to starting posistion
         try await cubeMover.move(to: .center)
@@ -51,19 +52,16 @@ class Solver {
         try await cubeMover.move(to: .top)
         try await cubeMover.move(to: .mid)
         await MainActor.run(body: {
-            //TODO: this face is being scanned in upside-down
             cubeMap.U = getter.cubeFace
         })
         try await cubeMover.move(to: .top)
         try await cubeMover.move(to: .mid)
         await MainActor.run(body: {
-            //TODO: this face is being scanned in upside-down
             cubeMap.B = getter.cubeFace
         })
         try await cubeMover.move(to: .top)
         try await cubeMover.move(to: .mid)
         await MainActor.run(body: {
-            //TODO: this face is being scanned in upside-down
             cubeMap.D = getter.cubeFace
         })
     }
