@@ -7,6 +7,7 @@
 
 import Foundation
 import KociembaSolver
+import UIKit
 
 protocol CubeMovable: AnyObject {
     func move(to: Move) async throws
@@ -20,7 +21,6 @@ class Solver {
     let getter: CubeFaceGetter
     var cubeMover: CubeMovable
     var cubeMap: CubeMapModel
-    var solution = ""
     
     init(getter: CubeFaceGetter, cubeMover: CubeMovable, cubeMap: CubeMapModel) {
         self.getter = getter
@@ -68,9 +68,35 @@ class Solver {
         })
     }
     
+    fileprivate func convert(color: UIColor) -> String {
+        switch color {
+        case .white:
+            return "U"
+        case .green:
+            return "R"
+        case .orange:
+            return "F"
+        case .yellow:
+            return "D"
+        case .red:
+            return "B"
+        case .blue:
+            return "L"
+        default:
+            return "[error in convert(color: UIColor)]"
+        }
+    }
+    
     fileprivate func convert(face: Facelet) -> String {
-        var product = ""
-        
+        var product = convert(color: face.topLeft)
+        product += convert(color: face.topCenter)
+        product += convert(color: face.topRight)
+        product += convert(color: face.midLeft)
+        product += convert(color: face.midCenter)
+        product += convert(color: face.midRight)
+        product += convert(color: face.bottomLeft)
+        product += convert(color: face.bottomCenter)
+        product += convert(color: face.bottomRight)
         return product
     }
     
@@ -84,6 +110,11 @@ class Solver {
         await MainActor.run(body: {
             var product = ""
             product += convert(face: cubeMap.U)
+            product += convert(face: cubeMap.R)
+            product += convert(face: cubeMap.F)
+            product += convert(face: cubeMap.D)
+            product += convert(face: cubeMap.L)
+            product += convert(face: cubeMap.B)
             return product
         })
     }
@@ -92,13 +123,13 @@ class Solver {
         //DONT TAP THE BUTTON TWICE
         try await scanCube()
         let tmp = FileManager.default.temporaryDirectory.path
-        let configuration = "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
-        let solutionPtr = ApplyKociembaAlgorithm(strdup(configuration), 25000, 500, 0, tmp) //replace configuration with convertMap()
+        let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp)
         if let solutionPtr {
             let solution = String(cString: solutionPtr)
             print(solution)
         } else {
-            print("no solution")
+            let mapString = await convertMap()
+            print("no solution to map: \(mapString)")
         }
     }
 }
