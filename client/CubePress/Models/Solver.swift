@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import KociembaSolver
 
 protocol CubeMovable: AnyObject {
     func move(to: Move) async throws
@@ -19,6 +20,7 @@ class Solver {
     let getter: CubeFaceGetter
     var cubeMover: CubeMovable
     var cubeMap: CubeMapModel
+    var solution = ""
     
     init(getter: CubeFaceGetter, cubeMover: CubeMovable, cubeMap: CubeMapModel) {
         self.getter = getter
@@ -66,9 +68,23 @@ class Solver {
         })
     }
     
+    fileprivate func convert(map: CubeMapModel) -> String {
+        var product = ""
+        
+        return product
+    }
+    
+    fileprivate func convert(instructions: String) -> String {
+        var product = ""
+        
+        return product
+    }
+    
     func solveCube() async throws {
         //DONT TAP THE BUTTON TWICE
         try await scanCube()
-        //TODO: solveCube()
+        var humanSolution = ""
+        KociembaSolver.ApplyKociembaAlgorithm(strdup(convert(map: cubeMap)), 35, 10, 0, humanSolution)
+        solution = convert(instructions: humanSolution)
     }
 }
