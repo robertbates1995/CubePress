@@ -68,7 +68,7 @@ class Solver {
         })
     }
     
-    fileprivate func convert(map: CubeMapModel) -> String {
+    fileprivate func convert(face: Facelet) -> String {
         var product = ""
         
         return product
@@ -80,11 +80,25 @@ class Solver {
         return product
     }
     
+    fileprivate func convertMap() async -> String {
+        await MainActor.run(body: {
+            var product = ""
+            product += convert(face: cubeMap.U)
+            return product
+        })
+    }
+    
     func solveCube() async throws {
         //DONT TAP THE BUTTON TWICE
         try await scanCube()
-        var humanSolution = ""
-        KociembaSolver.ApplyKociembaAlgorithm(strdup(convert(map: cubeMap)), 35, 10, 0, humanSolution)
-        solution = convert(instructions: humanSolution)
+        let tmp = FileManager.default.temporaryDirectory.path
+        let configuration = "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
+        let solutionPtr = ApplyKociembaAlgorithm(strdup(configuration), 25000, 500, 0, tmp) //replace configuration with convertMap()
+        if let solutionPtr {
+            let solution = String(cString: solutionPtr)
+            print(solution)
+        } else {
+            print("no solution")
+        }
     }
 }
