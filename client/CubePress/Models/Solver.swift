@@ -100,7 +100,7 @@ class Solver {
         return product
     }
     
-    fileprivate func convert(instructions: String) -> String {
+    func convert(instructions: String) -> String {
         var product = ""
         
         return product
