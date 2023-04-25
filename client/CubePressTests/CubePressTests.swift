@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import KociembaSolver
 @testable import CubePress
 
 @MainActor
@@ -47,5 +48,21 @@ final class CubePressTests: XCTestCase {
         testCalcColor(picture: "yellowSample", color: .yellow)
         testCalcColor(picture: "redSample", color: .red)
         testCalcColor(picture: "whiteSample", color: .white)
+    }
+    
+    func testCubeMap(map: String, _ expected: String) {
+        let tmp = FileManager.default.temporaryDirectory.path
+        let solutionPtr = ApplyKociembaAlgorithm(strdup(map), 25000, 500, 0, tmp)
+        if let solutionPtr {
+            let solution = String(cString: solutionPtr)
+            XCTAssertEqual(solution, expected)
+        } else {
+            print("no solution to map: \(map)")
+        }
+    }
+
+    func testKociembaSolver() {
+        let solvedMap = "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
+        testCubeMap(map: solvedMap, "R L U2 R L\' B2 U2 R2 F2 L2 D2 L2 F2 ")
     }
 }
