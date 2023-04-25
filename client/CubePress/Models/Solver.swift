@@ -100,8 +100,25 @@ class Solver {
         return product
     }
     
+    func convert(instruction: String) -> String {
+        
+        return ""
+    }
+    
     func convert(instructions: String) -> String {
+        //create dictionary where keys are human moves and values are cubotino moves
+        //parse input string
+        //convert each element into cubotino equivelent
+        var instruction = ""
         var product = ""
+        
+        for char in instructions {
+            if char != " " {
+                instruction += String(char)
+            } else {
+                product += convert(instruction: instruction)
+            }
+        }
         
         return product
     }
