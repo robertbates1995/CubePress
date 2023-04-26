@@ -131,6 +131,8 @@ class Solver {
                 instruction += String(char)
             } else {
                 product += convert(instruction: instruction)
+                //product += MacroMove[instruction]!
+                instruction = ""
             }
         }
         return product
