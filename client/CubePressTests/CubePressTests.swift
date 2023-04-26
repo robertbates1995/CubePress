@@ -63,6 +63,12 @@ final class CubePressTests: XCTestCase {
 
     func testSolver() {
         testKociembaSolver(map: "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB", expected: "R L U2 R L' B2 U2 R2 F2 L2 D2 L2 F2 ")
-        XCTAssertEqual(sut.solver.convert(instructions: "R L U2 R L' B2 U2 R2 F2 L2 D2 L2 F2 "), "should not match")
+        XCTAssertEqual(sut.solver.convert(instructions: "U "), "LTMTMBXCMLTMCTMLTMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "D "), "LBXCMLTMCTMRTMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "R "), "LTMBXCMRTMCTMTMTM")
+        XCTAssertEqual(sut.solver.convert(instructions: "L "), "LTMTMTMBXCMLTMCTM")
+        XCTAssertEqual(sut.solver.convert(instructions: "F "), "TMLBXCTMRTMCTMTM")
+        XCTAssertEqual(sut.solver.convert(instructions: "B "), "TMTMTMLBXCTMRTMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U D "), "LTMTMBXCMLTMCTMLTMC")
     }
 }

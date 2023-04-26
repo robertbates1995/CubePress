@@ -101,8 +101,22 @@ class Solver {
     }
     
     func convert(instruction: String) -> String {
-        
-        return ""
+        switch (instruction) {
+        case "B" :
+            return MacroMove[instruction]!
+        case "L" :
+            return MacroMove[instruction]!
+        case "D" :
+            return MacroMove[instruction]!
+        case "F" :
+            return MacroMove[instruction]!
+        case "R" :
+            return MacroMove[instruction]!
+        case "U" :
+            return MacroMove[instruction]!
+        default:
+            return "[Conversion Issue]"
+        }
     }
     
     func convert(instructions: String) -> String {
