@@ -14,24 +14,24 @@ enum Move: String, CaseIterable, Identifiable, Codable {
     case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
 }
 
-enum MacroMove: String, CaseIterable, Identifiable, Codable {
+enum MacroMoves: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
     
     case U, D, R, L, F, B
 }
 
-let MacroMovesStrings: [MacroMove: String] = [MacroMove.U: "LTMTMBXCMLTMCTMLTMC",
-                  MacroMove.D: "LBXCMLTMCTMRTMC",
-                  MacroMove.R: "LTMBXCMRTMCTMTMTM",
-                  MacroMove.L: "LTMTMTMBXCMLTMCTM",
-                  MacroMove.F: "TMLBXCTMRTMCTMTM",
-                  MacroMove.B: "TMTMTMLBXCTMRTMC"]
+let MacroMove: [String: String] = ["U": "LTMTMBXCMLTMCTMLTMC",
+                  "D": "LBXCMLTMCTMRTMC",
+                  "R": "LTMBXCMRTMCTMTMTM",
+                  "L": "LTMTMTMBXCMLTMCTM",
+                  "F": "TMLBXCTMRTMCTMTM",
+                  "B": "TMTMTMLBXCTMRTMC"]
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var ipAddress: String = "10.0.0.50"
     @Published var settings = [Move:String]()
-    @Published var macroSettings = [MacroMove:String]()
+    @Published var macroSettings = [MacroMove:String()]
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
     }
@@ -97,11 +97,11 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func macroMoveSetting(setting: MacroMove) {
+    func macroMoveSetting(setting: String) {
         Task { @MainActor in
             errorMessage = nil
         }
-        MacroMovesStrings[setting]?.forEach { step in
+        MacroMove[setting]?.forEach { step in
             guard let url = URL(string: "http://\(ipAddress)/\(step)") else { return }
             Task {
                 do{
@@ -148,16 +148,16 @@ extension SettingsModel: CubeMovable {
     }
     
     
-    func macroMove(to: MacroMove) {
+    func macroMove(to: String) {
         Task {
             try await macroMoveCycle(to: to) //change this setting later
         }
     }
     
-    func macroMoveCycle(to: MacroMove) async throws {
+    func macroMoveCycle(to: String) async throws {
         //call robot here
         //self.macroMoveSetting(setting: to)
-        for foo in MacroMovesStrings[to]! {
+        for foo in MacroMove[to]! {
             switch (foo) {
             case "T":
                 self.moveSetting(setting: Move.top)

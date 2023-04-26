@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A1DD01F29F1DF9E00CD0321 /* KociembaSolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A1DD01E29F1DF9E00CD0321 /* KociembaSolver */; };
+		7A1DD02129F99BFD00CD0321 /* Controler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1DD02029F99BFD00CD0321 /* Controler.swift */; };
 		7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E139F2953D5D60048628D /* CubePressApp.swift */; };
 		7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A32953D5D70048628D /* Assets.xcassets */; };
 		7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A62953D5D70048628D /* Preview Assets.xcassets */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A1DD02029F99BFD00CD0321 /* Controler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controler.swift; sourceTree = "<group>"; };
 		7A2E139C2953D5D50048628D /* CubePress.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubePress.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E139F2953D5D60048628D /* CubePressApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressApp.swift; sourceTree = "<group>"; };
 		7A2E13A32953D5D70048628D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				7AF1922629A00BDE00711273 /* SettingsModel.swift */,
 				7AF1924829B15F1E00711273 /* ColorFinder.swift */,
 				7A430F6E29C4CEB700E6A684 /* Solver.swift */,
+				7A1DD02029F99BFD00CD0321 /* Controler.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,
 				7AF1923529A9671800711273 /* VNRectangle.swift in Sources */,
+				7A1DD02129F99BFD00CD0321 /* Controler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

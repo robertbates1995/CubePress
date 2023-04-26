@@ -12,10 +12,10 @@ struct ControllerView: View {
     
     var body: some View {
         List {
-            ForEach(MacroMove.allCases) { move in
+            ForEach(MacroMoves.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
-                        model.macroMove(to: move)
+                        model.macroMove(to: move.rawValue)
                     }
                 }
             }

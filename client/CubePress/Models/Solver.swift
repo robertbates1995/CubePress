@@ -119,7 +119,6 @@ class Solver {
                 product += convert(instruction: instruction)
             }
         }
-        
         return product
     }
     
