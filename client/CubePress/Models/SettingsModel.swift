@@ -8,24 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum Move: String, CaseIterable, Identifiable, Codable {
-    var id: String {rawValue}
-    
-    case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
-}
-
-enum MacroMoves: String, CaseIterable, Identifiable, Codable {
-    var id: String {rawValue}
-    
-    case U, D, R, L, F, B
-}
-
-let MacroMove: [String: String] = ["U": "LTMTMBXCMLTMCTMLTMC",
-                  "D": "LBXCMLTMCTMRTMC",
-                  "R": "LTMBXCMRTMCTMTMTM",
-                  "L": "LTMTMTMBXCMLTMCTM",
-                  "F": "TMLBXCTMRTMCTMTM",
-                  "B": "TMTMTMLBXCTMRTMC"]
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
