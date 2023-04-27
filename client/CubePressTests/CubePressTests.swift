@@ -89,12 +89,11 @@ final class CubePressTests: XCTestCase {
         XCTAssertEqual(sut.solver.convert(instructions: "F' "), "TMLBXCTMRTMCTMTM")
         XCTAssertEqual(sut.solver.convert(instructions: "F2 "), "TMLBXCTMRTMCTMTM")
         XCTAssertEqual(sut.solver.convert(instructions: "F2' "), "TMLBXCTMRTMCTMTM")
-
+        
         XCTAssertEqual(sut.solver.convert(instructions: "B "), "TMTMTMLBXCTMRTMC")
         XCTAssertEqual(sut.solver.convert(instructions: "B' "), "TMTMTMLBXCTMRTMC")
         XCTAssertEqual(sut.solver.convert(instructions: "B2 "), "TMTMTMLBXCTMRTMC")
         XCTAssertEqual(sut.solver.convert(instructions: "B2' "), "TMTMTMLBXCTMRTMC")
-
         
         //checking strings of macroMoves
         XCTAssertEqual(sut.solver.convert(instructions: "U D "), "LTMTMBXCMLTMCTMLTMCLBXCMLTMCTMRTMC")

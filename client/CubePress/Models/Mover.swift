@@ -19,9 +19,24 @@ enum MacroMoves: String, CaseIterable, Identifiable, Codable {
     case U, D, R, L, F, B
 }
 
-let MacroMove: [String: String] = ["U": "LTMTMBXCMLTMCTMLTMC",
-                  "D": "LBXCMLTMCTMRTMC",
-                  "R": "LTMBXCMRTMCTMTMTM",
-                  "L": "LTMTMTMBXCMLTMCTM",
-                  "F": "TMLBXCTMRTMCTMTM",
-                  "B": "TMTMTMLBXCTMRTMC"]
+let MacroMove: [String: String] = ["U": "LTMTMBXCM",
+                                   "U'": "LTMTMBXCM",
+                                   "U2": "LTMTMBXCM",
+                                   "U2'": "LTMTMBXCM",
+                                   "D": "LBXCM",
+                                   "R": "LTMBXCM",
+                                   "L": "LTMTMTMBXCM",
+                                   "F": "TMLBXCM",
+                                   "B": "TMTMTMLBXCM"]
+
+let MacroMoveWithReset: [String: String] = ["U": "LTMTMBXCMLTMCTMLTMC",
+                                   "U'": "LTMTMBXCMLTMCTMLTMC",
+                                   "U2": "LTMTMBXCMLTMCTMLTMC",
+                                   "U2'": "LTMTMBXCMLTMCTMLTMC",
+                                   "D": "LBXCMLTMCTMRTMC",
+                                   "R": "LTMBXCMRTMCTMTMTM",
+                                   "L": "LTMTMTMBXCMLTMCTM",
+                                   "F": "TMLBXCTMRTMCTMTM",
+                                   "B": "TMTMTMLBXCTMRTMC"]
+                  
+                  
