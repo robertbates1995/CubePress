@@ -13,15 +13,27 @@ import UIKit
 
 @MainActor
 class CubeMapModel: ObservableObject {
-    @Published var U =  Facelet()
-    @Published var L =  Facelet()
-    @Published var F =  Facelet()
-    @Published var R =  Facelet()
-    @Published var B =  Facelet()
-    @Published var D =  Facelet()
+    
+    @Published var U =  Face()
+    @Published var L =  Face()
+    @Published var F =  Face()
+    @Published var R =  Face()
+    @Published var B =  Face()
+    @Published var D =  Face()
+    
+    var orientationTable = ["U" : "U",
+                            "L" : "L",
+                            "F" : "F",
+                            "R" : "R",
+                            "B" : "B",
+                            "D" : "D",]
+    
+    func returnActual(move: Move) {
+        
+    }
     
     //add function needs to add based on orientation of cube, not color of center square
-    func add(face: Facelet) {
+    func add(face: Face) {
         //add face based on center color
         switch face.midCenter {
         case .orange:
@@ -42,7 +54,7 @@ class CubeMapModel: ObservableObject {
     }
 }
 
-struct Facelet {
+struct Face {
     //a data structure that represents one face of the rubix cube
     var topLeft = UIColor.black
     var topCenter = UIColor.black

@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct CubeFaceView: View {
-    var model: Facelet
+    var model: Face
     
     var body: some View {
         Grid {

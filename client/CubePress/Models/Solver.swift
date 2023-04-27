@@ -14,7 +14,7 @@ protocol CubeMovable: AnyObject {
 }
 
 protocol CubeFaceGetter {
-    var cubeFace: Facelet{ get }
+    var cubeFace: Face{ get }
 }
 
 class Solver {
@@ -87,7 +87,7 @@ class Solver {
         }
     }
     
-    fileprivate func convert(face: Facelet) -> String {
+    fileprivate func convert(face: Face) -> String {
         var product = convert(color: face.topLeft)
         product += convert(color: face.topCenter)
         product += convert(color: face.topRight)

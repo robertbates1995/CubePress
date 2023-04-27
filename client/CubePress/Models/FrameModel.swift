@@ -10,7 +10,7 @@ struct ColoredRect {
 
 class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
     @MainActor @Published var picture: CGImage?
-    @MainActor @Published var cubeFace = Facelet()
+    @MainActor @Published var cubeFace = Face()
     @MainActor @Published var coloredRects: [ColoredRect] = []
     @MainActor private var ciImage: CIImage?
     

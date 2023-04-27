@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var ipAddress: String = "10.0.0.50"
