@@ -21,17 +21,6 @@ class CubeMapModel: ObservableObject {
     @Published var B =  Face()
     @Published var D =  Face()
     
-    var orientationTable = ["U" : "U",
-                            "L" : "L",
-                            "F" : "F",
-                            "R" : "R",
-                            "B" : "B",
-                            "D" : "D",]
-    
-    func returnActual(move: Move) {
-        
-    }
-    
     //add function needs to add based on orientation of cube, not color of center square
     func add(face: Face) {
         //add face based on center color

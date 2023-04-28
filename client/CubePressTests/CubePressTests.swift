@@ -98,4 +98,8 @@ final class CubePressTests: XCTestCase {
         //checking strings of macroMoves
         XCTAssertEqual(sut.solver.convert(instructions: "U D "), "LTMTMBXCMLTMCTMLTMCLBXCMLTMCTMRTMC")
     }
+    
+    func testMover() {
+        
+    }
 }

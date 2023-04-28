@@ -129,9 +129,9 @@ extension SettingsModel: CubeMovable {
     }
     
     
-    func macroMove(to: String) {
+    func macroMove(move: String) {
         Task {
-            try await macroMoveCycle(to: to) //change this setting later
+            try await macroMoveCycle(to: move) //change this setting later
         }
     }
     
