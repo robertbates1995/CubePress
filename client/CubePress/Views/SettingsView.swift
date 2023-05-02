@@ -14,10 +14,11 @@ struct SettingsView: View {
         List {
             Section(header: Text("connected on i.p address")){
                 TextField("", text: $model.ipAddress)
+                if let error = model.errorMessage {
+                    Text(error).foregroundColor(.red)
+                }
             }
-            if let error = model.errorMessage {
-                Text(error)
-            }
+            
             
             Section(header: Text("Arm Servo Settings")){
                 SettingRow(move: Move.top, model: model)
