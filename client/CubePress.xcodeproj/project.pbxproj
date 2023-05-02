@@ -13,6 +13,7 @@
 		7A2E13A42953D5D70048628D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A32953D5D70048628D /* Assets.xcassets */; };
 		7A2E13A72953D5D70048628D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E13A62953D5D70048628D /* Preview Assets.xcassets */; };
 		7A2E13B12953D5D70048628D /* CubePressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E13B02953D5D70048628D /* CubePressTests.swift */; };
+		7A3C46B62A01A1030010DE7F /* CubeRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C46B52A01A1030010DE7F /* CubeRenderView.swift */; };
 		7A430F6429BA4BC200E6A684 /* CubeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6329BA4BC200E6A684 /* CubeMapView.swift */; };
 		7A430F6729BA4BFB00E6A684 /* CubeFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */; };
 		7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6829BFD58B00E6A684 /* AppManager.swift */; };
@@ -72,6 +73,7 @@
 		7A2E13AC2953D5D70048628D /* CubePressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2E13B02953D5D70048628D /* CubePressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubePressTests.swift; sourceTree = "<group>"; };
 		7A2E13B62953D5D70048628D /* CubePressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubePressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3C46B52A01A1030010DE7F /* CubeRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeRenderView.swift; sourceTree = "<group>"; };
 		7A430F6329BA4BC200E6A684 /* CubeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapView.swift; sourceTree = "<group>"; };
 		7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFaceView.swift; sourceTree = "<group>"; };
 		7A430F6829BFD58B00E6A684 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				7A430F6629BA4BFB00E6A684 /* CubeFaceView.swift */,
 				7A430F6A29BFDBEB00E6A684 /* MainView.swift */,
 				7AD1926229E71ED500EA16C6 /* ControllerView.swift */,
+				7A3C46B52A01A1030010DE7F /* CubeRenderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				7AE4031829D75A0200854C0D /* ColorClasifier5.mlmodel in Sources */,
 				7A5515B629D5FB4800F47C9C /* ColorClasifier.mlmodel in Sources */,
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
+				7A3C46B62A01A1030010DE7F /* CubeRenderView.swift in Sources */,
 				7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */,

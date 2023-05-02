@@ -12,33 +12,43 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            HStack {
-                Text("connected on i.p address:")
+            Section(header: Text("connected on i.p address")){
                 TextField("", text: $model.ipAddress)
             }
             if let error = model.errorMessage {
                 Text(error)
             }
-            ForEach(Move.allCases) { move in
-                HStack{
-                    Button("Move \(move.rawValue)") {
-                            model.sendSetting(setting: move)
-                    }
-                    Spacer()
-                    TextField(move.rawValue, text: model.binding(for: move))
-                        .frame(width: 200, alignment: .trailing)
-                }
+            
+            Section(header: Text("Arm Servo Settings")){
+                SettingRow(move: Move.top, model: model)
+                SettingRow(move: Move.mid, model: model)
+                SettingRow(move: Move.bot, model: model)
             }
-            ForEach(MacroMoves.allCases) { move in
-                HStack{
-                    Button("Move \(move.rawValue)") {
-                        model.macroMove(move: move.rawValue)
-                    }
-                }
+            
+            Section(header: Text("Table Servo Settings")){
+                SettingRow(move: Move.left, model: model)
+                SettingRow(move: Move.center, model: model)
+                SettingRow(move: Move.right, model: model)
             }
         }
         .task {
             model.getSetting()
+        }
+    }
+}
+
+struct SettingRow: View {
+    let move: Move
+    let model: SettingsModel
+    
+    var body: some View {
+        HStack{
+            Button("Move \(move.rawValue)") {
+                    model.sendSetting(setting: move)
+            }
+            Spacer()
+            TextField(move.rawValue, text: model.binding(for: move))
+                .frame(width: 200, alignment: .trailing)
         }
     }
 }
