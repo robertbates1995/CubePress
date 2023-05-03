@@ -12,7 +12,7 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            Section(header: Text("connected on i.p address")){
+            Section(header: Text("Connected On")){
                 TextField("", text: $model.ipAddress)
                 if let error = model.errorMessage {
                     Text(error).foregroundColor(.red)

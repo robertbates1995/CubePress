@@ -41,6 +41,7 @@ struct CubeMapView: View {
             }
         }
         .aspectRatio(contentMode: .fit)
+        .padding()
     }
 }
 

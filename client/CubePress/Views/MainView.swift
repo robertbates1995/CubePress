@@ -15,7 +15,7 @@ struct MainView: View {
         TabView {
             CubeMapView(model: model.cubeMapModel)
                 .tabItem {
-                    Label("Map", systemImage: "map")
+                    Label("Map", systemImage: "square.grid.3x3.square")
                 }
             CameraView(model: model.videoCapture, onSolveTapped: {model.onSolvedTapped()})
                 .tabItem {
@@ -23,7 +23,7 @@ struct MainView: View {
                 }
             ControllerView(model: model.settingsModel)
                 .tabItem {
-                    Label("Controller", systemImage: "map")
+                    Label("Controller", systemImage: "dpad.fill")
                 }
             SettingsView(model: model.settingsModel)
                 .tabItem {

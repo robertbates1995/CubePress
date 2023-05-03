@@ -9,8 +9,8 @@ import Foundation
 
 class Mover {
     
-    let conversionTable = ["U": "LTMTMBXCM",
-                     "U'": "LTMTMBXCM",
+    let conversionTable = ["U": "TMTMBLMC",
+                     "U'": "TMTMBRMC",
                      "U2": "LTMTMBXCM",
                      "U2'": "LTMTMBXCM",
                      "D": "LBXCM",
@@ -61,10 +61,6 @@ class Mover {
         }
     }
 }
-
-
-
-
 
 enum Move: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
