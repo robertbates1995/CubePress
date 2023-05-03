@@ -21,15 +21,15 @@ struct SettingsView: View {
             
             
             Section(header: Text("Arm Servo Settings")){
-                SettingRow(move: Move.top, model: model)
-                SettingRow(move: Move.mid, model: model)
-                SettingRow(move: Move.bot, model: model)
+                SettingRow(move: Move.top, model: model, moveString: "Top")
+                SettingRow(move: Move.mid, model: model, moveString: "Middle")
+                SettingRow(move: Move.bot, model: model, moveString: "Bottom")
             }
             
             Section(header: Text("Table Servo Settings")){
-                SettingRow(move: Move.left, model: model)
-                SettingRow(move: Move.center, model: model)
-                SettingRow(move: Move.right, model: model)
+                SettingRow(move: Move.left, model: model, moveString: "Left")
+                SettingRow(move: Move.center, model: model, moveString: "Center")
+                SettingRow(move: Move.right, model: model, moveString: "Right")
             }
         }
         .task {
@@ -41,15 +41,17 @@ struct SettingsView: View {
 struct SettingRow: View {
     let move: Move
     let model: SettingsModel
+    let moveString: String
     
     var body: some View {
         HStack{
-            Button("Move \(move.rawValue)") {
+            Button("Move \(moveString)") {
                     model.sendSetting(setting: move)
             }
             Spacer()
-            TextField(move.rawValue, text: model.binding(for: move))
+            TextField(moveString, text: model.binding(for: move))
                 .frame(width: 200, alignment: .trailing)
+                .multilineTextAlignment(.trailing)
         }
     }
 }
