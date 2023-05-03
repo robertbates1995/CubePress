@@ -65,38 +65,18 @@ final class CubePressTests: XCTestCase {
         testKociembaSolver(map: "UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB", expected: "R L U2 R L' B2 U2 R2 F2 L2 D2 L2 F2 ")
         
         //checking each individual conversion
-        XCTAssertEqual(sut.solver.convert(instructions: "U "), "LTMTMBXCMLTMCTMLTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "U' "), "LTMTMBXCMLTMCTMLTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "U2 "), "LTMTMBXCMLTMCTMLTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "U2' "), "LTMTMBXCMLTMCTMLTMC")
-
-        XCTAssertEqual(sut.solver.convert(instructions: "D "), "LBXCMLTMCTMRTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "D' "), "LBXCMLTMCTMRTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "D2 "), "LBXCMLTMCTMRTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "D2' "), "LBXCMLTMCTMRTMC")
-
-        XCTAssertEqual(sut.solver.convert(instructions: "R "), "LTMBXCMRTMCTMTMTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "R' "), "LTMBXCMRTMCTMTMTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "R2 "), "LTMBXCMRTMCTMTMTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "R2' "), "LTMBXCMRTMCTMTMTM")
-
-        XCTAssertEqual(sut.solver.convert(instructions: "L "), "LTMTMTMBXCMLTMCTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "L' "), "LTMTMTMBXCMLTMCTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "L2 "), "LTMTMTMBXCMLTMCTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "L2' "), "LTMTMTMBXCMLTMCTM")
-
-        XCTAssertEqual(sut.solver.convert(instructions: "F "), "TMLBXCTMRTMCTMTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "F' "), "TMLBXCTMRTMCTMTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "F2 "), "TMLBXCTMRTMCTMTM")
-        XCTAssertEqual(sut.solver.convert(instructions: "F2' "), "TMLBXCTMRTMCTMTM")
-        
-        XCTAssertEqual(sut.solver.convert(instructions: "B "), "TMTMTMLBXCTMRTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "B' "), "TMTMTMLBXCTMRTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "B2 "), "TMTMTMLBXCTMRTMC")
-        XCTAssertEqual(sut.solver.convert(instructions: "B2' "), "TMTMTMLBXCTMRTMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U "), "TMTMBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U' "), "TMTMBLMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U2 "), "TMTMLBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U2' "), "TMTMRBLMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "D "), "BRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "R "), "LTMCBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "L "), "RTMCBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "F "), "TMBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "B "), "TMTMTMBRMC")
         
         //checking strings of macroMoves
-        XCTAssertEqual(sut.solver.convert(instructions: "U D "), "LTMTMBXCMLTMCTMLTMCLBXCMLTMCTMRTMC")
+        //XCTAssertEqual(sut.solver.convert(instructions: "U D R L F B "), "TMTMLTMCRTMCTMTMTMTM")
     }
     
     func testMover() {

@@ -100,21 +100,19 @@ class Solver {
     }
     
     func convert(instruction: String) -> String {
-        switch (instruction) {
-        case "B" :
-            return MacroMove[instruction]!
-        case "L" :
-            return MacroMove[instruction]!
-        case "D" :
-            return MacroMove[instruction]!
-        case "F" :
-            return MacroMove[instruction]!
-        case "R" :
-            return MacroMove[instruction]!
-        case "U" :
-            return MacroMove[instruction]!
+        switch instruction.count {  //switch on string length
+        case 1 :    //execute standard move
+            return MacroMove[instruction]! + "BRMC"
+        case 2 :    //determine if prime or double and act accordingly
+            if instruction.contains("'") {  //prime case
+                return MacroMove[instruction[0]]! + "BLMC"
+            } else {    //double case
+                return MacroMove[instruction[0]]! + "LBRMC"
+            }
+        case 3 :    //preform prime double version of move
+            return MacroMove[instruction[0]]! + "RBLMC"
         default:
-            return "[Conversion Issue]"
+            return "[error in convert(instruction: UIColor)]"
         }
     }
     
@@ -162,5 +160,11 @@ class Solver {
             let mapString = await convertMap()
             print("no solution to map: \(mapString)")
         }
+    }
+}
+
+extension String {
+    subscript(i: Int) -> String {
+        return  i < count ? String(self[index(startIndex, offsetBy: i)]) : ""
     }
 }

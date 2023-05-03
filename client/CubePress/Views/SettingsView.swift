@@ -45,7 +45,7 @@ struct SettingRow: View {
     
     var body: some View {
         HStack{
-            Button("Move \(moveString)") {
+            Button("Test \(moveString)") {
                     model.sendSetting(setting: move)
             }
             Spacer()
@@ -56,7 +56,7 @@ struct SettingRow: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
+class SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(model: .init())
     }

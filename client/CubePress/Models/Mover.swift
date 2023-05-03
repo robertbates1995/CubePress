@@ -9,22 +9,19 @@ import Foundation
 
 class Mover {
     
-    let conversionTable = ["U": "TMTMBLMC",
-                     "U'": "TMTMBRMC",
-                     "U2": "LTMTMBXCM",
-                     "U2'": "LTMTMBXCM",
-                     "D": "LBXCM",
-                     "R": "LTMBXCM",
-                     "L": "LTMTMTMBXCM",
-                     "F": "TMLBXCM",
-                     "B": "TMTMTMLBXCM"]
+    let conversionTable = ["U": "TMTM",
+                           "D": "",
+                           "R": "LTMC",
+                           "L": "RTMC",
+                           "F": "TM",
+                           "B": "TMTMTM"]
     
     var referenceFrame = ["U" : "U",
-                            "L" : "L",
-                            "F" : "F",
-                            "R" : "R",
-                            "B" : "B",
-                            "D" : "D",]
+                          "L" : "L",
+                          "F" : "F",
+                          "R" : "R",
+                          "B" : "B",
+                          "D" : "D",]
     
     func input(move: String) {
         
@@ -74,24 +71,9 @@ enum MacroMoves: String, CaseIterable, Identifiable, Codable {
     case U, D, R, L, F, B
 }
 
-let MacroMove: [String: String] = ["U": "LTMTMBXCM",
-                                   "U'": "LTMTMBXCM",
-                                   "U2": "LTMTMBXCM",
-                                   "U2'": "LTMTMBXCM",
-                                   "D": "LBXCM",
-                                   "R": "LTMBXCM",
-                                   "L": "LTMTMTMBXCM",
-                                   "F": "TMLBXCM",
-                                   "B": "TMTMTMLBXCM"]
-
-let MacroMoveWithReset: [String: String] = ["U": "LTMTMBXCMLTMCTMLTMC",
-                                            "U'": "LTMTMBXCMLTMCTMLTMC",
-                                            "U2": "LTMTMBXCMLTMCTMLTMC",
-                                            "U2'": "LTMTMBXCMLTMCTMLTMC",
-                                            "D": "LBXCMLTMCTMRTMC",
-                                            "R": "LTMBXCMRTMCTMTMTM",
-                                            "L": "LTMTMTMBXCMLTMCTM",
-                                            "F": "TMLBXCTMRTMCTMTM",
-                                            "B": "TMTMTMLBXCTMRTMC"]
-
-
+let MacroMove: [String: String] = ["U": "TMTM",
+                                   "D": "",
+                                   "R": "LTMC",
+                                   "L": "RTMC",
+                                   "F": "TM",
+                                   "B": "TMTMTM"]
