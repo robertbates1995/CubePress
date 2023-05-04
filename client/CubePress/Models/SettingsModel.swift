@@ -148,12 +148,8 @@ extension SettingsModel: CubeMovable {
                 self.moveSetting(setting: Move.bot)
             case "L":
                 self.moveSetting(setting: Move.left)
-            case "Z":
-                self.moveSetting(setting: Move.leftOfCenter)
             case "C":
                 self.moveSetting(setting: Move.center)
-            case "X":
-                self.moveSetting(setting: Move.rightOfCenter)
             case "R":
                 self.moveSetting(setting: Move.right)
             default:

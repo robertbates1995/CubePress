@@ -16,13 +16,6 @@ class Mover {
                            "F": "TM",
                            "B": "TMTMTM"]
     
-    var referenceFrame = ["U" : "U",
-                          "L" : "L",
-                          "F" : "F",
-                          "R" : "R",
-                          "B" : "B",
-                          "D" : "D",]
-    
     func input(move: String) {
         
     }

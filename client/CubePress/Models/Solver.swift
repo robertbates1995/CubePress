@@ -21,6 +21,12 @@ class Solver {
     let getter: CubeFaceGetter
     var cubeMover: CubeMovable
     var cubeMap: CubeMapModel
+    var referenceFrame = ["U" : "U",
+                          "L" : "L",
+                          "F" : "F",
+                          "R" : "R",
+                          "B" : "B",
+                          "D" : "D",]
     
     init(getter: CubeFaceGetter, cubeMover: CubeMovable, cubeMap: CubeMapModel) {
         self.getter = getter
@@ -99,18 +105,77 @@ class Solver {
         return product
     }
     
+    fileprivate func convertFrameWith(move: String) {
+        switch move {
+        case "U" :
+            let tempF = referenceFrame["F"]
+            let tempD = referenceFrame["D"]
+            referenceFrame["F"] = referenceFrame["B"]
+            referenceFrame["D"] = referenceFrame["U"]
+            referenceFrame["B"] = tempF
+            referenceFrame["U"] = tempD
+        case "R" :
+            let tempU = referenceFrame["U"]
+            referenceFrame["U"] = referenceFrame["L"]
+            referenceFrame["L"] = referenceFrame["D"]
+            referenceFrame["D"] = referenceFrame["R"]
+            referenceFrame["R"] = tempU
+        case "L" :
+            let tempU = referenceFrame["U"]
+            referenceFrame["U"] = referenceFrame["R"]
+            referenceFrame["R"] = referenceFrame["D"]
+            referenceFrame["D"] = referenceFrame["L"]
+            referenceFrame["L"] = tempU
+        case "B" :
+            let tempU = referenceFrame["U"]
+            referenceFrame["U"] = referenceFrame["F"]
+            referenceFrame["F"] = referenceFrame["D"]
+            referenceFrame["D"] = referenceFrame["B"]
+            referenceFrame["B"] = tempU
+        case "F" :
+            let tempU = referenceFrame["U"]
+            referenceFrame["U"] = referenceFrame["L"]
+            referenceFrame["L"] = referenceFrame["D"]
+            referenceFrame["D"] = referenceFrame["R"]
+            referenceFrame["R"] = tempU
+        case " " :
+            let tempF = referenceFrame["F"]
+            referenceFrame["F"] = referenceFrame["R"]
+            referenceFrame["R"] = referenceFrame["B"]
+            referenceFrame["B"] = referenceFrame["L"]
+            referenceFrame["L"] = tempF
+        case "'" :
+            let tempF = referenceFrame["F"]
+            referenceFrame["F"] = referenceFrame["L"]
+            referenceFrame["L"] = referenceFrame["B"]
+            referenceFrame["B"] = referenceFrame["R"]
+            referenceFrame["R"] = tempF
+        default:
+            return
+        }
+    }
+    
     func convert(instruction: String) -> String {
         switch instruction.count {  //switch on string length
         case 1 :    //execute standard move
-            return MacroMove[instruction]! + "BRMC"
+            let move = MacroMove[referenceFrame[instruction]!]! + "BRMC"
+            convertFrameWith(move: instruction)
+            convertFrameWith(move: " ")
+            return move
         case 2 :    //determine if prime or double and act accordingly
             if instruction.contains("'") {  //prime case
-                return MacroMove[instruction[0]]! + "BLMC"
+                let move = MacroMove[referenceFrame[instruction[0]]!]! + "BLMC"
+                convertFrameWith(move: instruction[0])
+                convertFrameWith(move: instruction[1])
+                return move
             } else {    //double case
-                return MacroMove[instruction[0]]! + "LBRMC"
+                let move = MacroMove[referenceFrame[instruction[0]]!]! + "LBRMC"
+                convertFrameWith(move: " ")
+                convertFrameWith(move: " ")
+                return move
             }
         case 3 :    //preform prime double version of move
-            return MacroMove[instruction[0]]! + "RBLMC"
+            return MacroMove[referenceFrame[instruction[0]]!]! + "RBLMC"
         default:
             return "[error in convert(instruction: UIColor)]"
         }
