@@ -14,12 +14,14 @@ class AppManager {
     var settingsModel: SettingsModel
     var cubeMapModel: CubeMapModel //needs to be made observable
     var solver: Solver
+    var mover: Mover
     
     init() {
         self.videoCapture = VideoCapture()
         self.settingsModel = SettingsModel()
         self.cubeMapModel = CubeMapModel()
-        self.solver = Solver(getter: videoCapture.model, cubeMover: settingsModel, cubeMap: cubeMapModel)
+        self.mover = Mover(settings: settingsModel)
+        self.solver = Solver(getter: videoCapture.model, cubeMover: mover, cubeMap: cubeMapModel)
     }
     
     func onSolvedTapped() {

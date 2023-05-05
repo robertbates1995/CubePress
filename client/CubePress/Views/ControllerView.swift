@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ControllerView: View {
-    @ObservedObject var model: SettingsModel
+    var model: Mover
     
     var body: some View {
         List {
             ForEach(MacroMoves.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
-                        model.macroMove(move: move.rawValue)
+                        model.input(moves: move.rawValue)
                     }
                 }
             }
@@ -25,6 +25,6 @@ struct ControllerView: View {
 
 struct ControllerView_Previews: PreviewProvider {
     static var previews: some View {
-        ControllerView(model: .init())
+        ControllerView(model: Mover(settings: SettingsModel()))
     }
 }

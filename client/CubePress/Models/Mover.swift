@@ -7,47 +7,39 @@
 
 import Foundation
 
-class Mover {
-    
-    let conversionTable = ["U": "TMTM",
-                           "D": "",
-                           "R": "LTMC",
-                           "L": "RTMC",
-                           "F": "TM",
-                           "B": "TMTMTM"]
-    
-    func input(move: String) {
-        
+class Mover: CubeMovable {
+    var errorMessage: String?
+    var settings: SettingsModel
+    var callServer: (URL) async throws -> (Data,URLResponse) = {
+        try await URLSession.shared.data(from: $0)
     }
     
-    func input(macroMove: String) {
-        switch (macroMove) {
-        case "U":
-            //change referenceFrame
-            //input comand to CUBOTino
-            return
-        case "L":
-            //change referenceFrame
-            //input comand to CUBOTino
-            return
-        case "F":
-            //change referenceFrame
-            //input comand to CUBOTino
-            return
-        case "R":
-            //change referenceFrame
-            //input comand to CUBOTino
-            return
-        case "B":
-            //change referenceFrame
-            //input comand to CUBOTino
-            return
-        case "D":
-            //change referenceFrame
-            //input comand to CUBOTino
-            return
-        default:
-            return
+    init(settings: SettingsModel) {
+        self.settings = settings
+    }
+    
+    func input(move: String) async throws {
+        Task { @MainActor in
+            errorMessage = nil
+        }
+        guard let url = URL(string: "http://\(settings.ipAddress)/\(move)") else { return }
+        Task{
+            do{
+                let _ = try await callServer(url)
+            } catch {
+                Task { @MainActor in
+                    self.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
+    
+    func input(moves: String) {
+        for move in moves {
+            Task {
+                try await input(move: String(move))
+                try await Task.sleep(nanoseconds: 2_000_000_000)
+            }
         }
     }
 }
@@ -55,14 +47,10 @@ class Mover {
 enum Move: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}
     
-    case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
+    case top, mid, bot, left, center, right
 }
 
-enum MacroMoves: String, CaseIterable, Identifiable, Codable {
-    var id: String {rawValue}
-    
-    case U, D, R, L, F, B
-}
+
 
 let MacroMove: [String: String] = ["U": "TMTM",
                                    "D": "",

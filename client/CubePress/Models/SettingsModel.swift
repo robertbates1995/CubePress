@@ -53,52 +53,12 @@ class SettingsModel: ObservableObject {
             do{
                 let (data, _ ) = try await callServer(url)
                 await processData(data)
-                moveSetting(setting: setting)
             } catch {
                 Task { @MainActor in
                     self.errorMessage = error.localizedDescription
                 }
             }
         }
-    }
-    
-    func moveSetting(setting: Move) {
-        Task { @MainActor in
-            errorMessage = nil
-        }
-        guard let url = URL(string: "http://\(ipAddress)/\(setting.rawValue)") else { return }
-        Task{
-            do{
-                let _ = try await callServer(url)
-            } catch {
-                Task { @MainActor in
-                    self.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
-    
-    func macroMoveSetting(setting: String) {
-        Task { @MainActor in
-            errorMessage = nil
-        }
-        MacroMove[setting]?.forEach { step in
-            guard let url = URL(string: "http://\(ipAddress)/\(step)") else { return }
-            Task {
-                do{
-                    let _ = try await callServer(url)
-                } catch {
-                    Task { @MainActor in
-                        self.errorMessage = error.localizedDescription
-                    }
-                }
-            }
-            print(url)
-        }
-        //loop through each letter in the MacroSetting string
-            //set url for individual move
-            //send url inside Task and do catch block
-            //wait a small time to allow the robot to catch up
     }
     
     func getSetting() {
@@ -115,47 +75,6 @@ class SettingsModel: ObservableObject {
                     self.errorMessage = error.localizedDescription
                 }
             }
-        }
-    }
-}
-
-extension SettingsModel: CubeMovable {
-    
-    //this is where the delay will happen
-    func move(to: Move) async throws {
-        //call robot here
-        self.moveSetting(setting: to)
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-    }
-    
-    
-    func macroMove(move: String) {
-        Task {
-            try await macroMoveCycle(to: move) //change this setting later
-        }
-    }
-    
-    func macroMoveCycle(to: String) async throws {
-        //call robot here
-        //self.macroMoveSetting(setting: to)
-        for foo in MacroMove[to]! {
-            switch (foo) {
-            case "T":
-                self.moveSetting(setting: Move.top)
-            case "M":
-                self.moveSetting(setting: Move.mid)
-            case "B":
-                self.moveSetting(setting: Move.bot)
-            case "L":
-                self.moveSetting(setting: Move.left)
-            case "C":
-                self.moveSetting(setting: Move.center)
-            case "R":
-                self.moveSetting(setting: Move.right)
-            default:
-                return
-            }
-            try await Task.sleep(nanoseconds: 1_500_000_000)
         }
     }
 }

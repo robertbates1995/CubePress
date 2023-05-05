@@ -10,7 +10,7 @@ import KociembaSolver
 import UIKit
 
 protocol CubeMovable: AnyObject {
-    func move(to: Move) async throws
+    func input(moves: String) async throws
 }
 
 protocol CubeFaceGetter {
@@ -35,42 +35,23 @@ class Solver {
     }
     
     fileprivate func scanFace(_ cubeMap: CubeMapModel, move: Move) async throws {
-        try await cubeMover.move(to: move)
+        try await cubeMover.input(moves: move.rawValue)
         await cubeMap.add(face: getter.cubeFace)
     }
     
     func scanCube() async throws {
-        //set robot to starting posistion
-        try await cubeMover.move(to: .center)
-        try await cubeMover.move(to: .mid)
-        //Scan
-        await MainActor.run(body: {
-            cubeMap.U = getter.cubeFace
-        })
-        try await cubeMover.move(to: .right)
-        await MainActor.run(body: {
-            cubeMap.R = getter.cubeFace
-        })
-        try await cubeMover.move(to: .left)
-        await MainActor.run(body: {
-            cubeMap.L = getter.cubeFace
-        })
-        try await cubeMover.move(to: .center)
-        try await cubeMover.move(to: .top)
-        try await cubeMover.move(to: .mid)
-        await MainActor.run(body: {
-            cubeMap.B = getter.cubeFace
-        })
-        try await cubeMover.move(to: .top)
-        try await cubeMover.move(to: .mid)
-        await MainActor.run(body: {
-            cubeMap.D = getter.cubeFace
-        })
-        try await cubeMover.move(to: .top)
-        try await cubeMover.move(to: .mid)
-        await MainActor.run(body: {
-            cubeMap.F = getter.cubeFace
-        })
+        try await cubeMover.input(moves: "CM")  //set robot to starting posistion
+        await MainActor.run(body: {cubeMap.U = getter.cubeFace} )  //Scan
+        try await cubeMover.input(moves: "R")
+        await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
+        try await cubeMover.input(moves: "L")
+        await MainActor.run(body: {cubeMap.L = getter.cubeFace} )
+        try await cubeMover.input(moves: "CTM")
+        await MainActor.run(body: {cubeMap.B = getter.cubeFace} )
+        try await cubeMover.input(moves: "TM")
+        await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
+        try await cubeMover.input(moves: "TM")
+        await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
     }
     
     fileprivate func convert(color: UIColor) -> String {
@@ -220,6 +201,7 @@ class Solver {
         let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp)
         if let solutionPtr {
             let solution = String(cString: solutionPtr)
+            // TODO: cubeMover
             print(solution)
         } else {
             let mapString = await convertMap()
@@ -232,4 +214,10 @@ extension String {
     subscript(i: Int) -> String {
         return  i < count ? String(self[index(startIndex, offsetBy: i)]) : ""
     }
+}
+
+enum MacroMoves: String, CaseIterable, Identifiable, Codable {
+    var id: String {rawValue}
+    
+    case U, D, R, L, F, B
 }

@@ -21,7 +21,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Camera", systemImage: "camera")
                 }
-            ControllerView(model: model.settingsModel)
+            ControllerView(model: model.mover)
                 .tabItem {
                     Label("Controller", systemImage: "dpad.fill")
                 }
