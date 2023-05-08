@@ -12,31 +12,32 @@ import SwiftUI
 
 struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
+    var colorSelected = Color.black
     
     var body: some View {
         Grid{
             GridRow{
                 Color.white
                 //top
-                CubeFaceView(model: model.U)
+                CubeFaceView(model: model.U, faceLabel: "Up")
                 Color.white
             }
             GridRow{
-                CubeFaceView(model: model.L)
-                CubeFaceView(model: model.F)
-                CubeFaceView(model: model.R)
+                CubeFaceView(model: model.L, faceLabel: "Left")
+                CubeFaceView(model: model.F, faceLabel: "Front")
+                CubeFaceView(model: model.R, faceLabel: "Right")
                 //front 3 sides
             }
             GridRow{
                 Color.white
                 //bottom
-                CubeFaceView(model: model.D)
+                CubeFaceView(model: model.D, faceLabel: "Down")
                 Color.white
             }
             GridRow{
                 Color.white
                 //back
-                CubeFaceView(model: model.B)
+                CubeFaceView(model: model.B, faceLabel: "Back")
                 Color.white
             }
         }
@@ -47,26 +48,31 @@ struct CubeMapView: View {
 
 struct CubeFaceView: View {
     var model: Face
+    var faceLabel: String
     
     var body: some View {
-        Grid {
-            GridRow{
-                Color(model.topLeft)
-                Color(model.topCenter)
-                Color(model.topRight)
+        VStack{
+            Grid {
+                GridRow{
+                    Color(model.topLeft)
+                    Color(model.topCenter)
+                    Color(model.topRight)
+                }
+                GridRow{
+                    Color(model.midLeft)
+                    Color(model.midCenter)
+                    Color(model.midRight)
+                }
+                GridRow{
+                    Color(model.bottomLeft)
+                    Color(model.bottomCenter)
+                    Color(model.bottomRight)
+                }
+                
             }
-            GridRow{
-                Color(model.midLeft)
-                Color(model.midCenter)
-                Color(model.midRight)
-            }
-            GridRow{
-                Color(model.bottomLeft)
-                Color(model.bottomCenter)
-                Color(model.bottomRight)
-            }
+            .aspectRatio(contentMode: .fit)
+            Text(faceLabel)
         }
-        .aspectRatio(contentMode: .fit)
     }
 }
 
