@@ -19,12 +19,9 @@
 		7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6C29C2681900E6A684 /* CubeMapModel.swift */; };
 		7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6E29C4CEB700E6A684 /* Solver.swift */; };
 		7A430F7129C4D48000E6A684 /* SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F7029C4D48000E6A684 /* SolverTests.swift */; };
-		7A5515B629D5FB4800F47C9C /* ColorClasifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A5515B529D5FB4800F47C9C /* ColorClasifier.mlmodel */; };
 		7A5515B929D62D8500F47C9C /* KociembaSolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5515B829D62D8500F47C9C /* KociembaSolver */; };
-		7ABA139829D9F7AA001CCC86 /* ColorClasifier6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA139729D9F7AA001CCC86 /* ColorClasifier6.mlmodel */; };
 		7ABA139A29DA0231001CCC86 /* ColorClasifier11.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA139929DA0231001CCC86 /* ColorClasifier11.mlmodel */; };
 		7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1926229E71ED500EA16C6 /* ControllerView.swift */; };
-		7AE4031829D75A0200854C0D /* ColorClasifier5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7AE4031729D75A0200854C0D /* ColorClasifier5.mlmodel */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsModel.swift */; };
 		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
@@ -77,11 +74,8 @@
 		7A430F6C29C2681900E6A684 /* CubeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapModel.swift; sourceTree = "<group>"; };
 		7A430F6E29C4CEB700E6A684 /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		7A430F7029C4D48000E6A684 /* SolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverTests.swift; sourceTree = "<group>"; };
-		7A5515B529D5FB4800F47C9C /* ColorClasifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorClasifier.mlmodel; sourceTree = "<group>"; };
-		7ABA139729D9F7AA001CCC86 /* ColorClasifier6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorClasifier6.mlmodel; sourceTree = "<group>"; };
 		7ABA139929DA0231001CCC86 /* ColorClasifier11.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorClasifier11.mlmodel; sourceTree = "<group>"; };
 		7AD1926229E71ED500EA16C6 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
-		7AE4031729D75A0200854C0D /* ColorClasifier5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorClasifier5.mlmodel; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		7AF1922829A6D93000711273 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -211,9 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				7ABA139929DA0231001CCC86 /* ColorClasifier11.mlmodel */,
-				7ABA139729D9F7AA001CCC86 /* ColorClasifier6.mlmodel */,
-				7AE4031729D75A0200854C0D /* ColorClasifier5.mlmodel */,
-				7A5515B529D5FB4800F47C9C /* ColorClasifier.mlmodel */,
 				7A430F6829BFD58B00E6A684 /* AppManager.swift */,
 				7AF1924E29B7AB8B00711273 /* VideoCapture.swift */,
 				7AF1922C29A7F58300711273 /* FrameModel.swift */,
@@ -375,11 +366,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ABA139829D9F7AA001CCC86 /* ColorClasifier6.mlmodel in Sources */,
 				7AF1922F29A7F5AC00711273 /* FrameView.swift in Sources */,
 				7A430F6B29BFDBEB00E6A684 /* MainView.swift in Sources */,
-				7AE4031829D75A0200854C0D /* ColorClasifier5.mlmodel in Sources */,
-				7A5515B629D5FB4800F47C9C /* ColorClasifier.mlmodel in Sources */,
 				7AF19225298DC89600711273 /* SettingsView.swift in Sources */,
 				7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
