@@ -19,7 +19,6 @@ struct SettingsView: View {
                 }
             }
             
-            
             Section(header: Text("Arm Servo Settings")){
                 SettingRow(move: Move.top, model: model, moveString: "Top")
                 SettingRow(move: Move.mid, model: model, moveString: "Middle")

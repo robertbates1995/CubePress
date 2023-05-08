@@ -137,26 +137,31 @@ class Solver {
     }
     
     func convert(instruction: String) -> String {
-        switch instruction.count {  //switch on string length
-        case 1 :    //execute standard move
-            let move = MacroMove[referenceFrame[instruction]!]! + "BRMC"
-            convertFrameWith(move: instruction)
+        guard let cubeMove = referenceFrame[instruction[0]],
+              let macro = MacroMove[cubeMove] else { return "no instruction"}
+        switch instruction.dropFirst() {  //switch on string length
+        case "" :    //execute standard move
+            let move = macro + "BRMC"
+            convertFrameWith(move: cubeMove)
             convertFrameWith(move: " ")
             return move
-        case 2 :    //determine if prime or double and act accordingly
-            if instruction.contains("'") {  //prime case
-                let move = MacroMove[referenceFrame[instruction[0]]!]! + "BLMC"
-                convertFrameWith(move: instruction[0])
-                convertFrameWith(move: instruction[1])
-                return move
-            } else {    //double case
-                let move = MacroMove[referenceFrame[instruction[0]]!]! + "LBRMC"
-                convertFrameWith(move: " ")
-                convertFrameWith(move: " ")
-                return move
-            }
-        case 3 :    //preform prime double version of move
-            return MacroMove[referenceFrame[instruction[0]]!]! + "RBLMC"
+        case "'" :    //if prime
+            let move = macro + "BLMC"
+            convertFrameWith(move: cubeMove)
+            convertFrameWith(move: "'")
+            return move
+        case "2" : //if double
+            let move = macro + "LBRMC"
+            convertFrameWith(move: cubeMove)
+            convertFrameWith(move: " ")
+            convertFrameWith(move: " ")
+            return move
+        case "2'" :    //preform prime double version of move
+            let move = macro + "RBLMC"
+            convertFrameWith(move: cubeMove)
+            convertFrameWith(move: "'")
+            convertFrameWith(move: "'")
+            return move
         default:
             return "[error in convert(instruction: UIColor)]"
         }

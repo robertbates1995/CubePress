@@ -8,33 +8,45 @@
 import XCTest
 @testable import CubePress
 
-//class Getter: CubeFaceGetter {
-//    var cubeFace: CubePress.Facelet {
-//        faces.popLast()!
-//    }
-//    var faces: [Facelet]
-//
-//    init(cubeFaces: [Facelet]) {
-//        self.faces = cubeFaces
-//    }
-//}
-//
-//class Mover: CubeMovable {
-//    var movesLoged:[Move] = []
-//
-//    func move(to move: CubePress.Move) async {
-//        movesLoged.append(move)
-//    }
-//}
-//
-//final class SolverTests: XCTestCase {
-//    func testSolver() async throws {
-//        let getter = Getter(cubeFaces: [Facelet(), Facelet(), Facelet(), Facelet(), Facelet(), Facelet()])
-//        let mover = Mover()
-//        let sut = await Solver(getter: getter, cubeMover: mover, cubeMap: CubeMapModel())
-//        try await sut.scanCube()
-//        //testing that the proper moves were performed
-//        XCTAssertEqual(mover.movesLoged, [CubePress.Move.center, CubePress.Move.mid, CubePress.Move.right, CubePress.Move.left, CubePress.Move.center, CubePress.Move.top, CubePress.Move.mid, CubePress.Move.top, CubePress.Move.mid, CubePress.Move.top, CubePress.Move.mid]) //empty array is supposed to be the expected array
-//        //test that colors are accurate
-//        }
-//}
+@MainActor
+final class SolverTests: XCTestCase {
+    let sut = AppManager()
+    
+    func testU() {
+        //checking each individual conversion
+        XCTAssertEqual(sut.solver.convert(instructions: "U "), "TMTMBRMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "R", "U": "D", "L": "B", "R": "F", "D": "U", "B": "L"])
+        XCTAssertEqual(sut.solver.convert(instructions: "U "), "BRMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "F", "U": "D", "L": "R", "R": "L", "D": "U", "B": "B"])
+    }
+    
+    func testUPrime() {
+        //checking each individual conversion
+        XCTAssertEqual(sut.solver.convert(instructions: "U' "), "TMTMBLMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "L", "U": "D", "L": "F", "R": "B", "D": "U", "B": "R"])
+        XCTAssertEqual(sut.solver.convert(instructions: "U' "), "BLMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "F", "U": "D", "L": "R", "R": "L", "D": "U", "B": "B"])
+    }
+    
+    func testU2() {
+        //checking each individual conversion
+        XCTAssertEqual(sut.solver.convert(instructions: "U2 "), "TMTMLBRMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "F", "U": "D", "L": "R", "R": "L", "D": "U", "B": "B"])
+        XCTAssertEqual(sut.solver.convert(instructions: "U2 "), "LBRMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "B", "U": "D", "L": "L", "R": "R", "D": "U", "B": "F"])
+    }
+    
+    func testU2Prime() {
+        //checking each individual conversion
+        XCTAssertEqual(sut.solver.convert(instructions: "U2' "), "TMTMRBLMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "F", "U": "D", "L": "R", "R": "L", "D": "U", "B": "B"])
+        XCTAssertEqual(sut.solver.convert(instructions: "U2' "), "RBLMC")
+        XCTAssertEqual(sut.solver.referenceFrame, ["F": "B", "U": "D", "L": "L", "R": "R", "D": "U", "B": "F"])
+    }
+    
+    func testError() {
+        //checking each individual conversion
+        //XCTAssertEqual(sut.solver.convert(instructions: "U QRX "), "unknow movment: QRX")
+    }
+
+}

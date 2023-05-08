@@ -22,7 +22,7 @@ class Mover: CubeMovable {
         Task { @MainActor in
             errorMessage = nil
         }
-        guard let url = URL(string: "http://\(settings.ipAddress)/\(move)") else { return }
+        guard let url = URL(string: "http://\(settings.ipAddress)/\(String(move))") else { return }
         Task{
             do{
                 let _ = try await callServer(url)
