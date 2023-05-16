@@ -12,13 +12,13 @@ import SwiftUI
 
 struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
-    var colorSelected = Color.black
+    
     
     var body: some View {
         Grid{
             GridRow{
                 Color.white
-                //top
+                //Up
                 CubeFaceView(model: model.U, faceLabel: "Up")
                 Color.white
             }
@@ -44,34 +44,44 @@ struct CubeMapView: View {
         .aspectRatio(contentMode: .fit)
         .padding()
     }
-}
-
-struct CubeFaceView: View {
-    var model: Face
-    var faceLabel: String
     
-    var body: some View {
-        VStack{
-            Grid {
-                GridRow{
-                    Color(model.topLeft)
-                    Color(model.topCenter)
-                    Color(model.topRight)
+    
+    struct CubeFaceView: View {
+        var model: Face
+        var faceLabel: String
+        
+        var body: some View {
+            VStack{
+                Grid {
+                    GridRow{
+                        Color(model.topLeft)
+                        Color(model.topCenter)
+                        Color(model.topRight)
+                    }
+                    GridRow{
+                        Color(model.midLeft)
+                        Color(model.midCenter)
+                        Color(model.midRight)
+                    }
+                    GridRow{
+                        Color(model.bottomLeft)
+                        Color(model.bottomCenter)
+                        Color(model.bottomRight)
+                    }
                 }
-                GridRow{
-                    Color(model.midLeft)
-                    Color(model.midCenter)
-                    Color(model.midRight)
-                }
-                GridRow{
-                    Color(model.bottomLeft)
-                    Color(model.bottomCenter)
-                    Color(model.bottomRight)
-                }
-                
+                .aspectRatio(contentMode: .fit)
+                Text(faceLabel)
             }
-            .aspectRatio(contentMode: .fit)
-            Text(faceLabel)
+        }
+    }
+    
+    struct ColorSelectView: View {
+        var colorSelected: Color
+        
+        var body: some View {
+            HStack{
+                Text("test")
+            }
         }
     }
 }

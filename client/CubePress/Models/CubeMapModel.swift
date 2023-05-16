@@ -55,3 +55,17 @@ struct Face {
     var bottomCenter = UIColor.black
     var bottomRight = UIColor.black
 }
+
+enum CubeFace: String, CaseIterable, Identifiable, Codable {
+    var id: String {rawValue}
+    
+    case U, D, R, L, F, B
+}
+
+enum FaceSquare: String, CaseIterable, Identifiable, Codable {
+    var id: String {rawValue}
+    
+    case topLeft, topCenter, topRight,
+         midLeft, midCenter, midRight,
+         bottomLeft, bottomCenter, bottomRight
+}
