@@ -13,7 +13,6 @@ import SwiftUI
 struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
     
-    
     var body: some View {
         Grid{
             GridRow{
@@ -45,7 +44,6 @@ struct CubeMapView: View {
         .padding()
     }
     
-    
     struct CubeFaceView: View {
         var model: Face
         var faceLabel: String
@@ -54,6 +52,7 @@ struct CubeMapView: View {
             VStack{
                 Grid {
                     GridRow{
+                        //zstack here
                         Color(model.topLeft)
                         Color(model.topCenter)
                         Color(model.topRight)

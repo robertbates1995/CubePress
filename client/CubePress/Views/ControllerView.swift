@@ -15,7 +15,9 @@ struct ControllerView: View {
             ForEach(MacroMoves.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
-                        model.input(moves: move.rawValue)
+                        Task{
+                            try? await model.input(moves: [move.rawValue])
+                        }
                     }
                 }
             }

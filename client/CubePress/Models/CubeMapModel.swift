@@ -2,7 +2,7 @@
 //  CubeMapModel.swift
 //  CubePress
 //
-//  Created by Robert Bates on 3/15/23.
+//  Created by Robert Bates on 3/15/23
 //
 
 import Foundation
@@ -45,6 +45,7 @@ class CubeMapModel: ObservableObject {
 
 struct Face {
     //a data structure that represents one face of the rubix cube
+    var sourceImages: [UIImage] = []
     var topLeft = UIColor.black
     var topCenter = UIColor.black
     var topRight = UIColor.black

@@ -23,23 +23,20 @@ class Mover: CubeMovable {
             errorMessage = nil
         }
         guard let url = URL(string: "http://\(settings.ipAddress)/\(String(move))") else { return }
-        Task{
-            do{
-                let _ = try await callServer(url)
-            } catch {
-                Task { @MainActor in
-                    self.errorMessage = error.localizedDescription
-                }
+        do{
+            let _ = try await callServer(url)
+        } catch {
+            Task { @MainActor in
+                self.errorMessage = error.localizedDescription
             }
         }
     }
     
-    func input(moves: String) {
+    func input(moves: [String]) async throws {
+        print(#function)
         for move in moves {
-            Task {
-                try await input(move: String(move))
-                try await Task.sleep(nanoseconds: 2_000_000_000)
-            }
+            try await input(move: String(move))
+            try await Task.sleep(nanoseconds: 1_500_000_000)
         }
     }
 }

@@ -43,7 +43,7 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func sendSetting(setting: Move) {
+    func send(setting: Move) {
         guard let value = settings[setting] else {return}
         Task { @MainActor in
             errorMessage = nil
@@ -59,6 +59,10 @@ class SettingsModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func test(setting: Move) {
+        //TODO: Implement test setting function
     }
     
     func getSetting() {

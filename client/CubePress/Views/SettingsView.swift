@@ -44,8 +44,12 @@ struct SettingRow: View {
     
     var body: some View {
         HStack{
-            Button("Test \(moveString)") {
-                    model.sendSetting(setting: move)
+            Button("test \(moveString)") {
+                    model.test(setting: move)
+            }
+            Spacer()
+            Button("Set \(moveString) Value") {
+                    model.send(setting: move)
             }
             Spacer()
             TextField(moveString, text: model.binding(for: move))

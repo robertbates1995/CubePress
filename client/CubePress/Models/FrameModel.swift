@@ -5,6 +5,7 @@ import UIKit
 
 struct ColoredRect {
     var rect: CGRect
+    var image: UIImage
     let color: UIColor
 }
 
@@ -53,11 +54,13 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
         let finder = ColorFinder()
         let coloredRects: [ColoredRect] = boundingBoxes.map {
-            .init(rect: $0, color: finder.calcColor(image: image.cropped(to: VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height)))) ?? .black)
+            let temp = image.cropped(to: VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height)))
+            return ColoredRect(rect: $0, image: UIImage(ciImage: temp), color: finder.calcColor(image: temp) ?? .black)
         }
         
         Task{ @MainActor in
             self.coloredRects = coloredRects
+            cubeFace.sourceImages = coloredRects.map(\.image)
             cubeFace.topLeft = coloredRects[6].color
             cubeFace.topCenter = coloredRects[7].color
             cubeFace.topRight = coloredRects[8].color
