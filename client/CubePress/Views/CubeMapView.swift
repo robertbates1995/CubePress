@@ -52,42 +52,75 @@ struct CubeMapView: View {
             VStack{
                 Grid {
                     GridRow{
-                        //zstack here
-                        Color(model.topLeft)
-                        Color(model.topCenter)
-                        Color(model.topRight)
+                        sourceImage(index: 6)
+                        sourceImage(index: 7)
+                        sourceImage(index: 8)
                     }
                     GridRow{
-                        Color(model.midLeft)
-                        Color(model.midCenter)
-                        Color(model.midRight)
+                        sourceImage(index: 3)
+                        sourceImage(index: 4)
+                        sourceImage(index: 5)
                     }
                     GridRow{
-                        Color(model.bottomLeft)
-                        Color(model.bottomCenter)
-                        Color(model.bottomRight)
+                        sourceImage(index: 0)
+                        sourceImage(index: 1)
+                        sourceImage(index: 2)
                     }
                 }
                 .aspectRatio(contentMode: .fit)
                 Text(faceLabel)
             }
         }
-    }
-    
-    struct ColorSelectView: View {
-        var colorSelected: Color
         
-        var body: some View {
-            HStack{
-                Text("test")
+        func sourceImage(index: Int) -> Image {
+            let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 30, height: 30))
+            let cgImage = CIContext().createCGImage(CIImage(color: .black), from: frame)!
+            if model.sourceImages.count < 9 {
+                let uiImage = UIImage(cgImage: cgImage)
+                return Image(uiImage: uiImage)
             }
+            return Image(uiImage: model.sourceImages[index].scalePreservingAspectRatio(targetSize: CGSize(width: 30, height: 30)))
         }
     }
 }
 
+extension UIImage {
+    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
+        // Determine the scale factor that preserves aspect ratio
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        let scaleFactor = min(widthRatio, heightRatio)
+        
+        // Compute the new image size that preserves aspect ratio
+        let scaledImageSize = CGSize(
+            width: size.width * scaleFactor,
+            height: size.height * scaleFactor
+        )
+
+        // Draw and return the resized UIImage
+        let renderer = UIGraphicsImageRenderer(
+            size: scaledImageSize
+        )
+
+        let scaledImage = renderer.image { _ in
+            self.draw(in: CGRect(
+                origin: .zero,
+                size: scaledImageSize
+            ))
+        }
+        
+        return scaledImage
+    }
+}
 
 struct CubeMapView_Previews: PreviewProvider {
+    static var model: CubeMapModel {
+        var temp = CubeMapModel()
+        temp.U.sourceImages = Array(repeating: UIImage(named: "fourColors")!, count: 9)
+        return temp
+    }
     static var previews: some View {
-        CubeMapView(model: CubeMapModel())
+        CubeMapView(model: model)
     }
 }

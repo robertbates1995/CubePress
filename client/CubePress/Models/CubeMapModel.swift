@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 //needs to look at a published property, cubeFace, in frame model.  will hand this model the property that it needs
 //needs to be made observable

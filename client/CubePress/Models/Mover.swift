@@ -36,7 +36,7 @@ class Mover: CubeMovable {
         print(#function)
         for move in moves {
             try await input(move: String(move))
-            try await Task.sleep(nanoseconds: 1_500_000_000)
+            try await Task.sleep(nanoseconds: 2_000_000_000)
         }
     }
 }

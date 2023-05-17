@@ -54,8 +54,9 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
         let finder = ColorFinder()
         let coloredRects: [ColoredRect] = boundingBoxes.map {
-            let temp = image.cropped(to: VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height)))
-            return ColoredRect(rect: $0, image: UIImage(ciImage: temp), color: finder.calcColor(image: temp) ?? .black)
+            let rect = VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height))
+            let temp = image.cropped(to: rect)
+            return ColoredRect(rect: $0, image: testImage(base: UIImage(ciImage: temp), rect: rect), color: finder.calcColor(image: temp) ?? .black)
         }
         
         Task{ @MainActor in
@@ -71,6 +72,16 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
             cubeFace.bottomCenter = coloredRects[1].color
             cubeFace.bottomRight = coloredRects[2].color
         }
+    }
+    
+    func testImage(base: UIImage, rect: CGRect) -> UIImage {
+        let size = rect.size
+        UIGraphicsBeginImageContext(size)
+        UIImage(named: "fourColors")!.draw(in: CGRect(x: 0, y: 0, width: rect.width, height: rect.height))
+        base.draw(in: CGRect(x: 0, y: 0, width: rect.width, height: rect.height))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }
 
