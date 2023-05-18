@@ -115,12 +115,22 @@ extension UIImage {
 }
 
 struct CubeMapView_Previews: PreviewProvider {
+    struct Wrapper: View {
+        @ObservedObject var frame: FrameModel
+        
+        var body: some View {
+            CubeMapView.CubeFaceView(model: frame.cubeFace, faceLabel: "test")
+        }
+        
+        
+    }
     static var model: CubeMapModel {
-        var temp = CubeMapModel()
+        let temp = CubeMapModel()
         temp.U.sourceImages = Array(repeating: UIImage(named: "fourColors")!, count: 9)
         return temp
     }
     static var previews: some View {
         CubeMapView(model: model)
+        Wrapper(frame: FrameModel(pictureString: "rubik"))
     }
 }
