@@ -56,7 +56,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         let coloredRects: [ColoredRect] = boundingBoxes.map {
             let rect = VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height))
             let temp = image.cropped(to: rect)
-            return ColoredRect(rect: $0, image: testImage(base: UIImage(ciImage: temp), rect: rect), color: finder.calcColor(image: temp) ?? .black)
+            return ColoredRect(rect: $0, image: testImage(base: UIImage(ciImage: temp), rect: rect), color: finder.calcColor(image: temp))
         }
         
         Task{ @MainActor in
@@ -89,5 +89,6 @@ extension FrameModel {
     convenience init(pictureString: String) {
         self.init()
         self.process(ciImage: (CIImage(image: UIImage(named: pictureString)!)!))
+        beginBackgroundProcessing()
     }
 }

@@ -19,7 +19,7 @@ class ColorFinder {
         return imageClassifierVisionModel
     }()
     
-    func calcColor(image: CIImage) -> UIColor? {
+    func calcColor(image: CIImage) -> UIColor {
         
         var result: [VNClassificationObservation]?
         
@@ -51,7 +51,7 @@ class ColorFinder {
         case "Red":
             return .red
         default:
-            return .black
+            return .white
         }
     }
 }

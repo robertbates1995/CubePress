@@ -1,8 +1,16 @@
 
 import SwiftUI
 
+protocol VideoCapturing {
+    var model: FrameModel { get }
+}
+
+extension VideoCapture: VideoCapturing {
+    
+}
+
 struct CameraView: View {
-    let model: VideoCapture
+    let model: VideoCapturing
     let onSolveTapped: () -> ()
     
     var body: some View {
@@ -28,7 +36,10 @@ struct CameraView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    class Mock: VideoCapturing {
+        let model = FrameModel(pictureString: "rubik")
+    }
     static var previews: some View {
-        CameraView(model: VideoCapture(), onSolveTapped: {})
+        CameraView(model: Mock(), onSolveTapped: {})
     }
 }
