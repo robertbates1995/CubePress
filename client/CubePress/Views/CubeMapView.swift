@@ -14,7 +14,7 @@ struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
     
     var body: some View {
-        Grid{
+        Grid(horizontalSpacing: 30){
             GridRow{
                 Color.white
                 //Up
@@ -40,7 +40,6 @@ struct CubeMapView: View {
                 Color.white
             }
         }
-        .aspectRatio(contentMode: .fit)
         .padding()
     }
     
@@ -72,14 +71,17 @@ struct CubeMapView: View {
             }
         }
         
-        func sourceImage(index: Int) -> Image {
-            let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 30, height: 30))
-            let cgImage = CIContext().createCGImage(CIImage(color: .black), from: frame)!
+        @ViewBuilder
+        func sourceImage(index: Int) -> some View {
             if model.sourceImages.count < 9 {
-                let uiImage = UIImage(cgImage: cgImage)
-                return Image(uiImage: uiImage)
+                Color.black
             }
-            return Image(uiImage: model.sourceImages[index].scalePreservingAspectRatio(targetSize: CGSize(width: 30, height: 30)))
+            else {
+                Image(uiImage: model.sourceImages[index])
+                    .resizable()
+                    .frame(idealWidth: .greatestFiniteMagnitude, idealHeight: .greatestFiniteMagnitude)
+                    .aspectRatio(1.0, contentMode: .fit)
+            }
         }
     }
 }
@@ -97,12 +99,12 @@ extension UIImage {
             width: size.width * scaleFactor,
             height: size.height * scaleFactor
         )
-
+        
         // Draw and return the resized UIImage
         let renderer = UIGraphicsImageRenderer(
             size: scaledImageSize
         )
-
+        
         let scaledImage = renderer.image { _ in
             self.draw(in: CGRect(
                 origin: .zero,
@@ -121,14 +123,14 @@ struct CubeMapView_Previews: PreviewProvider {
         var body: some View {
             CubeMapView.CubeFaceView(model: frame.cubeFace, faceLabel: "test")
         }
-        
-        
     }
+    
     static var model: CubeMapModel {
         let temp = CubeMapModel()
         temp.U.sourceImages = Array(repeating: UIImage(named: "fourColors")!, count: 9)
         return temp
     }
+    
     static var previews: some View {
         CubeMapView(model: model)
         Wrapper(frame: FrameModel(pictureString: "rubik"))
