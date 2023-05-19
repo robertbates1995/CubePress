@@ -52,18 +52,27 @@ struct CubeMapView: View {
                 Grid {
                     GridRow{
                         sourceImage(index: 6)
+                            .border(Color(uiColor: model.topLeft), width: 3)
                         sourceImage(index: 7)
+                            .border(Color(uiColor: model.topCenter), width: 3)
                         sourceImage(index: 8)
+                            .border(Color(uiColor: model.topRight), width: 3)
                     }
                     GridRow{
                         sourceImage(index: 3)
+                            .border(Color(uiColor: model.midLeft), width: 3)
                         sourceImage(index: 4)
+                            .border(Color(uiColor: model.midCenter), width: 3)
                         sourceImage(index: 5)
+                            .border(Color(uiColor: model.midRight), width: 3)
                     }
                     GridRow{
                         sourceImage(index: 0)
+                            .border(Color(uiColor: model.bottomLeft), width: 3)
                         sourceImage(index: 1)
+                            .border(Color(uiColor: model.bottomCenter), width: 3)
                         sourceImage(index: 2)
+                            .border(Color(uiColor: model.bottomRight), width: 3)
                     }
                 }
                 .aspectRatio(contentMode: .fit)
