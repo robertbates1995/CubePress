@@ -14,33 +14,38 @@ struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
     
     var body: some View {
-        Grid(horizontalSpacing: 30){
-            GridRow{
-                Color.white
-                //Up
-                CubeFaceView(model: model.U, faceLabel: "Up")
-                Color.white
+        VStack{
+            Grid(horizontalSpacing: 30){
+                GridRow{
+                    Color.white
+                    //Up
+                    CubeFaceView(model: model.U, faceLabel: "Up")
+                    Color.white
+                }
+                GridRow{
+                    CubeFaceView(model: model.L, faceLabel: "Left")
+                    CubeFaceView(model: model.F, faceLabel: "Front")
+                    CubeFaceView(model: model.R, faceLabel: "Right")
+                    //front 3 sides
+                }
+                GridRow{
+                    Color.white
+                    //bottom
+                    CubeFaceView(model: model.D, faceLabel: "Down")
+                    Color.white
+                }
+                GridRow{
+                    Color.white
+                    //back
+                    CubeFaceView(model: model.B, faceLabel: "Back")
+                    Color.white
+                }
             }
-            GridRow{
-                CubeFaceView(model: model.L, faceLabel: "Left")
-                CubeFaceView(model: model.F, faceLabel: "Front")
-                CubeFaceView(model: model.R, faceLabel: "Right")
-                //front 3 sides
-            }
-            GridRow{
-                Color.white
-                //bottom
-                CubeFaceView(model: model.D, faceLabel: "Down")
-                Color.white
-            }
-            GridRow{
-                Color.white
-                //back
-                CubeFaceView(model: model.B, faceLabel: "Back")
-                Color.white
+            .padding()
+            Button("Save Pictures") {
+                model.saveMapPictures()
             }
         }
-        .padding()
     }
     
     struct CubeFaceView: View {

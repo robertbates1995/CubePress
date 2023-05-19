@@ -15,6 +15,14 @@ import SwiftUI
 @MainActor
 class CubeMapModel: ObservableObject {
     
+    var faces = [ "U" : Face(),
+                  "L" : Face(),
+                  "F" : Face(),
+                  "R" : Face(),
+                  "B" : Face(),
+                  "D" : Face(), ]
+    
+    //@Published var U =  Face()
     @Published var U =  Face()
     @Published var L =  Face()
     @Published var F =  Face()
@@ -41,6 +49,21 @@ class CubeMapModel: ObservableObject {
         default:
             break
         }
+    }
+    
+    fileprivate func saveFacePicturesFrom(_ face: Face) {
+        for i in face.sourceImages {
+            UIImageWriteToSavedPhotosAlbum(i, nil, nil, nil)
+        }
+    }
+    
+    func saveMapPictures() {
+        saveFacePicturesFrom(U)
+        saveFacePicturesFrom(L)
+        saveFacePicturesFrom(F)
+        saveFacePicturesFrom(R)
+        saveFacePicturesFrom(B)
+        saveFacePicturesFrom(D)
     }
 }
 

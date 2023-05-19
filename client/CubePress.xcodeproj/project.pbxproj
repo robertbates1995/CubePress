@@ -548,6 +548,7 @@
 				INFOPLIST_FILE = CubePress/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"\"This app uses the camera to take photos and videos for use within the app.\"\"";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "please allow access for saving of sample photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -579,6 +580,7 @@
 				INFOPLIST_FILE = CubePress/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "\"\"This app uses the camera to take photos and videos for use within the app.\"\"";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "please allow access for saving of sample photos";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
