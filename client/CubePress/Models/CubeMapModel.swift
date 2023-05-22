@@ -53,7 +53,20 @@ class CubeMapModel: ObservableObject {
     
     fileprivate func saveFacePicturesFrom(_ face: Face) {
         for i in face.sourceImages {
-            UIImageWriteToSavedPhotosAlbum(i, nil, nil, nil)
+            // Obtaining the Location of the Documents Directory
+            let documents = FileManager.default.urls(for: .documentDirectory, in: 2)[0]
+
+            // Create URL
+            let url = documents.appendingPathComponent("image.png")
+
+            // Convert to Data
+            if let data = i.pngData() {
+                do {
+                    try data.write(to: url)
+                } catch {
+                    print("Unable to Write Image Data to Disk")
+                }
+            }
         }
     }
     
