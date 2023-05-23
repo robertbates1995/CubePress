@@ -42,8 +42,8 @@ struct CubeMapView: View {
                 }
             }
             .padding()
-            Button("Save Pictures") {
-                model.saveMapPictures()
+            Button("Save test strips") {
+                model.saveTestStrips()
             }
         }
     }

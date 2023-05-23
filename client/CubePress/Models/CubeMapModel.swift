@@ -22,7 +22,6 @@ class CubeMapModel: ObservableObject {
                   "B" : Face(),
                   "D" : Face(), ]
     
-    //@Published var U =  Face()
     @Published var U =  Face()
     @Published var L =  Face()
     @Published var F =  Face()
@@ -51,32 +50,75 @@ class CubeMapModel: ObservableObject {
         }
     }
     
-    fileprivate func saveFacePicturesFrom(_ face: Face) {
+    fileprivate func savePicture(_ picture: UIImage, named: String) {
+        let documents = URL.documentsDirectory.appendingPathComponent(named)
+        try? FileManager.default.createDirectory(at: documents, withIntermediateDirectories: true)
+        let url = documents.appendingPathComponent("\(named).png")
+        if let data = picture.pngData() as? NSData {
+            data.write(to: url, atomically: true)
+        }
+    }
+    
+    fileprivate func saveFacePicturesFrom(_ face: Face, _ faceString: String) {
+        // Obtaining the Location of the Documents Directory
+        var foo = 0
+        var date = Int64(Date().timeIntervalSinceReferenceDate)
+        
         for i in face.sourceImages {
-            // Obtaining the Location of the Documents Directory
-            let documents = FileManager.default.urls(for: .documentDirectory, in: 2)[0]
-
-            // Create URL
-            let url = documents.appendingPathComponent("image.png")
-
-            // Convert to Data
-            if let data = i.pngData() {
-                do {
-                    try data.write(to: url)
-                } catch {
-                    print("Unable to Write Image Data to Disk")
-                }
-            }
+            savePicture(i, named: "\(foo)_\(date)")
+            foo += 1
         }
     }
     
     func saveMapPictures() {
-        saveFacePicturesFrom(U)
-        saveFacePicturesFrom(L)
-        saveFacePicturesFrom(F)
-        saveFacePicturesFrom(R)
-        saveFacePicturesFrom(B)
-        saveFacePicturesFrom(D)
+        saveFacePicturesFrom(U, "U")
+        saveFacePicturesFrom(L, "L")
+        saveFacePicturesFrom(F, "F")
+        saveFacePicturesFrom(R, "R")
+        saveFacePicturesFrom(B, "B")
+        saveFacePicturesFrom(D, "D")
+    }
+    
+    fileprivate func createTestStrip(base: UIImage, centers: [UIImage]) -> UIImage {
+        let size = CGSize(width: 600, height: 100)
+        
+        UIGraphicsBeginImageContext(size)
+        base.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+        
+        var x = 0
+        
+        for layer in centers {
+            let s2 = CGRect(x: x, y: 0, width: 100, height: 100)
+            x += 100
+            base.draw(in: s2)
+            layer.draw(in: s2, blendMode: .difference, alpha: 1.0)
+        }
+        
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    fileprivate func saveFaceTestStrips(_ face: Face) {
+        let centers = [ U.sourceImages[4], L.sourceImages[4],
+                        F.sourceImages[4], R.sourceImages[4],
+                        B.sourceImages[4], D.sourceImages[4] ]
+        var foo = 0
+        var date = Int64(Date().timeIntervalSinceReferenceDate)
+        
+        for i in face.sourceImages {
+            savePicture(createTestStrip(base: i, centers: centers), named: "\(foo)_\(date)")
+            foo += 1
+        }
+    }
+    
+    func saveTestStrips() {
+        saveFaceTestStrips(U)
+        saveFaceTestStrips(L)
+        saveFaceTestStrips(F)
+        saveFaceTestStrips(R)
+        saveFaceTestStrips(B)
+        saveFaceTestStrips(D)
     }
 }
 
