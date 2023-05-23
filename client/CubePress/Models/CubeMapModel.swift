@@ -62,7 +62,7 @@ class CubeMapModel: ObservableObject {
     fileprivate func saveFacePicturesFrom(_ face: Face, _ faceString: String) {
         // Obtaining the Location of the Documents Directory
         var foo = 0
-        var date = Int64(Date().timeIntervalSinceReferenceDate)
+        let date = Int64(Date().timeIntervalSinceReferenceDate)
         
         for i in face.sourceImages {
             savePicture(i, named: "\(foo)_\(date)")
@@ -99,26 +99,26 @@ class CubeMapModel: ObservableObject {
         return newImage
     }
     
-    fileprivate func saveFaceTestStrips(_ face: Face) {
+    fileprivate func saveFaceTestStrips(_ face: Face, _ named: String) {
         let centers = [ U.sourceImages[4], L.sourceImages[4],
                         F.sourceImages[4], R.sourceImages[4],
                         B.sourceImages[4], D.sourceImages[4] ]
         var foo = 0
-        var date = Int64(Date().timeIntervalSinceReferenceDate)
+        let date = Int64(Date().timeIntervalSinceReferenceDate)
         
         for i in face.sourceImages {
-            savePicture(createTestStrip(base: i, centers: centers), named: "\(foo)_\(date)")
+            savePicture(createTestStrip(base: i, centers: centers), named: "\(named)_\(foo)_\(date)")
             foo += 1
         }
     }
     
     func saveTestStrips() {
-        saveFaceTestStrips(U)
-        saveFaceTestStrips(L)
-        saveFaceTestStrips(F)
-        saveFaceTestStrips(R)
-        saveFaceTestStrips(B)
-        saveFaceTestStrips(D)
+        saveFaceTestStrips(U, "U")
+        saveFaceTestStrips(L, "L")
+        saveFaceTestStrips(F, "F")
+        saveFaceTestStrips(R, "R")
+        saveFaceTestStrips(B, "B")
+        saveFaceTestStrips(D, "D")
     }
 }
 
