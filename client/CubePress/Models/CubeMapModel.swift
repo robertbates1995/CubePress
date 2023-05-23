@@ -80,12 +80,13 @@ class CubeMapModel: ObservableObject {
     }
     
     fileprivate func createTestStrip(base: UIImage, centers: [UIImage]) -> UIImage {
-        let size = CGSize(width: 600, height: 100)
+        let size = CGSize(width: 700, height: 100)
         
         UIGraphicsBeginImageContext(size)
-        base.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
+        base.draw(in: CGRect(x: 100, y: 0, width: 100, height: 100))
+        UIImage.strokedCheckmark.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
         
-        var x = 0
+        var x = 100
         
         for layer in centers {
             let s2 = CGRect(x: x, y: 0, width: 100, height: 100)
@@ -105,9 +106,19 @@ class CubeMapModel: ObservableObject {
                         B.sourceImages[4], D.sourceImages[4] ]
         var foo = 0
         let date = Int64(Date().timeIntervalSinceReferenceDate)
+        var strips: [UIImage] = []
         
         for i in face.sourceImages {
-            savePicture(createTestStrip(base: i, centers: centers), named: "\(named)_\(foo)_\(date)")
+            strips += [createTestStrip(base: i, centers: centers)]
+        }
+        
+        let directory = URL.documentsDirectory.appendingPathComponent(named)
+        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        for i in strips {
+            let url = directory.appendingPathComponent("\(named)_\(foo)_\(date).png")
+            if let data = i.pngData() as? NSData {
+                data.write(to: url, atomically: true)
+            }
             foo += 1
         }
     }
