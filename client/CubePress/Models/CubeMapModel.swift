@@ -79,7 +79,7 @@ class CubeMapModel: ObservableObject {
         saveFacePicturesFrom(D, "D")
     }
     
-    fileprivate func createTestStrip(base: UIImage, centers: [UIImage]) -> UIImage {
+    func createTestStrip(base: UIImage, centers: [UIImage]) -> UIImage {
         let size = CGSize(width: 700, height: 100)
         
         UIGraphicsBeginImageContext(size)

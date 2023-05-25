@@ -14,7 +14,7 @@ class ColorFinder {
     
     static let colorClassifier: VNCoreMLModel? = {
         let configuration = MLModelConfiguration()
-        guard let classifier = try? ColorClasifier11(configuration: configuration),
+        guard let classifier = try? colorStripClassifier1(configuration: configuration),
               let imageClassifierVisionModel = try? VNCoreMLModel(for: classifier.model) else {return nil}
         return imageClassifierVisionModel
     }()
@@ -38,17 +38,17 @@ class ColorFinder {
         let foo = result?.max(by: {$0.confidence < $1.confidence})
         
         switch foo?.identifier {
-        case "White":
+        case "U":
             return .white
-        case "Orange":
+        case "R":
             return .orange
-        case "Blue":
+        case "F":
             return .blue
-        case "Yellow":
+        case "D":
             return .yellow
-        case "Green":
+        case "B":
             return .green
-        case "Red":
+        case "L":
             return .red
         default:
             return .white
