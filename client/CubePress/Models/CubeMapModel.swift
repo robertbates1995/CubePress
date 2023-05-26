@@ -87,6 +87,10 @@ class CubeMapModel: ObservableObject {
         let size = CGSize(width: 700, height: 100)
         
         UIGraphicsBeginImageContext(size)
+        UIColor.black.setFill()
+        UIRectFill(CGRect(origin: .zero, size: size))
+
+        UIGraphicsBeginImageContext(size)
         base.draw(in: CGRect(x: 100, y: 0, width: 100, height: 100))
         UIImage.strokedCheckmark.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
         
@@ -106,7 +110,7 @@ class CubeMapModel: ObservableObject {
     
     fileprivate func saveFaceTestStrips(_ face: Face, _ named: String) {
         var foo = 0
-        let date = Int64(Date().timeIntervalSinceReferenceDate)
+        let date = Int64(Date().timeIntervalSince1970)
         var strips: [UIImage] = []
         
         for i in face.sourceImages {
@@ -125,16 +129,57 @@ class CubeMapModel: ObservableObject {
     }
     
     func saveTestStrips() {
+        
+        var temp = faces
+        //call save on all faces
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
         saveFaceTestStrips(F, "F")
         saveFaceTestStrips(R, "R")
         saveFaceTestStrips(B, "B")
         saveFaceTestStrips(D, "D")
+        //change face orientation
+        faces["L"] = faces["D"]
+        faces["R"] = faces["U"]
+        faces["U"] = faces["L"]
+        faces["D"] = faces["R"]
+        //call save on all faces
+        saveFaceTestStrips(U, "U")
+        saveFaceTestStrips(L, "L")
+        saveFaceTestStrips(F, "F")
+        saveFaceTestStrips(R, "R")
+        saveFaceTestStrips(B, "B")
+        saveFaceTestStrips(D, "D")
+        faces["L"] = faces["D"]
+        faces["R"] = faces["U"]
+        faces["U"] = faces["L"]
+        faces["D"] = faces["R"]
+        saveFaceTestStrips(U, "U")
+        saveFaceTestStrips(L, "L")
+        saveFaceTestStrips(F, "F")
+        saveFaceTestStrips(R, "R")
+        saveFaceTestStrips(B, "B")
+        saveFaceTestStrips(D, "D")
+        faces["L"] = faces["D"]
+        faces["R"] = faces["U"]
+        faces["U"] = faces["L"]
+        faces["D"] = faces["R"]
+        saveFaceTestStrips(U, "U")
+        saveFaceTestStrips(L, "L")
+        saveFaceTestStrips(F, "F")
+        saveFaceTestStrips(R, "R")
+        saveFaceTestStrips(B, "B")
+        saveFaceTestStrips(D, "D")
+        //Reset to normal
+        faces["L"] = faces["D"]
+        faces["R"] = faces["U"]
+        faces["U"] = faces["L"]
+        faces["D"] = faces["R"]
     }
     
     func updateColors() {
         U.updateColors(with: centers)
+        print("Updating colors")
         L.updateColors(with: centers)
         F.updateColors(with: centers)
         R.updateColors(with: centers)

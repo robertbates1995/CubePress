@@ -52,7 +52,6 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
                              CGRect(x: 0.375, y: 0.25 + 2 * height, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
         boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
-        let finder = ColorFinder()
         let coloredRects: [ColoredRect] = boundingBoxes.map {
             let rect = VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height))
             let temp = image.cropped(to: rect)

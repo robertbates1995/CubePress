@@ -45,6 +45,10 @@ struct CubeMapView: View {
             Button("Save test strips") {
                 model.saveTestStrips()
             }
+            Button("Update Colors") {
+                model.updateColors()
+            }
+            .padding()
         }
     }
     
