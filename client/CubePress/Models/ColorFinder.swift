@@ -14,7 +14,7 @@ class ColorFinder {
     
     static let colorClassifier: VNCoreMLModel? = {
         let configuration = MLModelConfiguration()
-        guard let classifier = try? colorStripClassifier1(configuration: configuration),
+        guard let classifier = try? colorStripClassifier2(configuration: configuration),
               let imageClassifierVisionModel = try? VNCoreMLModel(for: classifier.model) else {return nil}
         return imageClassifierVisionModel
     }()

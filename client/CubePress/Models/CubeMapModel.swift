@@ -129,8 +129,6 @@ class CubeMapModel: ObservableObject {
     }
     
     func saveTestStrips() {
-        
-        var temp = faces
         //call save on all faces
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
@@ -179,7 +177,6 @@ class CubeMapModel: ObservableObject {
     
     func updateColors() {
         U.updateColors(with: centers)
-        print("Updating colors")
         L.updateColors(with: centers)
         F.updateColors(with: centers)
         R.updateColors(with: centers)

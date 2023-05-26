@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 //abstract into cubemapmodel file
 
 struct CubeMapView: View {
