@@ -22,6 +22,10 @@ class CubeMapModel: ObservableObject {
                   "B" : Face(),
                   "D" : Face(), ]
     
+    private var centers: [UIImage] {[ U.centerImage, L.centerImage,
+                           F.centerImage, R.centerImage,
+                                      B.centerImage, D.centerImage ].compactMap({$0})}
+    
     @Published var U =  Face()
     @Published var L =  Face()
     @Published var F =  Face()
@@ -101,9 +105,6 @@ class CubeMapModel: ObservableObject {
     }
     
     fileprivate func saveFaceTestStrips(_ face: Face, _ named: String) {
-        let centers = [ U.sourceImages[4], L.sourceImages[4],
-                        F.sourceImages[4], R.sourceImages[4],
-                        B.sourceImages[4], D.sourceImages[4] ]
         var foo = 0
         let date = Int64(Date().timeIntervalSinceReferenceDate)
         var strips: [UIImage] = []
@@ -131,6 +132,15 @@ class CubeMapModel: ObservableObject {
         saveFaceTestStrips(B, "B")
         saveFaceTestStrips(D, "D")
     }
+    
+    func updateColors() {
+        U.updateColors(with: centers)
+        L.updateColors(with: centers)
+        F.updateColors(with: centers)
+        R.updateColors(with: centers)
+        B.updateColors(with: centers)
+        D.updateColors(with: centers)
+    }
 }
 
 struct Face {
@@ -145,6 +155,21 @@ struct Face {
     var bottomLeft = UIColor.black
     var bottomCenter = UIColor.black
     var bottomRight = UIColor.black
+    
+    var centerImage: UIImage? {sourceImages.count > 0 ? sourceImages[4] : nil}
+    
+    mutating func updateColors(with centers: [UIImage]) {
+        let finder = ColorFinder()
+        topLeft = finder.calcColor(image: sourceImages[6], base: centers)
+        topCenter = finder.calcColor(image: sourceImages[7], base: centers)
+        topRight = finder.calcColor(image: sourceImages[8], base: centers)
+        midLeft = finder.calcColor(image: sourceImages[3], base: centers)
+        midCenter = finder.calcColor(image: sourceImages[4], base: centers)
+        midRight = finder.calcColor(image: sourceImages[5], base: centers)
+        bottomLeft = finder.calcColor(image: sourceImages[0], base: centers)
+        bottomCenter = finder.calcColor(image: sourceImages[1], base: centers)
+        bottomRight = finder.calcColor(image: sourceImages[2], base: centers)
+    }
 }
 
 enum CubeFace: String, CaseIterable, Identifiable, Codable {

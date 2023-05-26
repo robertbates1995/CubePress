@@ -19,7 +19,10 @@ class ColorFinder {
         return imageClassifierVisionModel
     }()
     
-    func calcColor(image: CIImage) -> UIColor {
+    func calcColor(image: UIImage, base: [UIImage]) -> UIColor {
+        if base.count < 1 {
+            return .black
+        }
         
         var result: [VNClassificationObservation]?
         
@@ -28,6 +31,9 @@ class ColorFinder {
             result = observation.results as? [VNClassificationObservation] })
         
         imageClassificationRequest.imageCropAndScaleOption = .scaleFill
+        
+        guard let image = image.ciImage
+        else { return .black }
         
         let handler = VNImageRequestHandler(ciImage: image)
         let requests: [VNRequest] = [imageClassificationRequest]

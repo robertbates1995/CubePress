@@ -56,7 +56,7 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         let coloredRects: [ColoredRect] = boundingBoxes.map {
             let rect = VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height))
             let temp = image.cropped(to: rect)
-            return ColoredRect(rect: $0, image: testImage(base: temp, rect: rect), color: finder.calcColor(image: temp))
+            return ColoredRect(rect: $0, image: testImage(base: temp, rect: rect), color: .black)
         }
         
         Task{ @MainActor in

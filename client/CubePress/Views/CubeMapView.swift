@@ -141,7 +141,13 @@ struct CubeMapView_Previews: PreviewProvider {
     
     static var model: CubeMapModel {
         let temp = CubeMapModel()
-        temp.U.sourceImages = Array(repeating: UIImage(named: "fourColors")!, count: 9)
+        temp.F.sourceImages = Array(repeating: UIImage(named: "blueSample")!, count: 9)
+              temp.L.sourceImages = Array(repeating: UIImage(named: "redSample")!, count: 9)
+              temp.R.sourceImages = Array(repeating: UIImage(named: "orangeSample")!, count: 9)
+              temp.U.sourceImages = Array(repeating: UIImage(named: "whiteSample")!, count: 9)
+              temp.B.sourceImages = Array(repeating: UIImage(named: "greenSample")!, count: 9)
+              temp.D.sourceImages = Array(repeating: UIImage(named: "yellowSample")!, count: 9)
+        temp.updateColors()
         return temp
     }
     

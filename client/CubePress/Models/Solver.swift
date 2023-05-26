@@ -21,12 +21,12 @@ class Solver {
     let getter: CubeFaceGetter
     var cubeMover: CubeMovable
     var cubeMap: CubeMapModel
-    var referenceFrame = ["U" : "U",
-                          "L" : "L",
-                          "F" : "F",
-                          "R" : "R",
-                          "B" : "B",
-                          "D" : "D",]
+    var referenceFrame = [ "U" : "U",
+                           "L" : "L",
+                           "F" : "F",
+                           "R" : "R",
+                           "B" : "B",
+                           "D" : "D", ]
     
     init(getter: CubeFaceGetter, cubeMover: CubeMovable, cubeMap: CubeMapModel) {
         self.getter = getter
@@ -52,6 +52,7 @@ class Solver {
         await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
         try await cubeMover.input(moves: ["top", "mid"])
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
+        //func that sends an array of centers to framemodel
     }
     
     fileprivate func convert(color: UIColor) -> String {
