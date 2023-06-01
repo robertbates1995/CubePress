@@ -9,22 +9,22 @@ import Foundation
 import UIKit
 import SwiftUI
 
-//needs to look at a published property, cubeFace, in frame model.  will hand this model the property that it needs
+//needs to look at a published property, cubeFace, in frame model. Will hand this model the property that it needs
 //needs to be made observable
 
 @MainActor
 class CubeMapModel: ObservableObject {
     
-    var faces = [ "U" : Face(),
-                  "L" : Face(),
-                  "F" : Face(),
-                  "R" : Face(),
-                  "B" : Face(),
-                  "D" : Face(), ]
+    var faces = ["U" : Face(),
+                 "L" : Face(),
+                 "F" : Face(),
+                 "R" : Face(),
+                 "B" : Face(),
+                 "D" : Face(),]
     
-    private var centers: [UIImage] {[ U.centerImage, L.centerImage,
-                           F.centerImage, R.centerImage,
-                                      B.centerImage, D.centerImage ].compactMap({$0})}
+    private var centers: [UIImage] {[U.centerImage, L.centerImage,
+                                     F.centerImage, R.centerImage,
+                                     B.centerImage, D.centerImage].compactMap({$0})}
     
     @Published var U =  Face()
     @Published var L =  Face()
@@ -84,24 +84,41 @@ class CubeMapModel: ObservableObject {
     }
     
     func createTestStrip(base: UIImage, centers: [UIImage]) -> UIImage {
-        let size = CGSize(width: 700, height: 100)
+        let size = CGSize(width: 300, height: 400)
         
         UIGraphicsBeginImageContext(size)
-        UIColor.black.setFill()
+        UIColor.white.setFill()
         UIRectFill(CGRect(origin: .zero, size: size))
-
-        UIGraphicsBeginImageContext(size)
-        base.draw(in: CGRect(x: 100, y: 0, width: 100, height: 100))
-        UIImage.strokedCheckmark.draw(in: CGRect(x: 0, y: 0, width: 100, height: 100))
         
-        var x = 100
+        //add u face
+        let uSquare = CGRect(x: 100, y: 0, width: 100, height: 100)
+        base.draw(in: uSquare)
+        centers[0].draw(in: uSquare, blendMode: .difference, alpha: 1.0)
         
-        for layer in centers {
-            let s2 = CGRect(x: x, y: 0, width: 100, height: 100)
-            x += 100
-            base.draw(in: s2)
-            layer.draw(in: s2, blendMode: .difference, alpha: 1.0)
-        }
+        //add l face
+        let lSquare = CGRect(x: 0, y: 100, width: 100, height: 100)
+        base.draw(in: lSquare)
+        centers[1].draw(in: lSquare, blendMode: .difference, alpha: 1.0)
+        
+        //add f face
+        let fSquare = CGRect(x: 100, y: 100, width: 100, height: 100)
+        base.draw(in: fSquare)
+        centers[2].draw(in: fSquare, blendMode: .difference, alpha: 1.0)
+        
+        //add r face
+        let rSquare = CGRect(x: 200, y: 100, width: 100, height: 100)
+        base.draw(in: rSquare)
+        centers[3].draw(in: rSquare, blendMode: .difference, alpha: 1.0)
+        
+        //add b face
+        let bSquare = CGRect(x: 100, y: 300, width: 100, height: 100)
+        base.draw(in: bSquare)
+        centers[4].draw(in: bSquare, blendMode: .difference, alpha: 1.0)
+        
+        //add d face
+        let dSquare = CGRect(x: 100, y: 200, width: 100, height: 100)
+        base.draw(in: dSquare)
+        centers[5].draw(in: dSquare, blendMode: .difference, alpha: 1.0)
         
         let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -129,6 +146,7 @@ class CubeMapModel: ObservableObject {
     }
     
     func saveTestStrips() {
+        //TODO: FIX THIS
         //call save on all faces
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
@@ -137,10 +155,11 @@ class CubeMapModel: ObservableObject {
         saveFaceTestStrips(B, "B")
         saveFaceTestStrips(D, "D")
         //change face orientation
-        faces["L"] = faces["D"]
-        faces["R"] = faces["U"]
-        faces["U"] = faces["L"]
-        faces["D"] = faces["R"]
+        var temp = L
+        L = D
+        D = R
+        R = U
+        U = temp
         //call save on all faces
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
@@ -148,20 +167,22 @@ class CubeMapModel: ObservableObject {
         saveFaceTestStrips(R, "R")
         saveFaceTestStrips(B, "B")
         saveFaceTestStrips(D, "D")
-        faces["L"] = faces["D"]
-        faces["R"] = faces["U"]
-        faces["U"] = faces["L"]
-        faces["D"] = faces["R"]
+        temp = L
+        L = D
+        D = R
+        R = U
+        U = temp
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
         saveFaceTestStrips(F, "F")
         saveFaceTestStrips(R, "R")
         saveFaceTestStrips(B, "B")
         saveFaceTestStrips(D, "D")
-        faces["L"] = faces["D"]
-        faces["R"] = faces["U"]
-        faces["U"] = faces["L"]
-        faces["D"] = faces["R"]
+        temp = L
+        L = D
+        D = R
+        R = U
+        U = temp
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
         saveFaceTestStrips(F, "F")
@@ -169,10 +190,11 @@ class CubeMapModel: ObservableObject {
         saveFaceTestStrips(B, "B")
         saveFaceTestStrips(D, "D")
         //Reset to normal
-        faces["L"] = faces["D"]
-        faces["R"] = faces["U"]
-        faces["U"] = faces["L"]
-        faces["D"] = faces["R"]
+        temp = L
+        L = D
+        D = R
+        R = U
+        U = temp
     }
     
     func updateColors() {
