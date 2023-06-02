@@ -11,8 +11,20 @@ import SwiftUI
 
 struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
+    @State private var selection: Int = 1
     
     var body: some View {
+        FullMapView
+        Picker("Select Room Type", selection: self.$selection) {
+                           Image("View").tag(1)
+                           Image("Edit").tag(2)
+        }
+                       .frame(width: 300)
+                       .pickerStyle(.segmented)
+    }
+    
+    var FullMapView: some View {
+
         VStack{
             Grid(horizontalSpacing: 30){
                 GridRow{
@@ -40,6 +52,8 @@ struct CubeMapView: View {
                     Color.mint
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.mint)
             .padding()
             Button("Save test strips") {
                 model.saveTestStrips()
@@ -49,8 +63,6 @@ struct CubeMapView: View {
             }
             .padding()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.mint)
     }
     
     struct CubeFaceView: View {
@@ -132,7 +144,6 @@ extension UIImage {
                 size: scaledImageSize
             ))
         }
-        
         return scaledImage
     }
 }
