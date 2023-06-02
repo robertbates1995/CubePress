@@ -16,10 +16,10 @@ struct CubeMapView: View {
         VStack{
             Grid(horizontalSpacing: 30){
                 GridRow{
-                    Color.white
+                    Color.mint
                     //Up
                     CubeFaceView(model: model.U, faceLabel: "Up")
-                    Color.white
+                    Color.mint
                 }
                 GridRow{
                     CubeFaceView(model: model.L, faceLabel: "Left")
@@ -28,16 +28,16 @@ struct CubeMapView: View {
                     //front 3 sides
                 }
                 GridRow{
-                    Color.white
+                    Color.mint
                     //bottom
                     CubeFaceView(model: model.D, faceLabel: "Down")
-                    Color.white
+                    Color.mint
                 }
                 GridRow{
-                    Color.white
+                    Color.mint
                     //back
                     CubeFaceView(model: model.B, faceLabel: "Back")
-                    Color.white
+                    Color.mint
                 }
             }
             .padding()
@@ -49,6 +49,8 @@ struct CubeMapView: View {
             }
             .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.mint)
     }
     
     struct CubeFaceView: View {
@@ -86,6 +88,8 @@ struct CubeMapView: View {
                 .aspectRatio(contentMode: .fit)
                 Text(faceLabel)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.mint)
         }
         
         @ViewBuilder
