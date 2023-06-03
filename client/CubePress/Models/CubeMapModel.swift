@@ -86,7 +86,7 @@ class CubeMapModel: ObservableObject {
     fileprivate func saveFaceTestStrips(_ face: Face, _ named: String) {
         var foo = 0
         let date = Int64(Date().timeIntervalSince1970 * 10000)
-        var strips: [UIImage] = face.sourceImages.map({$0.createTestStrip(with: centers)})
+        let strips: [UIImage] = face.sourceImages.map({$0.createTestStrip(with: centers)})
         
         let directory = URL.documentsDirectory.appendingPathComponent(named)
         try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)

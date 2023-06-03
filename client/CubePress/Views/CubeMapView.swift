@@ -14,24 +14,44 @@ struct CubeMapView: View {
     @State private var selection: Int = 1
     
     var body: some View {
-        FullMapView
-        Picker("Select Room Type", selection: self.$selection) {
-                           Image("View").tag(1)
-                           Image("Edit").tag(2)
+        VStack{
+            if selection == 1 {
+                FullMapView
+            } else {
+                EditView
+            }
+            Picker("Select Room Type", selection: self.$selection) {
+                Text("View").tag(1)
+                Text("Edit").tag(2)
+            }
+            .frame(width: 300)
+            .pickerStyle(.segmented)
         }
-                       .frame(width: 300)
-                       .pickerStyle(.segmented)
+    }
+    
+    var EditView: some View {
+        VStack{
+            ScrollView {
+                CubeFaceView(model: model.U, faceLabel: "U")
+                CubeFaceView(model: model.L, faceLabel: "L")
+                CubeFaceView(model: model.F, faceLabel: "F")
+                CubeFaceView(model: model.R, faceLabel: "R")
+                CubeFaceView(model: model.D, faceLabel: "D")
+                CubeFaceView(model: model.B, faceLabel: "B")
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding([.leading, .trailing])
+        .background(.mint)
     }
     
     var FullMapView: some View {
-
         VStack{
             Grid(horizontalSpacing: 30){
                 GridRow{
                     Color.mint
                     //Up
                     CubeFaceView(model: model.U, faceLabel: "Up")
-                    Color.mint
                 }
                 GridRow{
                     CubeFaceView(model: model.L, faceLabel: "Left")
@@ -43,26 +63,28 @@ struct CubeMapView: View {
                     Color.mint
                     //bottom
                     CubeFaceView(model: model.D, faceLabel: "Down")
-                    Color.mint
                 }
                 GridRow{
                     Color.mint
                     //back
                     CubeFaceView(model: model.B, faceLabel: "Back")
-                    Color.mint
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.mint)
-            .padding()
-            Button("Save test strips") {
-                model.saveTestStrips()
+            HStack(alignment: .center) {
+                Spacer()
+                Button("Save test strips") {
+                    model.saveTestStrips()
+                }.foregroundColor(.black)
+                Spacer()
+                Button("Update Colors") {
+                    model.updateColors()
+                }.foregroundColor(.black)
+                Spacer()
             }
-            Button("Update Colors") {
-                model.updateColors()
-            }
-            .padding()
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding([.leading, .trailing, .bottom])
+        .background(.mint)
     }
     
     struct CubeFaceView: View {
@@ -160,11 +182,11 @@ struct CubeMapView_Previews: PreviewProvider {
     static var model: CubeMapModel {
         let temp = CubeMapModel()
         temp.F.sourceImages = Array(repeating: UIImage(named: "blueSample")!, count: 9)
-              temp.L.sourceImages = Array(repeating: UIImage(named: "redSample")!, count: 9)
-              temp.R.sourceImages = Array(repeating: UIImage(named: "orangeSample")!, count: 9)
-              temp.U.sourceImages = Array(repeating: UIImage(named: "whiteSample")!, count: 9)
-              temp.B.sourceImages = Array(repeating: UIImage(named: "greenSample")!, count: 9)
-              temp.D.sourceImages = Array(repeating: UIImage(named: "yellowSample")!, count: 9)
+        temp.L.sourceImages = Array(repeating: UIImage(named: "redSample")!, count: 9)
+        temp.R.sourceImages = Array(repeating: UIImage(named: "orangeSample")!, count: 9)
+        temp.U.sourceImages = Array(repeating: UIImage(named: "whiteSample")!, count: 9)
+        temp.B.sourceImages = Array(repeating: UIImage(named: "greenSample")!, count: 9)
+        temp.D.sourceImages = Array(repeating: UIImage(named: "yellowSample")!, count: 9)
         temp.updateColors()
         return temp
     }
