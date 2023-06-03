@@ -30,18 +30,27 @@ struct CubeMapView: View {
     }
     
     var EditView: some View {
-        VStack{
-            ScrollView {
-                CubeFaceView(model: model.U, faceLabel: "U")
-                CubeFaceView(model: model.L, faceLabel: "L")
-                CubeFaceView(model: model.F, faceLabel: "F")
-                CubeFaceView(model: model.R, faceLabel: "R")
-                CubeFaceView(model: model.D, faceLabel: "D")
-                CubeFaceView(model: model.B, faceLabel: "B")
+        GeometryReader{ geometry in
+            VStack {
+                ScrollView{
+                    CubeFaceView(model: model.U, faceLabel: "U")
+                    CubeFaceView(model: model.L, faceLabel: "L")
+                    CubeFaceView(model: model.F, faceLabel: "F")
+                    CubeFaceView(model: model.R, faceLabel: "R")
+                    CubeFaceView(model: model.D, faceLabel: "D")
+                    CubeFaceView(model: model.B, faceLabel: "B")
+                }
+                
+                HStack(alignment: .center) {
+                    Text("Add\ncolor")
+                    Color(model.U.midCenter)
+                }
+                .frame(height: geometry.size.height/12)
+                .background(Color.white)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding([.leading, .trailing])
+        .padding([.leading, .trailing, .bottom])
         .background(.mint)
     }
     
