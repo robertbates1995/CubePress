@@ -31,12 +31,12 @@ struct CubeMapView: View {
     
     var EditView: some View {
         List {
-            CubeFaceView(model: Binding(get: { model.U }, set: {model.U = $0}), faceLabel: "U")
-            CubeFaceView(model: Binding(get: { model.L }, set: {model.L = $0}), faceLabel: "L")
-            CubeFaceView(model: Binding(get: { model.F }, set: {model.F = $0}), faceLabel: "F")
-            CubeFaceView(model: Binding(get: { model.R }, set: {model.R = $0}), faceLabel: "R")
-            CubeFaceView(model: Binding(get: { model.D }, set: {model.D = $0}), faceLabel: "D")
-            CubeFaceView(model: Binding(get: { model.B }, set: {model.B = $0}), faceLabel: "B")
+            CubeFaceView(model: $model.U, faceLabel: "U")
+            CubeFaceView(model: $model.L, faceLabel: "L")
+            CubeFaceView(model: $model.F, faceLabel: "F")
+            CubeFaceView(model: $model.R, faceLabel: "R")
+            CubeFaceView(model: $model.D, faceLabel: "D")
+            CubeFaceView(model: $model.B, faceLabel: "B")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding([.leading, .trailing, .bottom])
@@ -44,46 +44,50 @@ struct CubeMapView: View {
     }
     
     var FullMapView: some View {
-        VStack{
-            Grid(horizontalSpacing: 30){
-                GridRow{
-                    Color.mint
-                    //Up
-                    //                    CubeFaceView(model: model.U, faceLabel: "Up")
+            VStack{
+                GeometryReader{ geometry in
+                    Grid(horizontalSpacing: 20) {
+                        GridRow{
+                            Color.mint
+                            //Up
+                            CubeFaceView(model: $model.U, faceLabel: "U")
+                        }
+                        GridRow{
+                            //front 3 sides
+                            CubeFaceView(model: $model.L, faceLabel: "L")
+                            CubeFaceView(model: $model.F, faceLabel: "F")
+                            CubeFaceView(model: $model.R, faceLabel: "R")
+                        }
+                        GridRow{
+                            Color.mint
+                            //bottom
+                            CubeFaceView(model: $model.D, faceLabel: "D")
+                        }
+                        GridRow{
+                            Color.mint
+                            //back
+                            CubeFaceView(model: $model.B, faceLabel: "B")
+                        }
+                    }
+                    .frame(width: geometry.size.width)
                 }
-                GridRow{
-                    //                    CubeFaceView(model: model.L, faceLabel: "Left")
-                    //                    CubeFaceView(model: model.F, faceLabel: "Front")
-                    //                    CubeFaceView(model: model.R, faceLabel: "Right")
-                    //front 3 sides
-                }
-                GridRow{
-                    Color.mint
-                    //bottom
-                    //                    CubeFaceView(model: model.D, faceLabel: "Down")
-                }
-                GridRow{
-                    Color.mint
-                    //back
-                    //                    CubeFaceView(model: model.B, faceLabel: "Back")
+                .padding([.leading, .trailing])
+                HStack(alignment: .center) {
+                    Spacer()
+                    Button("Save test strips") {
+                        model.saveTestStrips()
+                    }.foregroundColor(.black)
+                    Spacer()
+                    Button("Update Colors") {
+                        model.updateColors()
+                    }.foregroundColor(.black)
+                    Spacer()
                 }
             }
-            HStack(alignment: .center) {
-                Spacer()
-                Button("Save test strips") {
-                    model.saveTestStrips()
-                }.foregroundColor(.black)
-                Spacer()
-                Button("Update Colors") {
-                    model.updateColors()
-                }.foregroundColor(.black)
-                Spacer()
-            }
+            .padding([.leading, .trailing])
+            .background(.mint)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding([.leading, .trailing, .bottom])
-        .background(.mint)
-    }
+    
 }
 
 struct CubeMapView_Previews: PreviewProvider {
