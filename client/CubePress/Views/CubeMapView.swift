@@ -15,39 +15,28 @@ struct CubeMapView: View {
     
     var body: some View {
         VStack{
-            if selection == 1 {
-                FullMapView
-            } else {
-                EditView
-            }
             Picker("Select Room Type", selection: self.$selection) {
                 Text("View").tag(1)
                 Text("Edit").tag(2)
             }
             .frame(width: 300)
             .pickerStyle(.segmented)
+            if selection == 1 {
+                FullMapView
+            } else {
+                EditView
+            }
         }
     }
     
     var EditView: some View {
-        GeometryReader{ geometry in
-            VStack {
-                ScrollView{
-                    CubeFaceView(model: model.U, faceLabel: "U")
-                    CubeFaceView(model: model.L, faceLabel: "L")
-                    CubeFaceView(model: model.F, faceLabel: "F")
-                    CubeFaceView(model: model.R, faceLabel: "R")
-                    CubeFaceView(model: model.D, faceLabel: "D")
-                    CubeFaceView(model: model.B, faceLabel: "B")
-                }
-                
-                HStack(alignment: .center) {
-                    Text("Add\ncolor")
-                    Color(model.U.midCenter)
-                }
-                .frame(height: geometry.size.height/12)
-                .background(Color.white)
-            }
+        List {
+            CubeFaceView(model: Binding(get: { model.U }, set: {model.U = $0}), faceLabel: "U")
+            CubeFaceView(model: Binding(get: { model.L }, set: {model.L = $0}), faceLabel: "L")
+            CubeFaceView(model: Binding(get: { model.F }, set: {model.F = $0}), faceLabel: "F")
+            CubeFaceView(model: Binding(get: { model.R }, set: {model.R = $0}), faceLabel: "R")
+            CubeFaceView(model: Binding(get: { model.D }, set: {model.D = $0}), faceLabel: "D")
+            CubeFaceView(model: Binding(get: { model.B }, set: {model.B = $0}), faceLabel: "B")
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding([.leading, .trailing, .bottom])
@@ -60,23 +49,23 @@ struct CubeMapView: View {
                 GridRow{
                     Color.mint
                     //Up
-                    CubeFaceView(model: model.U, faceLabel: "Up")
+                    //                    CubeFaceView(model: model.U, faceLabel: "Up")
                 }
                 GridRow{
-                    CubeFaceView(model: model.L, faceLabel: "Left")
-                    CubeFaceView(model: model.F, faceLabel: "Front")
-                    CubeFaceView(model: model.R, faceLabel: "Right")
+                    //                    CubeFaceView(model: model.L, faceLabel: "Left")
+                    //                    CubeFaceView(model: model.F, faceLabel: "Front")
+                    //                    CubeFaceView(model: model.R, faceLabel: "Right")
                     //front 3 sides
                 }
                 GridRow{
                     Color.mint
                     //bottom
-                    CubeFaceView(model: model.D, faceLabel: "Down")
+                    //                    CubeFaceView(model: model.D, faceLabel: "Down")
                 }
                 GridRow{
                     Color.mint
                     //back
-                    CubeFaceView(model: model.B, faceLabel: "Back")
+                    //                    CubeFaceView(model: model.B, faceLabel: "Back")
                 }
             }
             HStack(alignment: .center) {
@@ -95,99 +84,9 @@ struct CubeMapView: View {
         .padding([.leading, .trailing, .bottom])
         .background(.mint)
     }
-    
-    struct CubeFaceView: View {
-        var model: Face
-        var faceLabel: String
-        
-        var body: some View {
-            VStack{
-                Grid {
-                    GridRow{
-                        sourceImage(index: 6)
-                            .border(Color(uiColor: model.topLeft), width: 3)
-                        sourceImage(index: 7)
-                            .border(Color(uiColor: model.topCenter), width: 3)
-                        sourceImage(index: 8)
-                            .border(Color(uiColor: model.topRight), width: 3)
-                    }
-                    GridRow{
-                        sourceImage(index: 3)
-                            .border(Color(uiColor: model.midLeft), width: 3)
-                        sourceImage(index: 4)
-                            .border(Color(uiColor: model.midCenter), width: 3)
-                        sourceImage(index: 5)
-                            .border(Color(uiColor: model.midRight), width: 3)
-                    }
-                    GridRow{
-                        sourceImage(index: 0)
-                            .border(Color(uiColor: model.bottomLeft), width: 3)
-                        sourceImage(index: 1)
-                            .border(Color(uiColor: model.bottomCenter), width: 3)
-                        sourceImage(index: 2)
-                            .border(Color(uiColor: model.bottomRight), width: 3)
-                    }
-                }
-                .aspectRatio(contentMode: .fit)
-                Text(faceLabel)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.mint)
-        }
-        
-        @ViewBuilder
-        func sourceImage(index: Int) -> some View {
-            if model.sourceImages.count < 9 {
-                Color.black
-            }
-            else {
-                Image(uiImage: model.sourceImages[index])
-                    .resizable()
-                    .frame(idealWidth: .greatestFiniteMagnitude, idealHeight: .greatestFiniteMagnitude)
-                    .aspectRatio(1.0, contentMode: .fit)
-            }
-        }
-    }
-}
-
-extension UIImage {
-    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
-        // Determine the scale factor that preserves aspect ratio
-        let widthRatio = targetSize.width / size.width
-        let heightRatio = targetSize.height / size.height
-        
-        let scaleFactor = min(widthRatio, heightRatio)
-        
-        // Compute the new image size that preserves aspect ratio
-        let scaledImageSize = CGSize(
-            width: size.width * scaleFactor,
-            height: size.height * scaleFactor
-        )
-        
-        // Draw and return the resized UIImage
-        let renderer = UIGraphicsImageRenderer(
-            size: scaledImageSize
-        )
-        
-        let scaledImage = renderer.image { _ in
-            self.draw(in: CGRect(
-                origin: .zero,
-                size: scaledImageSize
-            ))
-        }
-        return scaledImage
-    }
 }
 
 struct CubeMapView_Previews: PreviewProvider {
-    struct Wrapper: View {
-        @ObservedObject var frame: FrameModel
-        
-        var body: some View {
-            CubeMapView.CubeFaceView(model: frame.cubeFace, faceLabel: "test")
-        }
-    }
-    
     static var model: CubeMapModel {
         let temp = CubeMapModel()
         temp.F.sourceImages = Array(repeating: UIImage(named: "blueSample")!, count: 9)
@@ -202,6 +101,5 @@ struct CubeMapView_Previews: PreviewProvider {
     
     static var previews: some View {
         CubeMapView(model: model)
-        Wrapper(frame: FrameModel(pictureString: "rubik"))
     }
 }
