@@ -24,9 +24,7 @@ def update_settings_dictionary():
     json.dump(settings_dictionary, f)
     arm = servos.arm_servo(settings_dictionary['bot'],settings_dictionary['mid'],settings_dictionary['top'], 15) #initalizing arm servo
     table = servos.table_servo(settings_dictionary['left'],
-                           settings_dictionary['leftOfCenter'],
                            settings_dictionary['center'],
-                           settings_dictionary['rightOfCenter'],
                            settings_dictionary['right'], 14) #initalizing table servo
     f.close()
 
@@ -35,9 +33,7 @@ def handle_settings(request):
     length = len(parts)
     print("request parts: ", parts)
     if length != 2:
-        print("parts[3]:", int(parts[3]))
         settings_dictionary[parts[2]] = int(parts[3])
-        print("settings dictionary: ", settings_dictionary)
         update_settings_dictionary()
     return read_settings_file()
 
@@ -48,9 +44,7 @@ arm = servos.arm_servo(settings_dictionary['bot'],
                        settings_dictionary['mid'],
                        settings_dictionary['top'], 15) #initalizing arm servo
 table = servos.table_servo(settings_dictionary['left'],
-                           settings_dictionary['leftOfCenter'],
                            settings_dictionary['center'],
-                           settings_dictionary['rightOfCenter'],
                            settings_dictionary['right'], 14) #initalizing table servo
 
 #set secret values
@@ -90,33 +84,37 @@ print('listening on', addr)
 while True:
     try:
         cl, addr = s.accept()
-        print('client connected from', addr)
+        print('client connected from: ', addr)
         request = cl.recv(1024)
         request = str(request)
         request = request.split(" ")[1]
+        response = ''
         if "settings" in request:
             print("settings")
             response = handle_settings(request)
-        elif 'bot' in request:
-            arm.move_bot()
-        elif 'mid' in request:
-            arm.move_mid()
-        elif 'top' in request:
-            arm.move_top()
-        elif 'leftOfCenter' in request:
-            table.move_left_of_center()
-        elif 'rightOfCenter' in request:
-            table.move_right_of_center()
-        elif 'left' in request:
-            table.move_left()
-        elif 'center' in request:
-            table.move_center()
-        elif 'right' in request:
-            table.move_right()
         else:
-            print("No Instruction")
+            print(request)
+            request = request[request.rindex("/") + 1:]
+            for i in request:
+                print("executing: ", i)
+                if i == "T":
+                    arm.move_top()
+                if i == "M":
+                    arm.move_mid()
+                if i == "B":
+                    arm.move_bot()
+                if i == "L":
+                    table.move_left()
+                if i == "C":
+                    table.move_center()
+                if i == "R":
+                    table.move_right()
+                else:
+                    response = 'Invalid instruction: ' + request
+                    print(response)
         # Create and send response
         cl.send('HTTP/1.0 200 OK\r\nContent-type: text/json\r\n\r\n')
+        print(response)
         cl.send(response)
         cl.close()
         
