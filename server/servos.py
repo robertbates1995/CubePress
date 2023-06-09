@@ -17,21 +17,17 @@ class arm_servo:
     top = int
     servo: PWM()
     
-    def move(self, move):
-        if 'top' in move:
-            self.move_top()
-    
     def move_bot(self):
         self.servo.duty_ns(self.bot)
-        sleep_ms(50)
+        sleep_ms(1000)
         
     def move_mid(self):
         self.servo.duty_ns(self.mid)
-        sleep_ms(1550)
+        sleep_ms(1000)
         
     def move_top(self):
         self.servo.duty_ns(self.top)
-        sleep_ms(50)
+        sleep_ms(1000)
         
     def __init__(self, bot, mid, top, pin):
         self.servo = PWM(Pin(pin))
@@ -44,38 +40,26 @@ class arm_servo:
 class table_servo:
     # arm servo, connected to Pin 16
     left = int
-    leftOfCenter = int
     center = int
-    rightOfCenter = int
     right = int
     servo: PWM()
     
     def move_left(self):
         self.servo.duty_ns(self.left)
-        sleep_ms(50)
-        
-    def move_left_of_center(self):
-        self.servo.duty_ns(self.leftOfCenter)
-        sleep_ms(50)
+        sleep_ms(1000)
         
     def move_center(self):
         self.servo.duty_ns(self.center)
-        sleep_ms(50)
-        
-    def move_right_of_center(self):
-        self.servo.duty_ns(self.rightOfCenter)
-        sleep_ms(50)
+        sleep_ms(1000)
         
     def move_right(self):
         self.servo.duty_ns(self.right)
-        sleep_ms(50)
+        sleep_ms(1000)
         
-    def __init__(self, left, leftOfCenter, center, rightOfCenter, right, pin):
+    def __init__(self, left, center, right, pin):
         self.servo = PWM(Pin(pin))
         self.servo.freq(50)
         sleep_ms(50)
         self.left = left
-        self.leftOfCenter = leftOfCenter
         self.center = center
-        self.rightOfCenter = rightOfCenter
         self.right = right
