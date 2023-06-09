@@ -12,7 +12,7 @@ struct ControllerView: View {
     
     var body: some View {
         List {
-            ForEach(MacroMoves.allCases) { move in
+            ForEach(CubeFace.allCases) { move in
                 HStack{
                     Button("Move \(move.rawValue)") {
                         Task{

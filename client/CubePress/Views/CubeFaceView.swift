@@ -15,23 +15,23 @@ struct CubeFaceView: View {
         VStack{
             Grid {
                 GridRow{
-                    Facelet(selectedColor: Binding(get: {model.topLeft}, set: {model.topLeft = $0}))
-                        .border(Color(uiColor: model.topLeft), width: 3)
-                    Facelet(selectedColor: Binding(get: {model.topCenter}, set: {model.topCenter = $0}))
-                        .border(Color(uiColor: model.topCenter), width: 3)
-                    Facelet(selectedColor: Binding(get: {model.topRight}, set: {model.topRight = $0}))
-                        .border(Color(uiColor: model.topRight), width: 3)
+                    Facelet(selectedColor: $model.topLeft)
+                        .border(Color(uiColor: model.topLeft.color), width: 3)
+                    Facelet(selectedColor: $model.topCenter)
+                        .border(Color(uiColor: model.topCenter.color), width: 3)
+                    Facelet(selectedColor: $model.topRight)
+                        .border(Color(uiColor: model.topRight.color), width: 3)
                 }
                 GridRow{
                     Facelet(selectedColor: $model.midLeft)
-                        .border(Color(uiColor: model.midLeft), width: 3)
-                    Facelet(selectedColor: $model.midCenter)                        .border(Color(uiColor: model.midCenter), width: 3)
-                    Facelet(selectedColor: $model.midRight)                        .border(Color(uiColor: model.midRight), width: 3)
+                        .border(Color(uiColor: model.midLeft.color), width: 3)
+                    Facelet(selectedColor: $model.midCenter)                        .border(Color(uiColor: model.midCenter.color), width: 3)
+                    Facelet(selectedColor: $model.midRight)                        .border(Color(uiColor: model.midRight.color), width: 3)
                 }
                 GridRow{
-                    Facelet(selectedColor: $model.bottomLeft)                        .border(Color(uiColor: model.bottomLeft), width: 3)
-                    Facelet(selectedColor: $model.bottomCenter)                        .border(Color(uiColor: model.bottomCenter), width: 3)
-                    Facelet(selectedColor: $model.bottomRight)                        .border(Color(uiColor: model.bottomRight), width: 3)
+                    Facelet(selectedColor: $model.bottomLeft)                        .border(Color(uiColor: model.bottomLeft.color), width: 3)
+                    Facelet(selectedColor: $model.bottomCenter)                        .border(Color(uiColor: model.bottomCenter.color), width: 3)
+                    Facelet(selectedColor: $model.bottomRight)                        .border(Color(uiColor: model.bottomRight.color), width: 3)
                 }
             }
             .aspectRatio(contentMode: .fit)
@@ -56,40 +56,40 @@ struct CubeFaceView: View {
 }
 
 struct Facelet: View {
-    @Binding var selectedColor: UIColor
+    @Binding var selectedColor: CubeFace?
     @State var showingSheet = false
     
     var body: some View {
-        Button(action: {showingSheet.toggle()}, label: {Color(uiColor: selectedColor)})
+        Button(action: {showingSheet.toggle()}, label: {Color(uiColor: selectedColor.color)})
             .sheet(isPresented: $showingSheet) {SheetView(selectedColor: $selectedColor)}
     }
 }
 
 struct SheetView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var selectedColor: UIColor
+    @Binding var selectedColor: CubeFace?
     
     var body: some View {
         VStack{
             HStack{
-                Button(action: {selectedColor = .red
+                Button(action: {selectedColor = .L
                     dismiss()
                 }, label: {Circle().fill(.red)})
-                Button(action: {selectedColor = .blue
+                Button(action: {selectedColor = .F
                     dismiss()
                 }, label: {Circle().fill(.blue)})
-                Button(action: {selectedColor = .green
+                Button(action: {selectedColor = .B
                     dismiss()
                 }, label: {Circle().fill(.green)})
             }
             HStack{
-                Button(action: {selectedColor = .orange
+                Button(action: {selectedColor = .R
                     dismiss()
                 }, label: {Circle().fill(.orange)})
-                Button(action: {selectedColor = .yellow
+                Button(action: {selectedColor = .D
                     dismiss()
                 }, label: {Circle().fill(.yellow)})
-                Button(action: {selectedColor = .white
+                Button(action: {selectedColor = .U
                     dismiss()
                 }, label: {Circle().strokeBorder(.black)})
             }
@@ -103,7 +103,7 @@ struct SheetView: View {
 }
 
 struct CubeFaceView_Previews: PreviewProvider {
-    static var model = Face(topLeft: .red, topCenter: .blue, topRight: .green, bottomLeft: .yellow)
+    static var model = Face(topLeft: .U, topCenter: .F, topRight: .L, bottomLeft: .B)
     
     static var previews: some View {
         CubeFaceView(model: Binding(get: { model }, set: { model = $0 }), faceLabel: "test face")

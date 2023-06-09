@@ -34,11 +34,6 @@ class Solver {
         self.cubeMap = cubeMap
     }
     
-    fileprivate func scanFace(_ cubeMap: CubeMapModel, move: Move) async throws {
-        try await cubeMover.input(moves: [move.rawValue])
-        await cubeMap.add(face: getter.cubeFace)
-    }
-    
     func scanCube() async throws {
         try await cubeMover.input(moves: ["center", "mid"])  //set robot to starting posistion
         await MainActor.run(body: {cubeMap.U = getter.cubeFace} )  //Scan
@@ -55,23 +50,8 @@ class Solver {
         //func that sends an array of centers to framemodel
     }
     
-    fileprivate func convert(color: UIColor) -> String {
-        switch color {
-        case .white:
-            return "U"
-        case .green:
-            return "B"
-        case .orange:
-            return "R"
-        case .yellow:
-            return "D"
-        case .red:
-            return "L"
-        case .blue:
-            return "F"
-        default:
-            return "[error in convert(color: UIColor)]"
-        }
+    fileprivate func convert(color: CubeFace?) -> String {
+        color?.rawValue ?? "[error in convert(color: UIColor)]"
     }
     
     fileprivate func convert(face: Face) -> String {
@@ -139,7 +119,7 @@ class Solver {
     
     func convert(instruction: String) -> String {
         guard let cubeMove = referenceFrame[instruction[0]],
-              let macro = MacroMove[cubeMove] else { return "no instruction"}
+              let macro = cubeFace[cubeMove] else { return "no instruction"}
         switch instruction.dropFirst() {  //switch on string length
         case "" :    //execute standard move
             let move = macro + "BRMC"
@@ -220,10 +200,4 @@ extension String {
     subscript(i: Int) -> String {
         return  i < count ? String(self[index(startIndex, offsetBy: i)]) : ""
     }
-}
-
-enum MacroMoves: String, CaseIterable, Identifiable, Codable {
-    var id: String {rawValue}
-    
-    case U, D, R, L, F, B
 }

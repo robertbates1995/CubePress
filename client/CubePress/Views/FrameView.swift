@@ -15,7 +15,7 @@ struct FrameView: View {
                     ForEach(model.coloredRects, id: \.self.id) { foo in
                         VNRectangle(boundingBoxes: [foo.rect])
                             .stroke(lineWidth: 3)
-                            .foregroundColor(Color(foo.color))
+                            .foregroundColor(Color(foo.color.color))
                     }
                 }
         } else {

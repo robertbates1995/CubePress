@@ -12,7 +12,6 @@ class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var ipAddress: String = "10.0.0.50"
     @Published var settings = [Move:String]()
-    @Published var macroSettings = [MacroMove:String()]
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
     }

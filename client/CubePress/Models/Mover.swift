@@ -50,7 +50,7 @@ enum Move: String, CaseIterable, Identifiable, Codable {
 
 
 
-let MacroMove: [String: String] = ["U": "TMTM",
+let cubeFace: [String: String] = ["U": "TMTM",
                                    "D": "",
                                    "R": "LTMC",
                                    "L": "RTMC",
