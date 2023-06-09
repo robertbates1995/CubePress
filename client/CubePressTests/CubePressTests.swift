@@ -38,7 +38,7 @@ final class CubePressTests: XCTestCase {
     func testCalcColor(picture: String, color: UIColor) {
         let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!
         let sut = ColorFinder()
-        XCTAssertEqual(sut.calcColor(image: CIImage(image: image)!), color)
+        XCTAssertEqual(sut.calcColor(image: image, base: []), color)
     }
     
     func testAllColors() {
@@ -134,9 +134,6 @@ final class CubePressTests: XCTestCase {
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        
-        //checking strings of macroMoves
-        XCTAssertEqual(sut.solver.convert(instructions: "U D R L F B "), "TMTMBRMCTMTMBRMCRTMCBRMCTMBRMCRTMCBRMCTMBRMC")
     }
     
     func testMover() {

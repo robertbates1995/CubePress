@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Mover: CubeMovable {
+class Mover: CubeMovable, ObservableObject {
     var errorMessage: String?
     var settings: SettingsModel
     var callServer: (URL) async throws -> (Data,URLResponse) = {
@@ -23,7 +23,8 @@ class Mover: CubeMovable {
             errorMessage = nil
         }
         guard let url = URL(string: "http://\(settings.ipAddress)/\(String(move))") else { return }
-        do{
+        print(url)
+        do {
             let _ = try await callServer(url)
         } catch {
             Task { @MainActor in

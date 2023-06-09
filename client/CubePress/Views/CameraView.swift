@@ -11,13 +11,13 @@ extension VideoCapture: VideoCapturing {
 
 struct CameraView: View {
     let model: VideoCapturing
-    let onSolveTapped: () -> ()
+    let onScanTapped: () -> ()
     
     var body: some View {
         FrameView(model: model.model)
             .overlay (alignment: .bottom){
-                Button("Solve") {
-                    onSolveTapped()
+                Button("Scan") {
+                    onScanTapped()
                 }
                 .padding()
                 .background(.gray)
@@ -40,6 +40,6 @@ struct ContentView_Previews: PreviewProvider {
         let model = FrameModel(pictureString: "rubik")
     }
     static var previews: some View {
-        CameraView(model: Mock(), onSolveTapped: {})
+        CameraView(model: Mock(), onScanTapped: {})
     }
 }

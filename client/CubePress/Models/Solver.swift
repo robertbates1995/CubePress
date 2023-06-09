@@ -60,15 +60,15 @@ class Solver {
         case .white:
             return "U"
         case .green:
-            return "R"
+            return "B"
         case .orange:
-            return "F"
+            return "R"
         case .yellow:
             return "D"
         case .red:
-            return "B"
-        case .blue:
             return "L"
+        case .blue:
+            return "F"
         default:
             return "[error in convert(color: UIColor)]"
         }
@@ -164,29 +164,29 @@ class Solver {
             convertFrameWith(move: "'")
             return move
         default:
-            return "[error in convert(instruction: UIColor)]"
+            return "error in convert(instruction: String)"
         }
     }
     
-    func convert(instructions: String) -> String {
+    func convert(instructions: String) -> [String] {
         //create dictionary where keys are human moves and values are cubotino moves
         //parse input string
         //convert each element into cubotino equivelent
         var instruction = ""
-        var product = ""
+        var product:[String] = []
         
         for char in instructions {
             if char != " " {
                 instruction += String(char)
             } else {
-                product += convert(instruction: instruction)
+                product.append(convert(instruction: instruction))
                 instruction = ""
             }
         }
         return product
     }
     
-    fileprivate func convertMap() async -> String {
+    func convertMap() async -> String {
         await MainActor.run(body: {
             var product = ""
             product += convert(face: cubeMap.U)
@@ -201,13 +201,14 @@ class Solver {
     
     func solveCube() async throws {
         //DONT TAP THE BUTTON TWICE
-        try await scanCube()
+        //try await scanCube()
         let tmp = FileManager.default.temporaryDirectory.path
-        let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp)
+        let solutionPtr = await ApplyKociembaAlgorithm(strdup("UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"), 25000, 500, 0, tmp) //convertMap()
         if let solutionPtr {
-            let solution = String(cString: solutionPtr)
-            // TODO: cubeMover
-            print(solution)
+            let solutionArray = convert(instructions: String(cString: solutionPtr))
+            //slice last item (which is empty) off solutionArray
+            //translate Kociemba instructions to valid inputs
+            try await cubeMover.input(moves: solutionArray)
         } else {
             let mapString = await convertMap()
             print("no solution to map: \(mapString)")
