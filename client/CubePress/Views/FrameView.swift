@@ -5,6 +5,7 @@ struct FrameView: View {
     private let label = Text("frame")
     let finder = ColorFinder()
     
+    
     var body: some View {
         if let image = $model.picture.wrappedValue {
             Image(image, scale: 1.0, orientation: .up, label: label)

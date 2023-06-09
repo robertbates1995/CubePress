@@ -1,15 +1,23 @@
 
 import SwiftUI
 
+protocol VideoCapturing {
+    var model: FrameModel { get }
+}
+
+extension VideoCapture: VideoCapturing {
+    
+}
+
 struct CameraView: View {
-    let model: VideoCapture
-    let onSolvedTapped: () -> ()
+    let model: VideoCapturing
+    let onSolveTapped: () -> ()
     
     var body: some View {
         FrameView(model: model.model)
             .overlay (alignment: .bottom){
                 Button("Solve") {
-                    onSolvedTapped()
+                    onSolveTapped()
                 }
                 .padding()
                 .background(.gray)
@@ -28,7 +36,10 @@ struct CameraView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    class Mock: VideoCapturing {
+        let model = FrameModel(pictureString: "rubik")
+    }
     static var previews: some View {
-        CameraView(model: VideoCapture(), onSolvedTapped: {})
+        CameraView(model: Mock(), onSolveTapped: {})
     }
 }

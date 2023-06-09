@@ -22,6 +22,7 @@ class VideoCapture: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
         sessionQueue.async { [unowned self] in
             self.setupCaptureSession()
             self.captureSession.startRunning()
+            model.beginBackgroundProcessing()
         }
     }
     

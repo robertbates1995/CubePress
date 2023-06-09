@@ -5,21 +5,46 @@ import UIKit
 
 struct ColoredRect {
     var rect: CGRect
+    var image: UIImage
     let color: UIColor
 }
 
 class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
-    @Published var picture: CGImage?
-    @Published var coloredRects: [ColoredRect] = []
-    @Published var cubeFace = Facelet()
+    @MainActor @Published var picture: CGImage?
+    @MainActor @Published var cubeFace = Face()
+    @MainActor @Published var coloredRects: [ColoredRect] = []
+    @MainActor private var ciImage: CIImage?
+    
+    func beginBackgroundProcessing() {
+        //task that wraps other tasks
+        Task {
+            //background while loop
+            while !Task.isCancelled {
+                await processInBackground()
+            }
+        }
+    }
     
     func process(ciImage: CIImage) {
-        let ratio = Double(ciImage.extent.width)/Double(ciImage.extent.height)
+        Task { @MainActor in
+            let context = CIContext()
+            self.picture = context.createCGImage(ciImage, from: ciImage.extent)
+            self.ciImage = ciImage
+        }
+    }
+    
+    func processInBackground() async {
+        let image = await Task{ @MainActor in
+            self.ciImage
+        }.value
+        guard let image else { return }
+        
+        let ratio = Double(image.extent.width)/Double(image.extent.height)
         let width = 0.25
         let height = width * ratio
-        var boundingBoxes = [CGRect(x: 0.125, y: 0.25, width: width, height: height),
-                             CGRect(x: 0.375, y: 0.25, width: width, height: height),
-                             CGRect(x: 0.625, y: 0.25, width: width, height: height),
+        var boundingBoxes = [CGRect(x: 0.125, y: 0.25 + height * 0.5, width: width, height: height * 0.5),
+                             CGRect(x: 0.375, y: 0.25 + height * 0.5, width: width, height: height * 0.5),
+                             CGRect(x: 0.625, y: 0.25 + height * 0.5, width: width, height: height * 0.5),
                              CGRect(x: 0.125, y: 0.25 + height, width: width, height: height),
                              CGRect(x: 0.375, y: 0.25 + height, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25 + height, width: width, height: height),
@@ -27,21 +52,36 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
                              CGRect(x: 0.375, y: 0.25 + 2 * height, width: width, height: height),
                              CGRect(x: 0.625, y: 0.25 + 2 * height, width: width, height: height),]
         boundingBoxes = boundingBoxes.map({$0.insetBy(dx: 0.015, dy: 0.015)})
-        let finder = ColorFinder()
-        coloredRects = boundingBoxes.map {
-            .init(rect: $0, color: finder.calcColor(image: ciImage, detected: $0) ?? .black)
+        let coloredRects: [ColoredRect] = boundingBoxes.map {
+            let rect = VNImageRectForNormalizedRect($0, Int(image.extent.width), Int(image.extent.height))
+            let temp = image.cropped(to: rect)
+            return ColoredRect(rect: $0, image: testImage(base: temp, rect: rect), color: .black)
         }
-        let context = CIContext()
-        self.picture = context.createCGImage(ciImage, from: ciImage.extent)
-        cubeFace.topLeft = coloredRects[0].color
-        cubeFace.topCenter = coloredRects[1].color
-        cubeFace.topRight = coloredRects[2].color
-        cubeFace.midLeft = coloredRects[3].color
-        cubeFace.midCenter = coloredRects[4].color
-        cubeFace.midRight = coloredRects[5].color
-        cubeFace.bottomLeft = coloredRects[6].color
-        cubeFace.bottomCenter = coloredRects[7].color
-        cubeFace.bottomRight = coloredRects[8].color
+        
+        Task{ @MainActor in
+            self.coloredRects = coloredRects
+            cubeFace.sourceImages = coloredRects.map(\.image)
+            cubeFace.topLeft = coloredRects[6].color
+            cubeFace.topCenter = coloredRects[7].color
+            cubeFace.topRight = coloredRects[8].color
+            cubeFace.midLeft = coloredRects[3].color
+            cubeFace.midCenter = coloredRects[4].color
+            cubeFace.midRight = coloredRects[5].color
+            cubeFace.bottomLeft = coloredRects[0].color
+            cubeFace.bottomCenter = coloredRects[1].color
+            cubeFace.bottomRight = coloredRects[2].color
+        }
+    }
+    
+    func testImage(base: CIImage, rect: CGRect) -> UIImage {
+        var rect = rect.integral
+        rect = rect.offsetBy(dx: -rect.minX, dy: -rect.minY)
+        UIGraphicsBeginImageContext(rect.size)
+        UIImage(named: "fourColors")!.draw(in: rect)
+        UIImage(ciImage: base).draw(in: rect)
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
     }
 }
 
@@ -49,5 +89,6 @@ extension FrameModel {
     convenience init(pictureString: String) {
         self.init()
         self.process(ciImage: (CIImage(image: UIImage(named: pictureString)!)!))
+        beginBackgroundProcessing()
     }
 }

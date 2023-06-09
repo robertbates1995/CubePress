@@ -8,21 +8,16 @@
 import Foundation
 import SwiftUI
 
-enum Moves: String, CaseIterable, Identifiable, Codable {
-    var id: String {rawValue}
-    
-    case top, mid, bot, left, leftOfCenter, center, rightOfCenter, right
-}
-
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
-    @Published var ipAddress: String = "10.0.0.34"
-    @Published var settings = [Moves:String]()
+    @Published var ipAddress: String = "10.0.0.50"
+    @Published var settings = [Move:String]()
+    @Published var macroSettings = [MacroMove:String()]
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
     }
     
-    func binding(for move: Moves) -> Binding<String> {
+    func binding(for move: Move) -> Binding<String> {
         Binding(
             get: {self.settings[move] ?? ""},
             set: {newValue in
@@ -38,7 +33,7 @@ class SettingsModel: ObservableObject {
             let decoder = JSONDecoder()
             let json = try decoder.decode([String:Int].self, from: data)
             for key in json.keys {
-                if let move = Moves(rawValue: key), let value = json[key] {
+                if let move = Move(rawValue: key), let value = json[key] {
                     settings[move] = value.formatted(.number.grouping(.never))
                 }
             }
@@ -48,7 +43,7 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func sendSetting(setting: Moves) {
+    func send(setting: Move) {
         guard let value = settings[setting] else {return}
         Task { @MainActor in
             errorMessage = nil
@@ -58,7 +53,6 @@ class SettingsModel: ObservableObject {
             do{
                 let (data, _ ) = try await callServer(url)
                 await processData(data)
-                moveSetting(setting: setting)
             } catch {
                 Task { @MainActor in
                     self.errorMessage = error.localizedDescription
@@ -67,29 +61,15 @@ class SettingsModel: ObservableObject {
         }
     }
     
-    func moveSetting(setting: Moves) {
-        Task { @MainActor in
-            errorMessage = nil
-        }
-        guard let url = URL(string: "http://10.0.0.34/\(setting.rawValue)") else { return }
-        Task{
-            do{
-                let _ = try await callServer(url)
-            } catch {
-                Task { @MainActor in
-                    self.errorMessage = error.localizedDescription
-                }
-            }
-        }
+    func test(setting: Move) {
+        //TODO: Implement test setting function
     }
-    
-    
     
     func getSetting() {
         Task { @MainActor in
             errorMessage = nil
         }
-        guard let url = URL(string: "http://10.0.0.34/settings") else { return }
+        guard let url = URL(string: "http://\(ipAddress)/settings") else { return }
         Task{
             do {
                 let (data, _ ) = try await callServer(url)
@@ -99,16 +79,6 @@ class SettingsModel: ObservableObject {
                     self.errorMessage = error.localizedDescription
                 }
             }
-
         }
-    }
-}
-
-extension SettingsModel: CubeMovable {
-    //this is where the delay will happen
-    func move(to: Moves) async throws {
-        //call robot here
-        self.moveSetting(setting: to)
-        try await Task.sleep(nanoseconds: 2_000_000_000)
     }
 }

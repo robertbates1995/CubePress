@@ -12,25 +12,23 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            HStack {
-                Text("connected on i.p address:")
+            Section(header: Text("Connected On")){
                 TextField("", text: $model.ipAddress)
-            }
-            if let error = model.errorMessage {
-                Text(error)
-            }
-            ForEach(Moves.allCases) { move in
-                HStack{
-                    Button("Move \(move.rawValue)") {
-                            model.sendSetting(setting: move)
-                    }
-                    Spacer()
-                    TextField(move.rawValue, text: model.binding(for: move))
-                        .frame(width: 200, alignment: .trailing)
+                if let error = model.errorMessage {
+                    Text(error).foregroundColor(.red)
                 }
             }
-            Button("Get Settings") {
-                //model.processData()
+            
+            Section(header: Text("Arm Servo Settings")){
+                SettingRow(move: Move.top, model: model, moveString: "Top")
+                SettingRow(move: Move.mid, model: model, moveString: "Middle")
+                SettingRow(move: Move.bot, model: model, moveString: "Bottom")
+            }
+            
+            Section(header: Text("Table Servo Settings")){
+                SettingRow(move: Move.left, model: model, moveString: "Left")
+                SettingRow(move: Move.center, model: model, moveString: "Center")
+                SettingRow(move: Move.right, model: model, moveString: "Right")
             }
         }
         .task {
@@ -39,7 +37,29 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
+struct SettingRow: View {
+    let move: Move
+    let model: SettingsModel
+    let moveString: String
+    
+    var body: some View {
+        HStack{
+            Button("test \(moveString)") {
+                    model.test(setting: move)
+            }
+            Spacer()
+            Button("Set \(moveString) Value") {
+                    model.send(setting: move)
+            }
+            Spacer()
+            TextField(moveString, text: model.binding(for: move))
+                .frame(width: 200, alignment: .trailing)
+                .multilineTextAlignment(.trailing)
+        }
+    }
+}
+
+class SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(model: .init())
     }
