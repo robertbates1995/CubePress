@@ -15,12 +15,12 @@ import SwiftUI
 @MainActor
 class CubeMapModel: ObservableObject {
     
-    @Published var U =  Face()
-    @Published var L =  Face()
-    @Published var F =  Face()
-    @Published var R =  Face()
-    @Published var B =  Face()
-    @Published var D =  Face()
+    @Published var U =  Face(face: .U)
+    @Published var L =  Face(face: .L)
+    @Published var F =  Face(face: .F)
+    @Published var R =  Face(face: .R)
+    @Published var B =  Face(face: .B)
+    @Published var D =  Face(face: .D)
     
     private var centers: [UIImage] {[U.centerImage, L.centerImage,
                                      F.centerImage, R.centerImage,

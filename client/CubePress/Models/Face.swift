@@ -73,3 +73,17 @@ extension CubeFace {
         }
     }
 }
+
+extension Face {
+    init(face: CubeFace?) {
+        topLeft = face
+        topCenter = face
+        topRight = face
+        midLeft = face
+        midCenter = face
+        midRight = face
+        bottomLeft = face
+        bottomCenter = face
+        bottomRight = face
+    }
+}

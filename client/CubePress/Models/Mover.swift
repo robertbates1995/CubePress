@@ -48,8 +48,6 @@ enum Move: String, CaseIterable, Identifiable, Codable {
     case top, mid, bot, left, center, right
 }
 
-
-
 let cubeFace: [String: String] = ["U": "TMTM",
                                    "D": "",
                                    "R": "LTMC",
