@@ -183,7 +183,7 @@ class Solver {
         //DONT TAP THE BUTTON TWICE
         //try await scanCube()
         let tmp = FileManager.default.temporaryDirectory.path
-        let solutionPtr = await ApplyKociembaAlgorithm(strdup("UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"), 25000, 500, 0, tmp) //convertMap()
+        let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp) //convertMap()
         if let solutionPtr {
             let solutionArray = convert(instructions: String(cString: solutionPtr))
             //slice last item (which is empty) off solutionArray

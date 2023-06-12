@@ -16,7 +16,7 @@ struct ControllerView: View {
                 HStack{
                     Button("Move \(move.rawValue)") {
                         Task{
-                            try? await model.input(moves: [move.rawValue])
+                            try? await model.input(moves: )
                         }
                     }
                 }

@@ -15,10 +15,6 @@ import SwiftUI
 @MainActor
 class CubeMapModel: ObservableObject {
     
-    private var centers: [UIImage] {[U.centerImage, L.centerImage,
-                                     F.centerImage, R.centerImage,
-                                     B.centerImage, D.centerImage].compactMap({$0})}
-    
     @Published var U =  Face()
     @Published var L =  Face()
     @Published var F =  Face()
@@ -26,8 +22,9 @@ class CubeMapModel: ObservableObject {
     @Published var B =  Face()
     @Published var D =  Face()
     
-    //add function needs to add based on orientation of cube, not color of center square
-
+    private var centers: [UIImage] {[U.centerImage, L.centerImage,
+                                     F.centerImage, R.centerImage,
+                                     B.centerImage, D.centerImage].compactMap({$0})}
     
     fileprivate func savePicture(_ picture: UIImage, named: String) {
         let documents = URL.documentsDirectory.appendingPathComponent(named)
@@ -75,7 +72,6 @@ class CubeMapModel: ObservableObject {
     }
     
     func saveTestStrips() {
-        //TODO: FIX THIS
         //call save on all faces
         saveFaceTestStrips(U, "U")
         saveFaceTestStrips(L, "L")
@@ -126,6 +122,7 @@ class CubeMapModel: ObservableObject {
         U = temp
     }
     
+    //updateColors function for future use
     func updateColors() {
         U.updateColors(with: centers)
         L.updateColors(with: centers)

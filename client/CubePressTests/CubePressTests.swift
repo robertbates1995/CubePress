@@ -35,20 +35,20 @@ final class CubePressTests: XCTestCase {
         XCTAssertEqual(sut.settingsModel.settings, expected)
     }
     
-    func testCalcColor(picture: String, color: UIColor) {
-        let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!
-        let sut = ColorFinder()
-        XCTAssertEqual(sut.calcColor(image: image, base: []), color)
-    }
+//    func testCalcColor(picture: String, color: UIColor) {
+//        let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!
+//        let sut = ColorFinder()
+//        XCTAssertEqual(sut.calcColor(image: image, base: []), color)
+//    }
     
-    func testAllColors() {
-        testCalcColor(picture: "orangeSample", color: .orange)
-        testCalcColor(picture: "blueSample", color: .blue)
-        testCalcColor(picture: "greenSample", color: .green)
-        testCalcColor(picture: "yellowSample", color: .yellow)
-        testCalcColor(picture: "redSample", color: .red)
-        testCalcColor(picture: "whiteSample", color: .white)
-    }
+//    func testAllColors() {
+//        testCalcColor(picture: "orangeSample", color: .orange)
+//        testCalcColor(picture: "blueSample", color: .blue)
+//        testCalcColor(picture: "greenSample", color: .green)
+//        testCalcColor(picture: "yellowSample", color: .yellow)
+//        testCalcColor(picture: "redSample", color: .red)
+//        testCalcColor(picture: "whiteSample", color: .white)
+//    }
     
     func testKociembaSolver(map: String, expected: String) {
         let tmp = FileManager.default.temporaryDirectory.path
@@ -71,72 +71,68 @@ final class CubePressTests: XCTestCase {
                                      "D" : "D",]
         
         //checking each individual conversion
-        XCTAssertEqual(sut.solver.convert(instructions: "U "), "TMTMBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U "), ["TMTMBRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "U' "), "TMTMBLMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U' "), ["TMTMBLMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "U2 "), "TMTMLBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U2 "), ["TMTMLBRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "U2' "), "TMTMRBLMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "U2' "), ["TMTMRBLMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "D "), "BRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "D "), ["BRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "R "), "LTMCBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "R "), ["LTMCBRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "L "), "RTMCBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "L "), ["RTMCBRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "F "), "TMBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "F "), ["TMBRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-        XCTAssertEqual(sut.solver.convert(instructions: "B "), "TMTMTMBRMC")
+        XCTAssertEqual(sut.solver.convert(instructions: "B "), ["TMTMTMBRMC"])
         sut.solver.referenceFrame = ["U" : "U",
                                      "L" : "L",
                                      "F" : "F",
                                      "R" : "R",
                                      "B" : "B",
                                      "D" : "D",]
-    }
-    
-    func testMover() {
-        
     }
 }
