@@ -14,7 +14,7 @@ struct CubeFaceView: View {
     var body: some View {
         VStack{
             Grid {
-                GridRow{
+                GridRow {
                     Facelet(selectedColor: $model.topLeft)
                         .border(Color(uiColor: model.topLeft.color), width: 3)
                     Facelet(selectedColor: $model.topCenter)
@@ -22,13 +22,13 @@ struct CubeFaceView: View {
                     Facelet(selectedColor: $model.topRight)
                         .border(Color(uiColor: model.topRight.color), width: 3)
                 }
-                GridRow{
+                GridRow {
                     Facelet(selectedColor: $model.midLeft)
                         .border(Color(uiColor: model.midLeft.color), width: 3)
                     Facelet(selectedColor: $model.midCenter)                        .border(Color(uiColor: model.midCenter.color), width: 3)
                     Facelet(selectedColor: $model.midRight)                        .border(Color(uiColor: model.midRight.color), width: 3)
                 }
-                GridRow{
+                GridRow {
                     Facelet(selectedColor: $model.bottomLeft)                        .border(Color(uiColor: model.bottomLeft.color), width: 3)
                     Facelet(selectedColor: $model.bottomCenter)                        .border(Color(uiColor: model.bottomCenter.color), width: 3)
                     Facelet(selectedColor: $model.bottomRight)                        .border(Color(uiColor: model.bottomRight.color), width: 3)

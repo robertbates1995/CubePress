@@ -120,14 +120,14 @@ class Solver {
     func convert(instruction: String) -> String {
         guard let cubeMove = referenceFrame[instruction[0]],
               let macro = cubeFace[cubeMove] else { return "no instruction"}
-        switch instruction.dropFirst() {  //switch on string length
+        switch instruction.dropFirst() {
         case "" :    //execute standard move
-            let move = macro + "BRMC"
+            let move = macro + "BLMC"
             convertFrameWith(move: cubeMove)
             convertFrameWith(move: " ")
             return move
         case "'" :    //if prime
-            let move = macro + "BLMC"
+            let move = macro + "BRMC"
             convertFrameWith(move: cubeMove)
             convertFrameWith(move: "'")
             return move
@@ -185,7 +185,11 @@ class Solver {
         let tmp = FileManager.default.temporaryDirectory.path
         let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp) //convertMap()
         if let solutionPtr {
-            let solutionArray = convert(instructions: String(cString: solutionPtr))
+            var instructions = String(cString: solutionPtr)
+            if instructions.last == "'" {
+                instructions = String(instructions.dropLast(2))
+            }
+            let solutionArray = convert(instructions: instructions)
             //slice last item (which is empty) off solutionArray
             //translate Kociemba instructions to valid inputs
             try await cubeMover.input(moves: solutionArray)

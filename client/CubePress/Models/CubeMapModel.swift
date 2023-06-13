@@ -135,12 +135,18 @@ class CubeMapModel: ObservableObject {
     func move(to: String) {
         if to == "D" {
             transformD()
+        } else if to == "D'"{
+            transformDPrime()
+        } else if to == "U"{
+            transformU()
         }
     }
 }
 
 extension CubeMapModel {
+    
     fileprivate func transformD() {
+        //change facelets
         let tempLeft = F.bottomLeft
         let tempCenter = F.bottomCenter
         let tempRight = F.bottomRight
@@ -156,6 +162,36 @@ extension CubeMapModel {
         R.bottomLeft = tempLeft
         R.bottomCenter = tempCenter
         R.bottomRight = tempRight
+    }
+    
+    fileprivate func transformDPrime() {
+        transformD()
+        transformD()
+        transformD()
+    }
+    
+    fileprivate func transformU() {
+        let temp1 = F.topLeft
+        let temp2 = F.topCenter
+        let temp3 = F.topRight
+        F.topLeft = R.topLeft
+        F.topCenter = R.topCenter
+        F.topRight = R.topRight
+        R.topLeft = B.topLeft
+        R.topCenter = B.topCenter
+        R.topRight = B.topRight
+        B.topLeft = L.topLeft
+        B.topCenter = L.topCenter
+        B.topRight = L.topRight
+        L.bottomLeft = temp1
+        L.bottomCenter = temp2
+        L.bottomRight = temp3
+    }
+    
+    fileprivate func transformU() {
+        transformU()
+        transformU()
+        transformU()
     }
 }
 
