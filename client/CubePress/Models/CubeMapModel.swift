@@ -131,9 +131,33 @@ class CubeMapModel: ObservableObject {
         B.updateColors(with: centers)
         D.updateColors(with: centers)
     }
+    
+    func move(to: String) {
+        if to == "D" {
+            transformD()
+        }
+    }
 }
 
-
+extension CubeMapModel {
+    fileprivate func transformD() {
+        let tempLeft = F.bottomLeft
+        let tempCenter = F.bottomCenter
+        let tempRight = F.bottomRight
+        F.bottomLeft = L.bottomLeft
+        F.bottomCenter = L.bottomCenter
+        F.bottomRight = L.bottomRight
+        L.bottomLeft = B.bottomLeft
+        L.bottomCenter = B.bottomCenter
+        L.bottomRight = B.bottomRight
+        B.bottomLeft = R.bottomLeft
+        B.bottomCenter = R.bottomCenter
+        B.bottomRight = R.bottomRight
+        R.bottomLeft = tempLeft
+        R.bottomCenter = tempCenter
+        R.bottomRight = tempRight
+    }
+}
 
 enum FaceSquare: String, CaseIterable, Identifiable, Codable {
     var id: String {rawValue}

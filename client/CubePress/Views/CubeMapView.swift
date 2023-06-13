@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//abstract into cubemapmodel file
-
 struct CubeMapView: View {
     @ObservedObject var model: CubeMapModel
     @State private var selection: Int = 1
@@ -74,8 +72,8 @@ struct CubeMapView: View {
                 .padding([.leading, .trailing])
                 HStack(alignment: .center) {
                     Spacer()
-                    Button("Save test strips") {
-                        model.saveTestStrips()
+                    Button("apply D transform") {
+                        model.move(to: "D")
                     }.foregroundColor(.black)
                     Spacer()
                     Button("Update Colors") {
@@ -87,7 +85,6 @@ struct CubeMapView: View {
             .padding([.leading, .trailing])
             .background(.mint)
         }
-    
 }
 
 struct CubeMapView_Previews: PreviewProvider {
