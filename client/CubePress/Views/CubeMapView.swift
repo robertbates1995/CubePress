@@ -76,8 +76,20 @@ struct CubeMapView: View {
                         model.move(to: "D")
                     }.foregroundColor(.black)
                     Spacer()
-                    Button("Update Colors") {
-                        model.updateColors()
+                    Button("apply D' transform") {
+                        model.move(to: "D'")
+                    }.foregroundColor(.black)
+                    Spacer()
+                }
+                Spacer()
+                HStack(alignment: .center) {
+                    Spacer()
+                    Button("apply U transform") {
+                        model.move(to: "U")
+                    }.foregroundColor(.black)
+                    Spacer()
+                    Button("apply U' transform") {
+                        model.move(to: "U'")
                     }.foregroundColor(.black)
                     Spacer()
                 }

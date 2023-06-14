@@ -139,17 +139,27 @@ class CubeMapModel: ObservableObject {
             transformDPrime()
         } else if to == "U"{
             transformU()
+        } else if to == "U'"{
+            transformUPrime()
         }
     }
+}
+
+enum FaceSquare: String, CaseIterable, Identifiable, Codable {
+    var id: String {rawValue}
+    
+    case topLeft, topCenter, topRight,
+         midLeft, midCenter, midRight,
+         bottomLeft, bottomCenter, bottomRight
 }
 
 extension CubeMapModel {
     
     fileprivate func transformD() {
-        //change facelets
-        let tempLeft = F.bottomLeft
-        let tempCenter = F.bottomCenter
-        let tempRight = F.bottomRight
+        //change sides being turned
+        let temp1 = F.bottomLeft
+        let temp2 = F.bottomCenter
+        let temp3 = F.bottomRight
         F.bottomLeft = L.bottomLeft
         F.bottomCenter = L.bottomCenter
         F.bottomRight = L.bottomRight
@@ -159,9 +169,20 @@ extension CubeMapModel {
         B.bottomLeft = R.bottomLeft
         B.bottomCenter = R.bottomCenter
         B.bottomRight = R.bottomRight
-        R.bottomLeft = tempLeft
-        R.bottomCenter = tempCenter
-        R.bottomRight = tempRight
+        R.bottomLeft = temp1
+        R.bottomCenter = temp2
+        R.bottomRight = temp3
+        //change rotated face
+        let temp4 = D.topLeft
+        D.topLeft = D.topRight
+        D.topRight = D.bottomRight
+        D.bottomRight = D.bottomLeft
+        D.bottomLeft = temp4
+        let temp5 = D.midLeft
+        D.midLeft = D.topCenter
+        D.topCenter = D.midRight
+        D.midRight = D.bottomCenter
+        D.bottomCenter = temp5
     }
     
     fileprivate func transformDPrime() {
@@ -171,6 +192,7 @@ extension CubeMapModel {
     }
     
     fileprivate func transformU() {
+        //change sides being turned
         let temp1 = F.topLeft
         let temp2 = F.topCenter
         let temp3 = F.topRight
@@ -183,24 +205,31 @@ extension CubeMapModel {
         B.topLeft = L.topLeft
         B.topCenter = L.topCenter
         B.topRight = L.topRight
-        L.bottomLeft = temp1
-        L.bottomCenter = temp2
-        L.bottomRight = temp3
+        L.topLeft = temp1
+        L.topCenter = temp2
+        L.topRight = temp3
+        //change rotated face
+        let temp4 = U.topLeft
+        U.topLeft = U.topRight
+        U.topRight = U.bottomRight
+        U.bottomRight = U.bottomLeft
+        U.bottomLeft = temp4
+        let temp5 = U.midLeft
+        U.midLeft = U.topCenter
+        U.topCenter = U.midRight
+        U.midRight = U.bottomCenter
+        U.bottomCenter = temp5
     }
     
-    fileprivate func transformU() {
+    fileprivate func transformUPrime() {
         transformU()
         transformU()
         transformU()
     }
-}
-
-enum FaceSquare: String, CaseIterable, Identifiable, Codable {
-    var id: String {rawValue}
     
-    case topLeft, topCenter, topRight,
-         midLeft, midCenter, midRight,
-         bottomLeft, bottomCenter, bottomRight
+    fileprivate func transformL() {
+        
+    }
 }
 
 extension UIImage {
