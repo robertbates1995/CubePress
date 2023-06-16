@@ -36,9 +36,9 @@ struct CubeFaceView: View {
             }
             .aspectRatio(contentMode: .fit)
             Text(faceLabel)
+                .foregroundColor(.white)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.mint)
     }
     
     @ViewBuilder

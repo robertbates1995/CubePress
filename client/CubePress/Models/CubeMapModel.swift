@@ -184,7 +184,7 @@ extension CubeMapModel {
         B.bottomEdge = R.bottomEdge
         R.bottomEdge = tempEdge
         //change rotated face
-        D.rotateCounterClockwise()
+        D.rotateClockwise()
     }
     
     fileprivate func transformU() {
