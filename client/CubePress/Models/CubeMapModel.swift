@@ -187,12 +187,6 @@ extension CubeMapModel {
         D.rotateCounterClockwise()
     }
     
-    fileprivate func transformDPrime() {
-        transformD()
-        transformD()
-        transformD()
-    }
-    
     fileprivate func transformU() {
         //change sides being turned
         let tempEdge = F.topEdge
@@ -202,12 +196,6 @@ extension CubeMapModel {
         L.topEdge = tempEdge
         //change rotated face
         U.rotateClockwise()
-    }
-    
-    fileprivate func transformUPrime() {
-        transformU()
-        transformU()
-        transformU()
     }
     
     fileprivate func transformR() {
@@ -221,12 +209,6 @@ extension CubeMapModel {
         R.rotateClockwise()
     }
     
-    fileprivate func transformRPrime() {
-        transformR()
-        transformR()
-        transformR()
-    }
-    
     fileprivate func transformL() {
         //change sides being turned
         let tempEdge = F.leftEdge
@@ -235,12 +217,6 @@ extension CubeMapModel {
         B.rightEdge = D.leftEdge
         //change rotated face
         L.rotateClockwise()
-    }
-    
-    fileprivate func transformLPrime() {
-        transformL()
-        transformL()
-        transformL()
     }
     
     fileprivate func transformB() {
@@ -254,12 +230,6 @@ extension CubeMapModel {
         B.rotateClockwise()
     }
     
-    fileprivate func transformBPrime() {
-        transformB()
-        transformB()
-        transformB()
-    }
-    
     fileprivate func transformF() {
         //change sides being turned
         let tempEdge = U.bottomEdge
@@ -270,13 +240,6 @@ extension CubeMapModel {
         //change rotated face
         F.rotateClockwise()
     }
-    
-    fileprivate func transformFPrime() {
-        transformF()
-        transformF()
-        transformF()
-    }
-    
 }
 
 extension UIImage {
