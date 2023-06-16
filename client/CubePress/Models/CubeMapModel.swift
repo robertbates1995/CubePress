@@ -215,6 +215,7 @@ extension CubeMapModel {
         F.leftEdge = U.leftEdge
         U.leftEdge = B.rightEdge
         B.rightEdge = D.leftEdge
+        D.leftEdge = tempEdge
         //change rotated face
         L.rotateClockwise()
     }
