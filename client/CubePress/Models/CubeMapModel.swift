@@ -72,54 +72,11 @@ class CubeMapModel: ObservableObject {
     }
     
     func saveTestStrips() {
-        //call save on all faces
-        saveFaceTestStrips(U, "U")
-        saveFaceTestStrips(L, "L")
-        saveFaceTestStrips(F, "F")
-        saveFaceTestStrips(R, "R")
-        saveFaceTestStrips(B, "B")
-        saveFaceTestStrips(D, "D")
-        //change face orientation
-        var temp = L
-        L = D
-        D = R
-        R = U
-        U = temp
-        //call save on all faces
-        saveFaceTestStrips(U, "U")
-        saveFaceTestStrips(L, "L")
-        saveFaceTestStrips(F, "F")
-        saveFaceTestStrips(R, "R")
-        saveFaceTestStrips(B, "B")
-        saveFaceTestStrips(D, "D")
-        temp = L
-        L = D
-        D = R
-        R = U
-        U = temp
-        saveFaceTestStrips(U, "U")
-        saveFaceTestStrips(L, "L")
-        saveFaceTestStrips(F, "F")
-        saveFaceTestStrips(R, "R")
-        saveFaceTestStrips(B, "B")
-        saveFaceTestStrips(D, "D")
-        temp = L
-        L = D
-        D = R
-        R = U
-        U = temp
-        saveFaceTestStrips(U, "U")
-        saveFaceTestStrips(L, "L")
-        saveFaceTestStrips(F, "F")
-        saveFaceTestStrips(R, "R")
-        saveFaceTestStrips(B, "B")
-        saveFaceTestStrips(D, "D")
-        //Reset to normal
-        temp = L
-        L = D
-        D = R
-        R = U
-        U = temp
+        //call save on all faces then change face orientation
+        saveThenRotate()
+        saveThenRotate()
+        saveThenRotate()
+        saveThenRotate()
     }
     
     //updateColors function for future use
@@ -161,6 +118,28 @@ enum FaceSquare: String, CaseIterable, Identifiable, Codable {
 }
 
 extension CubeMapModel {
+    
+    fileprivate func saveThenRotate() {
+        saveAllTestStrips()
+        rotateFaces()
+    }
+    
+    fileprivate func saveAllTestStrips() {
+        saveFaceTestStrips(U, "U")
+        saveFaceTestStrips(L, "L")
+        saveFaceTestStrips(F, "F")
+        saveFaceTestStrips(R, "R")
+        saveFaceTestStrips(B, "B")
+        saveFaceTestStrips(D, "D")
+    }
+    
+    fileprivate func rotateFaces(){
+        var temp = L
+        L = D
+        D = R
+        R = U
+        U = temp
+    }
     
     fileprivate func move(_ move: String, transform: () -> Void) {
         switch move.dropFirst(1) {
