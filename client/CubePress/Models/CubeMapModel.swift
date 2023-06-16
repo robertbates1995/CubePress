@@ -133,14 +133,21 @@ class CubeMapModel: ObservableObject {
     }
     
     func move(to: String) {
-        if to == "D" {
-            transformD()
-        } else if to == "D'"{
-            transformDPrime()
-        } else if to == "U"{
-            transformU()
-        } else if to == "U'"{
-            transformUPrime()
+        switch to.first {
+        case "D":
+            move(to, transform: transformD)
+        case "U":
+            move(to, transform: transformU)
+        case "L":
+            move(to, transform: transformL)
+        case "R":
+            move(to, transform: transformR)
+        case "B":
+            move(to, transform: transformB)
+        case "F":
+            move(to, transform: transformF)
+        default:
+            break
         }
     }
 }
@@ -155,34 +162,29 @@ enum FaceSquare: String, CaseIterable, Identifiable, Codable {
 
 extension CubeMapModel {
     
+    fileprivate func move(_ move: String, transform: () -> Void) {
+        switch move.dropFirst(1) {
+        case "'":
+            transform()
+            transform()
+            transform()
+        case "2", "2'":
+            transform()
+            transform()
+        default:
+            transform()
+        }
+    }
+    
     fileprivate func transformD() {
         //change sides being turned
-        let temp1 = F.bottomLeft
-        let temp2 = F.bottomCenter
-        let temp3 = F.bottomRight
-        F.bottomLeft = L.bottomLeft
-        F.bottomCenter = L.bottomCenter
-        F.bottomRight = L.bottomRight
-        L.bottomLeft = B.bottomLeft
-        L.bottomCenter = B.bottomCenter
-        L.bottomRight = B.bottomRight
-        B.bottomLeft = R.bottomLeft
-        B.bottomCenter = R.bottomCenter
-        B.bottomRight = R.bottomRight
-        R.bottomLeft = temp1
-        R.bottomCenter = temp2
-        R.bottomRight = temp3
+        let tempEdge = F.bottomEdge
+        F.bottomEdge = L.bottomEdge
+        L.bottomEdge = B.bottomEdge
+        B.bottomEdge = R.bottomEdge
+        R.bottomEdge = tempEdge
         //change rotated face
-        let temp4 = D.topLeft
-        D.topLeft = D.topRight
-        D.topRight = D.bottomRight
-        D.bottomRight = D.bottomLeft
-        D.bottomLeft = temp4
-        let temp5 = D.midLeft
-        D.midLeft = D.topCenter
-        D.topCenter = D.midRight
-        D.midRight = D.bottomCenter
-        D.bottomCenter = temp5
+        D.rotateCounterClockwise()
     }
     
     fileprivate func transformDPrime() {
@@ -193,32 +195,13 @@ extension CubeMapModel {
     
     fileprivate func transformU() {
         //change sides being turned
-        let temp1 = F.topLeft
-        let temp2 = F.topCenter
-        let temp3 = F.topRight
-        F.topLeft = R.topLeft
-        F.topCenter = R.topCenter
-        F.topRight = R.topRight
-        R.topLeft = B.topLeft
-        R.topCenter = B.topCenter
-        R.topRight = B.topRight
-        B.topLeft = L.topLeft
-        B.topCenter = L.topCenter
-        B.topRight = L.topRight
-        L.topLeft = temp1
-        L.topCenter = temp2
-        L.topRight = temp3
+        let tempEdge = F.topEdge
+        F.topEdge = R.topEdge
+        R.topEdge = B.topEdge
+        B.topEdge = L.topEdge
+        L.topEdge = tempEdge
         //change rotated face
-        let temp4 = U.topLeft
-        U.topLeft = U.topRight
-        U.topRight = U.bottomRight
-        U.bottomRight = U.bottomLeft
-        U.bottomLeft = temp4
-        let temp5 = U.midLeft
-        U.midLeft = U.topCenter
-        U.topCenter = U.midRight
-        U.midRight = U.bottomCenter
-        U.bottomCenter = temp5
+        U.rotateClockwise()
     }
     
     fileprivate func transformUPrime() {
@@ -227,9 +210,73 @@ extension CubeMapModel {
         transformU()
     }
     
-    fileprivate func transformL() {
-        
+    fileprivate func transformR() {
+        //change sides being turned
+        let tempEdge = U.rightEdge
+        U.rightEdge = F.rightEdge
+        F.rightEdge = D.rightEdge
+        D.rightEdge = B.leftEdge
+        B.leftEdge = tempEdge
+        //change rotated face
+        R.rotateClockwise()
     }
+    
+    fileprivate func transformRPrime() {
+        transformR()
+        transformR()
+        transformR()
+    }
+    
+    fileprivate func transformL() {
+        //change sides being turned
+        let tempEdge = F.leftEdge
+        F.leftEdge = U.leftEdge
+        U.leftEdge = B.rightEdge
+        B.rightEdge = D.leftEdge
+        //change rotated face
+        L.rotateClockwise()
+    }
+    
+    fileprivate func transformLPrime() {
+        transformL()
+        transformL()
+        transformL()
+    }
+    
+    fileprivate func transformB() {
+        //change sides being turned
+        let tempEdge = R.rightEdge
+        R.rightEdge = D.bottomEdge
+        D.bottomEdge = L.leftEdge
+        L.leftEdge = U.topEdge
+        U.topEdge = tempEdge
+        //change rotated face
+        B.rotateClockwise()
+    }
+    
+    fileprivate func transformBPrime() {
+        transformB()
+        transformB()
+        transformB()
+    }
+    
+    fileprivate func transformF() {
+        //change sides being turned
+        let tempEdge = U.bottomEdge
+        U.bottomEdge = L.rightEdge
+        L.rightEdge = D.topEdge
+        D.topEdge = R.leftEdge
+        R.leftEdge = tempEdge
+        //change rotated face
+        F.rotateClockwise()
+    }
+    
+    fileprivate func transformFPrime() {
+        transformF()
+        transformF()
+        transformF()
+    }
+    
 }
 
 extension UIImage {

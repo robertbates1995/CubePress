@@ -21,7 +21,54 @@ struct Face {
     var bottomCenter: CubeFace?
     var bottomRight: CubeFace?
     
+    var topEdge: [CubeFace?] {
+        get { [topLeft, topCenter, topRight] }
+        set(newEdge){
+            topLeft = newEdge[0]
+            topCenter = newEdge[1]
+            topRight = newEdge[2]
+        }
+    }
+    var rightEdge: [CubeFace?] {
+        get { [topRight, midRight, bottomRight] }
+        set(newEdge) {
+            topRight = newEdge[0]
+            midRight = newEdge[1]
+            bottomRight = newEdge[2]
+        }
+    }
+    var leftEdge: [CubeFace?] {
+        get { [bottomLeft, midLeft, topLeft] }
+        set(newEdge) {
+            bottomLeft = newEdge[0]
+            midLeft = newEdge[1]
+            topLeft = newEdge[2]
+        }
+    }
+    var bottomEdge: [CubeFace?] {
+        get { [bottomRight, bottomCenter, bottomLeft] }
+        set (newEdge){
+            bottomRight = newEdge[0]
+            bottomCenter = newEdge[1]
+            bottomLeft = newEdge[2]
+        }
+    }
+
     var centerImage: UIImage? {sourceImages.count > 0 ? sourceImages[4] : nil}
+    
+    mutating func rotateClockwise() {
+        let temp = topEdge
+        topEdge = leftEdge
+        leftEdge = bottomEdge
+        bottomEdge = rightEdge
+        rightEdge = temp
+    }
+    
+    mutating func rotateCounterClockwise() {
+        rotateClockwise()
+        rotateClockwise()
+        rotateClockwise()
+    }
     
     mutating func updateColors(with centers: [UIImage]) {
         let finder = ColorFinder()
