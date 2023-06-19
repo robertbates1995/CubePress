@@ -67,6 +67,7 @@ class Solver {
         return product
     }
     
+    //TODO: Correct Reference frame conversion
     fileprivate func convertFrameWith(move: String) {
         switch move {
         case "U" :
@@ -115,6 +116,34 @@ class Solver {
         default:
             return
         }
+    }
+    
+    fileprivate func rotateForward() {
+        let temp = referenceFrame["U"]
+        referenceFrame["U"] = referenceFrame["B"]
+        referenceFrame["B"] = referenceFrame["D"]
+        referenceFrame["D"] = referenceFrame["F"]
+        referenceFrame["F"] = temp
+    }
+    
+    fileprivate func rotateBackward() {
+        rotateForward()
+        rotateForward()
+        rotateForward()
+    }
+    
+    fileprivate func rotateLeft() {
+        let temp = referenceFrame["F"]
+        referenceFrame["F"] = referenceFrame["R"]
+        referenceFrame["R"] = referenceFrame["B"]
+        referenceFrame["B"] = referenceFrame["L"]
+        referenceFrame["L"] = temp
+    }
+    
+    fileprivate func rotateRight() {
+        rotateLeft()
+        rotateLeft()
+        rotateLeft()
     }
     
     func convert(instruction: String) -> String {
@@ -195,6 +224,7 @@ class Solver {
             if instructions.last == "'" {
                 instructions = String(instructions.dropLast(2))
             }
+            print(instructions)
             let solutionArray = convert(instructions: instructions)
             //slice last item (which is empty) off solutionArray
             //translate Kociemba instructions to valid inputs
