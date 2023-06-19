@@ -54,15 +54,19 @@ struct CubeMapView: View {
     
     func movementButtonStack(_ move: String) -> some View {
         VStack(alignment: .center) {
-            Button(move) {
+            Button {
                 model.move(to: move)
-            }.foregroundColor(.white)
-                .padding()
-            Button("\(move)'") {
-                model.move(to: move)
-            }.foregroundColor(.white)
-                .clipped()
-        }
+            } label: {
+                Text(move)
+                    .padding()
+            }
+            Button {
+                model.move(to: "\(move)'")
+            }label: {
+                Text("\(move)'")
+                    .padding()
+            }
+        }.foregroundColor(.white)
     }
 }
 

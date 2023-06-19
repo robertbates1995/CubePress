@@ -32,7 +32,7 @@ extension CGRect: Identifiable {
 
 extension ColoredRect: Identifiable {
     public var id: String {
-        "\(rect)\(color)"
+        "\(rect)\(String(describing: color))"
     }
 }
 

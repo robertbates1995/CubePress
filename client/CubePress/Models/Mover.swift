@@ -37,7 +37,6 @@ class Mover: CubeMovable, ObservableObject {
         print(#function)
         for move in moves {
             try await input(move: String(move))
-            try await Task.sleep(nanoseconds: 2_000_000_000)
         }
     }
 }
@@ -50,7 +49,7 @@ enum Move: String, CaseIterable, Identifiable, Codable {
 
 let cubeFace: [String: String] = ["U": "TMTM",
                                    "D": "",
-                                   "R": "LTMC",
-                                   "L": "RTMC",
+                                   "R": "RTMC",
+                                   "L": "LTMC",
                                    "F": "TM",
                                    "B": "TMTMTM"]

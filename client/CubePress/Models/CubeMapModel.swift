@@ -134,7 +134,7 @@ extension CubeMapModel {
     }
     
     fileprivate func rotateFaces(){
-        var temp = L
+        let temp = L
         L = D
         D = R
         R = U

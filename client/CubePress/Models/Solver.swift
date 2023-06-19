@@ -182,6 +182,12 @@ class Solver {
     func solveCube() async throws {
         //DONT TAP THE BUTTON TWICE
         //try await scanCube()
+        referenceFrame = [ "U" : "U",
+                           "L" : "L",
+                           "F" : "F",
+                           "R" : "R",
+                           "B" : "B",
+                           "D" : "D", ]
         let tmp = FileManager.default.temporaryDirectory.path
         let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp) //convertMap()
         if let solutionPtr {
