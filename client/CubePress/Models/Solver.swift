@@ -71,48 +71,24 @@ class Solver {
     fileprivate func convertFrameWith(move: String) {
         switch move {
         case "U" :
-            let tempF = referenceFrame["F"]
-            let tempD = referenceFrame["D"]
-            referenceFrame["F"] = referenceFrame["B"]
-            referenceFrame["D"] = referenceFrame["U"]
-            referenceFrame["B"] = tempF
-            referenceFrame["U"] = tempD
+            rotateForward()
+            rotateForward()
         case "R" :
-            let tempU = referenceFrame["U"]
-            referenceFrame["U"] = referenceFrame["L"]
-            referenceFrame["L"] = referenceFrame["D"]
-            referenceFrame["D"] = referenceFrame["R"]
-            referenceFrame["R"] = tempU
+            rotateRight()
+            rotateForward()
+            rotateLeft()
         case "L" :
-            let tempU = referenceFrame["U"]
-            referenceFrame["U"] = referenceFrame["R"]
-            referenceFrame["R"] = referenceFrame["D"]
-            referenceFrame["D"] = referenceFrame["L"]
-            referenceFrame["L"] = tempU
+            rotateLeft()
+            rotateForward()
+            rotateRight()
         case "B" :
-            let tempU = referenceFrame["U"]
-            referenceFrame["U"] = referenceFrame["F"]
-            referenceFrame["F"] = referenceFrame["D"]
-            referenceFrame["D"] = referenceFrame["B"]
-            referenceFrame["B"] = tempU
+            rotateBackward()
         case "F" :
-            let tempU = referenceFrame["U"]
-            referenceFrame["U"] = referenceFrame["L"]
-            referenceFrame["L"] = referenceFrame["D"]
-            referenceFrame["D"] = referenceFrame["R"]
-            referenceFrame["R"] = tempU
+            rotateForward()
         case " " :
-            let tempF = referenceFrame["F"]
-            referenceFrame["F"] = referenceFrame["R"]
-            referenceFrame["R"] = referenceFrame["B"]
-            referenceFrame["B"] = referenceFrame["L"]
-            referenceFrame["L"] = tempF
+            rotateRight()
         case "'" :
-            let tempF = referenceFrame["F"]
-            referenceFrame["F"] = referenceFrame["L"]
-            referenceFrame["L"] = referenceFrame["B"]
-            referenceFrame["B"] = referenceFrame["R"]
-            referenceFrame["R"] = tempF
+            rotateLeft()
         default:
             return
         }
@@ -132,7 +108,7 @@ class Solver {
         rotateForward()
     }
     
-    fileprivate func rotateLeft() {
+    fileprivate func rotateRight() {
         let temp = referenceFrame["F"]
         referenceFrame["F"] = referenceFrame["R"]
         referenceFrame["R"] = referenceFrame["B"]
@@ -140,14 +116,14 @@ class Solver {
         referenceFrame["L"] = temp
     }
     
-    fileprivate func rotateRight() {
-        rotateLeft()
-        rotateLeft()
-        rotateLeft()
+    fileprivate func rotateLeft() {
+        rotateRight()
+        rotateRight()
+        rotateRight()
     }
     
     func convert(instruction: String) -> String {
-        guard let cubeMove = referenceFrame[instruction[0]],
+        guard let cubeMove = referenceFrame.key(from: instruction[0]),
               let macro = cubeFace[cubeMove] else { return "no instruction"}
         switch instruction.dropFirst() {
         case "" :    //execute standard move
@@ -160,17 +136,11 @@ class Solver {
             convertFrameWith(move: cubeMove)
             convertFrameWith(move: "'")
             return move
-        case "2" : //if double
+        case "2", "2'" : //if double or prime double
             let move = macro + "LBRMC"
             convertFrameWith(move: cubeMove)
             convertFrameWith(move: " ")
             convertFrameWith(move: " ")
-            return move
-        case "2'" :    //preform prime double version of move
-            let move = macro + "RBLMC"
-            convertFrameWith(move: cubeMove)
-            convertFrameWith(move: "'")
-            convertFrameWith(move: "'")
             return move
         default:
             return "error in convert(instruction: String)"
@@ -239,5 +209,11 @@ class Solver {
 extension String {
     subscript(i: Int) -> String {
         return  i < count ? String(self[index(startIndex, offsetBy: i)]) : ""
+    }
+}
+
+extension Dictionary where Value: Equatable {
+    func key(from value: Value) -> Key? {
+        return self.first(where: { $0.value == value })?.key
     }
 }
