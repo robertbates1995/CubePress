@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CubeMapView: View {
+    
+    let onScanTapped: () -> ()
+    
     @ObservedObject var model: CubeMapModel
     @State private var selection: Int = 1
     var body: some View {
@@ -39,14 +42,23 @@ struct CubeMapView: View {
                 .frame(width: geometry.size.width)
             }
             .padding([.leading, .trailing])
-            HStack(alignment: .center){
-                movementButtonStack("D")
-                movementButtonStack("U")
-                movementButtonStack("L")
-                movementButtonStack("R")
-                movementButtonStack("F")
-                movementButtonStack("B")
+            Button("Solve") {
+                onScanTapped()
             }
+            .padding()
+            .background(.gray)
+            .foregroundColor(.black)
+            .font(.title)
+            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+            .padding()
+//            HStack(alignment: .center){
+//                movementButtonStack("D")
+//                movementButtonStack("U")
+//                movementButtonStack("L")
+//                movementButtonStack("R")
+//                movementButtonStack("F")
+//                movementButtonStack("B")
+//            }
         }
         .padding([.leading, .trailing])
         .background(.black)
@@ -78,6 +90,6 @@ struct CubeMapView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        CubeMapView(model: model)
+        CubeMapView(onScanTapped: {}, model: model)
     }
 }
