@@ -53,7 +53,7 @@ struct Face {
             bottomLeft = newEdge[2]
         }
     }
-
+    
     var centerImage: UIImage? {sourceImages.count > 0 ? sourceImages[4] : nil}
     
     mutating func rotateClockwise() {

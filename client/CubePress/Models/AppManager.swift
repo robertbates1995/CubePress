@@ -31,4 +31,10 @@ class AppManager {
         //cubeMapModel = scanCube()
         //control the robot to map the cube and create a solution from here
     }
+    
+    func onScanTapped() {
+        Task {
+            try await solver.scanCube()
+        }
+    }
 }
