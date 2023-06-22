@@ -8,20 +8,19 @@
 import Foundation
 import UIKit
 
-struct Face {
-    //a data structure that represents one face of the rubix cube
+struct Face {   //a data structure that represents one face of the rubix cube
     var sourceImages: [UIImage] = []
-    var topLeft: CubeFace?
-    var topCenter: CubeFace?
-    var topRight: CubeFace?
-    var midLeft: CubeFace?
-    var midCenter: CubeFace?
-    var midRight: CubeFace?
-    var bottomLeft: CubeFace?
-    var bottomCenter: CubeFace?
-    var bottomRight: CubeFace?
+    var topLeft: Facelet?
+    var topCenter: Facelet?
+    var topRight: Facelet?
+    var midLeft: Facelet?
+    var midCenter: Facelet?
+    var midRight: Facelet?
+    var bottomLeft: Facelet?
+    var bottomCenter: Facelet?
+    var bottomRight: Facelet?
     
-    var topEdge: [CubeFace?] {
+    var topEdge: [Facelet?] {
         get { [topLeft, topCenter, topRight] }
         set(newEdge){
             topLeft = newEdge[0]
@@ -29,7 +28,7 @@ struct Face {
             topRight = newEdge[2]
         }
     }
-    var rightEdge: [CubeFace?] {
+    var rightEdge: [Facelet?] {
         get { [topRight, midRight, bottomRight] }
         set(newEdge) {
             topRight = newEdge[0]
@@ -37,7 +36,7 @@ struct Face {
             bottomRight = newEdge[2]
         }
     }
-    var leftEdge: [CubeFace?] {
+    var leftEdge: [Facelet?] {
         get { [bottomLeft, midLeft, topLeft] }
         set(newEdge) {
             bottomLeft = newEdge[0]
@@ -45,7 +44,7 @@ struct Face {
             topLeft = newEdge[2]
         }
     }
-    var bottomEdge: [CubeFace?] {
+    var bottomEdge: [Facelet?] {
         get { [bottomRight, bottomCenter, bottomLeft] }
         set (newEdge){
             bottomRight = newEdge[0]
@@ -84,16 +83,18 @@ struct Face {
     }
 }
 
-enum CubeFace: String, CaseIterable, Identifiable, Codable, Hashable {
-    var id: String {rawValue}
-    
-    case U, D, R, L, F, B
+struct Facelet {
+    //the side of the cube that this Facelet belongs to
+    enum side: String, CaseIterable, Identifiable, Codable, Hashable {
+        var id: String {rawValue}
+        
+        case U, D, R, L, F, B
+    }
 }
 
-extension Optional<CubeFace> {
+extension Optional<Facelet.side> {
     var color: UIColor {
         switch self {
-            
         case .none:
             return .black
         case .some( let value ):
@@ -102,7 +103,7 @@ extension Optional<CubeFace> {
     }
 }
 
-extension CubeFace {
+extension Facelet.side {
     var color: UIColor{
         switch self {
         case .U:
@@ -122,7 +123,7 @@ extension CubeFace {
 }
 
 extension Face {
-    init(face: CubeFace?) {
+    init(face: Facelet?) {
         topLeft = face
         topCenter = face
         topRight = face

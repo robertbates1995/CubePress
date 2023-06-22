@@ -15,23 +15,23 @@ struct CubeFaceView: View {
         VStack{
             Grid {
                 GridRow {
-                    Facelet(selectedColor: $model.topLeft)
+                    FaceletView(selectedColor: $model.topLeft)
                         .border(Color(uiColor: model.topLeft.color), width: 3)
-                    Facelet(selectedColor: $model.topCenter)
+                    FaceletView(selectedColor: $model.topCenter)
                         .border(Color(uiColor: model.topCenter.color), width: 3)
-                    Facelet(selectedColor: $model.topRight)
+                    FaceletView(selectedColor: $model.topRight)
                         .border(Color(uiColor: model.topRight.color), width: 3)
                 }
                 GridRow {
-                    Facelet(selectedColor: $model.midLeft)
+                    FaceletView(selectedColor: $model.midLeft)
                         .border(Color(uiColor: model.midLeft.color), width: 3)
-                    Facelet(selectedColor: $model.midCenter)                        .border(Color(uiColor: model.midCenter.color), width: 3)
-                    Facelet(selectedColor: $model.midRight)                        .border(Color(uiColor: model.midRight.color), width: 3)
+                    FaceletView(selectedColor: $model.midCenter)                        .border(Color(uiColor: model.midCenter.color), width: 3)
+                    FaceletView(selectedColor: $model.midRight)                        .border(Color(uiColor: model.midRight.color), width: 3)
                 }
                 GridRow {
-                    Facelet(selectedColor: $model.bottomLeft)                        .border(Color(uiColor: model.bottomLeft.color), width: 3)
-                    Facelet(selectedColor: $model.bottomCenter)                        .border(Color(uiColor: model.bottomCenter.color), width: 3)
-                    Facelet(selectedColor: $model.bottomRight)                        .border(Color(uiColor: model.bottomRight.color), width: 3)
+                    FaceletView(selectedColor: $model.bottomLeft)                        .border(Color(uiColor: model.bottomLeft.color), width: 3)
+                    FaceletView(selectedColor: $model.bottomCenter)                        .border(Color(uiColor: model.bottomCenter.color), width: 3)
+                    FaceletView(selectedColor: $model.bottomRight)                        .border(Color(uiColor: model.bottomRight.color), width: 3)
                 }
             }
             .aspectRatio(contentMode: .fit)
@@ -55,7 +55,7 @@ struct CubeFaceView: View {
     }
 }
 
-struct Facelet: View {
+struct FaceletView: View {
     @Binding var selectedColor: CubeFace?
     @State var showingSheet = false
     
