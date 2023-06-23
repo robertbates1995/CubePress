@@ -10,17 +10,17 @@ import UIKit
 
 struct Face {   //a data structure that represents one face of the rubix cube
     var sourceImages: [UIImage] = []
-    var topLeft: Facelet?
-    var topCenter: Facelet?
-    var topRight: Facelet?
-    var midLeft: Facelet?
-    var midCenter: Facelet?
-    var midRight: Facelet?
-    var bottomLeft: Facelet?
-    var bottomCenter: Facelet?
-    var bottomRight: Facelet?
+    var topLeft: CubeFace?
+    var topCenter: CubeFace?
+    var topRight: CubeFace?
+    var midLeft: CubeFace?
+    var midCenter: CubeFace?
+    var midRight: CubeFace?
+    var bottomLeft: CubeFace?
+    var bottomCenter: CubeFace?
+    var bottomRight: CubeFace?
     
-    var topEdge: [Facelet?] {
+    var topEdge: [CubeFace?] {
         get { [topLeft, topCenter, topRight] }
         set(newEdge){
             topLeft = newEdge[0]
@@ -28,7 +28,7 @@ struct Face {   //a data structure that represents one face of the rubix cube
             topRight = newEdge[2]
         }
     }
-    var rightEdge: [Facelet?] {
+    var rightEdge: [CubeFace?] {
         get { [topRight, midRight, bottomRight] }
         set(newEdge) {
             topRight = newEdge[0]
@@ -36,7 +36,7 @@ struct Face {   //a data structure that represents one face of the rubix cube
             bottomRight = newEdge[2]
         }
     }
-    var leftEdge: [Facelet?] {
+    var leftEdge: [CubeFace?] {
         get { [bottomLeft, midLeft, topLeft] }
         set(newEdge) {
             bottomLeft = newEdge[0]
@@ -44,7 +44,7 @@ struct Face {   //a data structure that represents one face of the rubix cube
             topLeft = newEdge[2]
         }
     }
-    var bottomEdge: [Facelet?] {
+    var bottomEdge: [CubeFace?] {
         get { [bottomRight, bottomCenter, bottomLeft] }
         set (newEdge){
             bottomRight = newEdge[0]
@@ -92,7 +92,13 @@ struct Facelet {
     }
 }
 
-extension Optional<Facelet.side> {
+enum CubeFace: String, CaseIterable, Identifiable, Codable, Hashable {
+    var id: String {rawValue}
+    
+    case U, D, R, L, F, B
+}
+
+extension Optional<CubeFace> {
     var color: UIColor {
         switch self {
         case .none:
@@ -103,7 +109,7 @@ extension Optional<Facelet.side> {
     }
 }
 
-extension Facelet.side {
+extension CubeFace {
     var color: UIColor{
         switch self {
         case .U:
@@ -123,7 +129,7 @@ extension Facelet.side {
 }
 
 extension Face {
-    init(face: Facelet?) {
+    init(face: CubeFace?) {
         topLeft = face
         topCenter = face
         topRight = face
