@@ -10,7 +10,6 @@ import KociembaSolver
 import UIKit
 
 protocol CubeMovable: AnyObject {
-    func input(move: String) async throws
     func input(moves: [String]) async throws
 }
 
@@ -36,28 +35,19 @@ class Solver {
     }
     
     func scanCube() async throws {
-        
-//        let moveStrings = ["CM", "R", "L", "CTM", "TM", "TM"]
-//        var faces = await [cubeMap.U, cubeMap.R, cubeMap.L, cubeMap.B, cubeMap.D, cubeMap.F]
-//        for i in 0...5 {
-//            try await cubeMover.input(move: moveStrings[i])  //set robot to starting posistion
-//            await MainActor.run {faces[i] = getter.cubeFace} //Scan
-//        }
-        
-        try await cubeMover.input(move: "CM")  //set robot to starting posistion
+        try await cubeMover.input(moves: ["center", "mid"])  //set robot to starting posistion
         await MainActor.run(body: {cubeMap.U = getter.cubeFace} )  //Scan
-        try await cubeMover.input(move: "R")
+        try await cubeMover.input(moves: ["right"])
         await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
-        try await cubeMover.input(move: "L")
+        try await cubeMover.input(moves: ["left"])
         await MainActor.run(body: {cubeMap.L = getter.cubeFace} )
-        try await cubeMover.input(move: "CTM")
+        try await cubeMover.input(moves: ["center", "top", "mid"])
         await MainActor.run(body: {cubeMap.B = getter.cubeFace} )
-        try await cubeMover.input(move: "TM")
+        try await cubeMover.input(moves: ["top", "mid"])
         await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
-        try await cubeMover.input(move: "TM")
+        try await cubeMover.input(moves: ["top", "mid"])
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
         //func that sends an array of centers to framemodel
-        //update cubeMap
     }
     
     fileprivate func convert(color: CubeFace?) -> String {

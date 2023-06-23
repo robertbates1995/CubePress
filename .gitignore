@@ -9,3 +9,6 @@ client/.DS_Store
 *.xcbkptlist
 *.xcuserstate
 client/CubePress.xcodeproj/project.xcworkspace/xcuserdata/robertbates.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcsettings
+*.xcsettings
+*.xcuserstate
