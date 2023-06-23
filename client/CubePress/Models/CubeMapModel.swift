@@ -22,7 +22,7 @@ class CubeMapModel: ObservableObject {
     @Published var B =  Face(face: .B)
     @Published var D =  Face(face: .D)
     
-    private var centers: [UIImage] {[U.centerImage, L.centerImage,
+    var centers: [UIImage] {[U.centerImage, L.centerImage,
                                      F.centerImage, R.centerImage,
                                      B.centerImage, D.centerImage].compactMap({$0})}
     

@@ -61,15 +61,15 @@ class FrameModel: NSObject, ObservableObject, CubeFaceGetter {
         Task{ @MainActor in
             cubeFace.sourceImages = coloredRects.map(\.image)
             self.coloredRects = coloredRects
-            cubeFace.topLeft = coloredRects[6].color
-            cubeFace.topCenter = coloredRects[7].color
-            cubeFace.topRight = coloredRects[8].color
-            cubeFace.midLeft = coloredRects[3].color
-            cubeFace.midCenter = coloredRects[4].color
-            cubeFace.midRight = coloredRects[5].color
-            cubeFace.bottomLeft = coloredRects[0].color
-            cubeFace.bottomCenter = coloredRects[1].color
-            cubeFace.bottomRight = coloredRects[2].color
+            cubeFace.topLeft?.cubeFace = coloredRects[6].color
+            cubeFace.topCenter?.cubeFace = coloredRects[7].color
+            cubeFace.topRight?.cubeFace = coloredRects[8].color
+            cubeFace.midLeft?.cubeFace = coloredRects[3].color
+            cubeFace.midCenter?.cubeFace = coloredRects[4].color
+            cubeFace.midRight?.cubeFace = coloredRects[5].color
+            cubeFace.bottomLeft?.cubeFace = coloredRects[0].color
+            cubeFace.bottomCenter?.cubeFace = coloredRects[1].color
+            cubeFace.bottomRight?.cubeFace = coloredRects[2].color
         }
     }
     

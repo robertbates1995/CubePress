@@ -10,17 +10,17 @@ import UIKit
 
 struct Face {   //a data structure that represents one face of the rubix cube
     var sourceImages: [UIImage] = []
-    var topLeft: CubeFace?
-    var topCenter: CubeFace?
-    var topRight: CubeFace?
-    var midLeft: CubeFace?
-    var midCenter: CubeFace?
-    var midRight: CubeFace?
-    var bottomLeft: CubeFace?
-    var bottomCenter: CubeFace?
-    var bottomRight: CubeFace?
+    var topLeft: Facelet?
+    var topCenter: Facelet?
+    var topRight: Facelet?
+    var midLeft: Facelet?
+    var midCenter: Facelet?
+    var midRight: Facelet?
+    var bottomLeft: Facelet?
+    var bottomCenter: Facelet?
+    var bottomRight: Facelet?
     
-    var topEdge: [CubeFace?] {
+    var topEdge: [Facelet?] {
         get { [topLeft, topCenter, topRight] }
         set(newEdge){
             topLeft = newEdge[0]
@@ -28,7 +28,7 @@ struct Face {   //a data structure that represents one face of the rubix cube
             topRight = newEdge[2]
         }
     }
-    var rightEdge: [CubeFace?] {
+    var rightEdge: [Facelet?] {
         get { [topRight, midRight, bottomRight] }
         set(newEdge) {
             topRight = newEdge[0]
@@ -36,7 +36,7 @@ struct Face {   //a data structure that represents one face of the rubix cube
             bottomRight = newEdge[2]
         }
     }
-    var leftEdge: [CubeFace?] {
+    var leftEdge: [Facelet?] {
         get { [bottomLeft, midLeft, topLeft] }
         set(newEdge) {
             bottomLeft = newEdge[0]
@@ -44,7 +44,7 @@ struct Face {   //a data structure that represents one face of the rubix cube
             topLeft = newEdge[2]
         }
     }
-    var bottomEdge: [CubeFace?] {
+    var bottomEdge: [Facelet?] {
         get { [bottomRight, bottomCenter, bottomLeft] }
         set (newEdge){
             bottomRight = newEdge[0]
@@ -71,22 +71,35 @@ struct Face {   //a data structure that represents one face of the rubix cube
     
     mutating func updateColors(with centers: [UIImage]) {
         let finder = ColorFinder()
-        topLeft = finder.calcColor(image: sourceImages[6], base: centers)
-        topCenter = finder.calcColor(image: sourceImages[7], base: centers)
-        topRight = finder.calcColor(image: sourceImages[8], base: centers)
-        midLeft = finder.calcColor(image: sourceImages[3], base: centers)
-        midCenter = finder.calcColor(image: sourceImages[4], base: centers)
-        midRight = finder.calcColor(image: sourceImages[5], base: centers)
-        bottomLeft = finder.calcColor(image: sourceImages[0], base: centers)
-        bottomCenter = finder.calcColor(image: sourceImages[1], base: centers)
-        bottomRight = finder.calcColor(image: sourceImages[2], base: centers)
+        topLeft?.cubeFace = finder.calcColor(image: sourceImages[6], base: centers)
+        topCenter?.cubeFace = finder.calcColor(image: sourceImages[7], base: centers)
+        topRight?.cubeFace = finder.calcColor(image: sourceImages[8], base: centers)
+        midLeft?.cubeFace = finder.calcColor(image: sourceImages[3], base: centers)
+        midCenter?.cubeFace = finder.calcColor(image: sourceImages[4], base: centers)
+        midRight?.cubeFace = finder.calcColor(image: sourceImages[5], base: centers)
+        bottomLeft?.cubeFace = finder.calcColor(image: sourceImages[0], base: centers)
+        bottomCenter?.cubeFace = finder.calcColor(image: sourceImages[1], base: centers)
+        bottomRight?.cubeFace = finder.calcColor(image: sourceImages[2], base: centers)
+    }
+    
+    mutating func updateFacelets(with centers: [UIImage]) {
+        let finder = ColorFinder()
+        topLeft = Facelet(cubeFace: finder.calcColor(image: sourceImages[6], base: centers), image: sourceImages[6])
+        topCenter = Facelet(cubeFace: finder.calcColor(image: sourceImages[7], base: centers), image: sourceImages[7])
+        topRight = Facelet(cubeFace: finder.calcColor(image: sourceImages[8], base: centers), image: sourceImages[8])
+        midLeft = Facelet(cubeFace: finder.calcColor(image: sourceImages[3], base: centers), image: sourceImages[3])
+        midCenter = Facelet(cubeFace: finder.calcColor(image: sourceImages[4], base: centers), image: sourceImages[4])
+        midRight = Facelet(cubeFace: finder.calcColor(image: sourceImages[5], base: centers), image: sourceImages[5])
+        bottomLeft = Facelet(cubeFace: finder.calcColor(image: sourceImages[0], base: centers), image: sourceImages[0])
+        bottomCenter = Facelet(cubeFace: finder.calcColor(image: sourceImages[1], base: centers), image: sourceImages[1])
+        bottomRight = Facelet(cubeFace: finder.calcColor(image: sourceImages[2], base: centers), image: sourceImages[2])
     }
 }
 
 struct Facelet {
-    var cubeFace: CubeFace
+    var cubeFace: CubeFace?
     
-    var Image = UIImage(named: "fourColors")
+    var image = UIImage(named: "fourColors")
 }
 
 enum CubeFace: String, CaseIterable, Identifiable, Codable, Hashable {
@@ -126,14 +139,14 @@ extension Optional<CubeFace> {
 
 extension Face {
     init(face: CubeFace?) {
-        topLeft = face
-        topCenter = face
-        topRight = face
-        midLeft = face
-        midCenter = face
-        midRight = face
-        bottomLeft = face
-        bottomCenter = face
-        bottomRight = face
+        topLeft?.cubeFace = face
+        topCenter?.cubeFace = face
+        topRight?.cubeFace = face
+        midLeft?.cubeFace = face
+        midCenter?.cubeFace = face
+        midRight?.cubeFace = face
+        bottomLeft?.cubeFace = face
+        bottomCenter?.cubeFace = face
+        bottomRight?.cubeFace = face
     }
 }

@@ -43,7 +43,9 @@ class Solver {
 //            await MainActor.run {faces[i] = getter.cubeFace} //Scan
 //        }
         try await cubeMover.input(move: "CM")  //set robot to starting posistion
-        await MainActor.run(body: {cubeMap.U = getter.cubeFace} )  //Scan
+        await MainActor.run(body: {
+            cubeMap.U = getter.cubeFace
+        } ) //Scan
         try await cubeMover.input(move: "R")
         await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
         try await cubeMover.input(move: "L")
@@ -56,6 +58,14 @@ class Solver {
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
         //func that sends an array of centers to framemodel
         //update cubeMap
+        await MainActor.run(body: {
+            cubeMap.U.updateFacelets(with: cubeMap.centers)
+            cubeMap.R.updateFacelets(with: cubeMap.centers)
+            cubeMap.L.updateFacelets(with: cubeMap.centers)
+            cubeMap.B.updateFacelets(with: cubeMap.centers)
+            cubeMap.D.updateFacelets(with: cubeMap.centers)
+            cubeMap.F.updateFacelets(with: cubeMap.centers)
+        } )
     }
     
     fileprivate func convert(color: CubeFace?) -> String {
@@ -63,15 +73,15 @@ class Solver {
     }
     
     fileprivate func convert(face: Face) -> String {
-        var product = convert(color: face.topLeft)
-        product += convert(color: face.topCenter)
-        product += convert(color: face.topRight)
-        product += convert(color: face.midLeft)
-        product += convert(color: face.midCenter)
-        product += convert(color: face.midRight)
-        product += convert(color: face.bottomLeft)
-        product += convert(color: face.bottomCenter)
-        product += convert(color: face.bottomRight)
+        var product = convert(color: face.topLeft?.cubeFace)
+        product += convert(color: face.topCenter?.cubeFace)
+        product += convert(color: face.topRight?.cubeFace)
+        product += convert(color: face.midLeft?.cubeFace)
+        product += convert(color: face.midCenter?.cubeFace)
+        product += convert(color: face.midRight?.cubeFace)
+        product += convert(color: face.bottomLeft?.cubeFace)
+        product += convert(color: face.bottomCenter?.cubeFace)
+        product += convert(color: face.bottomRight?.cubeFace)
         return product
     }
     
