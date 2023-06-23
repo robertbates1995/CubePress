@@ -11,6 +11,7 @@ import UIKit
 
 protocol CubeMovable: AnyObject {
     func input(moves: [String]) async throws
+    func input(move: String) async throws
 }
 
 protocol CubeFaceGetter {
@@ -35,19 +36,26 @@ class Solver {
     }
     
     func scanCube() async throws {
-        try await cubeMover.input(moves: ["center", "mid"])  //set robot to starting posistion
+//        let moveStrings = ["CM", "R", "L", "CTM", "TM", "TM"]
+//        var faces = await [cubeMap.U, cubeMap.R, cubeMap.L, cubeMap.B, cubeMap.D, cubeMap.F]
+//        for i in 0...5 {
+//            try await cubeMover.input(move: moveStrings[i])  //set robot to starting posistion
+//            await MainActor.run {faces[i] = getter.cubeFace} //Scan
+//        }
+        try await cubeMover.input(move: "CM")  //set robot to starting posistion
         await MainActor.run(body: {cubeMap.U = getter.cubeFace} )  //Scan
-        try await cubeMover.input(moves: ["right"])
+        try await cubeMover.input(move: "R")
         await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
-        try await cubeMover.input(moves: ["left"])
+        try await cubeMover.input(move: "L")
         await MainActor.run(body: {cubeMap.L = getter.cubeFace} )
-        try await cubeMover.input(moves: ["center", "top", "mid"])
+        try await cubeMover.input(move: "CTM")
         await MainActor.run(body: {cubeMap.B = getter.cubeFace} )
-        try await cubeMover.input(moves: ["top", "mid"])
+        try await cubeMover.input(move: "TM")
         await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
-        try await cubeMover.input(moves: ["top", "mid"])
+        try await cubeMover.input(move: "TM")
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
         //func that sends an array of centers to framemodel
+        //update cubeMap
     }
     
     fileprivate func convert(color: CubeFace?) -> String {

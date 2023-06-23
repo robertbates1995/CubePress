@@ -17,7 +17,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Map", systemImage: "square.grid.3x3.square")
                 }
-            CameraView(model: model.videoCapture, onScanTapped: {model.onSolvedTapped()})
+            CameraView(model: model.videoCapture, onScanTapped: {model.onScanTapped()})
                 .tabItem {
                     Label("Camera", systemImage: "camera")
                 }
