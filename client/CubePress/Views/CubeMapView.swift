@@ -85,7 +85,6 @@ struct CubeMapView: View {
 struct CubeMapView_Previews: PreviewProvider {
     static var model: CubeMapModel {
         let temp = CubeMapModel()
-        temp.move(to: "F")
         return temp
     }
     

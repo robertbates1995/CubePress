@@ -84,32 +84,17 @@ struct Face {   //a data structure that represents one face of the rubix cube
 }
 
 struct Facelet {
-    //the side of the cube that this Facelet belongs to
-    enum side: String, CaseIterable, Identifiable, Codable, Hashable {
-        var id: String {rawValue}
-        
-        case U, D, R, L, F, B
-    }
+    var cubeFace: CubeFace
+    
+    var Image = UIImage(named: "fourColors")
 }
 
 enum CubeFace: String, CaseIterable, Identifiable, Codable, Hashable {
-    var id: String {rawValue}
     
     case U, D, R, L, F, B
-}
+    
+    var id: String {rawValue}
 
-extension Optional<CubeFace> {
-    var color: UIColor {
-        switch self {
-        case .none:
-            return .black
-        case .some( let value ):
-            return value.color
-        }
-    }
-}
-
-extension CubeFace {
     var color: UIColor{
         switch self {
         case .U:
@@ -124,6 +109,17 @@ extension CubeFace {
             return .blue
         case .B:
             return .green
+        }
+    }
+}
+
+extension Optional<CubeFace> {
+    var color: UIColor {
+        switch self {
+        case .none:
+            return .black
+        case .some( let value ):
+            return value.color
         }
     }
 }
