@@ -43,17 +43,23 @@ class Solver {
 //            await MainActor.run {faces[i] = getter.cubeFace} //Scan
 //        }
         try await cubeMover.input(move: "CM")  //set robot to starting posistion
-        await MainActor.run(body: { cubeMap.U = getter.cubeFace} ) //Scan
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+        await MainActor.run(body: {cubeMap.F = getter.cubeFace} ) //Scan
         try await cubeMover.input(move: "R" )
+        try await Task.sleep(nanoseconds: 2_000_000_000)
         await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
         try await cubeMover.input(move: "L" )
+        try await Task.sleep(nanoseconds: 2_000_000_000)
         await MainActor.run(body: {cubeMap.L = getter.cubeFace} )
         try await cubeMover.input(move: "CTM" )
-        await MainActor.run(body: {cubeMap.B = getter.cubeFace} )
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+        await MainActor.run(body: {cubeMap.U = getter.cubeFace} )
         try await cubeMover.input(move: "TM" )
+        try await Task.sleep(nanoseconds: 2_000_000_000)
+        await MainActor.run(body: {cubeMap.B = getter.cubeFace} ) //this one needs to be reversed because the face is being scanned backwards
+        try await cubeMover.input(move: "TM" )
+        try await Task.sleep(nanoseconds: 2_000_000_000)
         await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
-        try await cubeMover.input(move: "TM" )
-        await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
         //func that sends an array of centers to framemodel
         //update cubeMap
         await MainActor.run(body: {
@@ -232,4 +238,13 @@ extension Dictionary where Value: Equatable {
     func key(from value: Value) -> Key? {
         return self.first(where: { $0.value == value })?.key
     }
+}
+
+struct Delay {
+
+    @discardableResult
+    init(_ timeInterval: TimeInterval, queue: DispatchQueue = .main, executingBlock: @escaping () -> Void) {
+        queue.asyncAfter(deadline: .now() + timeInterval, execute: executingBlock)
+    }
+
 }
