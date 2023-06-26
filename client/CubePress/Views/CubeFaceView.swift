@@ -57,8 +57,11 @@ struct FaceletView: View {
     
     var body: some View {
         Button(
-            action: {showingSheet.toggle()},
-            label: { Image(uiImage: facelet?.image ?? UIImage(named: "fourColors")!).resizable() }
+            action: { showingSheet.toggle() },
+            label: { Image(uiImage: facelet?.image ?? UIImage(named: "fourColors")!)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fill)
+            }
         )
         .border(Color(uiColor: facelet?.cubeFace.color ?? .white), width: 3)
         .sheet(isPresented: $showingSheet) {SheetView(selectedColor: $facelet)}

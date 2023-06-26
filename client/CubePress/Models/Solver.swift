@@ -43,18 +43,16 @@ class Solver {
 //            await MainActor.run {faces[i] = getter.cubeFace} //Scan
 //        }
         try await cubeMover.input(move: "CM")  //set robot to starting posistion
-        await MainActor.run(body: {
-            cubeMap.U = getter.cubeFace
-        } ) //Scan
-        try await cubeMover.input(move: "R")
+        await MainActor.run(body: { cubeMap.U = getter.cubeFace} ) //Scan
+        try await cubeMover.input(move: "R" )
         await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
-        try await cubeMover.input(move: "L")
+        try await cubeMover.input(move: "L" )
         await MainActor.run(body: {cubeMap.L = getter.cubeFace} )
-        try await cubeMover.input(move: "CTM")
+        try await cubeMover.input(move: "CTM" )
         await MainActor.run(body: {cubeMap.B = getter.cubeFace} )
-        try await cubeMover.input(move: "TM")
+        try await cubeMover.input(move: "TM" )
         await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
-        try await cubeMover.input(move: "TM")
+        try await cubeMover.input(move: "TM" )
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} )
         //func that sends an array of centers to framemodel
         //update cubeMap
@@ -65,7 +63,7 @@ class Solver {
             cubeMap.B.updateFacelets(with: cubeMap.centers)
             cubeMap.D.updateFacelets(with: cubeMap.centers)
             cubeMap.F.updateFacelets(with: cubeMap.centers)
-        } )
+        })
     }
     
     fileprivate func convert(color: CubeFace?) -> String {
