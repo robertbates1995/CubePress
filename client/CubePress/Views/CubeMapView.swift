@@ -42,15 +42,26 @@ struct CubeMapView: View {
                 .frame(width: geometry.size.width)
             }
             .padding([.leading, .trailing])
-            Button("Solve") {
-                onScanTapped()
+            HStack{
+                Button("Solve") {
+                    onScanTapped()
+                }
+                .padding()
+                .background(.gray)
+                .foregroundColor(.black)
+                .font(.title)
+                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                .padding()
+                Button("Save Samples") {
+                    model.saveTestStrips()
+                }
+                .padding()
+                .background(.gray)
+                .foregroundColor(.black)
+                .font(.title)
+                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                .padding()
             }
-            .padding()
-            .background(.gray)
-            .foregroundColor(.black)
-            .font(.title)
-            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-            .padding()
 //            HStack(alignment: .center){
 //                movementButtonStack("D")
 //                movementButtonStack("U")

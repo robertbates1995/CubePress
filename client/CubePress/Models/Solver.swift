@@ -42,24 +42,31 @@ class Solver {
 //            try await cubeMover.input(move: moveStrings[i])  //set robot to starting posistion
 //            await MainActor.run {faces[i] = getter.cubeFace} //Scan
 //        }
-        try await cubeMover.input(move: "CM")  //set robot to starting posistion
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await cubeMover.input(move: "CM" )  //set robot to starting posistion
+        try await Task.sleep( nanoseconds: 2_000_000_000 )
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} ) //Scan
         try await cubeMover.input(move: "R" )
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await Task.sleep( nanoseconds: 2_000_000_000 )
         await MainActor.run(body: {cubeMap.R = getter.cubeFace} )
         try await cubeMover.input(move: "L" )
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await Task.sleep( nanoseconds: 2_000_000_000 )
         await MainActor.run(body: {cubeMap.L = getter.cubeFace} )
         try await cubeMover.input(move: "CTM" )
-        try await Task.sleep(nanoseconds: 2_000_000_000)
+        try await Task.sleep( nanoseconds: 2_000_000_000 )
         await MainActor.run(body: {cubeMap.U = getter.cubeFace} )
         try await cubeMover.input(move: "TM" )
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-        await MainActor.run(body: {cubeMap.B = getter.cubeFace} ) //this one needs to be reversed because the face is being scanned backwards
+        try await Task.sleep( nanoseconds: 2_000_000_000 )
+        await MainActor.run(body: {
+            cubeMap.B.sourceImages = getter.cubeFace.sourceImages.reversed()
+            cubeMap.B.topEdge = getter.cubeFace.bottomEdge
+            cubeMap.B.bottomEdge = getter.cubeFace.topEdge
+            cubeMap.B.midCenter = getter.cubeFace.midCenter
+            cubeMap.B.midLeft = getter.cubeFace.midRight
+            cubeMap.B.midRight = getter.cubeFace.midLeft
+        } ) //this one needs to be reversed because the face is being scanned backwards
         try await cubeMover.input(move: "TM" )
-        try await Task.sleep(nanoseconds: 2_000_000_000)
-        await MainActor.run(body: {cubeMap.D = getter.cubeFace} )
+        try await Task.sleep( nanoseconds: 2_000_000_000 )
+        await MainActor.run(body: {cubeMap.D = getter.cubeFace})
         //func that sends an array of centers to framemodel
         //update cubeMap
         await MainActor.run(body: {
@@ -216,7 +223,6 @@ class Solver {
             if instructions.last == "'" {
                 instructions = String(instructions.dropLast(2))
             }
-            print(instructions)
             let solutionArray = convert(instructions: instructions)
             //slice last item (which is empty) off solutionArray
             //translate Kociemba instructions to valid inputs

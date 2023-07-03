@@ -20,19 +20,15 @@
 		7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F6E29C4CEB700E6A684 /* Solver.swift */; };
 		7A430F7129C4D48000E6A684 /* SolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A430F7029C4D48000E6A684 /* SolverTests.swift */; };
 		7A5515B929D62D8500F47C9C /* KociembaSolver in Frameworks */ = {isa = PBXBuildFile; productRef = 7A5515B829D62D8500F47C9C /* KociembaSolver */; };
-		7A9D8EAE2A1FE30D0015D79B /* colorStripClassifier1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D8EAD2A1FE30D0015D79B /* colorStripClassifier1.mlmodel */; };
 		7A9D8EB52A2017AC0015D79B /* orangeSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EAF2A2017AB0015D79B /* orangeSample.png */; };
 		7A9D8EB62A2017AC0015D79B /* redSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EB02A2017AC0015D79B /* redSample.png */; };
 		7A9D8EB72A2017AC0015D79B /* whiteSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EB12A2017AC0015D79B /* whiteSample.png */; };
 		7A9D8EB82A2017AC0015D79B /* yellowSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EB22A2017AC0015D79B /* yellowSample.png */; };
 		7A9D8EB92A2017AC0015D79B /* blueSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EB32A2017AC0015D79B /* blueSample.png */; };
 		7A9D8EBA2A2017AC0015D79B /* greenSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EB42A2017AC0015D79B /* greenSample.png */; };
-		7A9D8EBC2A217A020015D79B /* colorStripClassifier2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D8EBB2A217A020015D79B /* colorStripClassifier2.mlmodel */; };
-		7A9D8EBE2A27D5C50015D79B /* colorStripClassifier 3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D8EBD2A27D5C50015D79B /* colorStripClassifier 3.mlmodel */; };
-		7AA4FA862A29277E00648AB1 /* colorStripClassifier5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4FA852A29277E00648AB1 /* colorStripClassifier5.mlmodel */; };
-		7AA4FA882A293AAF00648AB1 /* colorStripClassifier6.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7AA4FA872A293AAF00648AB1 /* colorStripClassifier6.mlmodel */; };
 		7AB6AA7E2A2E49B100064620 /* CubeFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6AA7D2A2E49B100064620 /* CubeFaceView.swift */; };
 		7AB6AA802A3388B100064620 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6AA7F2A3388B100064620 /* Face.swift */; };
+		7ACC13A12A4C9C200065EF5E /* colorStripClassifier9.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */; };
 		7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1926229E71ED500EA16C6 /* ControllerView.swift */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsModel.swift */; };
@@ -86,19 +82,15 @@
 		7A430F6C29C2681900E6A684 /* CubeMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMapModel.swift; sourceTree = "<group>"; };
 		7A430F6E29C4CEB700E6A684 /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		7A430F7029C4D48000E6A684 /* SolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolverTests.swift; sourceTree = "<group>"; };
-		7A9D8EAD2A1FE30D0015D79B /* colorStripClassifier1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier1.mlmodel; sourceTree = "<group>"; };
 		7A9D8EAF2A2017AB0015D79B /* orangeSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeSample.png; path = CubePressTests/orangeSample.png; sourceTree = SOURCE_ROOT; };
 		7A9D8EB02A2017AC0015D79B /* redSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redSample.png; path = CubePressTests/redSample.png; sourceTree = SOURCE_ROOT; };
 		7A9D8EB12A2017AC0015D79B /* whiteSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whiteSample.png; path = CubePressTests/whiteSample.png; sourceTree = SOURCE_ROOT; };
 		7A9D8EB22A2017AC0015D79B /* yellowSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellowSample.png; path = CubePressTests/yellowSample.png; sourceTree = SOURCE_ROOT; };
 		7A9D8EB32A2017AC0015D79B /* blueSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blueSample.png; path = CubePressTests/blueSample.png; sourceTree = SOURCE_ROOT; };
 		7A9D8EB42A2017AC0015D79B /* greenSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenSample.png; path = CubePressTests/greenSample.png; sourceTree = SOURCE_ROOT; };
-		7A9D8EBB2A217A020015D79B /* colorStripClassifier2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier2.mlmodel; sourceTree = "<group>"; };
-		7A9D8EBD2A27D5C50015D79B /* colorStripClassifier 3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "colorStripClassifier 3.mlmodel"; sourceTree = "<group>"; };
-		7AA4FA852A29277E00648AB1 /* colorStripClassifier5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier5.mlmodel; sourceTree = "<group>"; };
-		7AA4FA872A293AAF00648AB1 /* colorStripClassifier6.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier6.mlmodel; sourceTree = "<group>"; };
 		7AB6AA7D2A2E49B100064620 /* CubeFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFaceView.swift; sourceTree = "<group>"; };
 		7AB6AA7F2A3388B100064620 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier9.mlmodel; sourceTree = "<group>"; };
 		7AD1926229E71ED500EA16C6 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
@@ -235,11 +227,7 @@
 		7AF1923129A9543900711273 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7AA4FA872A293AAF00648AB1 /* colorStripClassifier6.mlmodel */,
-				7AA4FA852A29277E00648AB1 /* colorStripClassifier5.mlmodel */,
-				7A9D8EBD2A27D5C50015D79B /* colorStripClassifier 3.mlmodel */,
-				7A9D8EBB2A217A020015D79B /* colorStripClassifier2.mlmodel */,
-				7A9D8EAD2A1FE30D0015D79B /* colorStripClassifier1.mlmodel */,
+				7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */,
 				7A430F6829BFD58B00E6A684 /* AppManager.swift */,
 				7AF1924E29B7AB8B00711273 /* VideoCapture.swift */,
 				7AF1922C29A7F58300711273 /* FrameModel.swift */,
@@ -414,15 +402,11 @@
 				7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */,
-				7A9D8EBE2A27D5C50015D79B /* colorStripClassifier 3.mlmodel in Sources */,
 				7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */,
 				7A430F6429BA4BC200E6A684 /* CubeMapView.swift in Sources */,
-				7AA4FA862A29277E00648AB1 /* colorStripClassifier5.mlmodel in Sources */,
+				7ACC13A12A4C9C200065EF5E /* colorStripClassifier9.mlmodel in Sources */,
 				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
-				7A9D8EAE2A1FE30D0015D79B /* colorStripClassifier1.mlmodel in Sources */,
 				7AB6AA7E2A2E49B100064620 /* CubeFaceView.swift in Sources */,
-				7AA4FA882A293AAF00648AB1 /* colorStripClassifier6.mlmodel in Sources */,
-				7A9D8EBC2A217A020015D79B /* colorStripClassifier2.mlmodel in Sources */,
 				7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */,
 				7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */,
 				7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */,
