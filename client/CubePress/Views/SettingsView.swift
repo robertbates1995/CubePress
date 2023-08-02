@@ -44,16 +44,21 @@ struct SettingRow: View {
     
     var body: some View {
         HStack{
-            Button("test \(moveString)") {
+            Text(moveString)
+                .frame(width: 60, alignment: .center)
+            Spacer()
+            Button("test") {
                     model.test(setting: move)
             }
+            .frame(width: 30, alignment: .center)
             Spacer()
-            Button("Set \(moveString) Value") {
+            Button("set") {
                     model.send(setting: move)
             }
+            .frame(width: 30, alignment: .center)
             Spacer()
             TextField(moveString, text: model.binding(for: move))
-                .frame(width: 200, alignment: .trailing)
+                .frame(width: 80, alignment: .trailing)
                 .multilineTextAlignment(.trailing)
         }
     }
