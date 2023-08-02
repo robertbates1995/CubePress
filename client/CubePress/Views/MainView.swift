@@ -13,22 +13,29 @@ struct MainView: View {
     
     var body: some View {
         TabView {
-            CubeMapView(onScanTapped: {model.onSolvedTapped()}, model: model.cubeMapModel)
-                .tabItem {
-                    Label("Map", systemImage: "square.grid.3x3.square")
-                }
-            CameraView(model: model.videoCapture, onScanTapped: {model.onScanTapped()})
-                .tabItem {
-                    Label("Camera", systemImage: "camera")
-                }
-            ControllerView(model: model.mover)
-                .tabItem {
-                    Label("Controller", systemImage: "dpad.fill")
-                }
-            SettingsView(model: model.settingsModel)
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
+            Group {
+                CubeMapView(onScanTapped: {model.onSolvedTapped()}, model: model.cubeMapModel)
+                    .tabItem {
+                        Label("Map", systemImage: "square.grid.3x3.square")
+                    }
+                CameraView(model: model.videoCapture, onScanTapped: {model.onScanTapped()})
+                    .tabItem {
+                        Label("Camera", systemImage: "camera")
+                    }
+                ControllerView(model: model.mover)
+                    .tabItem {
+                        Label("Controller", systemImage: "dpad.fill")
+                    }
+                SettingsView(model: model.settingsModel)
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+            }
+            .toolbarBackground(Color.yellow, for: .tabBar)
+            .toolbar(.visible, for: .tabBar)
+        }
+        .onAppear() {
+            UITabBar.appearance().backgroundColor = .white
         }
     }
 }
