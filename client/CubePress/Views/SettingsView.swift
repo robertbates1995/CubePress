@@ -39,7 +39,7 @@ struct SettingsView: View {
 
 struct SettingRow: View {
     let move: Move
-    let model: SettingsModel
+    @ObservedObject var model: SettingsModel
     let moveString: String
     
     var body: some View {
