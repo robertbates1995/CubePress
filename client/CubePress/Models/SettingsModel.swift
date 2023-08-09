@@ -12,6 +12,7 @@ class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var ipAddress: String = "10.0.0.50"
     @Published var settings = [Move:String]()
+    weak var cubeMover: CubeMovable?
     var callServer: (URL) async throws -> (Data,URLResponse) = {
         try await URLSession.shared.data(from: $0)
     }
@@ -61,7 +62,9 @@ class SettingsModel: ObservableObject {
     }
     
     func test(setting: Move) {
-        //TODO: Implement test setting function
+        Task{
+            try await cubeMover?.input(move: setting.string)
+        }
     }
     
     func getSetting() {

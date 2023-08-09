@@ -22,6 +22,7 @@ class AppManager {
         self.cubeMapModel = CubeMapModel()
         self.mover = Mover(settings: settingsModel)
         self.solver = Solver(getter: videoCapture.model, cubeMover: mover, cubeMap: cubeMapModel)
+        self.settingsModel.cubeMover = self.mover
     }
     
     func onSolvedTapped() {

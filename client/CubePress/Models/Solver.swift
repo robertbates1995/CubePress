@@ -9,11 +9,6 @@ import Foundation
 import KociembaSolver
 import UIKit
 
-protocol CubeMovable: AnyObject {
-    func input(moves: [String]) async throws
-    func input(move: String) async throws
-}
-
 protocol CubeFaceGetter {
     var cubeFace: Face{ get }
 }

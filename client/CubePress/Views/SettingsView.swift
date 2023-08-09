@@ -40,26 +40,24 @@ struct SettingsView: View {
 struct SettingRow: View {
     let move: Move
     @ObservedObject var model: SettingsModel
+    @FocusState var isFocused: Bool
     let moveString: String
     
     var body: some View {
         HStack{
-            Text(moveString)
-                .frame(width: 60, alignment: .center)
-            Spacer()
-            Button("test") {
-                    model.test(setting: move)
+            Button(moveString){
+                model.test(setting: move)
             }
-            .frame(width: 30, alignment: .center)
-            Spacer()
-            Button("set") {
-                    model.send(setting: move)
-            }
-            .frame(width: 30, alignment: .center)
+            .frame(width: 80, alignment: .center)
             Spacer()
             TextField(moveString, text: model.binding(for: move))
+                .focused($isFocused)
                 .frame(width: 80, alignment: .trailing)
                 .multilineTextAlignment(.trailing)
+                .onChange(of: isFocused) { state in
+                    //update settings value here
+                    model.send(setting: move)
+                }
         }
     }
 }
