@@ -21,7 +21,7 @@ class VideoCapture: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
         checkPermission()
         sessionQueue.async { [unowned self] in
             self.setupCaptureSession()
-            self.captureSession.startRunning()
+            self.captureSession.startRunning() //insert this into when the tab becomes active
             model.beginBackgroundProcessing()
         }
     }

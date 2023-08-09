@@ -54,8 +54,7 @@ struct SettingRow: View {
                 .focused($isFocused)
                 .frame(width: 80, alignment: .trailing)
                 .multilineTextAlignment(.trailing)
-                .onChange(of: isFocused) { state in
-                    //update settings value here
+                .onChange(of: isFocused) { _ in
                     model.send(setting: move)
                 }
         }
