@@ -16,7 +16,7 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
  
 ## Getting Started
 
-[![Video](https://img.youtube.com/vi/MXvz6RXCK/maxresdefault.jpg)](https://www.youtube.com/watch?v=MXvz6RXCK-s)
+[![Video Tutorial](https://img.youtube.com/vi/MXvz6RXCK/0.jpg)](https://www.youtube.com/watch?v=MXvz6RXCK-s)
 
 1. Create a [CUBOTino](https://github.com/AndreaFavero71/CUBOTino_base_version)
 2. Create a phone holder for the CUBOTino (TODO)
