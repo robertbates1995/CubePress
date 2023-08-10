@@ -15,6 +15,9 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
 - Colors interpreted via Apple's Vision Machine Learning API
  
 ## Getting Started
+
+[![Video](https://img.youtube.com/vi/MXvz6RXCK/maxresdefault.jpg)](https://www.youtube.com/watch?v=MXvz6RXCK-s)
+
 1. Create a [CUBOTino](https://github.com/AndreaFavero71/CUBOTino_base_version)
 2. Create a phone holder for the CUBOTino (TODO)
 3. Install all server files to the CUBOTino by going to CubePress/server and installing main.py, server.py, and info.py
