@@ -35,21 +35,6 @@ final class CubePressTests: XCTestCase {
         XCTAssertEqual(sut.settingsModel.settings, expected)
     }
     
-//    func testCalcColor(picture: String, color: UIColor) {
-//        let image = UIImage(named: picture, in: Bundle(for: CubePressTests.self), with: nil)!
-//        let sut = ColorFinder()
-//        XCTAssertEqual(sut.calcColor(image: image, base: []), color)
-//    }
-    
-//    func testAllColors() {
-//        testCalcColor(picture: "orangeSample", color: .orange)
-//        testCalcColor(picture: "blueSample", color: .blue)
-//        testCalcColor(picture: "greenSample", color: .green)
-//        testCalcColor(picture: "yellowSample", color: .yellow)
-//        testCalcColor(picture: "redSample", color: .red)
-//        testCalcColor(picture: "whiteSample", color: .white)
-//    }
-    
     func testKociembaSolver(map: String, expected: String) {
         let tmp = FileManager.default.temporaryDirectory.path
         let solutionPtr = ApplyKociembaAlgorithm(strdup(map), 25000, 500, 0, tmp)
