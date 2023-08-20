@@ -50,28 +50,22 @@ table = servos.table_servo(settings_dictionary['left'],
 #set secret values
 ssid = secrets.ssid
 password = secrets.password
+station = network.WLAN(network.STA_IF)
 
 #connect to local network
+print('network...')
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
-wlan.connect(ssid, password)
+station.config(dhcp_hostname='cubotino')
+wlan.scan()  
+if not wlan.isconnected():
+    print('connecting to network...')
+    wlan.connect(ssid, password)
+    print('connecting...')
+    while not wlan.isconnected():
+        pass
 
-# Wait for connect or fail
-max_wait = 10
-while max_wait > 0:
-    if wlan.status() < 0 or wlan.status() >= 3:
-        break
-    max_wait -= 1
-    print('waiting for connection...')
-    time.sleep(1)
-    
-# Handle connection error
-if wlan.status() != 3:
-    raise RuntimeError('network connection failed')
-else:
-    print('Connected')
-    status = wlan.ifconfig()
-    print( 'ip = ' + status[0] )
+print('network config:', wlan.ifconfig()[0])
     
 # Open socket
 addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
@@ -87,6 +81,8 @@ while True:
         print('client connected from: ', addr)
         request = cl.recv(1024)
         request = str(request)
+        print("request")
+        print(request)
         request = request.split(" ")[1]
         response = ''
         if "settings" in request:
@@ -99,15 +95,15 @@ while True:
                 print("executing: ", i)
                 if i == "T":
                     arm.move_top()
-                if i == "M":
+                elif i == "M":
                     arm.move_mid()
-                if i == "B":
+                elif i == "B":
                     arm.move_bot()
-                if i == "L":
+                elif i == "L":
                     table.move_left()
-                if i == "C":
+                elif i == "C":
                     table.move_center()
-                if i == "R":
+                elif i == "R":
                     table.move_right()
                 else:
                     response = 'Invalid instruction: ' + request
