@@ -1,5 +1,6 @@
-# CubePress
+### I wrote a blog post about training the Machine learning model in this project! [check it out here](https://medium.com/@robertbates1995/unleashing-the-power-of-ai-revolutionizing-rubiks-cube-solving-86310e077d8)
 
+# CubePress
 
 CubePress is a Swift project designed to enable iPhone users to interface with their [CUBOTino](https://github.com/AndreaFavero71/CUBOTino_base_version), a small, 3d printable, robot that solves Rubik's cubes in under 90 seconds. CubePress is intended for use in conjunction with the [CUBOTino project](https://github.com/AndreaFavero71/CUBOTino_base_version), and enables users to create a portable version of the CUBOTino by taking photos of their cubes using the camera on a iOS device of their choosing.
 
@@ -14,6 +15,9 @@ The CUBOTino base version is a small, simple, and inexpensive Rubik's cube-solvi
 - Colors interpreted via Apple's Vision Machine Learning API
  
 ## Getting Started
+
+[![Video Tutorial](https://img.youtube.com/vi/MXvz6RXCK/0.jpg)](https://www.youtube.com/watch?v=MXvz6RXCK-s)
+
 1. Create a [CUBOTino](https://github.com/AndreaFavero71/CUBOTino_base_version)
 2. Create a phone holder for the CUBOTino (TODO)
 3. Install all server files to the CUBOTino by going to CubePress/server and installing main.py, server.py, and info.py
