@@ -10,11 +10,11 @@ import SwiftUI
 
 class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
-    @Published var ipAddress: String = "10.0.0.50"
+    @Published var ipAddress: String = "Cubotino.local"
     @Published var settings = [Move:String]()
     weak var cubeMover: CubeMovable?
-    var callServer: (URL) async throws -> (Data,URLResponse) = {
-        try await URLSession.shared.data(from: $0)
+    var callServer: (URL) async throws -> Data = {
+        try await URLSession.shared.data(from: $0).0
     }
     
     func binding(for move: Move) -> Binding<String> {
@@ -51,7 +51,7 @@ class SettingsModel: ObservableObject {
         guard let url = URL(string: "http://\(ipAddress)/settings/\(setting.rawValue)/\(value)") else { return }
         Task{
             do{
-                let (data, _ ) = try await callServer(url)
+                let data = try await callServer(url)
                 await processData(data)
             } catch {
                 Task { @MainActor in
@@ -74,7 +74,7 @@ class SettingsModel: ObservableObject {
         guard let url = URL(string: "http://\(ipAddress)/settings") else { return }
         Task{
             do {
-                let (data, _ ) = try await callServer(url)
+                let data = try await callServer(url)
                 await processData(data)
             } catch {
                 Task { @MainActor in

@@ -23,13 +23,13 @@ struct SettingsView: View {
                 SettingRow(move: Move.top, model: model, moveString: "Top")
                 SettingRow(move: Move.mid, model: model, moveString: "Middle")
                 SettingRow(move: Move.bot, model: model, moveString: "Bottom")
-            }
+            }.disabled(model.settings.isEmpty)
             
             Section(header: Text("Table Servo Settings")){
                 SettingRow(move: Move.left, model: model, moveString: "Left")
                 SettingRow(move: Move.center, model: model, moveString: "Center")
                 SettingRow(move: Move.right, model: model, moveString: "Right")
-            }
+            }.disabled(model.settings.isEmpty)
         }
         .task {
             model.getSetting()
@@ -62,7 +62,24 @@ struct SettingRow: View {
 }
 
 class SettingsView_Previews: PreviewProvider {
+    static var model: SettingsModel {
+           let model = SettingsModel()
+           model.callServer = {
+               print($0)
+               try await Task.sleep(for: .seconds(1))
+               return Data("""
+               {"left": 245,
+               "center": 143,
+               "bot": 165,
+               "mid": 123,
+               "top": 70,
+               "right": 50}
+               """.utf8)
+           }
+           return model
+       }
+    
     static var previews: some View {
-        SettingsView(model: .init())
+        SettingsView(model: Self.model)
     }
 }
