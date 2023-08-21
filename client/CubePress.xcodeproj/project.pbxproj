@@ -28,6 +28,8 @@
 		7A9D8EBA2A2017AC0015D79B /* greenSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D8EB42A2017AC0015D79B /* greenSample.png */; };
 		7AB6AA7E2A2E49B100064620 /* CubeFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6AA7D2A2E49B100064620 /* CubeFaceView.swift */; };
 		7AB6AA802A3388B100064620 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB6AA7F2A3388B100064620 /* Face.swift */; };
+		7ABFAB322A92F40D001C6AFB /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFAB312A92F40D001C6AFB /* Move.swift */; };
+		7ABFAB342A92F493001C6AFB /* UIImage+TestStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFAB332A92F493001C6AFB /* UIImage+TestStrip.swift */; };
 		7ACC13A12A4C9C200065EF5E /* colorStripClassifier9.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */; };
 		7AD0A51C2A7C3AFE002314C7 /* CubeMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD0A51B2A7C3AFD002314C7 /* CubeMovable.swift */; };
 		7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1926229E71ED500EA16C6 /* ControllerView.swift */; };
@@ -91,6 +93,8 @@
 		7A9D8EB42A2017AC0015D79B /* greenSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenSample.png; path = CubePressTests/greenSample.png; sourceTree = SOURCE_ROOT; };
 		7AB6AA7D2A2E49B100064620 /* CubeFaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFaceView.swift; sourceTree = "<group>"; };
 		7AB6AA7F2A3388B100064620 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		7ABFAB312A92F40D001C6AFB /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		7ABFAB332A92F493001C6AFB /* UIImage+TestStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestStrip.swift"; sourceTree = "<group>"; };
 		7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier9.mlmodel; sourceTree = "<group>"; };
 		7AD0A51B2A7C3AFD002314C7 /* CubeMovable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMovable.swift; sourceTree = "<group>"; };
 		7AD1926229E71ED500EA16C6 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				7AD0A51B2A7C3AFD002314C7 /* CubeMovable.swift */,
 				7A1DD02029F99BFD00CD0321 /* Mover.swift */,
 				7AB6AA7F2A3388B100064620 /* Face.swift */,
+				7ABFAB312A92F40D001C6AFB /* Move.swift */,
+				7ABFAB332A92F493001C6AFB /* UIImage+TestStrip.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				7A430F6929BFD58B00E6A684 /* AppManager.swift in Sources */,
 				7A2E13A02953D5D60048628D /* CubePressApp.swift in Sources */,
 				7A430F6F29C4CEB700E6A684 /* Solver.swift in Sources */,
+				7ABFAB322A92F40D001C6AFB /* Move.swift in Sources */,
 				7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */,
 				7A430F6429BA4BC200E6A684 /* CubeMapView.swift in Sources */,
 				7ACC13A12A4C9C200065EF5E /* colorStripClassifier9.mlmodel in Sources */,
@@ -414,6 +421,7 @@
 				7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */,
 				7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */,
 				7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */,
+				7ABFAB342A92F493001C6AFB /* UIImage+TestStrip.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,
 				7AF1922D29A7F58300711273 /* FrameModel.swift in Sources */,
 				7AB6AA802A3388B100064620 /* Face.swift in Sources */,

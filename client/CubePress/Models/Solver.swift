@@ -211,10 +211,7 @@ class Solver {
                            "R" : "R",
                            "B" : "B",
                            "D" : "D", ]
-        let tmp = FileManager.default.temporaryDirectory.path
-        let solutionPtr = await ApplyKociembaAlgorithm(strdup(convertMap()), 25000, 500, 0, tmp) //convertMap()
-        if let solutionPtr {
-            var instructions = String(cString: solutionPtr)
+        if var instructions = await applyKociembaSolver(facelets: convertMap()) {
             if instructions.last == "'" {
                 instructions = String(instructions.dropLast(2))
             }
