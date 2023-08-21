@@ -5,3 +5,4 @@ server/secrets.py
 /Packages
 /*.xcodeproj
 xcuserdata/
+*.xcuserstate
