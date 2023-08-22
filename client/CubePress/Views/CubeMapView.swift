@@ -52,24 +52,7 @@ struct CubeMapView: View {
                 .font(.title)
                 .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                 .padding()
-                Button("Save Samples") {
-                    model.saveTestStrips()
-                }
-                .padding()
-                .background(.gray)
-                .foregroundColor(.black)
-                .font(.title)
-                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                .padding()
             }
-//            HStack(alignment: .center){
-//                movementButtonStack("D")
-//                movementButtonStack("U")
-//                movementButtonStack("L")
-//                movementButtonStack("R")
-//                movementButtonStack("F")
-//                movementButtonStack("B")
-//            }
         }
         .padding([.leading, .trailing])
         .background(.black)
