@@ -12,6 +12,7 @@ class SettingsModel: ObservableObject {
     @Published var errorMessage: String?
     @Published var ipAddress: String = "Cubotino.local"
     @Published var settings = [Move:String]()
+    @Published var isLoading = false
     weak var cubeMover: CubeMovable?
     var callServer: (URL) async throws -> Data = {
         try await URLSession.shared.data(from: $0).0
@@ -67,19 +68,22 @@ class SettingsModel: ObservableObject {
         }
     }
     
+    @MainActor
     func getSetting() {
-        Task { @MainActor in
-            errorMessage = nil
-        }
+        errorMessage = nil
+        isLoading = true
         guard let url = URL(string: "http://\(ipAddress)/settings") else { return }
-        Task{
+        Task {
             do {
                 let data = try await callServer(url)
-                await processData(data)
+                processData(data)
             } catch {
                 Task { @MainActor in
                     self.errorMessage = error.localizedDescription
                 }
+            }
+            Task { @MainActor in
+                isLoading = false
             }
         }
     }

@@ -13,7 +13,12 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section(header: Text("Connected On")){
-                TextField("", text: $model.ipAddress)
+                HStack {
+                    TextField("", text: $model.ipAddress)
+                    if model.isLoading {
+                        ProgressView()
+                    }
+                }
                 if let error = model.errorMessage {
                     Text(error).foregroundColor(.red)
                 }
