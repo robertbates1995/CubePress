@@ -9,12 +9,14 @@ import Foundation
 import KociembaSolver
 
 @MainActor
-class AppManager {
+class AppManager: ObservableObject {
     var videoCapture: VideoCapture
     var settingsModel: SettingsModel
     var cubeMapModel: CubeMapModel //needs to be made observable
     var solver: Solver
     var mover: Mover
+    @Published var selectedTab: Int = 1
+
     
     init() {
         self.videoCapture = VideoCapture()
@@ -35,7 +37,15 @@ class AppManager {
     
     func onScanTapped() {
         Task {
-            try await solver.scanCube()
+            do {
+                try await solver.scanCube()
+                await MainActor.run {
+                    selectedTab = 1
+                }
+                try await solver.solveCube()
+            } catch {
+                print(error)
+            }
         }
     }
 }

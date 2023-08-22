@@ -13,6 +13,10 @@ protocol CubeFaceGetter {
     var cubeFace: Face{ get }
 }
 
+enum SolverError: Error {
+    case noSolution
+}
+
 class Solver {
     let getter: CubeFaceGetter
     var cubeMover: CubeMovable
@@ -31,12 +35,6 @@ class Solver {
     }
     
     func scanCube() async throws {
-//        let moveStrings = ["CM", "R", "L", "CTM", "TM", "TM"]
-//        var faces = await [cubeMap.U, cubeMap.R, cubeMap.L, cubeMap.B, cubeMap.D, cubeMap.F]
-//        for i in 0...5 {
-//            try await cubeMover.input(move: moveStrings[i])  //set robot to starting posistion
-//            await MainActor.run {faces[i] = getter.cubeFace} //Scan
-//        }
         try await cubeMover.input(move: "CM" )  //set robot to starting posistion
         try await Task.sleep( nanoseconds: 2_000_000_000 )
         await MainActor.run(body: {cubeMap.F = getter.cubeFace} ) //Scan
@@ -223,7 +221,7 @@ class Solver {
             try await cubeMover.input(moves: solutionArray)
         } else {
             let mapString = await convertMap()
-            print("no solution to map: \(mapString)")
+            throw SolverError.noSolution
         }
     }
 }

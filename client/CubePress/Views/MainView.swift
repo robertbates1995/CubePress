@@ -9,15 +9,16 @@ import SwiftUI
 
 @MainActor
 struct MainView: View {
-    let model = AppManager()
+    @ObservedObject var model = AppManager()
     
     var body: some View {
-        TabView {
+        TabView(selection: $model.selectedTab) {
             Group {
                 CubeMapView(onScanTapped: {model.onSolvedTapped()}, model: model.cubeMapModel)
                     .tabItem {
                         Label("Map", systemImage: "square.grid.3x3.square")
                     }
+                    .tag(1)
                 CameraView(model: model.videoCapture, onScanTapped: {model.onScanTapped()})
                     .onAppear() {
                         Task.detached {
@@ -30,10 +31,12 @@ struct MainView: View {
                     .tabItem {
                         Label("Camera", systemImage: "camera")
                     } 
+                    .tag(2)
                 SettingsView(model: model.settingsModel)
                     .tabItem {
                         Label("Settings", systemImage: "gear")
                     }
+                    .tag(3)
             }
             .toolbarBackground(Color.yellow, for: .tabBar)
             .toolbar(.visible, for: .tabBar)
