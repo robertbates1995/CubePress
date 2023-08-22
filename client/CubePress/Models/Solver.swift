@@ -72,6 +72,8 @@ class Solver {
             cubeMap.D.updateFacelets(with: cubeMap.centers)
             cubeMap.F.updateFacelets(with: cubeMap.centers)
         })
+        try await cubeMover.input(move: "TM" )
+
     }
     
     fileprivate func convert(color: CubeFace?) -> String {

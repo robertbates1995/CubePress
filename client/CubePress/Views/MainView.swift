@@ -20,7 +20,9 @@ struct MainView: View {
                     }
                 CameraView(model: model.videoCapture, onScanTapped: {model.onScanTapped()})
                     .onAppear() {
-                        model.videoCapture.captureSession.startRunning()
+                        Task.detached {
+                            await model.videoCapture.captureSession.startRunning()
+                        }
                     }
                     .onDisappear() {
                         model.videoCapture.captureSession.stopRunning()

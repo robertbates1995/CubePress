@@ -36,14 +36,8 @@ final class CubePressTests: XCTestCase {
     }
     
     func testKociembaSolver(map: String, expected: String) {
-        let tmp = FileManager.default.temporaryDirectory.path
-        let solutionPtr = ApplyKociembaAlgorithm(strdup(map), 25000, 500, 0, tmp)
-        if let solutionPtr {
-            let solution = String(cString: solutionPtr)
-            XCTAssertEqual(solution, expected)
-        } else {
-            print("no solution to map: \(map)")
-        }
+        let solution = applyKociembaSolver(facelets: map)
+        XCTAssertEqual(solution, expected)
     }
 
     func testSolver() {
