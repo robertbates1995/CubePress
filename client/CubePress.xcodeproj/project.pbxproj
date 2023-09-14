@@ -32,7 +32,6 @@
 		7ABFAB342A92F493001C6AFB /* UIImage+TestStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABFAB332A92F493001C6AFB /* UIImage+TestStrip.swift */; };
 		7ACC13A12A4C9C200065EF5E /* colorStripClassifier9.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */; };
 		7AD0A51C2A7C3AFE002314C7 /* CubeMovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD0A51B2A7C3AFD002314C7 /* CubeMovable.swift */; };
-		7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1926229E71ED500EA16C6 /* ControllerView.swift */; };
 		7AF19225298DC89600711273 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF19224298DC89600711273 /* SettingsView.swift */; };
 		7AF1922729A00BDE00711273 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922629A00BDE00711273 /* SettingsModel.swift */; };
 		7AF1922929A6D93000711273 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1922829A6D93000711273 /* CameraView.swift */; };
@@ -97,7 +96,6 @@
 		7ABFAB332A92F493001C6AFB /* UIImage+TestStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestStrip.swift"; sourceTree = "<group>"; };
 		7ACC13A02A4C9C200065EF5E /* colorStripClassifier9.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = colorStripClassifier9.mlmodel; sourceTree = "<group>"; };
 		7AD0A51B2A7C3AFD002314C7 /* CubeMovable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeMovable.swift; sourceTree = "<group>"; };
-		7AD1926229E71ED500EA16C6 /* ControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerView.swift; sourceTree = "<group>"; };
 		7AF19224298DC89600711273 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7AF1922629A00BDE00711273 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		7AF1922829A6D93000711273 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -217,7 +215,6 @@
 				7AF1922E29A7F5AC00711273 /* FrameView.swift */,
 				7A430F6329BA4BC200E6A684 /* CubeMapView.swift */,
 				7A430F6A29BFDBEB00E6A684 /* MainView.swift */,
-				7AD1926229E71ED500EA16C6 /* ControllerView.swift */,
 				7AB6AA7D2A2E49B100064620 /* CubeFaceView.swift */,
 			);
 			path = Views;
@@ -419,7 +416,6 @@
 				7AF1924929B15F1E00711273 /* ColorFinder.swift in Sources */,
 				7AB6AA7E2A2E49B100064620 /* CubeFaceView.swift in Sources */,
 				7A430F6D29C2681900E6A684 /* CubeMapModel.swift in Sources */,
-				7AD1926329E71ED500EA16C6 /* ControllerView.swift in Sources */,
 				7AF1924F29B7AB8B00711273 /* VideoCapture.swift in Sources */,
 				7ABFAB342A92F493001C6AFB /* UIImage+TestStrip.swift in Sources */,
 				7AF1922929A6D93000711273 /* CameraView.swift in Sources */,

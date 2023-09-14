@@ -14,7 +14,7 @@ struct MainView: View {
     var body: some View {
         TabView(selection: $model.selectedTab) {
             Group {
-                CubeMapView(onScanTapped: {model.onSolvedTapped()}, model: model.cubeMapModel)
+                CubeMapView(onSolveTapped: {model.onSolvedTapped()}, model: model.cubeMapModel)
                     .tabItem {
                         Label("Map", systemImage: "square.grid.3x3.square")
                     }

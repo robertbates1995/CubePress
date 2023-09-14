@@ -9,43 +9,43 @@ import SwiftUI
 
 struct CubeMapView: View {
     
-    let onScanTapped: () -> ()
+    // this is a member function that takes and returns nothing
+    // it initiates the solving sequence
+    let onSolveTapped: () -> ()
     
     @ObservedObject var model: CubeMapModel
-    @State private var selection: Int = 1
+    
     var body: some View {
         VStack{
-            GeometryReader{ geometry in
-                Grid(horizontalSpacing: 20) {
-                    GridRow{
-                        //Up
-                        Spacer()
-                        CubeFaceView(model: $model.U, faceLabel: "U")
-                    }
-                    GridRow{
-                        //front 3 sides
-                        CubeFaceView(model: $model.L, faceLabel: "L")
-                        CubeFaceView(model: $model.F, faceLabel: "F")
-                        CubeFaceView(model: $model.R, faceLabel: "R")
-                    }
-                    GridRow{
-                        //bottom
-                        Spacer()
-                        CubeFaceView(model: $model.D, faceLabel: "D")
-                    }
-                    GridRow{
-                        //back
-                        Spacer()
-                        CubeFaceView(model: $model.B, faceLabel: "B")
-                    }
+            Grid(horizontalSpacing: 20) {
+                GridRow{
+                    //Up
+                    Spacer()
+                    CubeFaceView(model: $model.U, faceLabel: "U")
                 }
-                .frame(width: geometry.size.width)
+                GridRow{
+                    //front 3 sides
+                    CubeFaceView(model: $model.L, faceLabel: "L")
+                    CubeFaceView(model: $model.F, faceLabel: "F")
+                    CubeFaceView(model: $model.R, faceLabel: "R")
+                }
+                GridRow{
+                    //bottom
+                    Spacer()
+                    CubeFaceView(model: $model.D, faceLabel: "D")
+                }
+                GridRow{
+                    //back
+                    Spacer()
+                    CubeFaceView(model: $model.B, faceLabel: "B")
+                }
             }
             .padding([.leading, .trailing])
             HStack{
                 Button("Solve") {
-                    onScanTapped()
+                    onSolveTapped()
                 }
+                .shadow(radius: 5)
                 .padding()
                 .background(.gray)
                 .foregroundColor(.black)
@@ -83,6 +83,6 @@ struct CubeMapView_Previews: PreviewProvider {
     }
     
     static var previews: some View {
-        CubeMapView(onScanTapped: {}, model: model)
+        CubeMapView(onSolveTapped: {}, model: model)
     }
 }

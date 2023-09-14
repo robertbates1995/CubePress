@@ -64,6 +64,7 @@ struct FaceletView: View {
             }
         )
         .border(Color(uiColor: facelet?.cubeFace.color ?? .white), width: 3)
+        .shadow(radius: 5)
         .sheet(isPresented: $showingSheet) {SheetView(selectedColor: $facelet)}
     }
 }
